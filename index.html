@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>WelcomeBook — Дигитална система за Airbnb хостове</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root { --gold:#F5A623; --dark:#2C2C2C; --cream:#FFF8EE; }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  body { font-family:'Inter',sans-serif; color:var(--dark); margin:0; }
+
+  h1,h2,h3 { font-family:'DM Serif Display',serif; font-weight:400; }
+
+  .glass-nav { background:rgba(255,255,255,.94); backdrop-filter:blur(14px); }
+
+  /* fade-up */
+  .fade-up { opacity:0; transform:translateY(36px); transition:opacity .7s ease,transform .7s ease; }
+  .fade-up.visible { opacity:1; transform:translateY(0); }
+
+  /* card lift — refined */
+  .card-hover { transition:transform .25s ease,box-shadow .25s ease; box-shadow:0 1px 3px rgba(0,0,0,.06),0 4px 12px rgba(0,0,0,.04); }
+  .card-hover:hover { transform:translateY(-4px); box-shadow:0 12px 32px rgba(245,166,35,.18); }
+
+  /* SVG icon container */
+  .icon-box { width:48px; height:48px; border-radius:12px; padding:10px; flex-shrink:0; display:flex; align-items:center; justify-content:center; margin-bottom:1rem; }
+  .icon-box svg { width:28px; height:28px; stroke:white; stroke-width:1.5; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+
+  /* services hidden cards */
+  .svc-hidden { display:none; opacity:0; transform:translateY(20px); }
+  .svc-hidden.svc-visible { display:block; animation:svcIn .4s ease forwards; }
+  @keyframes svcIn { to { opacity:1; transform:translateY(0); } }
+
+  /* gold underline decoration */
+  .gold-line { display:block; width:40px; height:3px; border-radius:2px; background:var(--gold); margin:0.75rem auto 1.25rem; }
+
+  /* pulse play */
+  @keyframes pulse-gold {
+    0%,100% { box-shadow:0 0 0 0 rgba(245,166,35,.6); }
+    50%      { box-shadow:0 0 0 22px rgba(245,166,35,0); }
+  }
+  .pulse-btn { animation:pulse-gold 2s infinite; }
+
+  /* mobile menu */
+  #mobile-menu { display:none; }
+  #mobile-menu.open { display:flex; }
+
+  /* accordion */
+  details .acc-body { max-height:0; overflow:hidden; transition:max-height .4s ease,padding .3s ease; padding:0 1.5rem; }
+  details[open] .acc-body { max-height:320px; padding:0 1.5rem 1.5rem; }
+  details summary { list-style:none; }
+  details summary::-webkit-details-marker { display:none; }
+
+  /* before/after slider */
+  .ba-wrap { position:relative; overflow:hidden; border-radius:1rem; user-select:none; }
+  .ba-after { position:absolute; inset:0; overflow:hidden; }
+  .ba-divider { position:absolute; top:0; bottom:0; width:3px; background:white; cursor:ew-resize; z-index:10; }
+  .ba-handle { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    width:40px; height:40px; background:var(--gold); border-radius:50%;
+    display:flex; align-items:center; justify-content:center; box-shadow:0 2px 12px rgba(0,0,0,.25); }
+
+  /* section padding — smaller on mobile */
+  .sec { padding-top:3.5rem; padding-bottom:3.5rem; padding-left:1.25rem; padding-right:1.25rem; }
+  @media(min-width:768px){ .sec { padding-top:6rem; padding-bottom:6rem; padding-left:1.5rem; padding-right:1.5rem; } }
+
+  /* stat bar */
+  .stat-item { display:flex; flex-direction:column; align-items:center; flex:1; min-width:0; }
+  .stat-divider { width:1px; background:#e7e5e4; align-self:stretch; flex-shrink:0; }
+
+  /* logo img */
+  .logo-img { height:44px; width:auto; }
+</style>
+</head>
+<body class="bg-white">
+
+<!-- ═══ NAV ═══ -->
+<nav class="fixed top-0 w-full z-50 glass-nav border-b border-stone-100">
+  <div class="max-w-7xl mx-auto px-4 md:px-6 h-16 md:h-20 flex justify-between items-center">
+    <!-- Logo -->
+    <a href="#" class="flex items-center gap-2 shrink-0">
+      <img src="Logo.png" alt="WelcomeBook" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+      <span class="text-2xl font-bold tracking-tight text-[var(--dark)]" style="display:none">Welcome<span class="text-[var(--gold)]">Book</span></span>
+    </a>
+    <!-- Desktop links -->
+    <div class="hidden md:flex items-center gap-8">
+      <a class="text-[var(--gold)] font-semibold text-sm" href="#">Начало</a>
+      <a class="hover:text-[var(--gold)] transition-colors text-sm font-medium" href="#services">Услуги</a>
+      <a class="hover:text-[var(--gold)] transition-colors text-sm font-medium" href="#how-it-works">Как работи</a>
+      <a class="hover:text-[var(--gold)] transition-colors text-sm font-medium" href="#pricing">Цени</a>
+      <a class="hover:text-[var(--gold)] transition-colors text-sm font-medium" href="#faq">FAQ</a>
+    </div>
+    <!-- Desktop CTA + hamburger -->
+    <div class="flex items-center gap-2">
+      <a href="#contact" class="hidden md:inline-flex bg-[var(--gold)] hover:bg-[#e0951a] text-white px-5 py-2.5 rounded-lg font-semibold text-sm transition-all shadow-md">
+        Свържи се с нас
+      </a>
+      <button id="menu-toggle" class="md:hidden p-2 rounded-lg hover:bg-stone-100 transition-colors" aria-label="Меню">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="19" y2="6"/><line x1="3" y1="12" x2="19" y2="12"/><line x1="3" y1="18" x2="19" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <!-- Mobile drawer -->
+  <div id="mobile-menu" class="flex-col bg-white border-t border-stone-100 px-5 py-4 gap-1 md:hidden shadow-lg">
+    <a class="text-sm font-semibold py-3 px-3 rounded-xl hover:bg-stone-50 flex items-center gap-2" href="#" onclick="closeMobileMenu()">🏠 Начало</a>
+    <a class="text-sm font-semibold py-3 px-3 rounded-xl hover:bg-stone-50 flex items-center gap-2" href="#services" onclick="closeMobileMenu()">🛠️ Услуги</a>
+    <a class="text-sm font-semibold py-3 px-3 rounded-xl hover:bg-stone-50 flex items-center gap-2" href="#how-it-works" onclick="closeMobileMenu()">🔢 Как работи</a>
+    <a class="text-sm font-semibold py-3 px-3 rounded-xl hover:bg-stone-50 flex items-center gap-2" href="#pricing" onclick="closeMobileMenu()">💰 Цени</a>
+    <a class="text-sm font-semibold py-3 px-3 rounded-xl hover:bg-stone-50 flex items-center gap-2" href="#faq" onclick="closeMobileMenu()">❓ FAQ</a>
+    <a href="#contact" onclick="closeMobileMenu()" class="mt-3 block w-full text-center bg-[var(--gold)] text-white py-3 rounded-xl font-bold text-sm shadow">
+      Свържи се с нас
+    </a>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="relative pt-24 md:pt-36 pb-0 px-4 md:px-6 overflow-hidden" style="background:linear-gradient(160deg,#ffffff 55%,#FFF8EE 100%)">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-20 mb-12 md:mb-20">
+      <div class="lg:w-1/2 text-left fade-up">
+        <h1 class="text-4xl md:text-6xl text-[var(--dark)] mb-5 leading-[1.1]">
+          Превърни имота си в<br><span class="text-[var(--gold)]">печеливш мини бизнес</span>
+        </h1>
+        <p class="text-base md:text-lg text-stone-500 mb-7 max-w-lg leading-relaxed">
+          Welcome Book, SEO оптимизация, AI чатбот и автоматизирана комуникация за Airbnb и Booking хостове. <strong>Без процент от приходите.</strong>
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="#pricing" class="bg-[var(--gold)] hover:bg-[#e0951a] text-white px-7 py-4 rounded-xl font-bold text-base md:text-lg shadow-xl shadow-orange-200/50 transition-all flex items-center justify-center gap-2">
+            Виж пакетите →
+          </a>
+          <a href="#how-it-works" class="bg-white border-2 border-[var(--gold)] text-[var(--gold)] px-7 py-4 rounded-xl font-bold text-base md:text-lg hover:bg-[var(--cream)] transition-all flex items-center justify-center">
+            Как работи?
+          </a>
+        </div>
+        <div class="mt-8 flex items-center gap-6 opacity-50 text-sm font-bold">
+          <span>🏠 Airbnb</span>
+          <span>📅 Booking.com</span>
+        </div>
+      </div>
+      <div class="lg:w-1/2 relative fade-up w-full" style="transition-delay:.15s">
+        <div class="absolute -inset-4 bg-[var(--cream)] rounded-[3rem] -rotate-3 z-0"></div>
+        <div class="relative z-10 flex justify-center">
+          <div class="relative w-full max-w-[300px] md:max-w-[340px]">
+            <div class="bg-white rounded-[3rem] p-3 shadow-2xl border-4 border-stone-100">
+              <div class="rounded-[2.5rem] overflow-hidden aspect-[9/18] bg-gradient-to-br from-orange-50 to-amber-100 flex items-center justify-center">
+                <div class="text-center p-6">
+                  <div class="text-5xl mb-3">📖</div>
+                  <p class="font-bold text-[var(--dark)] text-base">Digital Welcome Book</p>
+                  <p class="text-stone-500 text-sm mt-1">за твоя имот</p>
+                  <div class="mt-5 space-y-2 text-left">
+                    <div class="bg-white rounded-xl p-3 text-xs font-semibold flex items-center gap-2 shadow-sm">✅ WiFi & инструкции</div>
+                    <div class="bg-white rounded-xl p-3 text-xs font-semibold flex items-center gap-2 shadow-sm">✅ Местни препоръки</div>
+                    <div class="bg-white rounded-xl p-3 text-xs font-semibold flex items-center gap-2 shadow-sm">✅ Check-in / out</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="absolute -right-3 md:-right-10 top-1/4 bg-white p-3 rounded-2xl shadow-xl border border-stone-100 hidden sm:block">
+              <div class="flex items-center gap-2">
+                <div class="w-9 h-9 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-lg">💰</div>
+                <div>
+                  <p class="text-[10px] text-stone-400 font-bold uppercase">Нова резервация</p>
+                  <p class="font-bold text-sm">+245.00 лв.</p>
+                </div>
+              </div>
+            </div>
+            <div class="absolute -left-3 md:-left-10 bottom-1/4 bg-white p-3 rounded-2xl shadow-xl border border-stone-100 hidden sm:block">
+              <div class="flex items-center gap-2">
+                <div class="w-9 h-9 bg-[var(--cream)] rounded-full flex items-center justify-center text-lg">⭐</div>
+                <div>
+                  <p class="text-[10px] text-stone-400 font-bold uppercase">Рейтинг</p>
+                  <p class="font-bold text-sm">5.0 ★ Superhost</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STATS BAR (horizontal, compact) ═══ -->
+<section class="py-6 bg-white border-y border-stone-100">
+  <div class="max-w-5xl mx-auto px-4">
+    <div class="flex items-stretch divide-x divide-stone-200">
+      <div class="stat-item py-4 px-3 text-center fade-up">
+        <div class="text-xl md:text-3xl font-black text-[var(--gold)] leading-tight counter" data-target="94" data-suffix="%">—</div>
+        <div class="text-[10px] md:text-xs font-bold uppercase tracking-wider text-stone-400 mt-1">75%→94%<br class="hidden sm:block"/> Заетост</div>
+      </div>
+      <div class="stat-item py-4 px-3 text-center fade-up" style="transition-delay:.08s">
+        <div class="text-xl md:text-3xl font-black text-[var(--gold)] leading-tight counter" data-target="5" data-decimals="1" data-suffix="★">—</div>
+        <div class="text-[10px] md:text-xs font-bold uppercase tracking-wider text-stone-400 mt-1">4.8→5.0★<br class="hidden sm:block"/> Рейтинг</div>
+      </div>
+      <div class="stat-item py-4 px-3 text-center fade-up" style="transition-delay:.16s">
+        <div class="text-xl md:text-3xl font-black text-[var(--gold)] leading-tight counter" data-target="38" data-suffix="%">—</div>
+        <div class="text-[10px] md:text-xs font-bold uppercase tracking-wider text-stone-400 mt-1">12%→38%<br class="hidden sm:block"/> Повторни гости</div>
+      </div>
+      <div class="stat-item py-4 px-3 text-center fade-up" style="transition-delay:.24s">
+        <div class="text-xl md:text-3xl font-black text-[var(--gold)] leading-tight" data-prefix="+" data-target="20">+20</div>
+        <div class="text-[10px] md:text-xs font-bold uppercase tracking-wider text-stone-400 mt-1">ч/мес<br class="hidden sm:block"/> Спестено</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BEFORE / AFTER ═══ -->
+<section class="sec bg-[var(--cream)]">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-10 fade-up">
+      <h2 class="text-3xl md:text-4xl text-[var(--dark)]">Трансформацията в числа</h2>
+      <p class="text-stone-500 mt-3 text-sm md:text-base">Реални резултати от хостове, с които работим</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <!-- BA Card 1 — Photos -->
+      <div class="card-hover bg-white rounded-3xl p-5 md:p-7 shadow-sm border border-orange-100 fade-up">
+        <p class="text-xs font-black uppercase tracking-widest text-stone-400 mb-4">📸 Снимки + AI обработка</p>
+        <div class="relative aspect-video rounded-2xl overflow-hidden bg-stone-100" id="ba1">
+          <!-- BEFORE half -->
+          <div class="absolute inset-0 flex">
+            <div class="w-1/2 bg-stone-300 flex items-center justify-center relative" style="filter:grayscale(1) contrast(.8) brightness(.75)">
+              <div class="text-center px-4">
+                <div class="text-4xl mb-2">📷</div>
+                <p class="text-stone-600 font-bold text-xs">Телефонна снимка</p>
+              </div>
+            </div>
+            <!-- AFTER half -->
+            <div class="w-1/2 bg-gradient-to-br from-amber-50 to-orange-100 flex items-center justify-center">
+              <div class="text-center px-4">
+                <div class="text-4xl mb-2">🌅</div>
+                <p class="text-[var(--gold)] font-bold text-xs">AI обработена</p>
+              </div>
+            </div>
+          </div>
+          <!-- divider arrow -->
+          <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div class="bg-[var(--gold)] text-white rounded-full w-9 h-9 flex items-center justify-center shadow-lg text-base font-black z-10">→</div>
+          </div>
+          <div class="absolute bottom-2 left-3 text-[10px] font-bold text-white bg-black/50 px-2 py-0.5 rounded-full">ПРЕДИ</div>
+          <div class="absolute bottom-2 right-3 text-[10px] font-bold text-white bg-[var(--gold)] px-2 py-0.5 rounded-full">СЛЕД</div>
+        </div>
+        <div class="flex justify-between mt-5 text-sm">
+          <div class="text-center">
+            <div class="text-stone-400 line-through text-xs mb-1">Без оптимизация</div>
+            <div class="font-black text-xl text-stone-400">65%</div>
+            <div class="text-[10px] text-stone-400 uppercase tracking-wider">заетост</div>
+          </div>
+          <div class="text-4xl self-center text-[var(--gold)]">→</div>
+          <div class="text-center">
+            <div class="text-[var(--gold)] font-bold text-xs mb-1">След AI обработка</div>
+            <div class="font-black text-xl text-[var(--gold)]">91%</div>
+            <div class="text-[10px] text-stone-400 uppercase tracking-wider">заетост</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BA Card 2 — Revenue -->
+      <div class="card-hover bg-white rounded-3xl p-5 md:p-7 shadow-sm border border-orange-100 fade-up" style="transition-delay:.1s">
+        <p class="text-xs font-black uppercase tracking-widest text-stone-400 mb-4">💰 Среден месечен приход</p>
+        <div class="flex items-center justify-center gap-4 md:gap-8 py-6">
+          <div class="text-center">
+            <div class="flex items-center gap-1 text-stone-400">
+              <span class="text-sm">📉</span>
+              <span class="text-3xl md:text-4xl font-black line-through">€680</span>
+            </div>
+            <div class="text-xs text-stone-400 uppercase tracking-wider mt-1">Преди</div>
+          </div>
+          <div class="text-3xl text-[var(--gold)]">→</div>
+          <div class="text-center">
+            <div class="flex items-center gap-1 text-[var(--gold)]">
+              <span class="text-3xl md:text-5xl font-black">€1,240</span>
+              <span class="text-xl">📈</span>
+            </div>
+            <div class="text-xs text-[var(--gold)] uppercase tracking-wider font-bold mt-1">След WelcomeBook</div>
+          </div>
+        </div>
+        <div class="border-t border-stone-100 pt-4 grid grid-cols-2 gap-3 text-center">
+          <div class="bg-stone-50 rounded-xl p-3">
+            <div class="font-black text-lg text-[var(--gold)]">4.2★ → 4.98★</div>
+            <div class="text-[10px] uppercase tracking-wider text-stone-400">Рейтинг</div>
+          </div>
+          <div class="bg-stone-50 rounded-xl p-3">
+            <div class="font-black text-lg text-[var(--gold)]">75% → 94%</div>
+            <div class="text-[10px] uppercase tracking-wider text-stone-400">Заетост</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BA Card 3 — Listing -->
+      <div class="card-hover bg-white rounded-3xl p-5 md:p-7 shadow-sm border border-orange-100 fade-up" style="transition-delay:.2s">
+        <p class="text-xs font-black uppercase tracking-widest text-stone-400 mb-4">🔍 Listing оптимизация — резултат след 30 дни</p>
+        <div class="grid grid-cols-2 gap-3">
+          <!-- Before listing -->
+          <div class="bg-stone-100 rounded-2xl p-4 border-2 border-dashed border-stone-300">
+            <div class="text-[10px] font-black uppercase text-red-500 mb-2">⛔ ПРЕДИ</div>
+            <div class="bg-stone-200 rounded h-16 flex items-center justify-center mb-2">
+              <span class="text-stone-400 text-2xl">🏠</span>
+            </div>
+            <p class="text-xs font-bold text-stone-600 leading-tight">"Уютен апартамент в центъра"</p>
+            <div class="flex gap-1 mt-2 text-[10px] text-stone-400">
+              <span>⭐ 4.1</span>
+              <span>•</span>
+              <span>65% заетост</span>
+            </div>
+          </div>
+          <!-- After listing -->
+          <div class="bg-[var(--cream)] rounded-2xl p-4 border-2 border-[var(--gold)]">
+            <div class="text-[10px] font-black uppercase text-[var(--gold)] mb-2">✅ СЛЕД</div>
+            <div class="bg-gradient-to-br from-orange-100 to-amber-50 rounded h-16 flex items-center justify-center mb-2">
+              <span class="text-2xl">🌟</span>
+            </div>
+            <p class="text-xs font-bold text-[var(--dark)] leading-tight">"Дизайнерски апартамент | Панорамна гледка | Централен"</p>
+            <div class="flex gap-1 mt-2 text-[10px] font-bold text-[var(--gold)]">
+              <span>⭐ 4.97</span>
+              <span>•</span>
+              <span>91% заетост</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BA Card 4 — Before/After lifestyle -->
+      <div class="card-hover bg-white rounded-3xl p-5 md:p-7 shadow-sm border border-orange-100 fade-up" style="transition-delay:.3s">
+        <p class="text-xs font-black uppercase tracking-widest text-stone-400 mb-4">⏱️ Времето на хоста</p>
+        <div class="flex gap-4">
+          <div class="flex-1 bg-red-50 rounded-2xl p-4">
+            <div class="text-[10px] font-black uppercase text-red-500 mb-3">ПРЕДИ</div>
+            <ul class="space-y-2 text-xs text-stone-600">
+              <li class="flex gap-2">❌ Отговарям на съобщения 24/7</li>
+              <li class="flex gap-2">❌ Ръчен check-in в 1 нощта</li>
+              <li class="flex gap-2">❌ Забравени ревюта</li>
+              <li class="flex gap-2">❌ Не знам дали печеля</li>
+            </ul>
+            <div class="mt-4 text-center">
+              <div class="font-black text-2xl text-red-400">3+ ч/ден</div>
+              <div class="text-[10px] text-red-400 uppercase">ангажираност</div>
+            </div>
+          </div>
+          <div class="flex-1 bg-green-50 rounded-2xl p-4">
+            <div class="text-[10px] font-black uppercase text-green-600 mb-3">СЛЕД</div>
+            <ul class="space-y-2 text-xs text-stone-600">
+              <li class="flex gap-2">✅ Чатботът отговаря</li>
+              <li class="flex gap-2">✅ Автоматичен check-in</li>
+              <li class="flex gap-2">✅ Review на автопилот</li>
+              <li class="flex gap-2">✅ Финансов тракер</li>
+            </ul>
+            <div class="mt-4 text-center">
+              <div class="font-black text-2xl text-green-600">~15 мин/ден</div>
+              <div class="text-[10px] text-green-600 uppercase">ангажираност</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SERVICES 3x3 ═══ -->
+<section class="sec bg-white" id="services">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-12 fade-up">
+      <h2 class="text-3xl md:text-4xl text-[var(--dark)]">Всичко което трябва на един успешен хост</h2>
+      <span class="gold-line"></span>
+      <p class="text-stone-500 text-sm md:text-base max-w-xl mx-auto">Не продаваме файлове — продаваме система. Plug &amp; play, без технически познания.</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5" id="svc-grid">
+
+      <!-- 1 Marketing Website -->
+      <div class="card-hover bg-white p-5 rounded-2xl fade-up">
+        <div class="icon-box" style="background:linear-gradient(135deg,#6366f1,#8b5cf6)">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <h3 class="text-[1.05rem] font-semibold mb-1.5 text-[var(--dark)]">Marketing Website</h3>
+        <p class="text-stone-500 text-sm leading-relaxed">Собствен сайт за имота с директни резервации — без Airbnb комисионна.</p>
+        <div class="mt-3 inline-block text-xs font-bold text-[var(--gold)] bg-orange-50 px-3 py-1 rounded-full">Premium план</div>
+      </div>
+
+      <!-- 2 Digital Welcome Book -->
+      <div class="card-hover bg-white p-5 rounded-2xl fade-up" style="transition-delay:.05s">
+        <div class="icon-box" style="background:linear-gradient(135deg,#f97316,#fb923c)">
+          <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <h3 class="text-[1.05rem] font-semibold mb-1.5 text-[var(--dark)]">Digital Welcome Book</h3>
+        <p class="text-stone-500 text-sm leading-relaxed">Персонален гост сайт с WiFi, check-in, местни препоръки. Достъп с QR код.</p>
+        <div class="mt-3 inline-block text-xs font-bold text-green-700 bg-green-50 px-3 py-1 rounded-full">Всички планове</div>
+      </div>
+
+      <!-- 3 AI Chatbot -->
+      <div class="card-hover bg-white p-5 rounded-2xl fade-up" style="transition-delay:.1s">
+        <div class="icon-box" style="background:linear-gradient(135deg,#7c3aed,#a855f7)">
+          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M12 8v4M12 16h.01" stroke-width="2"/></svg>
+        </div>
+        <h3 class="text-[1.05rem] font-semibold mb-1.5 text-[var(--dark)]">AI Guest Chatbot</h3>
+        <p class="text-stone-500 text-sm leading-relaxed">Отговаря на гостите 24/7 вместо теб. Знае всичко за имота.</p>
+        <div class="mt-3 inline-block text-xs font-bold text-blue-700 bg-blue-50 px-3 py-1 rounded-full">Professional &amp; Premium</div>
+      </div>
+
+      <!-- 4 SEO -->
+      <div class="card-hover bg-white p-5 rounded-2xl fade-up" style="transition-delay:.15s">
+        <div class="icon-box" style="background:linear-gradient(135deg,#10b981,#34d399)">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><polyline points="11 8 11 14 14 11"/></svg>
+        </div>
+        <h3 class="text-[1.05rem] font-semibold mb-1.5 text-[var(--dark)]">SEO + Listing оптимизация</h3>
+        <p class="text-stone-500 text-sm leading-relaxed">Заглавие, описание, amenities — оптимизирани за Airbnb алгоритъма.</p>
+        <div class="mt-3 inline-block text-xs font-bold text-blue-700 bg-blue-50 px-3 py-1 rounded-full">Professional &amp; Premium</div>
+      </div>
+
+      <!-- 5 Снимки + AI -->
+      <div class="card-hover bg-white p-5 rounded-2xl fade-up" style="transition-delay:.2s">
+        <div class="icon-box" style="background:linear-gradient(135deg,#ec4899,#f43f5e)">
+          <svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        </div>
+        <h3 class="text-[1.05rem] font-semibold mb-1.5 text-[var(--dark)]">Снимки + AI обработка</h3>
+        <p class="text-stone-500 text-sm leading-relaxed">AI подобрява осветлението, цветовете и атмосферата на снимките ти.</p>
+        <div class="mt-3 inline-block text-xs font-bold text-blue-700 bg-blue-50 px-3 py-1 rounded-full">Professional &amp; Premium</div>
+      </div>
+
+      <!-- 6 Гост комуникация -->
+      <div class="card-hover bg-white p-5 rounded-2xl fade-up" style="transition-delay:.25s">
+        <div class="icon-box" style="background:linear-gradient(135deg,#3b82f6,#60a5fa)">
+          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 10h8M8 14h5"/></svg>
+        </div>
+        <h3 class="text-[1.05rem] font-semibold mb-1.5 text-[var(--dark)]">Гост комуникация</h3>
+        <p class="text-stone-500 text-sm leading-relaxed">Автоматизирани съобщения за целия престой — check-in до thank you.</p>
+        <div class="mt-3 inline-block text-xs font-bold text-green-700 bg-green-50 px-3 py-1 rounded-full">Всички планове</div>
+      </div>
+
+      <!-- 7 Review система (hidden initially) -->
+      <div class="card-hover bg-white p-5 rounded-2xl svc-hidden fade-up" style="transition-delay:.05s">
+        <div class="icon-box" style="background:linear-gradient(135deg,#f59e0b,#fbbf24)">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <h3 class="text-[1.05rem] font-semibold mb-1.5 text-[var(--dark)]">Review система</h3>
+        <p class="text-stone-500 text-sm leading-relaxed">Follow-up след всяко напускане. Повече 5★ на автопилот.</p>
+        <div class="mt-3 inline-block text-xs font-bold text-blue-700 bg-blue-50 px-3 py-1 rounded-full">Professional &amp; Premium</div>
+      </div>
+
+      <!-- 8 Финансов тракер (hidden initially) -->
+      <div class="card-hover bg-white p-5 rounded-2xl svc-hidden fade-up" style="transition-delay:.1s">
+        <div class="icon-box" style="background:linear-gradient(135deg,#059669,#10b981)">
+          <svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        </div>
+        <h3 class="text-[1.05rem] font-semibold mb-1.5 text-[var(--dark)]">Финансов тракер</h3>
+        <p class="text-stone-500 text-sm leading-relaxed">Web app за приходи, разходи и заетост — без счетоводител.</p>
+        <div class="mt-3 inline-block text-xs font-bold text-green-700 bg-green-50 px-3 py-1 rounded-full">Всички планове</div>
+      </div>
+
+      <!-- 9 Чеклисти (hidden initially) -->
+      <div class="card-hover bg-white p-5 rounded-2xl svc-hidden fade-up" style="transition-delay:.15s">
+        <div class="icon-box" style="background:linear-gradient(135deg,#64748b,#94a3b8)">
+          <svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><polyline points="3 6 4 7 6 5"/><polyline points="3 12 4 13 6 11"/><polyline points="3 18 4 19 6 17"/></svg>
+        </div>
+        <h3 class="text-[1.05rem] font-semibold mb-1.5 text-[var(--dark)]">Чеклисти + Табели</h3>
+        <p class="text-stone-500 text-sm leading-relaxed">Почистване по стая + дигитални табели за WiFi и правила.</p>
+        <div class="mt-3 inline-block text-xs font-bold text-green-700 bg-green-50 px-3 py-1 rounded-full">Всички планове</div>
+      </div>
+
+    </div>
+
+    <!-- See all toggle -->
+    <div class="text-center mt-8 fade-up">
+      <button id="svc-toggle" onclick="toggleServices()" class="inline-flex items-center gap-2 px-7 py-3 border-2 border-[var(--gold)] text-[var(--gold)] font-semibold text-sm rounded-xl hover:bg-[var(--cream)] transition-all">
+        Виж всички услуги
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" id="svc-arrow"><polyline points="4 6 8 10 12 6"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ADD-ONS ═══ -->
+<section class="sec bg-[var(--cream)]">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-12 fade-up">
+      <span class="inline-block py-1 px-4 bg-white text-[var(--gold)] font-bold text-xs tracking-widest uppercase rounded-full mb-4 border border-orange-100">ЕКСКЛУЗИВНИ ДОБАВКИ</span>
+      <h2 class="text-3xl md:text-4xl text-[var(--dark)]">Искаш повече?</h2>
+      <span class="gold-line"></span>
+      <p class="text-stone-500 text-sm max-w-xl mx-auto">Добавяш само това, което имаш нужда.</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+
+      <div class="card-hover bg-white p-5 rounded-2xl border-2 border-[var(--gold)] fade-up relative overflow-hidden">
+        <div class="absolute top-3 right-3 bg-[var(--gold)] text-white text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full">ADD-ON</div>
+        <div class="icon-box" style="background:linear-gradient(135deg,#e1306c,#f77737)">
+          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="9" height="9" rx="2"/><rect x="13" y="2" width="9" height="9" rx="2"/><rect x="2" y="13" width="9" height="9" rx="2"/><rect x="13" y="13" width="9" height="9" rx="2"/></svg>
+        </div>
+        <h3 class="text-[1.05rem] font-semibold mb-1.5 text-[var(--dark)]">Социални мрежи</h3>
+        <p class="text-stone-500 text-sm leading-relaxed">Месечно управление на IG + FB. Публикации и истории.</p>
+      </div>
+
+      <div class="card-hover bg-white p-5 rounded-2xl border-2 border-[var(--gold)] fade-up relative overflow-hidden" style="transition-delay:.1s">
+        <div class="absolute top-3 right-3 bg-[var(--gold)] text-white text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full">ADD-ON</div>
+        <div class="icon-box" style="background:linear-gradient(135deg,#4285f4,#34a853)">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/><line x1="22" y1="12" x2="18" y2="12"/><line x1="6" y1="12" x2="2" y2="12"/><line x1="12" y1="6" x2="12" y2="2"/><line x1="12" y1="22" x2="12" y2="18"/></svg>
+        </div>
+        <h3 class="text-[1.05rem] font-semibold mb-1.5 text-[var(--dark)]">Google Ads</h3>
+        <p class="text-stone-500 text-sm leading-relaxed">Платена реклама за повече директни резервации без комисионна.</p>
+      </div>
+
+      <div class="card-hover bg-white p-5 rounded-2xl border-2 border-[var(--gold)] fade-up relative overflow-hidden" style="transition-delay:.2s">
+        <div class="absolute top-3 right-3 bg-[var(--gold)] text-white text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full">ADD-ON</div>
+        <div class="icon-box" style="background:linear-gradient(135deg,#f59e0b,#d97706)">
+          <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="12" y1="7" x2="16" y2="7"/><line x1="12" y1="11" x2="16" y2="11"/><line x1="8" y1="7" x2="8" y2="7" stroke-width="2.5"/></svg>
+        </div>
+        <h3 class="text-[1.05rem] font-semibold mb-1.5 text-[var(--dark)]">Superhost eBook</h3>
+        <p class="text-stone-500 text-sm leading-relaxed">Пълното ръководство за 5★ хост — стратегии и скриптове. Дигитален.</p>
+      </div>
+
+      <div class="card-hover bg-white p-5 rounded-2xl border-2 border-[var(--gold)] fade-up relative overflow-hidden" style="transition-delay:.3s">
+        <div class="absolute top-3 right-3 bg-[var(--gold)] text-white text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full">ADD-ON</div>
+        <div class="icon-box" style="background:linear-gradient(135deg,#8b5cf6,#6366f1)">
+          <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+        </div>
+        <h3 class="text-[1.05rem] font-semibold mb-1.5 text-[var(--dark)]">Физическа Welcome Book</h3>
+        <p class="text-stone-500 text-sm leading-relaxed">Луксозна печатна книжка — персонализирана, брандирана, доставена.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HOW IT WORKS ═══ -->
+<section class="sec bg-white" id="how-it-works">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-12 fade-up">
+      <h2 class="text-3xl md:text-4xl text-[var(--dark)]">Само 3 стъпки до успеха</h2>
+      <span class="gold-line"></span>
+    </div>
+    <div class="relative grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
+      <div class="hidden md:block absolute top-9 left-[16%] right-[16%] border-b-2 border-dashed border-[var(--gold)]/30"></div>
+
+      <div class="relative text-center fade-up">
+        <div class="w-18 h-18 md:w-20 md:h-20 bg-[var(--gold)] text-white rounded-full flex items-center justify-center mx-auto mb-6 relative z-10 shadow-lg border-4 border-white text-3xl">
+          📝
+          <div class="absolute -top-2 -right-2 w-7 h-7 bg-[var(--dark)] rounded-full flex items-center justify-center text-xs font-black text-white">1</div>
+        </div>
+        <h3 class="font-bold text-lg mb-3">Попълниш форма</h3>
+        <p class="text-stone-500 text-sm">Изпращаш ни информация за имота — 5 минути от теб.</p>
+      </div>
+
+      <div class="relative text-center fade-up" style="transition-delay:.15s">
+        <div class="w-18 h-18 md:w-20 md:h-20 bg-[var(--gold)] text-white rounded-full flex items-center justify-center mx-auto mb-6 relative z-10 shadow-lg border-4 border-white text-3xl">
+          ✨
+          <div class="absolute -top-2 -right-2 w-7 h-7 bg-[var(--dark)] rounded-full flex items-center justify-center text-xs font-black text-white">2</div>
+        </div>
+        <h3 class="font-bold text-lg mb-3">Ние изграждаме системата</h3>
+        <p class="text-stone-500 text-sm">Welcome book, SEO, чатбот — готово за 5–7 дни.</p>
+      </div>
+
+      <div class="relative text-center fade-up" style="transition-delay:.3s">
+        <div class="w-18 h-18 md:w-20 md:h-20 bg-[var(--gold)] text-white rounded-full flex items-center justify-center mx-auto mb-6 relative z-10 shadow-lg border-4 border-white text-3xl">
+          🏆
+          <div class="absolute -top-2 -right-2 w-7 h-7 bg-[var(--dark)] rounded-full flex items-center justify-center text-xs font-black text-white">3</div>
+        </div>
+        <h3 class="font-bold text-lg mb-3">Получаваш резервации</h3>
+        <p class="text-stone-500 text-sm">Системата работи на автопилот, ти само одобряваш.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MONEY-BACK GUARANTEE ═══ -->
+<section class="sec bg-[var(--cream)]">
+  <div class="max-w-2xl mx-auto text-center fade-up">
+    <div class="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-orange-100">
+      <div class="text-5xl md:text-6xl mb-5">🛡️</div>
+      <h2 class="text-2xl md:text-3xl text-[var(--dark)] mb-3">30-дневна гаранция за връщане на парите</h2>
+      <p class="text-stone-500 text-base md:text-lg mb-8 leading-relaxed">
+        Не си доволен? Връщаме всичко —<br/><strong>без въпроси, без условия.</strong>
+      </p>
+      <div class="text-left inline-block space-y-3 mb-8">
+        <div class="flex items-center gap-3 text-sm font-semibold text-stone-700">
+          <span class="text-green-500 text-lg">✓</span>
+          Важи за еднократната setup такса
+        </div>
+        <div class="flex items-center gap-3 text-sm font-semibold text-stone-700">
+          <span class="text-green-500 text-lg">✓</span>
+          Само едно съобщение до нас
+        </div>
+      </div>
+      <div class="text-xs text-stone-400">Никакви скрити клаузи. Никакви адвокатски условия.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PRICING ═══ -->
+<section class="sec bg-white" id="pricing">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-12 fade-up">
+      <span class="inline-block py-1 px-4 bg-[var(--cream)] text-[var(--gold)] font-bold text-xs tracking-widest uppercase rounded-full mb-4 border border-orange-100">ПРОЗРАЧНИ ЦЕНИ</span>
+      <h2 class="text-3xl md:text-4xl text-[var(--dark)]">Избери своя план</h2>
+      <span class="gold-line"></span>
+      <p class="text-stone-500 text-sm">Без процент от приходите. Без скрити такси.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-end">
+
+      <!-- Starter -->
+      <div class="card-hover bg-white p-7 rounded-2xl border border-stone-100 shadow-sm text-center fade-up">
+        <h3 class="font-bold text-xl mb-1 text-stone-600">Starter</h3>
+        <p class="text-xs text-stone-400 uppercase tracking-wider mb-5">Идеален старт</p>
+        <div class="mb-2"><span class="text-4xl md:text-5xl font-black">€149</span><span class="text-stone-400 text-sm ml-1">setup</span></div>
+        <div class="flex items-center justify-center gap-2 mb-2 flex-wrap">
+          <span class="text-xl font-bold text-stone-700">€29<span class="text-sm font-normal text-stone-400">/мес</span></span>
+          <span class="text-stone-300 text-sm">или</span>
+          <span class="text-xl font-bold text-[var(--gold)]">€299<span class="text-sm font-normal text-stone-400">/год</span></span>
+        </div>
+        <p class="text-xs text-green-600 font-bold mb-7">Спестяваш €49 с годишен план</p>
+        <ul class="text-left space-y-3 mb-7 text-stone-600 text-sm">
+          <li class="flex items-start gap-2"><span class="text-green-500">✓</span> 📖 Digital Welcome Book</li>
+          <li class="flex items-start gap-2"><span class="text-green-500">✓</span> 🧹 Чеклисти + Табели</li>
+          <li class="flex items-start gap-2"><span class="text-green-500">✓</span> 💬 Гост комуникация (10 шаблона)</li>
+          <li class="flex items-start gap-2"><span class="text-green-500">✓</span> 📊 Финансов тракер</li>
+        </ul>
+        <a href="#contact" class="block w-full py-4 border-2 border-stone-200 rounded-xl font-bold hover:bg-stone-50 hover:border-stone-300 transition-all text-center text-sm">Избери Starter</a>
+      </div>
+
+      <!-- Professional (featured) -->
+      <div class="card-hover bg-white p-8 md:p-10 rounded-2xl border-2 border-[var(--gold)] shadow-2xl text-center relative z-10 md:scale-105 fade-up" style="transition-delay:.1s">
+        <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[var(--gold)] text-white px-5 py-1.5 rounded-full text-xs font-black uppercase tracking-widest shadow-lg whitespace-nowrap">⭐ НАЙ-ПОПУЛЯРЕН</div>
+        <h3 class="font-bold text-2xl mb-1">Professional</h3>
+        <p class="text-xs text-stone-400 uppercase tracking-wider mb-5">Пълна система</p>
+        <div class="mb-2"><span class="text-4xl md:text-5xl font-black">€249</span><span class="text-stone-400 text-sm ml-1">setup</span></div>
+        <div class="flex items-center justify-center gap-2 mb-2 flex-wrap">
+          <span class="text-xl font-bold text-stone-700">€49<span class="text-sm font-normal text-stone-400">/мес</span></span>
+          <span class="text-stone-300 text-sm">или</span>
+          <span class="text-xl font-bold text-[var(--gold)]">€449<span class="text-sm font-normal text-stone-400">/год</span></span>
+        </div>
+        <p class="text-xs text-green-600 font-bold mb-8">Спестяваш €139 с годишен план</p>
+        <ul class="text-left space-y-3 mb-9 text-stone-700 text-sm">
+          <li class="flex items-start gap-2 font-semibold"><span class="text-[var(--gold)]">✓</span> Всичко от Starter</li>
+          <li class="flex items-start gap-2 font-semibold"><span class="text-[var(--gold)]">✓</span> 🔍 SEO + Listing оптимизация</li>
+          <li class="flex items-start gap-2 font-semibold"><span class="text-[var(--gold)]">✓</span> 🤖 AI Guest Chatbot</li>
+          <li class="flex items-start gap-2 font-semibold"><span class="text-[var(--gold)]">✓</span> ⭐ Review система</li>
+          <li class="flex items-start gap-2 font-semibold"><span class="text-[var(--gold)]">✓</span> 📸 Снимки + AI обработка</li>
+          <li class="flex items-start gap-2 font-semibold"><span class="text-[var(--gold)]">✓</span> 🖥️ Клиентски портал</li>
+        </ul>
+        <a href="#contact" class="block w-full py-4 bg-[var(--gold)] text-white rounded-xl font-bold shadow-xl shadow-orange-200 hover:bg-[#e0951a] transition-all text-center">Започни сега →</a>
+      </div>
+
+      <!-- Premium -->
+      <div class="card-hover bg-white p-7 rounded-2xl border border-stone-100 shadow-sm text-center fade-up" style="transition-delay:.2s">
+        <h3 class="font-bold text-xl mb-1 text-stone-600">Premium</h3>
+        <p class="text-xs text-stone-400 uppercase tracking-wider mb-5">Всичко включено</p>
+        <div class="mb-2"><span class="text-4xl md:text-5xl font-black">€399</span><span class="text-stone-400 text-sm ml-1">setup</span></div>
+        <div class="flex items-center justify-center gap-2 mb-2 flex-wrap">
+          <span class="text-xl font-bold text-stone-700">€89<span class="text-sm font-normal text-stone-400">/мес</span></span>
+          <span class="text-stone-300 text-sm">или</span>
+          <span class="text-xl font-bold text-[var(--gold)]">€849<span class="text-sm font-normal text-stone-400">/год</span></span>
+        </div>
+        <p class="text-xs text-green-600 font-bold mb-7">Спестяваш €219 с годишен план</p>
+        <ul class="text-left space-y-3 mb-7 text-stone-600 text-sm">
+          <li class="flex items-start gap-2"><span class="text-green-500">✓</span> Всичко от Professional</li>
+          <li class="flex items-start gap-2"><span class="text-green-500">✓</span> 🌐 Marketing Website</li>
+          <li class="flex items-start gap-2"><span class="text-green-500">✓</span> 📱 Социални мрежи (4 поста/мес)</li>
+          <li class="flex items-start gap-2"><span class="text-green-500">✓</span> 🎯 Google Ads поддръжка</li>
+          <li class="flex items-start gap-2"><span class="text-green-500">✓</span> 📦 Физическа Welcome Book</li>
+        </ul>
+        <a href="#contact" class="block w-full py-4 border-2 border-stone-200 rounded-xl font-bold hover:bg-stone-50 hover:border-stone-300 transition-all text-center text-sm">Избери Premium</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ VIDEO ═══ -->
+<section class="sec bg-[var(--cream)]">
+  <div class="max-w-2xl mx-auto text-center fade-up">
+    <h2 class="text-2xl md:text-3xl text-[var(--dark)] mb-2">Не знаеш кой план да избереш?</h2>
+    <p class="text-stone-500 mb-8 text-sm">Гледай 3-минутното видео — обясняваме всяка услуга</p>
+    <div class="relative bg-[var(--dark)] rounded-2xl overflow-hidden aspect-video flex items-center justify-center shadow-2xl cursor-pointer group">
+      <div class="absolute inset-0 bg-gradient-to-br from-stone-800 to-stone-900 flex items-center justify-center">
+        <div class="text-center"><div class="text-5xl mb-3 opacity-20">🎬</div><p class="text-stone-500 text-xs font-medium">Видео скоро</p></div>
+      </div>
+      <button class="pulse-btn relative z-10 w-16 h-16 md:w-20 md:h-20 bg-[var(--gold)] rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform" aria-label="Пусни видео">
+        <span style="color:white; font-size:2rem; margin-left:4px;">▶</span>
+      </button>
+      <div class="absolute bottom-4 right-4 bg-black/60 text-white text-xs font-bold px-3 py-1 rounded-lg">3:00</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIALS ═══ -->
+<section class="sec bg-white">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-12 fade-up">
+      <h2 class="text-3xl md:text-4xl text-[var(--dark)]">Какво казват хостовете</h2>
+      <span class="gold-line"></span>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6" id="testi-grid">
+
+      <!-- Testimonial 1 -->
+      <div class="card-hover bg-white p-6 rounded-2xl flex flex-col fade-up">
+        <div class="flex gap-0.5 mb-4">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="text-stone-600 italic flex-grow text-sm leading-relaxed mb-5">"С WelcomeBook заетостта ми скочи от 50% на 95%. Вече не се притеснявам за нищо, дори когато съм в чужбина."</p>
+        <div class="flex items-center gap-3 pt-4 border-t border-stone-100">
+          <div class="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center text-base font-bold text-[var(--gold)] shrink-0">М</div>
+          <div>
+            <p class="font-semibold text-sm text-[var(--dark)]">Мария Стефанова</p>
+            <p class="text-xs text-stone-400">София · <span class="text-green-600 font-semibold">+240% Приход</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 2 -->
+      <div class="card-hover bg-white p-6 rounded-2xl flex flex-col fade-up" style="transition-delay:.1s">
+        <div class="flex gap-0.5 mb-4">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="text-stone-600 italic flex-grow text-sm leading-relaxed mb-5">"Бях скептичен в началото, но екипът е изключително професионален. Апартаментът ми е винаги перфектен."</p>
+        <div class="flex items-center gap-3 pt-4 border-t border-stone-100">
+          <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-base font-bold text-blue-600 shrink-0">Г</div>
+          <div>
+            <p class="font-semibold text-sm text-[var(--dark)]">Георги Димитров</p>
+            <p class="text-xs text-stone-400">Варна · <span class="text-green-600 font-semibold">Superhost 3 мес.</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 3 -->
+      <div class="card-hover bg-white p-6 rounded-2xl flex flex-col fade-up" style="transition-delay:.2s">
+        <div class="flex gap-0.5 mb-4">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="text-stone-600 italic flex-grow text-sm leading-relaxed mb-5">"Най-накрая намерих агенция, която се грижи за моя имот като за свой. Отчетите им са кристално ясни."</p>
+        <div class="flex items-center gap-3 pt-4 border-t border-stone-100">
+          <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center text-base font-bold text-purple-600 shrink-0">Е</div>
+          <div>
+            <p class="font-semibold text-sm text-[var(--dark)]">Елена Петрова</p>
+            <p class="text-xs text-stone-400">Пловдив · <span class="text-green-600 font-semibold">9.8/10 в Booking</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 4 — hidden -->
+      <div class="card-hover bg-white p-6 rounded-2xl flex flex-col fade-up svc-hidden" id="testi-4">
+        <div class="flex gap-0.5 mb-4">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="text-stone-600 italic flex-grow text-sm leading-relaxed mb-5">"Имах само 2 резервации на месец. След 6 седмици с WelcomeBook — апартаментът ми е зает почти непрекъснато."</p>
+        <div class="flex items-center gap-3 pt-4 border-t border-stone-100">
+          <div class="w-10 h-10 rounded-full bg-teal-100 flex items-center justify-center text-base font-bold text-teal-600 shrink-0">С</div>
+          <div>
+            <p class="font-semibold text-sm text-[var(--dark)]">Стефан Георгиев</p>
+            <p class="text-xs text-stone-400">Банско · <span class="text-green-600 font-semibold">+180% Приход</span></p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- See more -->
+    <div class="text-center mt-8 fade-up">
+      <button id="testi-toggle" onclick="toggleTestimonials()" class="inline-flex items-center gap-2 px-7 py-3 border-2 border-[var(--gold)] text-[var(--gold)] font-semibold text-sm rounded-xl hover:bg-[var(--cream)] transition-all">
+        Виж повече отзиви
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" id="testi-arrow"><polyline points="4 6 8 10 12 6"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOUNDER ═══ -->
+<section class="sec bg-[var(--cream)] overflow-hidden">
+  <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-10 md:gap-16">
+    <div class="md:w-2/5 w-full fade-up shrink-0">
+      <div class="bg-gradient-to-br from-orange-100 to-amber-50 rounded-3xl aspect-square max-w-xs mx-auto flex items-center justify-center shadow-xl relative">
+        <div class="text-center p-8">
+          <div class="text-8xl mb-3">👨‍💼</div>
+          <p class="font-bold text-[var(--dark)] text-lg">Костадин Павлов</p>
+          <p class="text-[var(--gold)] font-bold text-xs uppercase tracking-widest mt-1">Основател</p>
+          <p class="text-stone-500 text-xs mt-1">Пловдив, България</p>
+        </div>
+      </div>
+    </div>
+    <div class="md:w-3/5 fade-up" style="transition-delay:.15s">
+      <h2 class="text-3xl md:text-4xl text-[var(--dark)] mb-6">Защо създадох WelcomeBook</h2>
+      <div class="space-y-4 text-base text-stone-600 leading-relaxed">
+        <p>Когато започнах да давам своя апартамент под наем, бързо разбрах, че хостингът е работа на пълен работен ден. Съобщения от гости в неудобно време, хаотична документация — изморих се.</p>
+        <p>Потърсих решение и не намерих нищо подходящо за балканския пазар. Затова изградих сам системата — и сега я предлагам на всеки хост, който иска резултати без стрес.</p>
+      </div>
+      <div class="mt-8 flex items-center gap-4">
+        <div class="h-px w-10 bg-[var(--gold)]"></div>
+        <span class="font-bold text-xl text-[var(--dark)] italic">Лично гарантирам за вашия успех.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section class="sec bg-white" id="faq">
+  <div class="max-w-2xl mx-auto">
+    <div class="text-center mb-10 fade-up">
+      <h2 class="text-3xl md:text-4xl text-[var(--dark)]">Често задавани въпроси</h2>
+      <span class="gold-line"></span>
+    </div>
+    <div class="space-y-3">
+
+      <details class="group bg-[var(--cream)] rounded-2xl border border-orange-100 overflow-hidden fade-up" open>
+        <summary class="flex justify-between items-center p-5 cursor-pointer">
+          <span class="font-bold text-base text-[var(--dark)] pr-4">Мога ли да спра абонамента когато искам?</span>
+          <span class="text-[var(--gold)] shrink-0 text-xl group-open:rotate-180 transition-transform">▾</span>
+        </summary>
+        <div class="acc-body text-stone-600 text-sm leading-relaxed">
+          Да — месечният абонамент може да се прекъсне по всяко време. Годишният е с фиксиран период и дава значителна отстъпка.
+        </div>
+      </details>
+
+      <details class="group bg-[var(--cream)] rounded-2xl border border-orange-100 overflow-hidden fade-up" style="transition-delay:.05s">
+        <summary class="flex justify-between items-center p-5 cursor-pointer">
+          <span class="font-bold text-base text-[var(--dark)] pr-4">Колко време отнема setup-ът?</span>
+          <span class="text-[var(--gold)] shrink-0 text-xl group-open:rotate-180 transition-transform">▾</span>
+        </summary>
+        <div class="acc-body text-stone-600 text-sm leading-relaxed">
+          Обикновено 5–7 работни дни от момента, в който ни изпратиш информацията за имота.
+        </div>
+      </details>
+
+      <details class="group bg-[var(--cream)] rounded-2xl border border-orange-100 overflow-hidden fade-up" style="transition-delay:.1s">
+        <summary class="flex justify-between items-center p-5 cursor-pointer">
+          <span class="font-bold text-base text-[var(--dark)] pr-4">Трябва ли да имам технически познания?</span>
+          <span class="text-[var(--gold)] shrink-0 text-xl group-open:rotate-180 transition-transform">▾</span>
+        </summary>
+        <div class="acc-body text-stone-600 text-sm leading-relaxed">
+          Изобщо не. Ние се занимаваме с всичко техническо. Ти само одобряваш и получаваш готово.
+        </div>
+      </details>
+
+      <details class="group bg-[var(--cream)] rounded-2xl border border-orange-100 overflow-hidden fade-up" style="transition-delay:.15s">
+        <summary class="flex justify-between items-center p-5 cursor-pointer">
+          <span class="font-bold text-base text-[var(--dark)] pr-4">Работите ли само с Airbnb?</span>
+          <span class="text-[var(--gold)] shrink-0 text-xl group-open:rotate-180 transition-transform">▾</span>
+        </summary>
+        <div class="acc-body text-stone-600 text-sm leading-relaxed">
+          Системата работи и за Booking.com, и за директни резервации. Всичко е платформено-независимо.
+        </div>
+      </details>
+
+      <details class="group bg-[var(--cream)] rounded-2xl border border-orange-100 overflow-hidden fade-up" style="transition-delay:.2s">
+        <summary class="flex justify-between items-center p-5 cursor-pointer">
+          <span class="font-bold text-base text-[var(--dark)] pr-4">Имам вече стар welcome book. Може ли да се подобри?</span>
+          <span class="text-[var(--gold)] shrink-0 text-xl group-open:rotate-180 transition-transform">▾</span>
+        </summary>
+        <div class="acc-body text-stone-600 text-sm leading-relaxed">
+          Да — одитираме и надграждаме това което имаш. Не изхвърляме, а подобряваме.
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section class="sec bg-[var(--cream)]" id="contact">
+  <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-10 lg:gap-20">
+    <div class="lg:w-1/3 fade-up">
+      <h2 class="text-3xl md:text-4xl text-[var(--dark)] mb-5">Готови ли сте да започнете?</h2>
+      <div class="flex items-center gap-3 text-[var(--gold)] font-bold mb-8 text-sm">
+        <span class="w-9 h-9 bg-white rounded-full flex items-center justify-center text-base shadow-sm">⏱️</span>
+        Отговаряме до 24 часа
+      </div>
+      <div class="space-y-5">
+        <a href="mailto:welcomebookbg@gmail.com" class="flex items-start gap-3 group">
+          <span class="text-xl mt-0.5">📧</span>
+          <div>
+            <p class="font-bold text-sm">Пишете ни</p>
+            <p class="text-stone-500 text-sm group-hover:text-[var(--gold)] transition-colors">welcomebookbg@gmail.com</p>
+          </div>
+        </a>
+        <a href="tel:+359886205050" class="flex items-start gap-3 group">
+          <span class="text-xl mt-0.5">📞</span>
+          <div>
+            <p class="font-bold text-sm">Обадете ни се</p>
+            <p class="text-stone-500 text-sm group-hover:text-[var(--gold)] transition-colors">+359 886 20 50 50</p>
+          </div>
+        </a>
+        <div class="flex items-start gap-3">
+          <span class="text-xl mt-0.5">📍</span>
+          <div>
+            <p class="font-bold text-sm">Намерете ни</p>
+            <p class="text-stone-500 text-sm">Пловдив, България</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="lg:w-2/3 fade-up" style="transition-delay:.15s">
+      <form class="bg-white p-6 md:p-10 rounded-3xl shadow-sm space-y-5" id="contact-form">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div>
+            <label class="block text-sm font-bold text-stone-700 mb-2">Име</label>
+            <input class="w-full bg-stone-50 border border-stone-200 rounded-xl p-4 focus:ring-2 focus:ring-[var(--gold)] focus:border-transparent outline-none transition-all text-sm" placeholder="Вашите имена" type="text"/>
+          </div>
+          <div>
+            <label class="block text-sm font-bold text-stone-700 mb-2">Телефон</label>
+            <input class="w-full bg-stone-50 border border-stone-200 rounded-xl p-4 focus:ring-2 focus:ring-[var(--gold)] focus:border-transparent outline-none transition-all text-sm" placeholder="+359 886 20 50 50" type="tel"/>
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-bold text-stone-700 mb-2">Интересуваш се от</label>
+          <select class="w-full bg-stone-50 border border-stone-200 rounded-xl p-4 focus:ring-2 focus:ring-[var(--gold)] focus:border-transparent outline-none transition-all text-sm">
+            <option>Starter (€149 + €29/мес)</option>
+            <option>Professional (€249 + €49/мес)</option>
+            <option>Premium (€399 + €89/мес)</option>
+            <option>Не съм сигурен/а</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-bold text-stone-700 mb-2">Разкажи ни за имота</label>
+          <textarea class="w-full bg-stone-50 border border-stone-200 rounded-xl p-4 focus:ring-2 focus:ring-[var(--gold)] focus:border-transparent outline-none transition-all text-sm" placeholder="Тип имот, локация, текуща ситуация..." rows="4"></textarea>
+        </div>
+        <button type="submit" class="w-full bg-[var(--gold)] text-white py-4 rounded-xl font-bold text-base shadow-xl shadow-orange-200/50 hover:bg-[#e0951a] transition-all">
+          Изпрати запитване →
+        </button>
+        <p class="text-center text-xs text-stone-400">🛡️ 30-дневна гаранция за връщане на парите</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="bg-[var(--dark)] text-white py-14 md:py-20 px-5 md:px-6 rounded-t-[36px]">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-14">
+      <div class="col-span-2 md:col-span-1">
+        <div class="mb-4">
+          <img src="Logo.png" alt="WelcomeBook" style="height:40px;width:auto;filter:brightness(0) invert(1);" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+          <div class="text-xl font-bold" style="display:none">Welcome<span class="text-[var(--gold)]">Book</span></div>
+        </div>
+        <p class="text-stone-400 text-sm leading-relaxed mb-5">Дигитална агенция за Airbnb хостове на Балканите.</p>
+        <div class="flex gap-3">
+          <a href="#" class="w-9 h-9 bg-stone-700 rounded-full flex items-center justify-center text-xs font-bold hover:bg-[var(--gold)] transition-colors">FB</a>
+          <a href="#" class="w-9 h-9 bg-stone-700 rounded-full flex items-center justify-center text-xs font-bold hover:bg-[var(--gold)] transition-colors">IG</a>
+          <a href="#" class="w-9 h-9 bg-stone-700 rounded-full flex items-center justify-center text-xs font-bold hover:bg-[var(--gold)] transition-colors">YT</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="font-bold mb-4 text-sm uppercase tracking-wider">Услуги</h4>
+        <ul class="space-y-2 text-stone-400 text-sm">
+          <li><a class="hover:text-[var(--gold)] transition-colors" href="#services">📖 Welcome Book</a></li>
+          <li><a class="hover:text-[var(--gold)] transition-colors" href="#services">🤖 AI Chatbot</a></li>
+          <li><a class="hover:text-[var(--gold)] transition-colors" href="#services">🔍 SEO</a></li>
+          <li><a class="hover:text-[var(--gold)] transition-colors" href="#services">📊 Финансов тракер</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold mb-4 text-sm uppercase tracking-wider">Навигация</h4>
+        <ul class="space-y-2 text-stone-400 text-sm">
+          <li><a class="hover:text-[var(--gold)] transition-colors" href="#">Начало</a></li>
+          <li><a class="hover:text-[var(--gold)] transition-colors" href="#pricing">Цени</a></li>
+          <li><a class="hover:text-[var(--gold)] transition-colors" href="#faq">FAQ</a></li>
+          <li><a class="hover:text-[var(--gold)] transition-colors" href="#contact">Контакти</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold mb-4 text-sm uppercase tracking-wider">Контакти</h4>
+        <ul class="space-y-3 text-stone-400 text-sm">
+          <li>📍 Пловдив, България</li>
+          <li><a href="tel:+359886205050" class="hover:text-[var(--gold)] transition-colors">📞 +359 886 20 50 50</a></li>
+          <li><a href="mailto:welcomebookbg@gmail.com" class="hover:text-[var(--gold)] transition-colors break-all">📧 welcomebookbg@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pt-6 border-t border-stone-800 flex flex-col sm:flex-row justify-between items-center gap-3 text-stone-500 text-xs">
+      <p>© 2025 WelcomeBook. Всички права запазени.</p>
+      <div class="flex gap-5">
+        <a class="hover:text-white transition-colors" href="#">Общи условия</a>
+        <a class="hover:text-white transition-colors" href="#">Поверителност</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Mobile menu
+function closeMobileMenu(){ document.getElementById('mobile-menu').classList.remove('open'); }
+document.getElementById('menu-toggle').addEventListener('click', () => {
+  document.getElementById('mobile-menu').classList.toggle('open');
+});
+
+// Services toggle
+var svcOpen = false;
+function toggleServices(){
+  svcOpen = !svcOpen;
+  var hidden = document.querySelectorAll('.svc-hidden:not(#testi-4)');
+  hidden.forEach(function(el, i){
+    if(svcOpen){
+      el.style.animationDelay = (i * 0.07) + 's';
+      el.classList.add('svc-visible');
+    } else {
+      el.classList.remove('svc-visible');
+    }
+  });
+  var btn = document.getElementById('svc-toggle');
+  var arrow = document.getElementById('svc-arrow');
+  btn.childNodes[0].textContent = svcOpen ? 'Скрий ' : 'Виж всички услуги ';
+  arrow.querySelector('polyline').setAttribute('points', svcOpen ? '4 10 8 6 12 10' : '4 6 8 10 12 6');
+}
+
+// Testimonials toggle
+var testiOpen = false;
+function toggleTestimonials(){
+  testiOpen = !testiOpen;
+  var t4 = document.getElementById('testi-4');
+  if(testiOpen){
+    t4.classList.add('svc-visible');
+    // adjust grid to 2-col on md when 4 shown
+    document.getElementById('testi-grid').classList.remove('md:grid-cols-3');
+    document.getElementById('testi-grid').classList.add('md:grid-cols-2');
+  } else {
+    t4.classList.remove('svc-visible');
+    document.getElementById('testi-grid').classList.add('md:grid-cols-3');
+    document.getElementById('testi-grid').classList.remove('md:grid-cols-2');
+  }
+  var btn = document.getElementById('testi-toggle');
+  var arrow = document.getElementById('testi-arrow');
+  btn.childNodes[0].textContent = testiOpen ? 'Скрий ' : 'Виж повече отзиви ';
+  arrow.querySelector('polyline').setAttribute('points', testiOpen ? '4 10 8 6 12 10' : '4 6 8 10 12 6');
+}
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href');
+    if(id === '#') return;
+    const el = document.querySelector(id);
+    if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth',block:'start'}); }
+  });
+});
+
+// Fade-up observer
+const fadeObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, {threshold:0.1});
+document.querySelectorAll('.fade-up').forEach(el => fadeObs.observe(el));
+
+// Counter animation
+function animCounter(el){
+  const target = parseFloat(el.dataset.target);
+  const dec = parseInt(el.dataset.decimals||'0');
+  const prefix = el.dataset.prefix||'';
+  const suffix = el.dataset.suffix||'';
+  const steps = 50; const dur = 1600;
+  let step=0;
+  const t = setInterval(()=>{
+    step++;
+    const val = Math.min((target/steps)*step, target);
+    el.textContent = prefix + val.toFixed(dec) + suffix;
+    if(step>=steps) clearInterval(t);
+  }, dur/steps);
+}
+const cntObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting && !e.target.dataset.done){
+      e.target.dataset.done='1';
+      animCounter(e.target);
+    }
+  });
+},{threshold:.5});
+document.querySelectorAll('.counter').forEach(el => cntObs.observe(el));
+
+// FAQ accordion
+document.querySelectorAll('details').forEach(detail=>{
+  detail.querySelector('summary').addEventListener('click', e=>{
+    e.preventDefault();
+    const open = detail.hasAttribute('open');
+    document.querySelectorAll('details[open]').forEach(d=>d.removeAttribute('open'));
+    if(!open) detail.setAttribute('open','');
+  });
+});
+
+// Form
+document.getElementById('contact-form').addEventListener('submit', e=>{
+  e.preventDefault();
+  const btn = e.target.querySelector('button[type=submit]');
+  btn.textContent='✓ Изпратено! Ще се свържем скоро.';
+  btn.style.background='#22c55e';
+  btn.disabled=true;
+});
+</script>
+</body>
+</html>

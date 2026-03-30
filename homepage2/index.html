@@ -1,0 +1,2670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hostify – Powerful PMS for Airbnb & Vacation Rental Managers</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0A0F1E;
+    --orange: #E8820C;
+    --orange2: #F59E0B;
+    --orange-grad: linear-gradient(135deg, #E8820C, #F59E0B);
+    --white: #ffffff;
+    --light: #f8f9fc;
+    --border: #e8eaf0;
+    --text: #2d3250;
+    --muted: #6b7280;
+    --font: 'Nunito Sans', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font); color: var(--text); background: #fff; overflow-x: hidden; }
+  a { text-decoration: none; color: inherit; }
+
+  /* ── TOP ANNOUNCEMENT BAR ── */
+  .top-bar {
+    background: var(--navy);
+    color: #fff;
+    text-align: center;
+    font-size: 13px;
+    padding: 9px 20px;
+    letter-spacing: .01em;
+  }
+  .top-bar a { color: var(--orange); font-weight: 700; margin-left: 6px; }
+
+  /* ── HEADER / NAV ── */
+  header {
+    background: var(--navy);
+    padding: 0 40px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 20px rgba(0,0,0,.3);
+  }
+  nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    height: 68px;
+    gap: 32px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 22px;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: -.5px;
+    flex-shrink: 0;
+  }
+  .logo-icon {
+    width: 34px; height: 34px;
+    background: var(--orange-grad);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .logo-icon svg { width: 20px; height: 20px; }
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 4px;
+    flex: 1;
+  }
+  .nav-links > li > a {
+    color: rgba(255,255,255,.87);
+    font-size: 14.5px;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 6px;
+    display: flex; align-items: center; gap: 5px;
+    transition: background .2s, color .2s;
+  }
+  .nav-links > li > a:hover { background: rgba(255,255,255,.1); color: #fff; }
+  .nav-links .caret {
+    width: 12px; height: 12px;
+    border: none;
+    border-bottom: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    transform: rotate(45deg) translateY(-2px);
+    display: inline-block;
+    flex-shrink: 0;
+  }
+  .nav-right { display: flex; align-items: center; gap: 14px; margin-left: auto; }
+  .nav-right .btn-nav-outline {
+    color: rgba(255,255,255,.85);
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 6px;
+    border: 1.5px solid rgba(255,255,255,.25);
+    transition: all .2s;
+  }
+  .nav-right .btn-nav-outline:hover { border-color: rgba(255,255,255,.6); color: #fff; }
+  .btn-demo {
+    background: var(--orange-grad);
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 10px 22px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: opacity .2s, transform .2s;
+    white-space: nowrap;
+    box-shadow: 0 4px 15px rgba(232,130,12,.4);
+  }
+  .btn-demo:hover { opacity: .9; transform: translateY(-1px); }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--navy);
+    padding: 80px 40px 0;
+    overflow: hidden;
+    position: relative;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 70% 60%, rgba(232,130,12,.12) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 60% at 10% 30%, rgba(232,130,12,.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: flex-end;
+  }
+  .hero-text { padding-bottom: 60px; }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(232,130,12,.15);
+    border: 1px solid rgba(232,130,12,.3);
+    color: var(--orange2);
+    font-size: 12.5px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+  }
+  .hero h1 {
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 22px;
+    letter-spacing: -.5px;
+  }
+  .hero h1 span { color: var(--orange); }
+  .hero-sub {
+    color: rgba(255,255,255,.68);
+    font-size: 17px;
+    line-height: 1.7;
+    margin-bottom: 36px;
+    max-width: 480px;
+  }
+  .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 40px; }
+  .btn-primary {
+    background: var(--orange-grad);
+    color: #fff;
+    font-weight: 800;
+    font-size: 15.5px;
+    padding: 14px 32px;
+    border-radius: 10px;
+    box-shadow: 0 6px 24px rgba(232,130,12,.45);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(232,130,12,.5); }
+  .btn-secondary {
+    background: rgba(255,255,255,.08);
+    color: #fff;
+    font-weight: 700;
+    font-size: 15.5px;
+    padding: 14px 32px;
+    border-radius: 10px;
+    border: 1.5px solid rgba(255,255,255,.2);
+    transition: all .2s;
+  }
+  .btn-secondary:hover { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.4); }
+  .hero-guarantees {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .hero-guarantee {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,.65);
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .hero-guarantee .check {
+    width: 18px; height: 18px;
+    background: rgba(232,130,12,.2);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    color: var(--orange);
+    font-size: 10px;
+  }
+  .hero-image {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+  .hero-mockup {
+    width: 100%;
+    max-width: 560px;
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 16px 16px 0 0;
+    padding: 16px;
+    box-shadow: 0 -20px 80px rgba(232,130,12,.08), 0 0 0 1px rgba(255,255,255,.05);
+  }
+  .mockup-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+  .mockup-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .mockup-dot.r { background: #ff5f57; }
+  .mockup-dot.y { background: #febc2e; }
+  .mockup-dot.g { background: #28c840; }
+  .mockup-url {
+    flex: 1;
+    background: rgba(255,255,255,.06);
+    border-radius: 4px;
+    height: 24px;
+    margin-left: 8px;
+  }
+  .mockup-screen {
+    background: #0e1528;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .mockup-topbar {
+    background: rgba(232,130,12,.15);
+    display: flex;
+    gap: 2px;
+    padding: 10px 14px;
+    border-bottom: 1px solid rgba(255,255,255,.06);
+  }
+  .mockup-tab {
+    padding: 5px 14px;
+    border-radius: 5px;
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(255,255,255,.5);
+    cursor: pointer;
+  }
+  .mockup-tab.active { background: var(--orange); color: #fff; }
+  .mockup-grid {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    height: 260px;
+  }
+  .mockup-sidebar {
+    background: rgba(255,255,255,.03);
+    border-right: 1px solid rgba(255,255,255,.06);
+    padding: 14px 10px;
+  }
+  .mockup-nav-item {
+    padding: 8px 10px;
+    border-radius: 6px;
+    font-size: 10.5px;
+    font-weight: 600;
+    color: rgba(255,255,255,.45);
+    margin-bottom: 2px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .mockup-nav-item.active { background: rgba(232,130,12,.15); color: var(--orange); }
+  .mockup-nav-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+  .mockup-content { padding: 16px; }
+  .mockup-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .mockup-card {
+    flex: 1;
+    background: rgba(255,255,255,.05);
+    border-radius: 8px;
+    padding: 10px 12px;
+    border: 1px solid rgba(255,255,255,.06);
+  }
+  .mockup-card-label { font-size: 9px; color: rgba(255,255,255,.4); font-weight: 600; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 4px; }
+  .mockup-card-val { font-size: 18px; font-weight: 800; color: #fff; }
+  .mockup-card-val span { font-size: 10px; color: #4ade80; }
+  .mockup-chart {
+    height: 80px;
+    background: rgba(255,255,255,.03);
+    border-radius: 8px;
+    margin-top: 8px;
+    display: flex;
+    align-items: flex-end;
+    padding: 10px;
+    gap: 6px;
+    border: 1px solid rgba(255,255,255,.06);
+  }
+  .chart-bar {
+    flex: 1;
+    border-radius: 3px 3px 0 0;
+    background: rgba(232,130,12,.3);
+  }
+  .chart-bar.hi { background: var(--orange); }
+
+  /* ── PARTNERS ── */
+  .partners {
+    background: #fff;
+    padding: 48px 40px;
+    border-bottom: 1px solid var(--border);
+  }
+  .partners-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .partners p {
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .partners-logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+  .partner-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 18px;
+    font-weight: 800;
+    color: #9ca3af;
+    filter: grayscale(1);
+    opacity: .6;
+    transition: opacity .2s;
+  }
+  .partner-logo:hover { opacity: 1; filter: none; }
+  .partner-logo .pl-icon {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+  }
+  .pl-airbnb { background: #ff5a5f; color: #fff; }
+  .pl-booking { background: #003580; color: #fff; }
+  .pl-vrbo { background: #1c7ed6; color: #fff; }
+  .pl-expedia { background: #00355f; color: #ffd700; }
+  .pl-google { background: #fff; color: #4285f4; border: 1px solid #e0e0e0; }
+  .pl-vrma { background: #2d6a4f; color: #fff; }
+
+  /* ── ALL YOU NEED ── */
+  .all-you-need {
+    background: var(--light);
+    padding: 80px 40px;
+  }
+  .all-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .section-tag {
+    display: inline-block;
+    background: rgba(232,130,12,.12);
+    color: var(--orange);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+  .all-text h2 {
+    font-size: clamp(26px, 3vw, 38px);
+    font-weight: 900;
+    line-height: 1.25;
+    color: var(--text);
+    margin-bottom: 14px;
+    letter-spacing: -.3px;
+  }
+  .all-text p {
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 28px;
+  }
+  .features-grid-two {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+  .feat-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .feat-item .fi {
+    width: 28px; height: 28px;
+    background: var(--orange-grad);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    color: #fff;
+    font-size: 13px;
+  }
+  .all-image {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .channel-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+  .channel-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 20px 16px;
+    text-align: center;
+    box-shadow: 0 2px 16px rgba(0,0,0,.07);
+    border: 1px solid var(--border);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .channel-card:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,0,0,.1); }
+  .channel-card .ch-icon {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    margin: 0 auto 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    font-weight: 800;
+  }
+  .channel-card .ch-name { font-size: 12px; font-weight: 700; color: var(--text); }
+
+  /* ── CHANNEL INTEGRATION ── */
+  .channel-section {
+    background: #fff;
+    padding: 80px 40px;
+  }
+  .section-header {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 50px;
+  }
+  .section-header h2 {
+    font-size: clamp(26px, 3vw, 38px);
+    font-weight: 900;
+    color: var(--text);
+    margin-bottom: 14px;
+    letter-spacing: -.3px;
+  }
+  .section-header p { color: var(--muted); font-size: 16.5px; line-height: 1.7; }
+  .channel-logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .ch-logo-box {
+    width: 90px; height: 90px;
+    background: #fff;
+    border-radius: 18px;
+    border: 2px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--muted);
+    transition: all .2s;
+    flex-direction: column;
+    gap: 4px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.05);
+  }
+  .ch-logo-box:hover { border-color: var(--orange); transform: translateY(-4px); box-shadow: 0 8px 24px rgba(232,130,12,.2); }
+  .ch-logo-box .cl-icon { font-size: 28px; }
+  .ch-logo-box.featured {
+    background: var(--orange-grad);
+    color: #fff;
+    border-color: var(--orange);
+    box-shadow: 0 6px 20px rgba(232,130,12,.35);
+  }
+  .ch-logo-box.featured .cl-label { color: #fff; }
+
+  /* ── FEATURES CARDS ── */
+  .features-section {
+    background: var(--light);
+    padding: 80px 40px;
+  }
+  .features-cards {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .feat-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 32px 28px;
+    border: 1px solid var(--border);
+    transition: transform .2s, box-shadow .2s, border-color .2s;
+    box-shadow: 0 2px 12px rgba(0,0,0,.04);
+  }
+  .feat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,.1);
+    border-color: rgba(232,130,12,.3);
+  }
+  .feat-card-icon {
+    width: 56px; height: 56px;
+    background: rgba(232,130,12,.1);
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 20px;
+    font-size: 26px;
+    color: var(--orange);
+  }
+  .feat-card h3 {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+  .feat-card p {
+    font-size: 14.5px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .features-cta {
+    text-align: center;
+    margin-top: 40px;
+  }
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--orange);
+    font-weight: 800;
+    font-size: 15px;
+    padding: 13px 28px;
+    border-radius: 10px;
+    border: 2px solid var(--orange);
+    transition: all .2s;
+  }
+  .btn-outline:hover { background: var(--orange); color: #fff; }
+
+  /* ── AWARDS ── */
+  .awards {
+    background: #fff;
+    padding: 60px 40px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .awards-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .awards h2 {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--text);
+    margin-bottom: 36px;
+  }
+  .awards-badges {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .award-badge {
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    border: 3px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    font-size: 9px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    color: var(--muted);
+    transition: all .2s;
+    background: var(--light);
+  }
+  .award-badge:hover { border-color: var(--orange); color: var(--orange); transform: scale(1.05); }
+  .award-badge .ab-icon { font-size: 28px; }
+  .award-badge .ab-year { font-size: 16px; font-weight: 900; color: var(--text); }
+
+  /* ── EXCEPTIONALLY SIMPLE ── */
+  .simple-section {
+    background: var(--light);
+    padding: 80px 40px;
+  }
+  .simple-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .simple-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 48px;
+  }
+  .simple-tab {
+    padding: 10px 28px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--muted);
+    background: transparent;
+    border: 2px solid var(--border);
+    cursor: pointer;
+    transition: all .2s;
+  }
+  .simple-tab.active, .simple-tab:hover {
+    background: var(--orange-grad);
+    color: #fff;
+    border-color: transparent;
+    box-shadow: 0 4px 16px rgba(232,130,12,.35);
+  }
+  .simple-content {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 60px;
+    align-items: center;
+  }
+  .simple-screen {
+    background: var(--navy);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,.15);
+    border: 1px solid rgba(255,255,255,.08);
+  }
+  .simple-screen-bar {
+    background: rgba(232,130,12,.12);
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid rgba(255,255,255,.06);
+  }
+  .ss-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .ss-dot.r { background: #ff5f57; }
+  .ss-dot.y { background: #febc2e; }
+  .ss-dot.g { background: #28c840; }
+  .ss-title { color: rgba(255,255,255,.6); font-size: 12px; font-weight: 600; margin-left: 8px; }
+  .calendar-grid {
+    padding: 16px;
+  }
+  .cal-header {
+    display: grid;
+    grid-template-columns: 120px repeat(7, 1fr);
+    gap: 4px;
+    margin-bottom: 8px;
+  }
+  .cal-day {
+    text-align: center;
+    font-size: 10px;
+    font-weight: 700;
+    color: rgba(255,255,255,.4);
+    padding: 6px 4px;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+  }
+  .cal-row {
+    display: grid;
+    grid-template-columns: 120px repeat(7, 1fr);
+    gap: 4px;
+    margin-bottom: 6px;
+  }
+  .cal-prop {
+    font-size: 10px;
+    font-weight: 600;
+    color: rgba(255,255,255,.5);
+    padding: 8px 6px;
+    background: rgba(255,255,255,.04);
+    border-radius: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .cal-cell { border-radius: 4px; height: 32px; }
+  .cal-cell.empty { background: rgba(255,255,255,.02); }
+  .cal-cell.booked { background: rgba(232,130,12,.25); border: 1px solid rgba(232,130,12,.4); }
+  .cal-cell.blocked { background: rgba(255,255,255,.06); }
+  .cal-cell.checkin { background: linear-gradient(90deg, transparent 50%, rgba(232,130,12,.25) 50%); }
+  .cal-cell.checkout { background: linear-gradient(90deg, rgba(232,130,12,.25) 50%, transparent 50%); }
+  .simple-desc { padding: 10px 0; }
+  .simple-desc .overline {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 12px;
+  }
+  .simple-desc h3 {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--text);
+    margin-bottom: 16px;
+    line-height: 1.3;
+    letter-spacing: -.3px;
+  }
+  .simple-desc p {
+    font-size: 15.5px;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 24px;
+  }
+  .learn-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--orange);
+    font-weight: 700;
+    font-size: 14.5px;
+    transition: gap .2s;
+  }
+  .learn-more:hover { gap: 10px; }
+
+  /* ── MOBILE APP BANNER ── */
+  .app-banner {
+    background: var(--navy);
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .app-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 50% 100% at 90% 50%, rgba(232,130,12,.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .app-banner-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .app-banner-text h2 {
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 12px;
+    line-height: 1.25;
+  }
+  .app-banner-text p {
+    color: rgba(255,255,255,.65);
+    font-size: 16px;
+    max-width: 480px;
+    line-height: 1.6;
+  }
+  .app-buttons {
+    display: flex;
+    gap: 14px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+  }
+  .app-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255,255,255,.1);
+    border: 1.5px solid rgba(255,255,255,.2);
+    border-radius: 12px;
+    padding: 12px 20px;
+    color: #fff;
+    transition: all .2s;
+    min-width: 150px;
+  }
+  .app-btn:hover { background: rgba(255,255,255,.18); border-color: rgba(255,255,255,.4); transform: translateY(-2px); }
+  .app-btn-icon { font-size: 28px; }
+  .app-btn-text .label { font-size: 10px; color: rgba(255,255,255,.6); text-transform: uppercase; letter-spacing: .05em; }
+  .app-btn-text .store { font-size: 16px; font-weight: 800; }
+  .phone-mockup {
+    width: 220px;
+    height: 380px;
+    background: #1a2035;
+    border-radius: 40px;
+    border: 8px solid rgba(255,255,255,.15);
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    box-shadow: 0 20px 60px rgba(0,0,0,.4), 0 0 0 1px rgba(255,255,255,.08);
+  }
+  .phone-screen {
+    width: 100%; height: 100%;
+    background: linear-gradient(160deg, #1a2035 0%, #0e1528 100%);
+    padding: 20px 12px 12px;
+  }
+  .phone-status { display: flex; justify-content: space-between; font-size: 9px; color: rgba(255,255,255,.4); margin-bottom: 14px; font-weight: 600; }
+  .phone-header { font-size: 13px; font-weight: 800; color: #fff; margin-bottom: 12px; }
+  .phone-card { background: rgba(232,130,12,.15); border-radius: 10px; padding: 10px 12px; margin-bottom: 8px; border: 1px solid rgba(232,130,12,.2); }
+  .phone-card-title { font-size: 10px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .phone-card-sub { font-size: 9px; color: rgba(255,255,255,.5); }
+  .phone-card-badge { display: inline-block; background: var(--orange); color: #fff; font-size: 8px; font-weight: 700; padding: 2px 7px; border-radius: 10px; margin-top: 4px; }
+
+  /* ── BOOKING WEBSITE ── */
+  .booking-website {
+    background: #fff;
+    padding: 80px 40px;
+  }
+  .booking-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .booking-text h2 {
+    font-size: clamp(26px, 3vw, 38px);
+    font-weight: 900;
+    color: var(--text);
+    margin-bottom: 16px;
+    letter-spacing: -.3px;
+    line-height: 1.25;
+  }
+  .booking-text p {
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.75;
+    margin-bottom: 24px;
+  }
+  .booking-highlight {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(232,130,12,.08);
+    border: 1.5px solid rgba(232,130,12,.2);
+    border-radius: 10px;
+    padding: 12px 18px;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 28px;
+  }
+  .booking-highlight .bh-icon { font-size: 18px; }
+  .devices-mockup {
+    position: relative;
+    height: 320px;
+  }
+  .device-desktop {
+    position: absolute;
+    right: 0; top: 0;
+    width: 85%;
+    background: var(--navy);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 16px 48px rgba(0,0,0,.15);
+    border: 1px solid rgba(255,255,255,.08);
+  }
+  .device-desktop-bar {
+    background: rgba(255,255,255,.05);
+    padding: 8px 12px;
+    display: flex; align-items: center; gap: 6px;
+    border-bottom: 1px solid rgba(255,255,255,.06);
+  }
+  .dd-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .dd-dot.r { background: #ff5f57; }
+  .dd-dot.y { background: #febc2e; }
+  .dd-dot.g { background: #28c840; }
+  .device-desktop-screen {
+    padding: 16px;
+    height: 200px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .ds-img-block {
+    background: linear-gradient(135deg, rgba(232,130,12,.2), rgba(232,130,12,.05));
+    border-radius: 8px;
+    height: 100%;
+  }
+  .ds-right { display: flex; flex-direction: column; gap: 8px; }
+  .ds-title { background: rgba(255,255,255,.08); border-radius: 6px; height: 20px; width: 80%; }
+  .ds-sub { background: rgba(255,255,255,.04); border-radius: 4px; height: 12px; width: 60%; }
+  .ds-price { font-size: 22px; font-weight: 900; color: var(--orange); margin-top: 6px; }
+  .ds-btn { background: var(--orange-grad); border-radius: 8px; height: 36px; width: 100px; margin-top: 8px; }
+  .device-mobile {
+    position: absolute;
+    left: 0; bottom: -20px;
+    width: 100px;
+    background: var(--navy);
+    border-radius: 20px;
+    border: 4px solid rgba(255,255,255,.15);
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,.2);
+    height: 190px;
+  }
+  .dm-screen { padding: 10px 8px; }
+  .dm-bar { background: rgba(232,130,12,.25); height: 16px; border-radius: 3px; margin-bottom: 8px; }
+  .dm-card { background: rgba(255,255,255,.06); border-radius: 6px; height: 50px; margin-bottom: 6px; }
+  .dm-card.orange { background: rgba(232,130,12,.2); }
+
+  /* ── WHAT MAKES US DIFFERENT ── */
+  .different {
+    background: var(--light);
+    padding: 80px 40px;
+  }
+  .different-cards {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .diff-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 36px 28px;
+    text-align: center;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 12px rgba(0,0,0,.04);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .diff-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,.08); }
+  .diff-icon {
+    width: 68px; height: 68px;
+    background: rgba(232,130,12,.1);
+    border-radius: 20px;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 30px;
+    color: var(--orange);
+  }
+  .diff-card h3 { font-size: 20px; font-weight: 800; color: var(--text); margin-bottom: 12px; }
+  .diff-card p { font-size: 14.5px; color: var(--muted); line-height: 1.7; }
+
+  /* ── TRUST ── */
+  .trust {
+    background: #fff;
+    padding: 60px 40px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .trust-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .trust h2 {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--text);
+    margin-bottom: 36px;
+  }
+  .trust-logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+  .trust-logo {
+    font-size: 20px;
+    font-weight: 900;
+    color: #c0c8d8;
+    letter-spacing: -.5px;
+    transition: color .2s;
+  }
+  .trust-logo:hover { color: var(--orange); }
+
+  /* ── SUPPORT ── */
+  .support {
+    background: var(--light);
+    padding: 80px 40px;
+  }
+  .support-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 50px;
+  }
+  .support-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 28px 22px;
+    border: 1px solid var(--border);
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,.04);
+    transition: transform .2s;
+  }
+  .support-card:hover { transform: translateY(-3px); }
+  .support-card .sc-icon {
+    width: 56px; height: 56px;
+    background: rgba(232,130,12,.1);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 16px;
+    font-size: 24px;
+    color: var(--orange);
+  }
+  .support-card.person-card .sc-icon {
+    width: 80px; height: 80px;
+    background: var(--orange-grad);
+    overflow: hidden;
+    font-size: 36px;
+  }
+  .support-card h3 { font-size: 16px; font-weight: 800; color: var(--text); margin-bottom: 8px; }
+  .support-card p { font-size: 13.5px; color: var(--muted); line-height: 1.65; }
+  .uptime-badge {
+    display: inline-block;
+    background: var(--orange-grad);
+    color: #fff;
+    font-size: 20px;
+    font-weight: 900;
+    padding: 6px 16px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 14px rgba(232,130,12,.35);
+  }
+  .support-cta {
+    text-align: center;
+    margin-top: 40px;
+  }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials {
+    background: #fff;
+    padding: 80px 40px;
+  }
+  .testimonial-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .quote-mark {
+    font-size: 80px;
+    line-height: .8;
+    color: rgba(232,130,12,.2);
+    font-family: Georgia, serif;
+    margin-bottom: 16px;
+  }
+  .testimonial-text {
+    font-size: 18px;
+    line-height: 1.75;
+    color: var(--text);
+    font-style: italic;
+    margin-bottom: 28px;
+  }
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+  }
+  .author-avatar {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    background: var(--orange-grad);
+    display: flex; align-items: center; justify-content: center;
+    color: #fff;
+    font-weight: 800;
+    font-size: 18px;
+    box-shadow: 0 4px 12px rgba(232,130,12,.3);
+  }
+  .author-info h4 { font-size: 15px; font-weight: 800; color: var(--text); }
+  .author-info p { font-size: 13px; color: var(--muted); }
+  .stars { color: var(--orange); font-size: 16px; letter-spacing: 2px; margin-bottom: 4px; }
+  .review-badges {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 48px;
+    flex-wrap: wrap;
+  }
+  .review-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    transition: all .2s;
+  }
+  .review-badge:hover { border-color: var(--orange); transform: translateY(-2px); }
+  .review-badge .rb-logo {
+    font-size: 24px;
+    font-weight: 900;
+  }
+  .rb-g2 { color: #ff492c; }
+  .rb-ga { color: #0866ff; }
+  .rb-vr { color: #1c7ed6; }
+  .review-badge .rb-stars { color: var(--orange); font-size: 13px; }
+  .review-badge .rb-name { font-size: 11px; font-weight: 600; color: var(--muted); }
+
+  /* ── CTA BANNER ── */
+  .cta-banner {
+    background: var(--orange-grad);
+    padding: 72px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+  .cta-banner h2 {
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 14px;
+    line-height: 1.2;
+    position: relative;
+  }
+  .cta-banner p {
+    color: rgba(255,255,255,.85);
+    font-size: 18px;
+    margin-bottom: 36px;
+    position: relative;
+  }
+  .btn-cta-white {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    color: var(--orange);
+    font-weight: 800;
+    font-size: 16px;
+    padding: 16px 36px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,.2);
+    transition: all .2s;
+    position: relative;
+  }
+  .btn-cta-white:hover { transform: translateY(-3px); box-shadow: 0 14px 36px rgba(0,0,0,.25); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    padding: 64px 40px 0;
+    color: rgba(255,255,255,.7);
+  }
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 2fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+  .footer-brand .logo { margin-bottom: 16px; display: inline-flex; }
+  .footer-brand p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: rgba(255,255,255,.5);
+    max-width: 280px;
+    margin-bottom: 20px;
+  }
+  .social-links { display: flex; gap: 12px; }
+  .social-link {
+    width: 36px; height: 36px;
+    background: rgba(255,255,255,.08);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,.6);
+    font-size: 16px;
+    transition: all .2s;
+    border: 1px solid rgba(255,255,255,.1);
+  }
+  .social-link:hover { background: var(--orange); color: #fff; border-color: var(--orange); }
+  .footer-col h4 {
+    font-size: 14px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 20px;
+    letter-spacing: .02em;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 10px; }
+  .footer-col ul li a {
+    font-size: 13.5px;
+    color: rgba(255,255,255,.5);
+    transition: color .2s;
+  }
+  .footer-col ul li a:hover { color: var(--orange); }
+  .newsletter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .newsletter-form input {
+    background: rgba(255,255,255,.08);
+    border: 1.5px solid rgba(255,255,255,.12);
+    border-radius: 10px;
+    padding: 12px 16px;
+    color: #fff;
+    font-size: 14px;
+    font-family: var(--font);
+    outline: none;
+    transition: border-color .2s;
+  }
+  .newsletter-form input::placeholder { color: rgba(255,255,255,.35); }
+  .newsletter-form input:focus { border-color: var(--orange); }
+  .newsletter-form button {
+    background: var(--orange-grad);
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font);
+    transition: opacity .2s;
+  }
+  .newsletter-form button:hover { opacity: .9; }
+  .footer-apps { margin-top: 16px; }
+  .footer-apps p { font-size: 12px; font-weight: 700; color: rgba(255,255,255,.4); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 10px; }
+  .footer-app-btns { display: flex; gap: 8px; }
+  .footer-app-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 8px;
+    padding: 7px 12px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    transition: all .2s;
+  }
+  .footer-app-btn:hover { background: rgba(255,255,255,.15); }
+  .footer-app-btn .fa-icon { font-size: 18px; }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,.08);
+    padding: 24px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 13px;
+    color: rgba(255,255,255,.35);
+  }
+  .footer-bottom a { color: rgba(255,255,255,.45); transition: color .2s; }
+  .footer-bottom a:hover { color: var(--orange); }
+  .footer-bottom-links { display: flex; gap: 24px; }
+
+  /* ── NOTIFICATION POPUP ── */
+  .popup-notify {
+    position: fixed;
+    bottom: 28px;
+    left: 28px;
+    background: #fff;
+    border-radius: 14px;
+    padding: 16px 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,.15);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    max-width: 300px;
+    border: 1px solid var(--border);
+    z-index: 999;
+    animation: slideUp .5s ease 2s both;
+  }
+  @keyframes slideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  .popup-avatar {
+    width: 40px; height: 40px;
+    background: var(--orange-grad);
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-weight: 800; font-size: 16px;
+  }
+  .popup-text .pt-name { font-size: 13px; font-weight: 800; color: var(--text); }
+  .popup-text .pt-msg { font-size: 12px; color: var(--muted); }
+  .popup-time { font-size: 11px; color: var(--muted); white-space: nowrap; margin-left: auto; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-image { display: none; }
+    .all-inner { grid-template-columns: 1fr; }
+    .features-cards { grid-template-columns: 1fr 1fr; }
+    .simple-content { grid-template-columns: 1fr; }
+    .simple-screen { display: none; }
+    .booking-inner { grid-template-columns: 1fr; }
+    .different-cards { grid-template-columns: 1fr 1fr; }
+    .support-grid { grid-template-columns: 1fr 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    header { padding: 0 20px; }
+    .hero { padding: 60px 20px 0; }
+    .features-cards { grid-template-columns: 1fr; }
+    .different-cards { grid-template-columns: 1fr; }
+    .support-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── GUEST EXPERIENCE ── */
+  .guest-exp {
+    background: #fff;
+    padding: 80px 40px;
+  }
+  .guest-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .guest-phone-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  .guest-phone-wrap::before {
+    content: '';
+    position: absolute;
+    width: 260px; height: 260px;
+    background: radial-gradient(circle, rgba(232,130,12,.15) 0%, transparent 70%);
+    border-radius: 50%;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+  }
+  .g-phone {
+    width: 240px;
+    height: 460px;
+    background: #1a1a1a;
+    border-radius: 40px;
+    border: 8px solid #2d2d2d;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,.3), inset 0 0 0 1px rgba(255,255,255,.05);
+  }
+  .g-phone::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 90px; height: 24px;
+    background: #1a1a1a;
+    border-radius: 0 0 16px 16px;
+    z-index: 10;
+  }
+  .g-phone-screen {
+    width: 100%; height: 100%;
+    background: #f5f5f0;
+    display: flex;
+    flex-direction: column;
+  }
+  .g-phone-header {
+    background: var(--orange-grad);
+    padding: 36px 18px 20px;
+    text-align: center;
+  }
+  .g-phone-header .g-app-name {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: #fff;
+    font-weight: 400;
+    letter-spacing: .02em;
+  }
+  .g-phone-body {
+    padding: 16px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .g-code-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    border-radius: 10px;
+    padding: 12px 14px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.06);
+  }
+  .g-code-label { font-size: 10px; font-weight: 700; color: #999; text-transform: uppercase; letter-spacing: .06em; }
+  .g-code-val { font-size: 16px; font-weight: 800; color: var(--text); display: flex; align-items: center; gap: 8px; }
+  .g-code-key {
+    width: 26px; height: 26px;
+    background: var(--orange-grad);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .g-icons-row {
+    display: flex;
+    gap: 8px;
+  }
+  .g-icon-btn {
+    flex: 1;
+    background: #fff;
+    border-radius: 10px;
+    padding: 12px 8px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,.06);
+    font-size: 9px;
+    font-weight: 700;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+  }
+  .g-icon-btn svg { color: var(--orange); }
+  .g-concierge-btn {
+    background: var(--navy);
+    border-radius: 10px;
+    padding: 14px;
+    text-align: center;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    box-shadow: 0 4px 14px rgba(10,15,30,.3);
+  }
+  .guest-text { padding: 10px 0; }
+  .guest-text .overline {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 12px;
+  }
+  .guest-text h2 {
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 900;
+    color: var(--text);
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+  .guest-text h2 em {
+    font-style: italic;
+    font-family: Georgia, 'Times New Roman', serif;
+    color: var(--orange);
+    font-weight: 400;
+  }
+  .guest-text p {
+    font-size: 16px;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 36px;
+    max-width: 420px;
+  }
+  .guest-stats {
+    display: flex;
+    gap: 32px;
+  }
+  .guest-stat .gs-val {
+    font-size: 30px;
+    font-weight: 900;
+    color: var(--text);
+    letter-spacing: -1px;
+  }
+  .guest-stat .gs-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    margin-top: 2px;
+  }
+
+  /* ── BEFORE / AFTER CAROUSEL ── */
+  .before-after {
+    background: var(--light);
+    padding: 80px 0 80px;
+    overflow: hidden;
+  }
+  .ba-header {
+    max-width: 1100px;
+    margin: 0 auto 48px;
+    padding: 0 40px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .ba-header-text h2 {
+    font-size: clamp(26px, 3vw, 38px);
+    font-weight: 900;
+    color: var(--text);
+    letter-spacing: -.3px;
+    margin-bottom: 8px;
+  }
+  .ba-header-text p { color: var(--muted); font-size: 16px; }
+  .ba-nav { display: flex; gap: 10px; }
+  .ba-nav-btn {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    background: #fff;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: all .2s;
+    color: var(--text);
+  }
+  .ba-nav-btn:hover { border-color: var(--orange); background: var(--orange); color: #fff; }
+  .ba-track-wrap {
+    overflow: hidden;
+    padding: 10px 40px 20px;
+  }
+  .ba-track {
+    display: flex;
+    gap: 24px;
+    transition: transform .5s cubic-bezier(.4,0,.2,1);
+  }
+  .ba-card {
+    min-width: 360px;
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,.07);
+    border: 1px solid var(--border);
+    flex-shrink: 0;
+    transition: transform .3s, box-shadow .3s;
+    cursor: pointer;
+  }
+  .ba-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 48px rgba(0,0,0,.12);
+  }
+  .ba-images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 200px;
+  }
+  .ba-img {
+    position: relative;
+    overflow: hidden;
+  }
+  .ba-img-before {
+    background: linear-gradient(135deg, #3d2b1f 0%, #5c3d2e 100%);
+  }
+  .ba-img-after {
+    background: linear-gradient(135deg, rgba(232,130,12,.3) 0%, rgba(245,158,11,.15) 100%);
+    border-left: 2px solid rgba(255,255,255,.3);
+  }
+  .ba-badge {
+    position: absolute;
+    top: 12px; left: 12px;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+  .ba-badge.before { background: #1a0a0a; color: #ff6b6b; }
+  .ba-badge.after { background: var(--orange-grad); color: #fff; box-shadow: 0 2px 8px rgba(232,130,12,.4); }
+  .ba-img-inner {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .ba-img-before .ba-img-inner svg { opacity: .3; }
+  .ba-img-after .ba-img-inner svg { color: var(--orange); opacity: .7; }
+  .ba-card-body {
+    padding: 20px 22px;
+  }
+  .ba-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 14px;
+  }
+  .ba-card-title { font-size: 16px; font-weight: 800; color: var(--text); margin-bottom: 3px; }
+  .ba-card-loc { font-size: 12.5px; color: var(--muted); }
+  .ba-growth {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--orange);
+  }
+  .ba-growth-label { font-size: 10px; font-weight: 700; color: var(--muted); text-align: right; }
+  .ba-stats {
+    display: flex;
+    gap: 16px;
+  }
+  .ba-stat {
+    flex: 1;
+    background: var(--light);
+    border-radius: 10px;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+  }
+  .ba-stat-label { font-size: 10px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 4px; }
+  .ba-stat-val { font-size: 18px; font-weight: 900; color: var(--text); }
+  .ba-stat-val.orange { color: var(--orange); }
+  .ba-stat-arrow { font-size: 12px; }
+
+  /* ── PRICING ── */
+  .pricing {
+    background: #fff;
+    padding: 80px 40px;
+  }
+  .pricing-cards {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: start;
+  }
+  .pricing-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 36px 30px;
+    border: 2px solid var(--border);
+    position: relative;
+    transition: transform .3s, box-shadow .3s;
+  }
+  .pricing-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,.08); }
+  .pricing-card.popular {
+    border-color: var(--orange);
+    box-shadow: 0 0 0 4px rgba(232,130,12,.1), 0 16px 48px rgba(232,130,12,.15);
+    animation: pulseGlow 3s ease-in-out infinite;
+    transform: translateY(-8px);
+    z-index: 2;
+  }
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 0 4px rgba(232,130,12,.1), 0 16px 48px rgba(232,130,12,.15); }
+    50% { box-shadow: 0 0 0 8px rgba(232,130,12,.15), 0 20px 60px rgba(232,130,12,.25); }
+  }
+  .popular-badge {
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--orange-grad);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 6px 18px;
+    border-radius: 20px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(232,130,12,.4);
+  }
+  .pc-tier {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .pc-name {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--text);
+    margin-bottom: 4px;
+    font-family: Georgia, serif;
+    font-style: italic;
+  }
+  .pc-price-row {
+    margin: 20px 0 6px;
+  }
+  .pc-setup {
+    font-size: 38px;
+    font-weight: 900;
+    color: var(--text);
+    letter-spacing: -1px;
+    line-height: 1;
+  }
+  .pc-setup sup { font-size: 20px; vertical-align: super; }
+  .pc-setup sub { font-size: 14px; font-weight: 600; color: var(--muted); vertical-align: baseline; }
+  .pc-monthly {
+    font-size: 14px;
+    color: var(--muted);
+    margin-top: 8px;
+    margin-bottom: 4px;
+  }
+  .pc-monthly strong { color: var(--text); font-weight: 800; }
+  .pc-monthly .or { color: var(--muted); margin: 0 4px; }
+  .pc-monthly .yearly { color: var(--orange); font-weight: 800; }
+  .pc-saving {
+    font-size: 12.5px;
+    color: #16a34a;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .pc-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 20px 0;
+  }
+  .pc-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .pc-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.5;
+  }
+  .pc-features li .chk {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: rgba(232,130,12,.12);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .pc-features li .chk svg { color: var(--orange); }
+  .pc-btn-outline {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 14px;
+    border-radius: 12px;
+    border: 2px solid var(--border);
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--text);
+    transition: all .2s;
+    background: transparent;
+    cursor: pointer;
+  }
+  .pc-btn-outline:hover { border-color: var(--orange); color: var(--orange); }
+  .pc-btn-fill {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 14px;
+    border-radius: 12px;
+    border: none;
+    font-size: 15px;
+    font-weight: 800;
+    color: #fff;
+    background: var(--orange-grad);
+    box-shadow: 0 6px 20px rgba(232,130,12,.4);
+    transition: all .2s;
+    cursor: pointer;
+  }
+  .pc-btn-fill:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(232,130,12,.5); }
+
+  /* ── TESTIMONIALS GRID ── */
+  .testimonials-new {
+    background: var(--light);
+    padding: 80px 40px;
+  }
+  .testi-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+    gap: 24px;
+  }
+  .testi-card {
+    background: #fff;
+    border-radius: 18px;
+    padding: 28px 26px;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 12px rgba(0,0,0,.04);
+    transition: transform .3s, box-shadow .3s;
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  .testi-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .testi-card:hover { transform: translateY(-5px) !important; box-shadow: 0 14px 40px rgba(0,0,0,.1); }
+  .testi-card:nth-child(4) { grid-column: 1 / 2; }
+  .testi-card:nth-child(5) { grid-column: 2 / 3; }
+  .testi-stars { color: var(--orange); font-size: 14px; letter-spacing: 2px; margin-bottom: 14px; }
+  .testi-quote { font-size: 15px; color: var(--text); line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+  .testi-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .testi-author { display: flex; align-items: center; gap: 12px; }
+  .testi-avatar {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--orange-grad);
+    display: flex; align-items: center; justify-content: center;
+    color: #fff;
+    font-weight: 800;
+    font-size: 16px;
+    flex-shrink: 0;
+    box-shadow: 0 3px 10px rgba(232,130,12,.3);
+  }
+  .testi-name { font-size: 14px; font-weight: 800; color: var(--text); }
+  .testi-loc { font-size: 12px; color: var(--muted); font-weight: 600; }
+  .testi-result {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--orange);
+    background: rgba(232,130,12,.1);
+    padding: 5px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  /* ── FAQ ── */
+  .faq {
+    background: #fff;
+    padding: 80px 40px;
+  }
+  .faq-list {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .faq-item {
+    border: 2px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: border-color .2s;
+  }
+  .faq-item.open { border-color: var(--orange); }
+  .faq-q {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+    gap: 16px;
+    user-select: none;
+    background: #fff;
+    transition: background .2s;
+  }
+  .faq-item.open .faq-q { background: rgba(232,130,12,.04); }
+  .faq-icon {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--light);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: background .2s, transform .3s;
+  }
+  .faq-item.open .faq-icon { background: var(--orange); transform: rotate(45deg); }
+  .faq-icon svg { transition: color .2s; }
+  .faq-item.open .faq-icon svg { color: #fff; }
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .4s ease, padding .3s ease;
+    padding: 0 24px;
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+  .faq-item.open .faq-a {
+    max-height: 300px;
+    padding: 0 24px 20px;
+  }
+
+  /* ── FLOATING BUTTON ── */
+  .float-btn {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    background: var(--orange-grad);
+    color: #fff;
+    font-weight: 800;
+    font-size: 14px;
+    padding: 14px 22px;
+    border-radius: 50px;
+    box-shadow: 0 6px 24px rgba(232,130,12,.5);
+    z-index: 998;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform .2s, box-shadow .2s;
+    border: none;
+    cursor: pointer;
+    animation: slideUp .6s ease 1s both;
+    text-decoration: none;
+  }
+  .float-btn:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 12px 32px rgba(232,130,12,.6); }
+
+  /* ── FADE-IN UTILITY ── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  .fade-in-delay-1 { transition-delay: .1s; }
+  .fade-in-delay-2 { transition-delay: .2s; }
+  .fade-in-delay-3 { transition-delay: .3s; }
+</style>
+</head>
+<body>
+
+<!-- Top announcement bar -->
+<div class="top-bar">
+  Save and optimize programs up to 35%! <a href="#">LEARN MORE →</a>
+</div>
+
+<!-- Header -->
+<header>
+  <nav>
+    <a href="#" class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round">
+          <path d="M1 6s4-4 11-4 11 4 11 4"/>
+          <path d="M5 10s3-3 7-3 7 3 7 3"/>
+          <path d="M9 14s1.5-2 3-2 3 2 3 2"/>
+          <circle cx="12" cy="19" r="1.5" fill="#fff" stroke="none"/>
+        </svg>
+      </div>
+      Hostify
+    </a>
+    <ul class="nav-links">
+      <li><a href="#">Features <span class="caret"></span></a></li>
+      <li><a href="#">Pricing</a></li>
+      <li><a href="#">Resources <span class="caret"></span></a></li>
+      <li><a href="#">Company <span class="caret"></span></a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="#" class="btn-nav-outline">Log In</a>
+      <a href="#" class="btn-demo">Book a demo</a>
+    </div>
+  </nav>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">✦ #1 Rated Vacation Rental PMS</div>
+      <h1>Powerful PMS for <span>Airbnb</span> &amp; Vacation Rental Managers</h1>
+      <p class="hero-sub">Work smarter and grow your business by utilizing powerful tools designed to make your listings stand out.</p>
+      <div class="hero-ctas">
+        <a href="#" class="btn-primary">Get started for free</a>
+        <a href="#" class="btn-secondary">Talk to an expert</a>
+      </div>
+      <div class="hero-guarantees">
+        <div class="hero-guarantee"><div class="check">✓</div>45 days money back guarantee</div>
+        <div class="hero-guarantee"><div class="check">✓</div>No credit card required</div>
+        <div class="hero-guarantee"><div class="check">✓</div>24/7 premium support</div>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="hero-mockup">
+        <div class="mockup-bar">
+          <div class="mockup-dot r"></div>
+          <div class="mockup-dot y"></div>
+          <div class="mockup-dot g"></div>
+          <div class="mockup-url"></div>
+        </div>
+        <div class="mockup-screen">
+          <div class="mockup-topbar">
+            <div class="mockup-tab active">Dashboard</div>
+            <div class="mockup-tab">Calendar</div>
+            <div class="mockup-tab">Messages</div>
+            <div class="mockup-tab">Listings</div>
+          </div>
+          <div class="mockup-grid">
+            <div class="mockup-sidebar">
+              <div class="mockup-nav-item active"><div class="mockup-nav-dot"></div>Overview</div>
+              <div class="mockup-nav-item"><div class="mockup-nav-dot"></div>Properties</div>
+              <div class="mockup-nav-item"><div class="mockup-nav-dot"></div>Reservations</div>
+              <div class="mockup-nav-item"><div class="mockup-nav-dot"></div>Inbox</div>
+              <div class="mockup-nav-item"><div class="mockup-nav-dot"></div>Automation</div>
+              <div class="mockup-nav-item"><div class="mockup-nav-dot"></div>Analytics</div>
+              <div class="mockup-nav-item"><div class="mockup-nav-dot"></div>Settings</div>
+            </div>
+            <div class="mockup-content">
+              <div class="mockup-row">
+                <div class="mockup-card">
+                  <div class="mockup-card-label">Revenue</div>
+                  <div class="mockup-card-val">$12,480 <span>↑ 18%</span></div>
+                </div>
+                <div class="mockup-card">
+                  <div class="mockup-card-label">Occupancy</div>
+                  <div class="mockup-card-val">87% <span>↑ 5%</span></div>
+                </div>
+              </div>
+              <div class="mockup-chart">
+                <div class="chart-bar" style="height:40%"></div>
+                <div class="chart-bar" style="height:65%"></div>
+                <div class="chart-bar hi" style="height:80%"></div>
+                <div class="chart-bar" style="height:55%"></div>
+                <div class="chart-bar hi" style="height:90%"></div>
+                <div class="chart-bar" style="height:70%"></div>
+                <div class="chart-bar hi" style="height:100%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Partners -->
+<div class="partners">
+  <div class="partners-inner">
+    <p>Trusted integrations with the world's top platforms</p>
+    <div class="partners-logos">
+      <div class="partner-logo"><div class="pl-icon pl-airbnb">🏠</div>Airbnb</div>
+      <div class="partner-logo"><div class="pl-icon pl-booking">B</div>Booking.com</div>
+      <div class="partner-logo"><div class="pl-icon pl-vrbo">V</div>Vrbo</div>
+      <div class="partner-logo"><div class="pl-icon pl-expedia">✈</div>Expedia Group</div>
+      <div class="partner-logo"><div class="pl-icon pl-google">G</div>Google</div>
+      <div class="partner-logo"><div class="pl-icon pl-vrma">V</div>VRMA</div>
+    </div>
+  </div>
+</div>
+
+<!-- All You Need -->
+<section class="all-you-need">
+  <div class="all-inner">
+    <div class="all-text">
+      <div class="section-tag">All-in-one platform</div>
+      <h2>All You Need to Manage Vacation Rentals Efficiently</h2>
+      <p>Integrated channel manager, revenue optimization, OTA syncing for Airbnb, Vrbo, Expedia, TripAdvisor, and others. Manage messaging, automate payments, and integrate data from multiple calendars and online channels.</p>
+      <div class="features-grid-two">
+        <div class="feat-item"><div class="fi">📡</div>Channel Manager</div>
+        <div class="feat-item"><div class="fi">🖥</div>WordPress Integration</div>
+        <div class="feat-item"><div class="fi">💬</div>Unified Inbox</div>
+        <div class="feat-item"><div class="fi">📊</div>Analytics</div>
+        <div class="feat-item"><div class="fi">⚡</div>Automations</div>
+        <div class="feat-item"><div class="fi">📋</div>Owner Dashboard</div>
+        <div class="feat-item"><div class="fi">📈</div>Reporting</div>
+        <div class="feat-item"><div class="fi">📣</div>Marketing</div>
+        <div class="feat-item"><div class="fi">✅</div>Task Management</div>
+        <div class="feat-item"><div class="fi">🎧</div>24/7 Support</div>
+      </div>
+      <div style="margin-top:32px">
+        <a href="#" class="btn-primary">Book a demo →</a>
+      </div>
+    </div>
+    <div class="all-image">
+      <div class="channel-cards">
+        <div class="channel-card"><div class="ch-icon" style="background:#fff5f5;color:#ff5a5f">🏠</div><div class="ch-name">Airbnb</div></div>
+        <div class="channel-card"><div class="ch-icon" style="background:#e8f4ff;color:#003580">🏨</div><div class="ch-name">Booking</div></div>
+        <div class="channel-card"><div class="ch-icon" style="background:#e8f4ff;color:#1c7ed6">🏡</div><div class="ch-name">Vrbo</div></div>
+        <div class="channel-card"><div class="ch-icon" style="background:#fff8e1;color:#f9a825">✈️</div><div class="ch-name">Expedia</div></div>
+        <div class="channel-card"><div class="ch-icon" style="background:#e8f5e9;color:#2e7d32">🌍</div><div class="ch-name">TripAdvisor</div></div>
+        <div class="channel-card" style="background:var(--orange-grad);border-color:var(--orange)"><div class="ch-icon" style="background:rgba(255,255,255,.2);color:#fff">+</div><div class="ch-name" style="color:#fff">50+ More</div></div>
+      </div>
+      <div style="background:#fff;border-radius:16px;padding:20px 24px;box-shadow:0 4px 20px rgba(0,0,0,.06);border:1px solid var(--border)">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+          <span style="font-size:13px;font-weight:700;color:var(--text)">Live Sync Status</span>
+          <span style="background:#d1fae5;color:#065f46;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px">● All Active</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;justify-content:space-between;align-items:center;font-size:13px">
+            <span style="color:var(--muted)">Airbnb</span><span style="color:#065f46;font-weight:700;font-size:11px;background:#d1fae5;padding:2px 8px;border-radius:10px">Synced</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;font-size:13px">
+            <span style="color:var(--muted)">Booking.com</span><span style="color:#065f46;font-weight:700;font-size:11px;background:#d1fae5;padding:2px 8px;border-radius:10px">Synced</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;font-size:13px">
+            <span style="color:var(--muted)">Vrbo</span><span style="color:#065f46;font-weight:700;font-size:11px;background:#d1fae5;padding:2px 8px;border-radius:10px">Synced</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Channel Integration -->
+<section class="channel-section">
+  <div class="section-header">
+    <div class="section-tag">Integrations</div>
+    <h2>Easy Channel Integration and Management</h2>
+    <p>Distribute and manage all your listings across all major platforms just like this</p>
+  </div>
+  <div class="channel-logos">
+    <div class="ch-logo-box">
+      <div class="cl-icon">🏠</div>
+      <span style="font-size:11px;font-weight:700;color:var(--muted)">Airbnb</span>
+    </div>
+    <div class="ch-logo-box">
+      <div class="cl-icon">G</div>
+      <span style="font-size:11px;font-weight:700;color:var(--muted)">Google</span>
+    </div>
+    <div class="ch-logo-box">
+      <div class="cl-icon">🏨</div>
+      <span style="font-size:11px;font-weight:700;color:var(--muted)">Booking</span>
+    </div>
+    <div class="ch-logo-box">
+      <div class="cl-icon">🌴</div>
+      <span style="font-size:11px;font-weight:700;color:var(--muted)">TripAdvisor</span>
+    </div>
+    <div class="ch-logo-box">
+      <div class="cl-icon">🏡</div>
+      <span style="font-size:11px;font-weight:700;color:var(--muted)">Vrbo</span>
+    </div>
+    <div class="ch-logo-box featured">
+      <div class="cl-icon" style="font-size:20px;font-weight:900;color:#fff">BEST</div>
+      <span class="cl-label" style="font-size:9px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;">Rated 2025</span>
+    </div>
+  </div>
+</section>
+
+<!-- Features Cards -->
+<section class="features-section">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="section-header">
+      <div class="section-tag">Features</div>
+      <h2>Vacation Rental Management Software Features</h2>
+      <p>Save Hours Every Day By Automating Tasks</p>
+    </div>
+    <div class="features-cards">
+      <div class="feat-card">
+        <div class="feat-card-icon">🏘</div>
+        <h3>Property Management</h3>
+        <p>Organize and manage hundreds or even thousands of properties at once with ease. It's one solution for all your needs.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-card-icon">📡</div>
+        <h3>Channel Manager</h3>
+        <p>Simplify all of your bookings across every channel. Receive Booking Notifications. Understand your revenue streams better.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-card-icon">⚡</div>
+        <h3>Automations</h3>
+        <p>Automate repetitive tasks like messaging, housekeeping and payments. It's the easy way to better your management.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-card-icon">💬</div>
+        <h3>Unified Inbox</h3>
+        <p>No more time spent checking a dozen inboxes every day. Now you'll find all your guest messages from your vacation rental platforms, all in one inbox.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-card-icon">🌐</div>
+        <h3>Booking Website</h3>
+        <p>Get your own free booking website. It's free, commission-free bookings and easily accept payments with Stripe. Ready to get an Airbnb booking site now?</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-card-icon">💳</div>
+        <h3>Payment Processing</h3>
+        <p>Simplify all your payment processing and make the best out of digital checkout for your vacation rental business.</p>
+      </div>
+    </div>
+    <div class="features-cta">
+      <a href="#" class="btn-outline">See all features →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Awards -->
+<section class="awards">
+  <div class="awards-inner">
+    <h2>Awards and Recognitions</h2>
+    <div class="awards-badges">
+      <div class="award-badge">
+        <div class="ab-icon">🥇</div>
+        <div class="ab-year">2025</div>
+        <span>Best PMS</span>
+      </div>
+      <div class="award-badge">
+        <div class="ab-icon">⭐</div>
+        <div class="ab-year">5★</div>
+        <span>GetApp</span>
+      </div>
+      <div class="award-badge">
+        <div class="ab-icon">🏆</div>
+        <div class="ab-year">2025</div>
+        <span>Leader G2</span>
+      </div>
+      <div class="award-badge">
+        <div class="ab-icon">✦</div>
+        <div class="ab-year">Top</div>
+        <span>VRMA Pick</span>
+      </div>
+      <div class="award-badge">
+        <div class="ab-icon">🎖</div>
+        <div class="ab-year">4.9</div>
+        <span>Capterra</span>
+      </div>
+      <div class="award-badge">
+        <div class="ab-icon">💎</div>
+        <div class="ab-year">2024</div>
+        <span>Trustpilot</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Exceptionally Simple -->
+<section class="simple-section">
+  <div class="simple-inner">
+    <div class="section-header">
+      <div class="section-tag">Experience</div>
+      <h2>Exceptionally Simple</h2>
+    </div>
+    <div class="simple-tabs">
+      <button class="simple-tab active" onclick="switchTab(this)">Inbox</button>
+      <button class="simple-tab" onclick="switchTab(this)">Reservations</button>
+      <button class="simple-tab" onclick="switchTab(this)">Reporting</button>
+    </div>
+    <div class="simple-content">
+      <div class="simple-screen">
+        <div class="simple-screen-bar">
+          <div class="ss-dot r"></div>
+          <div class="ss-dot y"></div>
+          <div class="ss-dot g"></div>
+          <div class="ss-title">Hostify — Multi-Calendar</div>
+        </div>
+        <div class="calendar-grid">
+          <div class="cal-header">
+            <div class="cal-day">Property</div>
+            <div class="cal-day">Mon</div>
+            <div class="cal-day">Tue</div>
+            <div class="cal-day">Wed</div>
+            <div class="cal-day">Thu</div>
+            <div class="cal-day">Fri</div>
+            <div class="cal-day">Sat</div>
+            <div class="cal-day">Sun</div>
+          </div>
+          <div class="cal-row">
+            <div class="cal-prop">Apt Sofia Center</div>
+            <div class="cal-cell booked"></div>
+            <div class="cal-cell booked"></div>
+            <div class="cal-cell booked"></div>
+            <div class="cal-cell checkout"></div>
+            <div class="cal-cell empty"></div>
+            <div class="cal-cell checkin"></div>
+            <div class="cal-cell booked"></div>
+          </div>
+          <div class="cal-row">
+            <div class="cal-prop">Beach Villa Varna</div>
+            <div class="cal-cell empty"></div>
+            <div class="cal-cell checkin"></div>
+            <div class="cal-cell booked"></div>
+            <div class="cal-cell booked"></div>
+            <div class="cal-cell booked"></div>
+            <div class="cal-cell checkout"></div>
+            <div class="cal-cell empty"></div>
+          </div>
+          <div class="cal-row">
+            <div class="cal-prop">Mountain Lodge</div>
+            <div class="cal-cell booked"></div>
+            <div class="cal-cell booked"></div>
+            <div class="cal-cell checkout"></div>
+            <div class="cal-cell empty"></div>
+            <div class="cal-cell empty"></div>
+            <div class="cal-cell checkin"></div>
+            <div class="cal-cell booked"></div>
+          </div>
+          <div class="cal-row">
+            <div class="cal-prop">Studio Plovdiv</div>
+            <div class="cal-cell empty"></div>
+            <div class="cal-cell empty"></div>
+            <div class="cal-cell checkin"></div>
+            <div class="cal-cell booked"></div>
+            <div class="cal-cell booked"></div>
+            <div class="cal-cell booked"></div>
+            <div class="cal-cell checkout"></div>
+          </div>
+        </div>
+      </div>
+      <div class="simple-desc">
+        <div class="overline">Multi-Calendar</div>
+        <h3>Unified View Over Your Properties</h3>
+        <p>The Multi-calendar serves as an interactive dashboard, giving you access to a granular data view of everything in one place. From here you can manage your reservations, create listings, stay and monitor the occupancy of your listings at a glance.</p>
+        <a href="#" class="learn-more">Learn More <span>→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Mobile App Banner -->
+<section class="app-banner">
+  <div class="app-banner-inner">
+    <div class="app-banner-text">
+      <h2>Manage your reservations<br>from your smartphone!</h2>
+      <p>The Hostify app gives you the flexibility to manage properties and coordinate with clients from anywhere, anytime.</p>
+      <div class="app-buttons">
+        <a href="#" class="app-btn">
+          <div class="app-btn-icon">🍎</div>
+          <div class="app-btn-text">
+            <div class="label">Download on the</div>
+            <div class="store">App Store</div>
+          </div>
+        </a>
+        <a href="#" class="app-btn">
+          <div class="app-btn-icon">▶</div>
+          <div class="app-btn-text">
+            <div class="label">Get it on</div>
+            <div class="store">Google Play</div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="phone-mockup">
+      <div class="phone-screen">
+        <div class="phone-status"><span>9:41</span><span>📶 🔋</span></div>
+        <div class="phone-header">Dashboard</div>
+        <div class="phone-card">
+          <div class="phone-card-title">New Booking — Airbnb</div>
+          <div class="phone-card-sub">Apt Sofia Center · 3 nights</div>
+          <div class="phone-card-badge">$420</div>
+        </div>
+        <div class="phone-card">
+          <div class="phone-card-title">Check-in Today</div>
+          <div class="phone-card-sub">Beach Villa Varna · 2 guests</div>
+        </div>
+        <div style="display:flex;gap:6px;margin-top:8px">
+          <div style="flex:1;background:rgba(255,255,255,.06);border-radius:8px;padding:10px;text-align:center">
+            <div style="font-size:18px;font-weight:900;color:#fff">87%</div>
+            <div style="font-size:9px;color:rgba(255,255,255,.4);font-weight:600">Occupancy</div>
+          </div>
+          <div style="flex:1;background:rgba(232,130,12,.15);border-radius:8px;padding:10px;text-align:center;border:1px solid rgba(232,130,12,.25)">
+            <div style="font-size:18px;font-weight:900;color:var(--orange)">$4.2k</div>
+            <div style="font-size:9px;color:rgba(255,255,255,.4);font-weight:600">Revenue</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Booking Website -->
+<section class="booking-website">
+  <div class="booking-inner">
+    <div class="booking-text">
+      <div class="section-tag">Booking Website</div>
+      <h2>Your Own Free Booking Website</h2>
+      <p>Create your own website with Hostify for free and get more bookings right away. Become even more visible to the world. Get commission-free bookings and easily accept payments with Stripe.</p>
+      <div class="booking-highlight">
+        <div class="bh-icon">✅</div>
+        UNLIMITED CUSTOMISATION WITH WORDPRESS PLUGIN INCLUDED
+      </div>
+      <a href="#" class="btn-primary">Create your website →</a>
+    </div>
+    <div class="devices-mockup">
+      <div class="device-desktop">
+        <div class="device-desktop-bar">
+          <div class="dd-dot r"></div>
+          <div class="dd-dot y"></div>
+          <div class="dd-dot g"></div>
+          <div style="flex:1;background:rgba(255,255,255,.06);border-radius:4px;height:18px;margin-left:8px"></div>
+        </div>
+        <div class="device-desktop-screen">
+          <div class="ds-img-block"></div>
+          <div class="ds-right">
+            <div class="ds-title"></div>
+            <div class="ds-sub"></div>
+            <div class="ds-sub" style="width:80%"></div>
+            <div class="ds-price">$129<span style="font-size:12px;color:rgba(255,255,255,.4)">/night</span></div>
+            <div style="display:flex;gap:6px;margin-top:4px">
+              <div class="ds-btn" style="width:80px;height:30px;border-radius:6px"></div>
+              <div style="width:30px;height:30px;border-radius:6px;background:rgba(255,255,255,.06)"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="device-mobile">
+        <div class="dm-screen">
+          <div class="dm-bar"></div>
+          <div class="dm-card orange"></div>
+          <div class="dm-card"></div>
+          <div style="background:var(--orange-grad);border-radius:6px;height:28px;margin-top:6px"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- What Makes Us Different -->
+<section class="different">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="section-header">
+      <div class="section-tag">Why Hostify</div>
+      <h2>What Makes Us Different</h2>
+    </div>
+    <div class="different-cards">
+      <div class="diff-card">
+        <div class="diff-icon">🔧</div>
+        <h3>Flexibility</h3>
+        <p>We build easy tools with features flexibility and customization in mind — adapt to any property type and workflow.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-icon">👑</div>
+        <h3>Premium Service</h3>
+        <p>Every customer has an individual dedicated account manager who ensures you get the best results from day one.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-icon">⚡</div>
+        <h3>Automation</h3>
+        <p>Readily automate your booking listing and rental management process to focus on growing your business.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Trust -->
+<section class="trust">
+  <div class="trust-inner">
+    <h2>They Trust Us!</h2>
+    <div class="trust-logos">
+      <div class="trust-logo">M1</div>
+      <div class="trust-logo">capadona</div>
+      <div class="trust-logo">LODGIFY</div>
+      <div class="trust-logo">Iogann</div>
+      <div class="trust-logo">BeloStats</div>
+    </div>
+  </div>
+</section>
+
+<!-- Support -->
+<section class="support">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="section-header">
+      <div class="section-tag">Support</div>
+      <h2>Enjoy Top-Rated 24/7 Premium Support</h2>
+    </div>
+    <div class="support-grid">
+      <div class="support-card">
+        <div class="sc-icon">🎧</div>
+        <h3>Talk to Real People</h3>
+        <p>Available on phone, live chat, and email. A real support agent is always ready to help you.</p>
+      </div>
+      <div class="support-card person-card">
+        <div class="sc-icon" style="font-size:36px">👨‍💼</div>
+        <h3>Migration &amp; Onboarding</h3>
+        <p>Our team handles your full migration and onboarding so you can get started without any headache.</p>
+      </div>
+      <div class="support-card">
+        <div class="sc-icon">📚</div>
+        <h3>Training</h3>
+        <p>A dedicated account manager will help your team all the way — from setup to mastery.</p>
+      </div>
+      <div class="support-card">
+        <div style="text-align:center;margin-bottom:16px">
+          <div class="uptime-badge">99.95%</div>
+        </div>
+        <h3>Uptime Guarantee</h3>
+        <p>Redundant infrastructure and daily system design. Reliable, data-secure and always up.</p>
+      </div>
+    </div>
+    <div class="support-cta">
+      <a href="#" class="btn-primary">Talk to an expert →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials">
+  <div class="testimonial-inner">
+    <div class="section-tag">Testimonials</div>
+    <h2 style="font-size:32px;font-weight:900;margin-bottom:40px;color:var(--text)">See Why Our Customers Love Hostify</h2>
+    <div class="quote-mark">"</div>
+    <p class="testimonial-text">Since switching to Hostify our OTA mix and profitability have improved significantly. We are extremely happy to use Hostify's vacation rental software because it shows us how our rental apartments customer inquiries have dramatically improved. It's the only vacation rental software our customers quickly become deeply loyal to — and our satisfaction has never been higher.</p>
+    <div class="testimonial-author">
+      <div class="author-avatar">T</div>
+      <div class="author-info">
+        <div class="stars">★★★★★</div>
+        <h4>Tishanna</h4>
+        <p>Property Manager · Spain</p>
+      </div>
+    </div>
+    <div class="review-badges">
+      <div class="review-badge">
+        <div class="rb-logo rb-g2" style="font-weight:900;font-size:22px">G2</div>
+        <div>
+          <div class="rb-stars">★★★★★</div>
+          <div class="rb-name">Reviews on G2</div>
+        </div>
+      </div>
+      <div class="review-badge">
+        <div class="rb-logo rb-ga" style="font-size:14px;font-weight:900">GetApp</div>
+        <div>
+          <div class="rb-stars">★★★★★</div>
+          <div class="rb-name">Reviews on GetApp</div>
+        </div>
+      </div>
+      <div class="review-badge">
+        <div class="rb-logo rb-vr" style="font-size:13px;font-weight:900">VRMA</div>
+        <div>
+          <div class="rb-stars">★★★★★</div>
+          <div class="rb-name">VRMA Preferred</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Banner -->
+<section class="cta-banner">
+  <h2>Are you ready to grow<br>your business with Hostify?</h2>
+  <p>Join thousands of property managers who trust Hostify</p>
+  <a href="#" class="btn-cta-white">Talk to an expert →</a>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" width="20" height="20">
+              <path d="M1 6s4-4 11-4 11 4 11 4"/>
+              <path d="M5 10s3-3 7-3 7 3 7 3"/>
+              <path d="M9 14s1.5-2 3-2 3 2 3 2"/>
+              <circle cx="12" cy="19" r="1.5" fill="#fff" stroke="none"/>
+            </svg>
+          </div>
+          Hostify
+        </a>
+        <p>The most powerful vacation rental software for property managers and hosts worldwide.</p>
+        <div class="social-links">
+          <a href="#" class="social-link">f</a>
+          <a href="#" class="social-link">t</a>
+          <a href="#" class="social-link">in</a>
+          <a href="#" class="social-link">ig</a>
+        </div>
+        <div class="footer-apps">
+          <p>Get Our Mobile App</p>
+          <div class="footer-app-btns">
+            <a href="#" class="footer-app-btn">
+              <span class="fa-icon">🍎</span>
+              <span>App Store</span>
+            </a>
+            <a href="#" class="footer-app-btn">
+              <span class="fa-icon">▶</span>
+              <span>Google Play</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Webinars</a></li>
+          <li><a href="#">API Documentation</a></li>
+          <li><a href="#">Integrations</a></li>
+          <li><a href="#">Partner Program</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Subscribe To Our Newsletter</h4>
+        <div class="newsletter-form">
+          <input type="email" placeholder="Enter your email address">
+          <button type="button">Subscribe →</button>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2025 Hostify. All rights reserved.</div>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookie Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Notification Popup -->
+<div class="popup-notify">
+  <div class="popup-avatar">M</div>
+  <div class="popup-text">
+    <div class="pt-name">Marco from Italy</div>
+    <div class="pt-msg">Just started a free trial 🎉</div>
+  </div>
+  <div class="popup-time">2m ago</div>
+</div>
+
+<script>
+  function switchTab(el) {
+    document.querySelectorAll('.simple-tab').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  // Animate elements on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.feat-card, .diff-card, .support-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity .5s ease, transform .5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
