@@ -643,11 +643,11 @@ fbq('track','PageView');
     border-radius: 50px;
     box-shadow: 0 6px 24px rgba(232,130,12,.5);
     z-index: 998;
-    display: none;
+    display: flex;
     align-items: center;
     gap: 7px;
     text-decoration: none;
-    animation: floatIn .6s ease 1.5s both;
+    animation: floatIn .6s ease 0.5s both;
   }
   .float-btn.visible { display: flex; }
   .float-btn:hover { transform: translateY(-3px) scale(1.04); box-shadow: 0 12px 32px rgba(232,130,12,.6); }
@@ -1794,10 +1794,10 @@ fbq('track','PageView');
   }
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-  // ── Floating button (3s delay)
+  // ── Floating button (0.5s delay)
   setTimeout(() => {
     document.getElementById('floatBtn').classList.add('visible');
-  }, 3000);
+  }, 500);
 
   // ── Tab switcher (calendar demo)
   function switchTab(el) {
