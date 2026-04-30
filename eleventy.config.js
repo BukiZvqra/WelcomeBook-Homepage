@@ -23,7 +23,7 @@ module.exports = function(eleventyConfig) {
   // Cloudinary image shortcode (used as {% img "filename.jpg" %})
   eleventyConfig.addShortcode("img", function(filename) {
     const cloudName = process.env.CLOUDINARY_CLOUD_NAME || 'PLACEHOLDER';
-    return `https://res.cloudinary.com/${cloudName}/image/upload/clients/${clientId}/${filename}`;
+    return `https://res.cloudinary.com/${cloudName}/image/upload/f_auto,q_auto/clients/${clientId}/${filename}`;
   });
 
   // Copy assets folder
