@@ -1,0 +1,1711 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Villa Sorrento — WelcomeBook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --outer: #060810;
+  --navy: #0D1221;
+  --navy-mid: #141928;
+  --navy-card: #0F1629;
+  --gold: #B07D3A;
+  --gold-light: #D4A04E;
+  --gold-pale: #F0E6D0;
+  --gold-ultra: #FBF4E8;
+  --parchment: #F5F1EB;
+  --card: #FDFCFA;
+  --white: #FFFFFF;
+  --t1: #1C1510;
+  --t2: #6E655C;
+  --t3: #A8A09A;
+  --border: #E4DDD4;
+  --border-light: #EDE8E0;
+}
+
+html, body {
+  height: 100%;
+  background: var(--outer);
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── PAGE ── */
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background:
+    radial-gradient(ellipse 600px 400px at 20% 10%, rgba(176,125,58,0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 500px 500px at 80% 90%, rgba(13,18,33,0.8) 0%, transparent 70%),
+    #060810;
+}
+
+/* ── PHONE FRAME ── */
+.phone {
+  width: 393px;
+  height: 852px;
+  border-radius: 50px;
+  background: var(--parchment);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.08),
+    0 0 0 10px #181e32,
+    0 0 0 11px rgba(255,255,255,0.04),
+    0 40px 100px rgba(0,0,0,0.8),
+    0 0 80px rgba(176,125,58,0.05);
+  animation: appear 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Phone side buttons */
+.phone::before {
+  content: '';
+  position: absolute;
+  left: -11px;
+  top: 108px;
+  width: 4px;
+  height: 34px;
+  background: #1c2235;
+  border-radius: 3px 0 0 3px;
+  box-shadow: 0 44px 0 #1c2235, 0 88px 0 #1c2235;
+  z-index: 500;
+}
+
+.phone::after {
+  content: '';
+  position: absolute;
+  right: -11px;
+  top: 148px;
+  width: 4px;
+  height: 68px;
+  background: #1c2235;
+  border-radius: 0 3px 3px 0;
+  z-index: 500;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(24px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Notch */
+.notch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 126px;
+  height: 37px;
+  background: #181e32;
+  border-radius: 0 0 22px 22px;
+  z-index: 300;
+}
+
+.notch::after {
+  content: '';
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  background: #0d1020;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 2px #1a2040;
+}
+
+/* ── SCROLL BODY ── */
+.body {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+.body::-webkit-scrollbar { display: none; }
+.body { scrollbar-width: none; }
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  height: 310px;
+  overflow: hidden;
+}
+
+.hero-photo {
+  width: 100%;
+  height: 125%;
+  object-fit: cover;
+  display: block;
+  will-change: transform;
+  transform-origin: center top;
+}
+
+.hero-scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom,
+      rgba(6,8,16,0.55) 0%,
+      rgba(6,8,16,0) 40%,
+      rgba(6,8,16,0.45) 65%,
+      rgba(6,8,16,0.85) 100%
+    );
+}
+
+/* Status bar */
+.sbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  padding: 14px 22px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 10;
+}
+
+.sbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.92);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.sbar-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--gold-light);
+  border-radius: 50%;
+}
+
+.sbar-right {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: rgba(255,255,255,0.9);
+}
+
+.sbar-time {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+/* Hero bottom content */
+.hero-foot {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0 22px 20px;
+  z-index: 10;
+}
+
+.hero-location {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 5px;
+}
+
+.hero-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 34px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.05;
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.35);
+  margin-bottom: 10px;
+}
+
+.hero-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hero-rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rating-stars {
+  display: flex;
+  gap: 2px;
+}
+
+.star-icon {
+  color: var(--gold-light);
+}
+
+.rating-num {
+  font-size: 13px;
+  font-weight: 600;
+  color: white;
+}
+
+.rating-cnt {
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+}
+
+.hero-host {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.host-av {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: white;
+  border: 1.5px solid rgba(255,255,255,0.3);
+}
+
+.host-label {
+  font-size: 12px;
+  color: rgba(255,255,255,0.8);
+  font-weight: 400;
+}
+
+/* Gallery strip */
+.gallery-strip {
+  display: flex;
+  gap: 3px;
+  height: 64px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.gallery-strip img {
+  flex: 1;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-more {
+  flex: 1;
+  background: rgba(13,18,33,0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2px;
+  cursor: pointer;
+}
+
+.gallery-more-num {
+  font-size: 15px;
+  font-weight: 700;
+  color: white;
+}
+
+.gallery-more-txt {
+  font-size: 9px;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* ── CHECK-IN STRIP ── */
+.ci-strip {
+  display: flex;
+  align-items: center;
+  background: var(--card);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.ci-item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 14px 8px;
+}
+
+.ci-icon {
+  color: var(--gold);
+  flex-shrink: 0;
+  display: flex;
+}
+
+.ci-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.ci-label {
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--t3);
+}
+
+.ci-val {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--t1);
+  letter-spacing: -0.3px;
+}
+
+.ci-sep {
+  width: 1px;
+  height: 32px;
+  background: var(--border);
+}
+
+/* ── SECTIONS ── */
+.section {
+  padding: 22px 20px;
+}
+
+.section-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--t3);
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--t1);
+  margin-bottom: 4px;
+}
+
+.section-sub {
+  font-size: 13px;
+  color: var(--t2);
+  line-height: 1.55;
+  margin-bottom: 16px;
+}
+
+/* ── HOST CARD ── */
+.host-card {
+  background: var(--gold-ultra);
+  border-radius: 16px;
+  padding: 18px;
+  border: 1px solid var(--gold-pale);
+}
+
+.host-card-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.host-card-av {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+  flex-shrink: 0;
+}
+
+.host-card-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--t1);
+}
+
+.host-card-role {
+  font-size: 11.5px;
+  color: var(--gold);
+  font-weight: 500;
+  margin-top: 1px;
+}
+
+.host-quote {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 14.5px;
+  color: #3d2e1e;
+  line-height: 1.7;
+  position: relative;
+}
+
+.host-quote::before {
+  content: '\201C';
+  font-size: 40px;
+  color: var(--gold);
+  opacity: 0.25;
+  position: absolute;
+  top: -8px;
+  left: -6px;
+  font-style: normal;
+  line-height: 1;
+}
+
+/* ── HAIRLINE ── */
+.hairline {
+  height: 1px;
+  background: var(--border-light);
+  margin: 0 20px;
+}
+
+/* ── AMENITIES GRID ── */
+.amenities-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.amenity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  padding: 14px 6px 12px;
+  background: var(--card);
+  border-radius: 14px;
+  border: 1px solid var(--border-light);
+}
+
+.amenity-icon {
+  color: var(--gold);
+  display: flex;
+}
+
+.amenity-label {
+  font-size: 10.5px;
+  font-weight: 500;
+  color: var(--t2);
+  text-align: center;
+  line-height: 1.3;
+}
+
+/* ── LOCAL GUIDE ── */
+.places-scroll {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+.places-scroll::-webkit-scrollbar { display: none; }
+.places-scroll { scrollbar-width: none; }
+
+.place-card {
+  width: 148px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--card);
+  border: 1px solid var(--border-light);
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.place-card:active { transform: scale(0.97); }
+
+.place-img {
+  height: 90px;
+  position: relative;
+  overflow: hidden;
+}
+
+.place-img-inner {
+  width: 100%;
+  height: 130%;
+  object-fit: cover;
+  display: block;
+  margin-top: -10%;
+}
+
+.place-type {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  background: rgba(6,8,16,0.6);
+  backdrop-filter: blur(6px);
+  border-radius: 6px;
+  padding: 3px 7px;
+  font-size: 9.5px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.9);
+  letter-spacing: 0.3px;
+}
+
+.place-info {
+  padding: 10px 12px 12px;
+}
+
+.place-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--t1);
+  margin-bottom: 3px;
+}
+
+.place-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.place-dist {
+  font-size: 11px;
+  color: var(--t2);
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.place-stars {
+  font-size: 10.5px;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+/* ── HOUSE RULES ── */
+.rules-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.rule-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.rule-item:last-child { border-bottom: none; }
+
+.rule-icon {
+  color: var(--t3);
+  display: flex;
+  flex-shrink: 0;
+}
+
+.rule-text {
+  font-size: 13.5px;
+  color: var(--t1);
+  font-weight: 400;
+}
+
+/* ── ACCESS / LOCKED SECTION ── */
+.access-wrap {
+  padding: 20px;
+}
+
+.access-card {
+  background: var(--navy-card);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(176,125,58,0.2);
+}
+
+.access-head {
+  padding: 18px 18px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.access-head-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(176,125,58,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold-light);
+  flex-shrink: 0;
+}
+
+.access-head-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+}
+
+.access-head-sub {
+  font-size: 11px;
+  color: rgba(255,255,255,0.45);
+  margin-top: 2px;
+}
+
+.access-rows {
+  padding: 6px 0;
+}
+
+.access-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 18px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  transition: all 0.4s ease;
+}
+
+.access-row:last-child { border-bottom: none; }
+
+.access-row-icon {
+  color: var(--gold);
+  flex-shrink: 0;
+  display: flex;
+}
+
+.access-row-label {
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-weight: 500;
+  width: 78px;
+  flex-shrink: 0;
+}
+
+.access-row-val {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.9);
+  letter-spacing: 0.2px;
+  font-family: 'DM Sans', monospace;
+}
+
+.access-row-val.locked {
+  filter: blur(5px);
+  user-select: none;
+  -webkit-user-select: none;
+  transition: filter 0.6s ease;
+}
+
+.access-row-val.unlocked {
+  filter: blur(0);
+}
+
+.lock-badge {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.3);
+  flex-shrink: 0;
+  transition: all 0.4s ease;
+}
+
+.lock-badge.unlocked {
+  background: rgba(176,125,58,0.2);
+  color: var(--gold-light);
+}
+
+.access-footer {
+  padding: 4px 18px 18px;
+}
+
+.access-note {
+  font-size: 11px;
+  color: rgba(255,255,255,0.3);
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.access-btn {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  border: none;
+  border-radius: 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: 0 4px 20px rgba(176,125,58,0.35);
+}
+
+.access-btn:active { transform: scale(0.98); opacity: 0.9; }
+
+.access-btn.unlocked-state {
+  background: rgba(34,197,94,0.15);
+  box-shadow: none;
+  color: #4ade80;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* ── AI CHAT ── */
+.chat-wrap {
+  padding: 0 20px 16px;
+}
+
+.chat-card {
+  background: var(--card);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--border-light);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+}
+
+.chat-head {
+  background: var(--navy);
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chat-head-dots {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.chat-dot {
+  width: 8px;
+  height: 8px;
+  background: #22c55e;
+  border-radius: 50%;
+  position: relative;
+}
+
+.chat-dot::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  background: rgba(34,197,94,0.25);
+  border-radius: 50%;
+  animation: glow 2s infinite;
+}
+
+@keyframes glow {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.7); opacity: 0; }
+}
+
+.chat-head-info {
+  flex: 1;
+}
+
+.chat-head-title {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: white;
+}
+
+.chat-head-sub {
+  font-size: 10.5px;
+  color: rgba(255,255,255,0.45);
+  margin-top: 1px;
+}
+
+.chat-online {
+  background: rgba(34,197,94,0.12);
+  border: 1px solid rgba(34,197,94,0.25);
+  border-radius: 999px;
+  padding: 4px 9px;
+  font-size: 10px;
+  font-weight: 500;
+  color: #86efac;
+}
+
+/* Quick replies */
+.qr-wrap {
+  display: flex;
+  gap: 6px;
+  padding: 10px 12px 8px;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--border-light);
+  background: var(--parchment);
+}
+.qr-wrap::-webkit-scrollbar { display: none; }
+.qr-wrap { scrollbar-width: none; }
+
+.qr-chip {
+  padding: 7px 13px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--t1);
+  white-space: nowrap;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.qr-chip:hover { background: var(--gold-pale); border-color: var(--gold); }
+.qr-chip:active { transform: scale(0.96); }
+
+/* Messages */
+.msgs {
+  padding: 14px 12px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 80px;
+  max-height: 240px;
+  overflow-y: auto;
+  background: white;
+}
+.msgs::-webkit-scrollbar { display: none; }
+.msgs { scrollbar-width: none; }
+
+.msg-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  animation: msgPop 0.28s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+
+.msg-row.guest { flex-direction: row-reverse; }
+
+@keyframes msgPop {
+  from { opacity: 0; transform: translateY(6px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.msg-av {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.msg-av.ai-av {
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: white;
+  letter-spacing: 0.3px;
+}
+
+.msg-av.guest-av {
+  background: #E0E7FF;
+  color: #4338ca;
+}
+
+.bubble {
+  max-width: 76%;
+  padding: 10px 14px;
+  border-radius: 18px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.bubble.ai {
+  background: var(--navy);
+  color: rgba(255,255,255,0.92);
+  border-bottom-left-radius: 5px;
+}
+
+.bubble.guest {
+  background: var(--gold-pale);
+  color: var(--t1);
+  border: 1px solid rgba(176,125,58,0.15);
+  border-bottom-right-radius: 5px;
+}
+
+/* Typing */
+.typing-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.typing-bubble {
+  background: var(--navy);
+  border-radius: 18px;
+  border-bottom-left-radius: 5px;
+  padding: 12px 16px;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.tdot {
+  width: 5px;
+  height: 5px;
+  background: rgba(255,255,255,0.5);
+  border-radius: 50%;
+  animation: tbounce 1.2s infinite;
+}
+.tdot:nth-child(2) { animation-delay: 0.18s; }
+.tdot:nth-child(3) { animation-delay: 0.36s; }
+
+@keyframes tbounce {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30% { transform: translateY(-5px); opacity: 1; }
+}
+
+/* ── FOOTER ── */
+.footer {
+  padding: 16px 20px 24px;
+  text-align: center;
+}
+
+.footer-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--t3);
+  letter-spacing: 0.5px;
+}
+
+.footer-dot {
+  width: 5px;
+  height: 5px;
+  background: var(--gold);
+  border-radius: 50%;
+}
+
+.footer-link {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+  color: var(--gold);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* ── PINNED INPUT ── */
+.input-bar {
+  background: white;
+  border-top: 1px solid var(--border-light);
+  padding: 10px 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex-shrink: 0;
+}
+
+.input-field {
+  flex: 1;
+  background: var(--parchment);
+  border: 1.5px solid transparent;
+  border-radius: 999px;
+  padding: 11px 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px;
+  color: var(--t1);
+  outline: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.input-field:focus {
+  border-color: var(--gold);
+  background: white;
+}
+
+.input-field::placeholder { color: var(--t3); }
+
+.send-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 12px rgba(176,125,58,0.4);
+  transition: all 0.2s cubic-bezier(0.34,1.56,0.64,1);
+  flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+  color: white;
+}
+
+.send-btn:hover { transform: scale(1.08); }
+.send-btn:active { transform: scale(0.94); }
+
+/* Mobile */
+@media (max-width: 440px) {
+  .page { padding: 0; align-items: flex-start; }
+  .phone {
+    width: 100%; max-width: 100%;
+    height: 100svh;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .phone::before, .phone::after { display: none; }
+  .notch { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="phone">
+    <div class="notch"></div>
+
+    <!-- SCROLL BODY -->
+    <div class="body" id="body">
+
+      <!-- HERO -->
+      <div class="hero">
+        <img class="hero-photo" id="heroPhoto"
+          src="https://images.unsplash.com/photo-1613977257363-707ba9348227?w=800"
+          alt="Villa Sorrento">
+        <div class="hero-scrim"></div>
+
+        <!-- Status bar -->
+        <div class="sbar">
+          <div class="sbar-logo">
+            <div class="sbar-dot"></div>
+            WelcomeBook
+          </div>
+          <div class="sbar-right">
+            <span class="sbar-time">9:41</span>
+            <!-- Signal -->
+            <svg width="15" height="12" viewBox="0 0 18 14" fill="none">
+              <rect x="0" y="8" width="3" height="6" rx="1" fill="white" opacity="0.5"/>
+              <rect x="5" y="5" width="3" height="9" rx="1" fill="white" opacity="0.7"/>
+              <rect x="10" y="2" width="3" height="12" rx="1" fill="white" opacity="0.9"/>
+              <rect x="15" y="0" width="3" height="14" rx="1" fill="white"/>
+            </svg>
+            <!-- Battery -->
+            <svg width="22" height="12" viewBox="0 0 26 14" fill="none">
+              <rect x="0.75" y="0.75" width="21.5" height="12.5" rx="2.25" stroke="white" stroke-opacity="0.7" stroke-width="1.5"/>
+              <rect x="22.5" y="4" width="3" height="6" rx="1.5" fill="white" opacity="0.5"/>
+              <rect x="2.5" y="2.5" width="15" height="9" rx="1.5" fill="white"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Hero bottom -->
+        <div class="hero-foot">
+          <p class="hero-location">Черноморски бряг · България</p>
+          <h1 class="hero-name">Villa Sorrento</h1>
+          <div class="hero-meta">
+            <div class="hero-rating">
+              <div class="rating-stars">
+                <svg class="star-icon" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg class="star-icon" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg class="star-icon" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg class="star-icon" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg class="star-icon" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <span class="rating-num">4.97</span>
+              <span class="rating-cnt">· 124 отзива</span>
+            </div>
+            <div class="hero-host">
+              <div class="host-av">М</div>
+              <span class="host-label">Домакин Михаил</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GALLERY STRIP -->
+      <div class="gallery-strip">
+        <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?w=200&h=130&fit=crop&crop=top" alt="">
+        <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?w=200&h=130&fit=crop&crop=center" alt="">
+        <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?w=200&h=130&fit=crop&crop=bottom" alt="">
+        <div class="gallery-more">
+          <span class="gallery-more-num">+5</span>
+          <span class="gallery-more-txt">Снимки</span>
+        </div>
+      </div>
+
+      <!-- CHECK-IN STRIP -->
+      <div class="ci-strip">
+        <div class="ci-item">
+          <div class="ci-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="ci-text">
+            <span class="ci-label">Check-in</span>
+            <span class="ci-val">15:00</span>
+          </div>
+        </div>
+        <div class="ci-sep"></div>
+        <div class="ci-item">
+          <div class="ci-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 8 14"/></svg>
+          </div>
+          <div class="ci-text">
+            <span class="ci-label">Check-out</span>
+            <span class="ci-val">11:00</span>
+          </div>
+        </div>
+        <div class="ci-sep"></div>
+        <div class="ci-item">
+          <div class="ci-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="ci-text">
+            <span class="ci-label">Капацитет</span>
+            <span class="ci-val">до 8</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- HOST WELCOME -->
+      <div class="section" style="padding-bottom: 18px;">
+        <div class="host-card">
+          <div class="host-card-top">
+            <div class="host-card-av">М</div>
+            <div>
+              <div class="host-card-name">Михаил</div>
+              <div class="host-card-role">Домакин · Villa Sorrento</div>
+            </div>
+          </div>
+          <p class="host-quote">
+            Добре дошли — радвам се да ви посрещна. Ако имате нужда от нещо, аз съм на едно съобщение разстояние. Наслаждавайте се на морето!
+          </p>
+        </div>
+      </div>
+
+      <div class="hairline"></div>
+
+      <!-- AMENITIES -->
+      <div class="section">
+        <div class="section-label">Вилата разполага с</div>
+        <div class="amenities-grid">
+          <div class="amenity">
+            <div class="amenity-icon">
+              <!-- Pool / waves -->
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 12c.6.5 1.2 1 2.4 1 2.4 0 2.4-2 4.8-2 2.4 0 2.4 2 4.8 2 2.4 0 2.4-2 4.8-2 1.2 0 1.8.5 2.4 1"/><path d="M2 17c.6.5 1.2 1 2.4 1 2.4 0 2.4-2 4.8-2 2.4 0 2.4 2 4.8 2 2.4 0 2.4-2 4.8-2 1.2 0 1.8.5 2.4 1"/><path d="M8 7a4 4 0 0 1 8 0"/></svg>
+            </div>
+            <span class="amenity-label">Басейн</span>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon">
+              <!-- Wind / AC -->
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/></svg>
+            </div>
+            <span class="amenity-label">Климатик</span>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon">
+              <!-- Flame / BBQ -->
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+            </div>
+            <span class="amenity-label">Барбекю</span>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon">
+              <!-- TV / Netflix -->
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="7" width="20" height="15" rx="2"/><polyline points="17 2 12 7 7 2"/></svg>
+            </div>
+            <span class="amenity-label">Netflix</span>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon">
+              <!-- Car / Parking -->
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            </div>
+            <span class="amenity-label">Паркинг</span>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon">
+              <!-- Utensils / Kitchen -->
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>
+            </div>
+            <span class="amenity-label">Кухня</span>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon">
+              <!-- Shirt / Washer -->
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z"/></svg>
+            </div>
+            <span class="amenity-label">Пералня</span>
+          </div>
+          <div class="amenity">
+            <div class="amenity-icon">
+              <!-- Eye / Sea view -->
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+            <span class="amenity-label">Морска гледка</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hairline"></div>
+
+      <!-- LOCAL GUIDE -->
+      <div class="section" style="padding-bottom: 18px;">
+        <div class="section-label">В района</div>
+        <div class="section-title">Местни препоръки</div>
+        <div class="section-sub">Избрани от домакина за вас</div>
+        <div class="places-scroll">
+
+          <div class="place-card">
+            <div class="place-img" style="background: linear-gradient(150deg, #1e6b8a 0%, #0d4a63 100%);">
+              <div class="place-type">Морска храна</div>
+            </div>
+            <div class="place-info">
+              <div class="place-name">Restaurant Neptun</div>
+              <div class="place-meta">
+                <span class="place-dist">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  5 мин пеша
+                </span>
+                <span class="place-stars">★ 4.8</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <div class="place-img" style="background: linear-gradient(150deg, #c48a3f 0%, #8a5c1e 100%);">
+              <div class="place-type">Закуска · Кафе</div>
+            </div>
+            <div class="place-info">
+              <div class="place-name">Кафе Лазур</div>
+              <div class="place-meta">
+                <span class="place-dist">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  2 мин · 07–14ч
+                </span>
+                <span class="place-stars">★ 4.6</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <div class="place-img" style="background: linear-gradient(150deg, #3d7a52 0%, #245235 100%);">
+              <div class="place-type">Хранителни стоки</div>
+            </div>
+            <div class="place-info">
+              <div class="place-name">Market Fresh</div>
+              <div class="place-meta">
+                <span class="place-dist">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  8 мин пеша
+                </span>
+                <span class="place-stars">★ 4.4</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <div class="place-img" style="background: linear-gradient(150deg, #5b4f8a 0%, #352b6e 100%);">
+              <div class="place-type">Плаж</div>
+            </div>
+            <div class="place-info">
+              <div class="place-name">Централен плаж</div>
+              <div class="place-meta">
+                <span class="place-dist">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  2 мин пеша
+                </span>
+                <span class="place-stars">★ 4.9</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="hairline"></div>
+
+      <!-- HOUSE RULES -->
+      <div class="section" style="padding-bottom: 10px;">
+        <div class="section-label">Важно</div>
+        <div class="section-title" style="margin-bottom: 14px;">Правила на вилата</div>
+        <ul class="rules-list">
+          <li class="rule-item">
+            <div class="rule-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+            </div>
+            <span class="rule-text">Забранено пушенето на закрито</span>
+          </li>
+          <li class="rule-item">
+            <div class="rule-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+            </div>
+            <span class="rule-text">Без шумни събирания след 23:00</span>
+          </li>
+          <li class="rule-item">
+            <div class="rule-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+            </div>
+            <span class="rule-text">Без домашни любимци</span>
+          </li>
+          <li class="rule-item">
+            <div class="rule-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <span class="rule-text">Максимум 8 гости</span>
+          </li>
+          <li class="rule-item">
+            <div class="rule-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <span class="rule-text">Обувките се свалят на входа</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="hairline"></div>
+
+      <!-- 🔒 LOCKED ACCESS SECTION -->
+      <div class="access-wrap">
+        <div class="access-card">
+          <div class="access-head">
+            <div class="access-head-icon" id="accessHeadIcon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <div>
+              <div class="access-head-title">Вашият достъп</div>
+              <div class="access-head-sub" id="accessHeadSub">Налично след потвърждение на резервация</div>
+            </div>
+          </div>
+
+          <div class="access-rows">
+            <!-- WiFi -->
+            <div class="access-row">
+              <div class="access-row-icon">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9A16 16 0 0 1 22.58 9"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+              </div>
+              <span class="access-row-label">WiFi мрежа</span>
+              <span class="access-row-val">Sorrento5G</span>
+              <div class="lock-badge" id="lb-wifi">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              </div>
+            </div>
+            <!-- WiFi pass -->
+            <div class="access-row">
+              <div class="access-row-icon">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              </div>
+              <span class="access-row-label">WiFi парола</span>
+              <span class="access-row-val locked" id="val-wifi">summer2025</span>
+              <div class="lock-badge" id="lb-wifipw">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              </div>
+            </div>
+            <!-- Door code -->
+            <div class="access-row">
+              <div class="access-row-icon">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
+              </div>
+              <span class="access-row-label">Lockbox код</span>
+              <span class="access-row-val locked" id="val-lock">4  8  2  1</span>
+              <div class="lock-badge" id="lb-lock">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              </div>
+            </div>
+            <!-- Host contact -->
+            <div class="access-row">
+              <div class="access-row-icon">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 8.94a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.64.12h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9a16 16 0 0 0 6.29 6.29l.69-.69a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <span class="access-row-label">Михаил</span>
+              <span class="access-row-val locked" id="val-phone">+359 88 555 7722</span>
+              <div class="lock-badge" id="lb-phone">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="access-footer">
+            <div class="access-note" id="accessNote">Достъпен след потвърждение на резервация</div>
+            <button class="access-btn" id="accessBtn" onclick="unlockAccess()">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
+              Потвърди резервация
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="hairline"></div>
+
+      <!-- AI CHAT -->
+      <div class="section" style="padding-bottom: 10px;">
+        <div class="section-label">Поддръжка</div>
+        <div class="section-title" style="margin-bottom: 14px;">AI Асистент</div>
+      </div>
+      <div class="chat-wrap">
+        <div class="chat-card">
+          <div class="chat-head">
+            <div class="chat-head-dots">
+              <div class="chat-dot"></div>
+            </div>
+            <div class="chat-head-info">
+              <div class="chat-head-title">Villa Sorrento · Асистент</div>
+              <div class="chat-head-sub">Отговаря мигновено на вашите въпроси</div>
+            </div>
+            <div class="chat-online">24/7</div>
+          </div>
+
+          <!-- Quick replies -->
+          <div class="qr-wrap">
+            <div class="qr-chip" onclick="sendQuick('Какъв е кодът за WiFi?')">WiFi парола</div>
+            <div class="qr-chip" onclick="sendQuick('Има ли близък ресторант?')">Ресторанти</div>
+            <div class="qr-chip" onclick="sendQuick('Как да се свържа с домакина?')">Контакт</div>
+            <div class="qr-chip" onclick="sendQuick('Кога е check-out?')">Check-out</div>
+          </div>
+
+          <!-- Messages -->
+          <div class="msgs" id="msgs">
+            <div class="msg-row">
+              <div class="msg-av ai-av">AI</div>
+              <div class="bubble ai">Здравейте! Добре дошли във Villa Sorrento. С какво мога да ви помогна? 🌊</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FOOTER -->
+      <div class="footer">
+        <div class="footer-brand">
+          <div class="footer-dot"></div>
+          Powered by WelcomeBook Agency
+        </div>
+        <a class="footer-link" href="#">welcomebook.bg</a>
+      </div>
+
+    </div><!-- /body -->
+
+    <!-- PINNED INPUT -->
+    <div class="input-bar">
+      <input class="input-field" id="inputField" type="text"
+        placeholder="Напишете въпрос..."
+        autocomplete="off" autocorrect="off" spellcheck="false">
+      <button class="send-btn" id="sendBtn" onclick="handleSend()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+    </div>
+
+  </div><!-- /phone -->
+</div><!-- /page -->
+
+<script>
+// ── SYSTEM PROMPT ──
+const SYS = `Ти си AI гост асистент на Villa Sorrento — луксозна вила на Черноморския бряг на България. Отговаряш на въпроси на гостите относно престоя. Говориш топло, кратко и полезно — като внимателен домакин. Информация за имота: 4 спални, 3 бани, басейн, барбекю, климатик, Netflix, пералня, напълно оборудвана кухня, паркинг за 2 коли. Check-in: 15:00 (lockbox код: 4821), Check-out: 11:00. WiFi: Sorrento5G / парола: summer2025. Домакин Михаил: +359 88 555 7722. Наблизо: плаж (2 мин пеша), ресторант Neptun (5 мин, морска храна), Кафе Лазур (закуска, 2 мин), Market Fresh (хранителни стоки, 8 мин), Варна (35 км). Правила: без пушене вътре, без партита след 23:00, без домашни любимци, паркинг място #3. При спешен случай: 112. Отговаряй на БЪЛГАРСКИ. Ако въпросът не е свързан с имота или престоя, учтиво откажи с усмивка.`;
+
+let msgs = [];
+let busy = false;
+
+// ── HERO PARALLAX ──
+const bodyEl = document.getElementById('body');
+const heroPhoto = document.getElementById('heroPhoto');
+
+bodyEl.addEventListener('scroll', () => {
+  const s = bodyEl.scrollTop;
+  if (s < 320) heroPhoto.style.transform = `translateY(${s * 0.28}px)`;
+}, { passive: true });
+
+// ── UNLOCK ACCESS ──
+function unlockAccess() {
+  const ids = ['val-wifi', 'val-lock', 'val-phone'];
+  const lbIds = ['lb-wifi', 'lb-wifipw', 'lb-lock', 'lb-phone'];
+
+  ids.forEach((id, i) => {
+    setTimeout(() => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.classList.remove('locked');
+        el.classList.add('unlocked');
+      }
+    }, i * 180);
+  });
+
+  lbIds.forEach((id, i) => {
+    setTimeout(() => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.classList.add('unlocked');
+        el.innerHTML = `<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>`;
+      }
+    }, i * 180);
+  });
+
+  setTimeout(() => {
+    document.getElementById('accessBtn').className = 'access-btn unlocked-state';
+    document.getElementById('accessBtn').innerHTML = `
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+      Достъп отключен
+    `;
+    document.getElementById('accessNote').style.display = 'none';
+    document.getElementById('accessHeadSub').textContent = 'Достъпът е отключен';
+    document.getElementById('accessHeadIcon').innerHTML = `
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
+    `;
+    document.getElementById('accessHeadIcon').style.background = 'rgba(34,197,94,0.15)';
+    document.getElementById('accessHeadIcon').style.color = '#4ade80';
+  }, 800);
+}
+
+// ── CHAT ──
+function scrollDown() {
+  const el = document.getElementById('msgs');
+  el.scrollTop = el.scrollHeight;
+}
+
+function renderMsg(role, text) {
+  const el = document.getElementById('msgs');
+  const row = document.createElement('div');
+  row.className = `msg-row${role === 'guest' ? ' guest' : ''}`;
+
+  const av = document.createElement('div');
+  av.className = `msg-av ${role === 'guest' ? 'guest-av' : 'ai-av'}`;
+  av.textContent = role === 'guest' ? '👤' : 'AI';
+
+  const b = document.createElement('div');
+  b.className = `bubble ${role === 'guest' ? 'guest' : 'ai'}`;
+  b.textContent = text;
+
+  row.appendChild(av);
+  row.appendChild(b);
+  el.appendChild(row);
+  scrollDown();
+}
+
+function showTyping() {
+  const el = document.getElementById('msgs');
+  const row = document.createElement('div');
+  row.className = 'typing-row';
+  row.id = 'typing';
+  const av = document.createElement('div');
+  av.className = 'msg-av ai-av';
+  av.textContent = 'AI';
+  const b = document.createElement('div');
+  b.className = 'typing-bubble';
+  b.innerHTML = '<div class="tdot"></div><div class="tdot"></div><div class="tdot"></div>';
+  row.appendChild(av);
+  row.appendChild(b);
+  el.appendChild(row);
+  scrollDown();
+}
+
+function hideTyping() {
+  const t = document.getElementById('typing');
+  if (t) t.remove();
+}
+
+async function sendMessage(text) {
+  if (!text.trim() || busy) return;
+  busy = true;
+
+  msgs.push({ role: 'user', content: text });
+  if (msgs.length > 10) msgs = msgs.slice(-10);
+
+  renderMsg('guest', text);
+  showTyping();
+
+  const btn = document.getElementById('sendBtn');
+  btn.style.opacity = '0.45';
+  btn.style.pointerEvents = 'none';
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': '',
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-direct-browser-access': 'true'
+      },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 300,
+        system: SYS,
+        messages: msgs
+      })
+    });
+
+    hideTyping();
+
+    if (!res.ok) {
+      console.error('API error:', res.status);
+      renderMsg('ai', 'Момент — опитайте пак. 🙏');
+      msgs.pop();
+    } else {
+      const d = await res.json();
+      const reply = d.content[0].text;
+      msgs.push({ role: 'assistant', content: reply });
+      renderMsg('ai', reply);
+    }
+  } catch (e) {
+    hideTyping();
+    console.error(e);
+    renderMsg('ai', 'Момент — опитайте пак. 🙏');
+    msgs.pop();
+  } finally {
+    busy = false;
+    btn.style.opacity = '';
+    btn.style.pointerEvents = '';
+  }
+}
+
+function handleSend() {
+  const f = document.getElementById('inputField');
+  const t = f.value.trim();
+  if (!t) return;
+  f.value = '';
+  sendMessage(t);
+}
+
+function sendQuick(text) {
+  if (busy) return;
+  sendMessage(text);
+  document.querySelector('.chat-card').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+document.getElementById('inputField').addEventListener('keydown', e => {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSend(); }
+});
+</script>
+</body>
+</html>

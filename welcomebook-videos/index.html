@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="bg">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #0a1628;
+      }
+
+      /* Every scene fills the full canvas */
+      .scene {
+        position: absolute;
+        top: 0; left: 0;
+        width: 1920px;
+        height: 1080px;
+      }
+
+      /* Content layout — padding positions, flex stacks */
+      .scene-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        padding: 120px 180px;
+        gap: 20px;
+        box-sizing: border-box;
+      }
+
+      /* ── Scene 1: Brand Opening ── */
+      #scene1 { background: #0a1628; z-index: 1; }
+
+      .s1-eyebrow {
+        font-family: 'Inter', sans-serif;
+        font-size: 22px;
+        font-weight: 400;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: #C9A84C;
+      }
+
+      .s1-gold-line {
+        width: 80px;
+        height: 3px;
+        background: #C9A84C;
+        margin: 4px 0 8px;
+      }
+
+      .s1-logo {
+        font-family: 'Playfair Display', serif;
+        font-size: 108px;
+        font-weight: 700;
+        color: #F5F0E8;
+        line-height: 1.05;
+      }
+
+      .s1-logo .gold { color: #C9A84C; }
+
+      .s1-tagline {
+        font-family: 'Inter', sans-serif;
+        font-size: 30px;
+        font-weight: 300;
+        color: #8FA5C2;
+        margin-top: 12px;
+      }
+
+      /* ── Scene 2: Three Benefits ── */
+      #scene2 { background: #0a1628; z-index: 2; }
+
+      .s2-label {
+        font-family: 'Inter', sans-serif;
+        font-size: 20px;
+        font-weight: 400;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: #C9A84C;
+      }
+
+      .s2-headline {
+        font-family: 'Playfair Display', serif;
+        font-size: 62px;
+        font-weight: 700;
+        color: #F5F0E8;
+        line-height: 1.1;
+        margin-bottom: 40px;
+      }
+
+      .benefits-grid {
+        display: flex;
+        gap: 44px;
+        align-items: stretch;
+      }
+
+      .benefit-card {
+        flex: 1;
+        padding: 44px 40px;
+        border: 1px solid rgba(201, 168, 76, 0.25);
+        background: rgba(201, 168, 76, 0.04);
+      }
+
+      .benefit-number {
+        font-family: 'Inter', sans-serif;
+        font-size: 52px;
+        font-weight: 700;
+        color: #C9A84C;
+        line-height: 1;
+        margin-bottom: 18px;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .benefit-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 32px;
+        font-weight: 700;
+        color: #F5F0E8;
+        margin-bottom: 14px;
+      }
+
+      .benefit-desc {
+        font-family: 'Inter', sans-serif;
+        font-size: 20px;
+        font-weight: 300;
+        color: #8FA5C2;
+        line-height: 1.55;
+      }
+
+      /* ── Scene 3: CTA ── */
+      #scene3 { background: #0a1628; z-index: 3; }
+
+      .cta-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        gap: 28px;
+        text-align: center;
+      }
+
+      .cta-pre {
+        font-family: 'Inter', sans-serif;
+        font-size: 22px;
+        font-weight: 400;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: #C9A84C;
+      }
+
+      .cta-headline {
+        font-family: 'Playfair Display', serif;
+        font-size: 96px;
+        font-weight: 700;
+        color: #F5F0E8;
+        line-height: 1.05;
+      }
+
+      .cta-headline .gold { color: #C9A84C; }
+
+      .cta-sub {
+        font-family: 'Inter', sans-serif;
+        font-size: 30px;
+        font-weight: 300;
+        color: #8FA5C2;
+      }
+
+      .cta-gold-line {
+        width: 60px;
+        height: 2px;
+        background: #C9A84C;
+      }
+
+      .cta-url {
+        font-family: 'Inter', sans-serif;
+        font-size: 26px;
+        font-weight: 600;
+        color: #C9A84C;
+        letter-spacing: 0.08em;
+      }
+
+      /* ── Decorative: ambient glows & ghost text ── */
+      .bg-glow {
+        position: absolute;
+        border-radius: 50%;
+        pointer-events: none;
+      }
+
+      .glow-gold {
+        width: 700px;
+        height: 700px;
+        background: radial-gradient(circle, rgba(201, 168, 76, 0.07) 0%, transparent 70%);
+      }
+
+      .glow-blue {
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, rgba(143, 165, 194, 0.06) 0%, transparent 70%);
+      }
+
+      .ghost-text {
+        position: absolute;
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+        color: rgba(201, 168, 76, 0.04);
+        white-space: nowrap;
+        pointer-events: none;
+        user-select: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="15"
+      data-width="1920"
+      data-height="1080"
+    >
+      <!-- ═══════════════════════════════════════
+           SCENE 1 — Brand Opening  (0–5.5s)
+      ═══════════════════════════════════════ -->
+      <div
+        id="scene1"
+        class="clip scene"
+        data-start="0"
+        data-duration="5.5"
+        data-track-index="1"
+      >
+        <!-- Decoratives -->
+        <div class="bg-glow glow-gold" id="s1-glow-gold" style="top: -120px; right: 160px;"></div>
+        <div class="bg-glow glow-blue" id="s1-glow-blue" style="bottom: -60px; left: 80px;"></div>
+        <div class="ghost-text" id="s1-ghost" style="font-size: 280px; bottom: -40px; left: -10px;">WB</div>
+
+        <!-- Content -->
+        <div class="scene-content">
+          <div class="s1-eyebrow" id="s1-eyebrow">Дигитална агенция за Airbnb хостове</div>
+          <div class="s1-gold-line" id="s1-line"></div>
+          <div class="s1-logo" id="s1-logo">Welcome<span class="gold">Book</span></div>
+          <div class="s1-tagline" id="s1-tagline">Твоят имот. Нашата система. Твоят успех.</div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════
+           SCENE 2 — Three Benefits  (4.8–11s)
+      ═══════════════════════════════════════ -->
+      <div
+        id="scene2"
+        class="clip scene"
+        data-start="4.8"
+        data-duration="6.2"
+        data-track-index="2"
+      >
+        <!-- Inner wrapper handles crossfade — never animate the clip element itself -->
+        <div id="scene2-wrap" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+          <!-- Decoratives -->
+          <div class="bg-glow glow-gold" id="s2-glow-gold" style="top: -80px; right: 300px;"></div>
+
+          <!-- Content -->
+          <div class="scene-content">
+            <div class="s2-label" id="s2-label">Три обещания към теб</div>
+            <div class="s2-headline" id="s2-headline">Повече резервации. По-малко работа.</div>
+
+            <div class="benefits-grid">
+              <div class="benefit-card" id="card1">
+                <div class="benefit-number">01</div>
+                <div class="benefit-title">Повече резервации</div>
+                <div class="benefit-desc">SEO оптимизация, комуникация и управление на ревюта — ние се грижим за всичко.</div>
+              </div>
+              <div class="benefit-card" id="card2">
+                <div class="benefit-number">02</div>
+                <div class="benefit-title">По-малко стрес</div>
+                <div class="benefit-desc">Автоматизирани съобщения и шаблони — под 15 минути работа на ден.</div>
+              </div>
+              <div class="benefit-card" id="card3">
+                <div class="benefit-number">03</div>
+                <div class="benefit-title">Пълен контрол</div>
+                <div class="benefit-desc">Финансови тракери, инвентар и заетост — ти виждаш всичко, всеки ден.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════
+           SCENE 3 — CTA  (10.5–15s)
+      ═══════════════════════════════════════ -->
+      <div
+        id="scene3"
+        class="clip scene"
+        data-start="10.5"
+        data-duration="4.5"
+        data-track-index="3"
+      >
+        <!-- Inner wrapper handles crossfade & final fade -->
+        <div id="scene3-wrap" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+          <!-- Decoratives -->
+          <div class="bg-glow glow-gold" id="s3-glow-gold" style="top: -200px; right: 300px; width: 900px; height: 900px;"></div>
+          <div class="bg-glow glow-blue" id="s3-glow-blue" style="bottom: -100px; left: 200px;"></div>
+
+          <!-- Content -->
+          <div class="cta-content" id="cta-content">
+            <div class="cta-pre" id="cta-pre">Готов да започнеш?</div>
+            <div class="cta-headline" id="cta-headline">Welcome<span class="gold">Book</span></div>
+            <div class="cta-sub" id="cta-sub">Твоят имот. Нашата система.</div>
+            <div class="cta-gold-line" id="cta-line"></div>
+            <div class="cta-url" id="cta-url">welcomebook.bg</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // ── Scene 1 Ambient (breathing glow, ghost drift) ──
+      tl.to("#s1-glow-gold", { scale: 1.2, duration: 3.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0);
+      tl.to("#s1-ghost",     { x: -40, duration: 5.5, ease: "none" }, 0);
+
+      // ── Scene 1 Entrances ──
+      tl.from("#s1-eyebrow", { y: 20, opacity: 0, duration: 0.6, ease: "power2.out" }, 0.25);
+      tl.from("#s1-line",    { scaleX: 0, transformOrigin: "left center", duration: 0.5, ease: "expo.out" }, 0.55);
+      tl.from("#s1-logo",    { y: 60, opacity: 0, duration: 0.9, ease: "power3.out" }, 0.75);
+      tl.from("#s1-tagline", { y: 30, opacity: 0, duration: 0.7, ease: "power2.out" }, 1.2);
+
+      // ── Scene 2 Crossfade + Ambient (animate inner wrap, NOT the clip) ──
+      tl.from("#scene2-wrap", { opacity: 0, duration: 0.55, ease: "power1.out" }, 4.8);
+      tl.to("#s2-glow-gold", { scale: 1.15, duration: 3, ease: "sine.inOut", yoyo: true, repeat: 1 }, 4.8);
+
+      // ── Scene 2 Entrances ──
+      tl.from("#s2-label",    { y: 20, opacity: 0, duration: 0.5, ease: "power2.out" }, 5.15);
+      tl.from("#s2-headline", { y: 30, opacity: 0, duration: 0.65, ease: "power3.out" }, 5.4);
+      tl.from("#card1", { y: 55, opacity: 0, duration: 0.65, ease: "power3.out" }, 5.8);
+      tl.from("#card2", { y: 55, opacity: 0, duration: 0.65, ease: "power3.out" }, 6.05);
+      tl.from("#card3", { y: 55, opacity: 0, duration: 0.65, ease: "expo.out" },   6.3);
+
+      // ── Scene 3 Crossfade + Ambient (animate inner wrap, NOT the clip) ──
+      tl.from("#scene3-wrap", { opacity: 0, duration: 0.6, ease: "power1.out" }, 10.5);
+      tl.to("#s3-glow-gold", { scale: 1.12, duration: 2.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, 10.5);
+
+      // ── Scene 3 Entrances ──
+      tl.from("#cta-pre",      { y: 20, opacity: 0, duration: 0.5, ease: "power2.out" }, 10.9);
+      tl.from("#cta-headline", { y: 50, opacity: 0, scale: 0.96, duration: 0.85, ease: "power3.out" }, 11.15);
+      tl.from("#cta-sub",      { y: 25, opacity: 0, duration: 0.55, ease: "power2.out" }, 11.7);
+      tl.from("#cta-line",     { scaleX: 0, transformOrigin: "center", duration: 0.45, ease: "expo.out" }, 12.0);
+      tl.from("#cta-url",      { y: 20, opacity: 0, duration: 0.5, ease: "expo.out" }, 12.2);
+
+      // ── Final fade to black (on inner wrap) ──
+      tl.to("#scene3-wrap", { opacity: 0, duration: 0.9, ease: "power2.in" }, 14.1);
+
+      // ── Visibility kills on inner wraps (prevent ghosting when scrubbing) ──
+      tl.set("#scene2-wrap", { visibility: "hidden" }, 11);
+      tl.set("#scene3-wrap", { visibility: "hidden" }, 15);
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

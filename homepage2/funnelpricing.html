@@ -1574,7 +1574,7 @@ fbq('track','PageView');
       20 минути разговор. Разглеждаме обявата ти, конкуренцията и потенциала — безплатно, без задължения, без продаване.
     </p>
 
-    <form action='/' id='consultForm' method='POST' name='consultations' onsubmit='handleConsultSubmit(event)' style='display:flex; flex-direction:column; gap:14px; text-align:left;'>
+    <form action='/' id='consultForm' method='POST' name='consultations' data-netlify="true" onsubmit='handleConsultSubmit(event)' style='display:flex; flex-direction:column; gap:14px; text-align:left;'>
 
       <input type="hidden" name="form-name" value="consultations">
       <input type="hidden" name="bot-field" style="display:none;">
@@ -1760,7 +1760,7 @@ fbq('track','PageView');
     <button class="modal-close" onclick="closeModal()">✕</button>
     <h3>Безплатна консултация</h3>
     <p>Разкажи ни за твоя имот и ще се свържем с теб в рамките на 24 часа.</p>
-    <form action='/' class='modal-form' id='modalForm' method='POST' name='consultation' onsubmit='handleModalSubmit(event)'>
+    <form action='/' class='modal-form' id='modalForm' method='POST' name='consultation' data-netlify="true" onsubmit='handleModalSubmit(event)'>
       <input type="hidden" name="form-name" value="consultation">
       <input class="modal-input" type="text" name="name" placeholder="Твоето име" required>
       <input class="modal-input" type="tel" name="phone" placeholder="Телефон за връзка" required>
@@ -1912,6 +1912,9 @@ fbq('track','PageView');
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams(new FormData(form)).toString()
+    }).then(function(res) {
+      if (!res.ok) throw new Error('Netlify form error: ' + res.status);
+      return res;
     });
   }
 
