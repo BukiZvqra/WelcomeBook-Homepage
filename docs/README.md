@@ -4,8 +4,9 @@
 
 ## Какво има тук
 
-- `architecture-v1.4.md` — пълна архитектурна спецификация (single source of truth за build процеса)
+- `architecture-v1.6.md` — пълна архитектурна спецификация (single source of truth за build процеса)
 - `brand-spec-v1.0.md` — brand identity (colors, typography, voice, copy rules)
+- `client-design-system.md` — universal design rules за всички клиентски сайтове (typography, layout, photography, copy, accessibility)
 
 ## Кога чета тези файлове
 
