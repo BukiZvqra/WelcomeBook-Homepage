@@ -13,3 +13,6 @@ _site/
 *.log
 .netlify/
 .claude/
+
+# Designer Skills (като node_modules — re-installable от skills-lock.json)
+.agents/skills/
