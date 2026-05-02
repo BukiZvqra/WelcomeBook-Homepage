@@ -1,0 +1,113 @@
+---
+layout: base.njk
+title: Professional Property Manager — TES Borovets
+---
+{% set lang = lang or "bg" %}
+{% set t = i18n[lang] %}
+{% set prefix = "" if lang == "bg" else "/en" %}
+{% set serviceId = "property-manager" %}
+{% set currentService = client.services | selectattr("id", "equalto", serviceId) | first %}
+
+<!-- Breadcrumb -->
+<nav class="breadcrumb" aria-label="breadcrumb">
+  <div class="container">
+    <ol class="breadcrumb-list">
+      <li><a href="{{ prefix }}/">{{ t.breadcrumb_home }}</a></li>
+      <li>
+        <span class="bc-sep" aria-hidden="true">›</span>
+        <a href="{{ prefix }}/services/">{{ t.breadcrumb_services }}</a>
+      </li>
+      <li>
+        <span class="bc-sep" aria-hidden="true">›</span>
+        <span class="bc-current">{{ currentService.name }}</span>
+      </li>
+    </ol>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero hero-sm" style="background: linear-gradient(135deg, var(--color-primary-700) 0%, var(--color-primary-900) 100%);">
+  <div class="container hero-content">
+    <span class="eyebrow" style="color: var(--color-accent-300);">{{ t.breadcrumb_services }}</span>
+    <div style="font-size: 3rem; margin-bottom: var(--space-3);" aria-hidden="true">🏢</div>
+    <h1>{{ currentService.name }}</h1>
+  </div>
+</section>
+
+<!-- Content -->
+<section>
+  <div class="container">
+    <div style="max-width: var(--container-md);">
+      {% if lang == "bg" %}
+        <p class="lead">Управляваме Ви имота докато не сте там — проверка, поддръжка, координация с почистване и техника. Лични грижи от 2009 година.</p>
+        <div class="process-steps" style="margin-top: var(--space-7);">
+          <div class="process-step">
+            <div class="process-step-content">
+              <h4>Оглед и договор</h4>
+              <p>Огледаме имота заедно, уточняваме условията и подписваме договор за управление.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="process-step-content">
+              <h4>Поддръжка и контрол</h4>
+              <p>Редовни проверки, координация с домакините, техническа поддръжка при нужда.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="process-step-content">
+              <h4>Отчетност</h4>
+              <p>Редовен отчет за имота — вие знаете всичко без да се налага да присъствате.</p>
+            </div>
+          </div>
+        </div>
+      {% else %}
+        <p class="lead">We manage your property while you're away — inspections, maintenance, coordination with cleaning and tech. Personal care since 2009.</p>
+        <div class="process-steps" style="margin-top: var(--space-7);">
+          <div class="process-step">
+            <div class="process-step-content">
+              <h4>Inspection & Contract</h4>
+              <p>We inspect the property together, agree on terms, and sign a management agreement.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="process-step-content">
+              <h4>Maintenance & Control</h4>
+              <p>Regular check-ins, coordination with housekeeping, technical support when needed.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="process-step-content">
+              <h4>Reporting</h4>
+              <p>Regular property reports — you stay informed without needing to be on-site.</p>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
+      <p style="margin-top: var(--space-6); color: var(--color-neutral-500); font-size: var(--text-sm);">{{ t.service_pricing_note }}</p>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="section-alt">
+  <div class="container">
+    <h2>{{ t.contact_methods_title }}</h2>
+    {% include "contact-methods.njk" %}
+  </div>
+</section>
+
+<!-- Related Services -->
+<section>
+  <div class="container">
+    <h2>{{ t.service_related_label }}</h2>
+    <div class="services-grid" style="margin-top: var(--space-6);">
+      {% set showDesc = false %}
+      {% for service in client.services %}
+        {% if service.id != serviceId %}
+          {% include "service-card.njk" %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>

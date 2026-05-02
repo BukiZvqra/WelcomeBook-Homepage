@@ -1,0 +1,53 @@
+---
+layout: base.njk
+title: Услуги — TES Borovets
+---
+{% set lang = lang or "bg" %}
+{% set t = i18n[lang] %}
+{% set prefix = "" if lang == "bg" else "/en" %}
+
+<!-- Breadcrumb -->
+<nav class="breadcrumb" aria-label="breadcrumb">
+  <div class="container">
+    <ol class="breadcrumb-list">
+      <li><a href="{{ prefix }}/">{{ t.breadcrumb_home }}</a></li>
+      <li>
+        <span class="bc-sep" aria-hidden="true">›</span>
+        <span class="bc-current">{{ t.breadcrumb_services }}</span>
+      </li>
+    </ol>
+  </div>
+</nav>
+
+<!-- Page Header -->
+<section class="page-intro">
+  <div class="container">
+    <h1>{{ t.services_title }}</h1>
+    <p class="lead">{{ t.services_subtitle }}</p>
+  </div>
+</section>
+
+<!-- Services Grid -->
+<section>
+  <div class="container">
+    <div class="services-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+      {% set showDesc = false %}
+      {% for service in client.services %}
+        {% include "service-card.njk" %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Contact CTA -->
+<section class="borovets-teaser">
+  <div class="container" style="text-align: center;">
+    <h2>{{ t.services_contact_prompt }}</h2>
+    <p>{{ t.services_contact_cta }}</p>
+    <div style="display: flex; flex-wrap: wrap; gap: var(--space-3); justify-content: center;">
+      <a href="viber://chat?number=+359888909237" class="btn-viber">📲 Viber</a>
+      <a href="https://wa.me/359888909237" class="btn-whatsapp" target="_blank" rel="noopener">💬 WhatsApp</a>
+      <a href="{{ prefix }}/contact/" class="btn btn-outline">{{ t.btn_contact_us }}</a>
+    </div>
+  </div>
+</section>

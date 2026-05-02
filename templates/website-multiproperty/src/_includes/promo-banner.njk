@@ -1,0 +1,10 @@
+{# Promotional top banner. Dismissible via JS (localStorage). #}
+{% set t = i18n[lang or "bg"] %}
+
+<div class="promo-banner" role="banner" aria-label="{{ t.promo_banner_dismiss }}">
+  <div class="promo-banner-text">
+    <span>{{ t.promo_banner_text }}</span>
+    <a href="{{ prefix or "" }}/contact/" class="promo-banner-cta">{{ t.promo_banner_cta }} →</a>
+  </div>
+  <button class="promo-banner-dismiss" aria-label="{{ t.promo_banner_dismiss }}">✕</button>
+</div>

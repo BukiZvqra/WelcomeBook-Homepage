@@ -1,0 +1,75 @@
+<header class="site-header" role="banner">
+  <div class="container header-inner">
+
+    <!-- Logo -->
+    <a href="{{ prefix }}/" class="logo" aria-label="{{ client.business_name }} — {{ t.nav_apartments }}, {{ t.nav_services }}">
+      <span class="logo-name">{{ client.business_name }}</span>
+      <span class="logo-tagline">{{ t.nav_about if lang == "en" else "Боровец от 2009" }}</span>
+    </a>
+
+    <!-- Desktop navigation -->
+    <nav class="main-nav" aria-label="{{ 'Main navigation' if lang == 'en' else 'Главна навигация' }}">
+      <a href="{{ prefix }}/apartments/"{% if page.url.indexOf('/apartments') > -1 or page.url.indexOf('/complex') > -1 or page.url.indexOf('/property') > -1 %} aria-current="page"{% endif %}>{{ t.nav_apartments }}</a>
+      <a href="{{ prefix }}/services/"{% if page.url.indexOf('/services') > -1 %} aria-current="page"{% endif %}>{{ t.nav_services }}</a>
+      <a href="{{ prefix }}/about-borovets/"{% if page.url.indexOf('/about-borovets') > -1 %} aria-current="page"{% endif %}>{{ t.nav_about }}</a>
+      <a href="{{ prefix }}/contact/"{% if page.url.indexOf('/contact') > -1 %} aria-current="page"{% endif %}>{{ t.nav_contact }}</a>
+
+      <!-- Mobile-only: divider + contact + lang (inside nav for focus-within reveal) -->
+      <div class="mobile-nav-divider" aria-hidden="true"></div>
+      <div class="mobile-nav-contact" aria-label="{{ 'Direct contact' if lang == 'en' else 'Директен контакт' }}">
+        <a href="viber://chat?number=+359888909237">📲 Viber: {{ client.contact_phone_en }}</a>
+        <a href="https://wa.me/359888909237" target="_blank" rel="noopener">💬 WhatsApp: {{ client.contact_phone_en }}</a>
+      </div>
+      <div class="mobile-nav-lang" aria-label="{{ 'Language' if lang == 'en' else 'Език' }}">
+        {% if lang == "en" %}
+          <a href="{{ page.url | replace('/en/', '/') }}">BG</a>
+          <span class="lang-active" aria-current="true">EN</span>
+        {% else %}
+          <span class="lang-active" aria-current="true">BG</span>
+          <a href="/en{{ page.url }}">EN</a>
+        {% endif %}
+      </div>
+    </nav>
+
+    <!-- Desktop right: contact + lang -->
+    <div class="header-right">
+      <div class="header-contact" aria-label="{{ 'Quick contact' if lang == 'en' else 'Бърз контакт' }}">
+        <a href="viber://chat?number=+359888909237"
+           class="btn-viber"
+           aria-label="Viber: {{ client.contact_phone_en }}">
+          📲 <span class="sr-only">Viber</span><span>Viber</span>
+        </a>
+        <a href="https://wa.me/359888909237"
+           class="btn-whatsapp"
+           target="_blank"
+           rel="noopener"
+           aria-label="WhatsApp: {{ client.contact_phone_en }}">
+          💬 <span class="sr-only">WhatsApp</span><span>WA</span>
+        </a>
+      </div>
+
+      <div class="lang-switcher" aria-label="{{ 'Language switcher' if lang == 'en' else 'Превключване на език' }}">
+        {% if lang == "en" %}
+          <a href="{{ page.url | replace('/en/', '/') }}" aria-label="Превключи на Български">BG</a>
+          <span class="lang-divider" aria-hidden="true">|</span>
+          <span class="lang-active" aria-current="true">EN</span>
+        {% else %}
+          <span class="lang-active" aria-current="true">BG</span>
+          <span class="lang-divider" aria-hidden="true">|</span>
+          <a href="/en{{ page.url }}" aria-label="Switch to English">EN</a>
+        {% endif %}
+      </div>
+
+      <!-- Hamburger (mobile) -->
+      <button class="mobile-menu-toggle"
+              aria-label="{{ 'Open menu' if lang == 'en' else 'Отвори меню' }}"
+              aria-expanded="false"
+              tabindex="0">
+        <span class="hamburger-line" aria-hidden="true"></span>
+        <span class="hamburger-line" aria-hidden="true"></span>
+        <span class="hamburger-line" aria-hidden="true"></span>
+      </button>
+    </div>
+
+  </div>
+</header>

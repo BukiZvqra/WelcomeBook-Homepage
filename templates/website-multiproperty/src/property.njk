@@ -1,0 +1,147 @@
+---
+layout: base.njk
+pagination:
+  data: properties
+  size: 1
+  alias: property
+permalink: "/property/{{ property.slug }}/"
+eleventyComputed:
+  pageTitle: "data.property.name_bg"
+---
+{% set lang = lang or "bg" %}
+{% set t = i18n[lang] %}
+{% set prefix = "" if lang == "bg" else "/en" %}
+{% set propertyName = property.name_bg if lang == "bg" else property.name_en %}
+{% set propertyDesc = property.description_bg if lang == "bg" else property.description_en %}
+{% set complexName = property.complex_name_bg if lang == "bg" else property.complex_name_en %}
+
+{% set typeLabels = {
+  "studio": t.type_studio,
+  "1bedroom": t.type_1bedroom,
+  "2bedroom": t.type_2bedroom
+} %}
+
+{% set amenityLabels = {
+  "wifi":             {"bg": "WiFi",              "en": "WiFi"},
+  "tv":               {"bg": "Телевизор",         "en": "TV"},
+  "kitchenette":      {"bg": "Кухненски кът",     "en": "Kitchenette"},
+  "kitchen":          {"bg": "Кухня",             "en": "Kitchen"},
+  "bathroom":         {"bg": "Баня",              "en": "Bathroom"},
+  "balcony":          {"bg": "Балкон",            "en": "Balcony"},
+  "heating":          {"bg": "Отопление",         "en": "Heating"},
+  "air-conditioning": {"bg": "Климатик",          "en": "Air conditioning"},
+  "washing-machine":  {"bg": "Перална машина",    "en": "Washing machine"},
+  "parking":          {"bg": "Паркинг",           "en": "Parking"},
+  "safe":             {"bg": "Сейф",              "en": "Safe"}
+} %}
+
+{% set complexGradients = {
+  "flora":              "linear-gradient(135deg, #4A6E8A 0%, #2C5274 100%)",
+  "royal-plaza":        "linear-gradient(135deg, #6B7B8C 0%, #3F4E5C 100%)",
+  "rila-park":          "linear-gradient(135deg, #5B7C99 0%, #2C4A66 100%)",
+  "borovets-gardens":   "linear-gradient(135deg, #738598 0%, #455866 100%)"
+} %}
+
+<!-- Breadcrumb -->
+<nav class="breadcrumb" aria-label="breadcrumb">
+  <div class="container">
+    <ol class="breadcrumb-list">
+      <li><a href="{{ prefix }}/">{{ t.breadcrumb_home }}</a></li>
+      <li>
+        <span class="bc-sep" aria-hidden="true">›</span>
+        <a href="{{ prefix }}/apartments/">{{ t.breadcrumb_apartments }}</a>
+      </li>
+      <li>
+        <span class="bc-sep" aria-hidden="true">›</span>
+        <span class="bc-current">{{ propertyName }}</span>
+      </li>
+    </ol>
+  </div>
+</nav>
+
+<!-- Property Hero -->
+<div class="property-detail-hero"
+     style="background: {{ complexGradients[property.complex] or 'linear-gradient(135deg, #486581, #1B3A52)' }}"
+     role="img"
+     aria-label="{{ propertyName }}">
+</div>
+
+<!-- Property Detail -->
+<section>
+  <div class="container">
+    <div class="property-detail-grid">
+
+      <!-- Main Info -->
+      <div>
+        <h1>{{ propertyName }}</h1>
+        <p style="color: var(--color-neutral-500); font-size: var(--text-sm); margin-bottom: var(--space-4);">{{ complexName }}</p>
+
+        <!-- Specs -->
+        <div class="property-specs">
+          <span class="property-spec">🏠 {{ typeLabels[property.type] or property.type }}</span>
+          <span class="property-spec">👥 {{ property.capacity }} {{ t.property_guests_suffix }}</span>
+          {% if property.size_sqm %}
+            <span class="property-spec">📐 {{ property.size_sqm }} м²</span>
+          {% endif %}
+        </div>
+
+        <!-- Description -->
+        <p style="margin-top: var(--space-6); line-height: var(--leading-relaxed);">{{ propertyDesc }}</p>
+
+        <!-- Amenities -->
+        {% if property.amenities and property.amenities.length > 0 %}
+          <div style="margin-top: var(--space-6);">
+            <h3 style="margin-bottom: 0;">{{ t.property_amenities_label }}</h3>
+            <div class="amenities-grid">
+              {% for amenity in property.amenities %}
+                {% set amenLabel = amenityLabels[amenity] %}
+                <div class="amenity-item">
+                  <span aria-hidden="true">{% if amenity == "wifi" %}📶{% elif amenity == "tv" %}📺{% elif amenity == "kitchenette" or amenity == "kitchen" %}🍳{% elif amenity == "bathroom" %}🚿{% elif amenity == "balcony" %}🌅{% elif amenity == "heating" %}🔥{% elif amenity == "air-conditioning" %}❄️{% elif amenity == "washing-machine" %}🫧{% elif amenity == "parking" %}🅿{% else %}✓{% endif %}</span>
+                  {{ amenLabel[lang] if amenLabel else amenity | replace("-", " ") | title }}
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+
+      <!-- Contact Sidebar -->
+      <aside class="property-contact-box">
+        <h3>{{ t.property_contact_cta }}</h3>
+        <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+          <a href="viber://chat?number=+359888909237"
+             class="btn-viber"
+             style="justify-content: center; padding: var(--space-3) var(--space-4); border-radius: var(--radius-md); font-size: var(--text-sm);">
+            📲 Viber: {{ client.contact_phone_en }}
+          </a>
+          <a href="https://wa.me/359888909237"
+             class="btn-whatsapp"
+             target="_blank"
+             rel="noopener"
+             style="justify-content: center; padding: var(--space-3) var(--space-4); border-radius: var(--radius-md); font-size: var(--text-sm);">
+            💬 WhatsApp: {{ client.contact_phone_en }}
+          </a>
+          <a href="{{ prefix }}/contact/" class="btn btn-outline" style="text-align: center;">
+            {{ t.btn_contact }}
+          </a>
+        </div>
+      </aside>
+
+    </div>
+
+    <!-- Similar Properties -->
+    {% set allFromComplex = properties | selectattr("complex", "equalto", property.complex) %}
+    {% set relatedProps = allFromComplex | rejectattr("slug", "equalto", property.slug) %}
+    {% if relatedProps | length > 0 %}
+      <div style="margin-top: var(--space-9);">
+        <h2>{{ t.property_similar_label }}</h2>
+        <div class="property-grid">
+          {% for property in relatedProps | batch(3) | first %}
+            {% include "property-card.njk" %}
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+  </div>
+</section>

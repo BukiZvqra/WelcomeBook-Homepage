@@ -1,0 +1,85 @@
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+
+      <!-- Col 1: Brand -->
+      <div class="footer-brand">
+        <a href="{{ prefix }}/" class="logo">
+          <span class="logo-name">{{ client.business_name }}</span>
+          <span class="logo-tagline">{{ client.tagline }}</span>
+        </a>
+        <p>{{ client.business_full_name }}</p>
+        <span class="footer-since">{{ t.nav_about if lang == "en" else "от" }} {{ client.founded }}</span>
+        <div class="footer-social">
+          <a href="{{ client.tripadvisor_url }}" target="_blank" rel="noopener" aria-label="TripAdvisor">TripAdvisor ↗</a>
+          <a href="{{ client.facebook_url }}" target="_blank" rel="noopener" aria-label="Facebook">Facebook ↗</a>
+        </div>
+      </div>
+
+      <!-- Col 2: Complexes -->
+      <div>
+        <h4>{{ t.footer_complexes_col }}</h4>
+        <ul>
+          {% for complex in client.complexes %}
+            <li><a href="{{ prefix }}/complex/{{ complex.id }}/">{{ complex.name }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <!-- Col 3: Services -->
+      <div>
+        <h4>{{ t.footer_services_col }}</h4>
+        <ul>
+          {% for service in client.services %}
+            <li><a href="{{ prefix }}/services/{{ service.id }}/">{{ service.name }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <!-- Col 4: Info + Contact -->
+      <div>
+        <h4>{{ t.footer_info_col }}</h4>
+        <ul>
+          <li><a href="{{ prefix }}/about-borovets/">{{ t.footer_about_link }}</a></li>
+          <li><a href="{{ prefix }}/contact/">{{ t.footer_contact_link }}</a></li>
+          <li>
+            <a href="{{ client.external_links.european_projects }}" target="_blank" rel="noopener">
+              {{ t.footer_eu_projects_link }} ↗
+            </a>
+          </li>
+          <li><a href="{{ client.tripadvisor_url }}" target="_blank" rel="noopener">TripAdvisor ↗</a></li>
+          <li><a href="{{ client.facebook_url }}" target="_blank" rel="noopener">Facebook ↗</a></li>
+        </ul>
+
+        <!-- Contact details -->
+        <ul style="margin-top: 1.5rem;">
+          <li>
+            <a href="tel:{{ client.contact_phone_en }}" class="footer-link">
+              📞 {{ client.contact_phone_en }} (BG/EN)
+            </a>
+          </li>
+          <li>
+            <a href="tel:{{ client.contact_phone_ru }}" class="footer-link">
+              📞 {{ client.contact_phone_ru }} (RU)
+            </a>
+          </li>
+          <li>
+            <a href="mailto:{{ client.contact_email }}" class="footer-link">
+              ✉ {{ client.contact_email }}
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© {{ client.founded }}–2026 {{ client.business_full_name }}. {{ t.footer_copyright_suffix }}.</p>
+      <p>
+        <a href="{{ prefix }}/about-borovets/" style="color: inherit;">{{ t.footer_about_link }}</a>
+        ·
+        <a href="{{ prefix }}/contact/" style="color: inherit;">{{ t.footer_contact_link }}</a>
+      </p>
+    </div>
+  </div>
+</footer>

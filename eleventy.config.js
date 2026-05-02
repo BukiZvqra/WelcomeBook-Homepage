@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 module.exports = function(eleventyConfig) {
   // Get client_id from CLI environment variable
   const clientId = process.env.CLIENT_ID;
@@ -27,7 +29,7 @@ module.exports = function(eleventyConfig) {
   });
 
   // Copy assets folder
-  eleventyConfig.addPassthroughCopy(`templates/website-${template}/assets`);
+  eleventyConfig.addPassthroughCopy({ [`templates/website-${template}/assets`]: "assets" });
 
   return {
     dir: {

@@ -1,0 +1,135 @@
+{
+  "lang_code": "bg",
+  "lang_label": "BG",
+  "lang_other_code": "en",
+  "lang_other_label": "EN",
+
+  "skip_to_content": "Към съдържанието",
+
+  "nav_apartments": "Апартаменти",
+  "nav_services": "Услуги",
+  "nav_about": "За Боровец",
+  "nav_contact": "Контакти",
+
+  "hero_cta_primary": "Виж апартаментите",
+  "hero_cta_secondary": "Свържи се с нас",
+
+  "section_complexes_title": "Нашите комплекси",
+  "section_complexes_subtitle": "4 локации в курорта Боровец",
+  "complex_card_cta": "Виж имотите",
+
+  "section_services_title": "Услуги",
+  "section_services_subtitle": "Не само настаняване. Цялостно преживяване.",
+  "services_cta": "Виж всички услуги",
+
+  "section_about_title": "За TES Borovets",
+  "about_lead": "Действаме от 2009 година в Боровец. Управляваме над 25 имота в 4 комплекса.",
+  "about_body": "Знаем какво очакват гостите и какво означава лично отношение. Всеки имот е лично проверен и подготвен. Всеки гост получава директна връзка с нас.",
+
+  "section_borovets_title": "Боровец — повече от ски курорт",
+  "section_borovets_body": "Зимата — ски писти, лятото — монт байк, хайкинг, тимбилдинг. Планината живее през всички сезони.",
+  "section_borovets_cta": "Научи повече за Боровец",
+
+  "section_contact_title": "Свържи се с нас",
+  "section_contact_subtitle": "Готови сме да ти помогнем с резервацията",
+
+  "contact_phone_en_label": "Телефон (BG/EN)",
+  "contact_phone_ru_label": "Телефон (RU)",
+  "contact_email_label": "Имейл",
+  "contact_viber_label": "Viber",
+  "contact_whatsapp_label": "WhatsApp",
+
+  "footer_complexes_col": "Комплекси",
+  "footer_services_col": "Услуги",
+  "footer_info_col": "Информация",
+  "footer_about_link": "За Боровец",
+  "footer_contact_link": "Контакти",
+  "footer_eu_projects_link": "Европроекти",
+  "footer_copyright_suffix": "Всички права запазени",
+
+  "breadcrumb_home": "Начало",
+  "breadcrumb_apartments": "Апартаменти",
+  "breadcrumb_services": "Услуги",
+
+  "apartments_title": "Апартаменти под наем",
+  "apartments_subtitle": "21 имота в 4 комплекса в Боровец",
+  "apartments_no_match": "Не намирате подходящ имот? Свържете се с нас →",
+  "apartments_filter_all": "Всички",
+  "apartments_group_by_complex": "по комплекс",
+
+  "complex_about_label": "За комплекса",
+  "complex_properties_label": "Апартаменти в комплекса",
+  "complex_contact_cta": "Резервирайте директно",
+  "complex_back_link": "← Всички апартаменти",
+
+  "property_type_label": "Тип",
+  "property_capacity_label": "Капацитет",
+  "property_size_label": "Площ",
+  "property_complex_label": "Комплекс",
+  "property_amenities_label": "Удобства",
+  "property_contact_cta": "Свържете се за резервация",
+  "property_similar_label": "Подобни апартаменти",
+  "property_guests_suffix": "гости",
+
+  "services_title": "Услуги",
+  "services_subtitle": "Пълен комфорт от пристигане до заминаване",
+  "services_contact_prompt": "Имате въпрос?",
+  "services_contact_cta": "Свържете се с нас",
+
+  "service_pricing_note": "Свържете се за персонализирана оферта",
+  "service_process_label": "Как работи",
+  "service_related_label": "Свързани услуги",
+  "service_back_link": "← Всички услуги",
+
+  "about_borovets_title": "За Боровец",
+  "about_borovets_subtitle": "Защо Боровец?",
+  "about_winter_title": "Ски сезон",
+  "about_summer_title": "Летен сезон",
+  "about_getting_there_title": "Как да стигнете",
+  "about_restaurants_title": "Ресторанти и удобства",
+  "about_services_cta": "TES Borovets организира всичко →",
+
+  "contact_title": "Свържете се с нас",
+  "contact_subtitle": "Отговаряме в рамките на 24 часа",
+  "contact_form_name": "Вашето им",
+  "contact_form_email": "Имейл адрес",
+  "contact_form_phone": "Телефон (по избор)",
+  "contact_form_message": "Съобщение",
+  "contact_form_submit": "Изпрати съобщение",
+  "contact_form_success": "Благодарим! Ще се свържем с вас в рамките на 24 часа.",
+  "contact_response_time": "Отговаряме в рамките на 24 часа",
+  "contact_methods_title": "Или се свържете директно",
+
+  "selling_emotions_title": "Продажба на емоции",
+  "selling_emotions_placeholder": "Тази секция е в подготовка.",
+  "selling_emotions_contact_cta": "Свържете се с нас",
+
+  "type_studio": "Студио",
+  "type_1bedroom": "1-спален апартамент",
+  "type_2bedroom": "2-спален апартамент",
+
+  "btn_book": "Резервирайте",
+  "btn_contact": "Свържете се",
+  "btn_view_more": "Виж повече →",
+  "btn_back": "Назад",
+  "btn_all_services": "Всички услуги",
+  "btn_contact_us": "Свържете се с нас",
+
+  "promo_banner_text": "🎉 10% намаление при директна резервация от сайта",
+  "promo_banner_cta": "Резервирайте сега",
+  "promo_banner_dismiss": "Затвори банера",
+
+  "filter_label": "Филтрирай",
+  "filter_complex_label": "Комплекс",
+  "filter_all_complexes": "Всички комплекси",
+  "filter_guests_label": "Брой гости",
+  "filter_all_guests": "Всеки брой",
+  "filter_guests_up_to_2": "До 2 гости",
+  "filter_guests_3_4": "3–4 гости",
+  "filter_guests_5_plus": "5+ гости",
+  "filter_type_label": "Тип имот",
+  "filter_all_types": "Всички типове",
+  "filter_reset": "Изчисти",
+  "filter_no_results": "Няма намерени имоти с тези критерии. Свържете се с нас директно.",
+  "filter_results_shown": "имота"
+}

@@ -1,1 +1,150 @@
-{}
+{
+  "client_id": "yavor",
+  "domain": "tes-borovets.com",
+  "template": "multiproperty",
+  "language": ["bg", "en"],
+  "language_phase_2": ["ru"],
+  "primary_color": "#1B3A52",
+  "accent_color": "#C9A961",
+  "surface_color": "#F7F3EE",
+  "text_color": "#2C2520",
+  "sky_color": "#EDE7DC",
+  "owner_name": "Yavor Кичев",
+  "business_name": "TES Borovets",
+  "business_full_name": "Tour Express Service Ltd.",
+  "founded": 2009,
+  "tagline": "Боровец през всички сезони",
+  "tagline_subtitle": "Над 25 апартамента в 4 комплекса. Лични грижи от 2009.",
+  "contact_phone_en": "+359 888 909 237",
+  "contact_phone_ru": "+359 887 887 810",
+  "contact_email": "tour_express_service@abv.bg",
+  "tripadvisor_url": "https://www.tripadvisor.com/...",
+  "facebook_url": "https://www.facebook.com/...",
+  "external_links": {
+    "european_projects": "https://tes-borovets.com/european-projects"
+  },
+  "hero_image": "borovets/e50ab250f2c0ad788054238682d9aa93dc8ab9d3.jpeg",
+  "about_borovets_images": [
+    "borovets/e50ab250f2c0ad788054238682d9aa93dc8ab9d3.jpeg",
+    "borovets/61df8e8fe446d4b46861df72ea1541860d52735a.jpeg",
+    "borovets/cf4bc00dabb63b7871384748dad5226816ef58ff.jpeg",
+    "borovets/989b833e02a98002a9f29cfb4bc496fbe27238ef.jpeg",
+    "borovets/06c65e39b44df79c4036e95f9c4063431307a7a6.jpeg",
+    "borovets/b7fe9a63f908474e996f72b199974f239d1c65d1.jpeg",
+    "borovets/6ffa29f699d950904f4b854eab7ba7e4537b8faf.jpeg",
+    "borovets/488dc3e453020c05dfb8d56e7676cdf9fa212211.jpeg",
+    "borovets/a14db9c4d7dc1c157a61a8c8e3b89d220435bda4.jpeg"
+  ],
+  "complexes": [
+    {
+      "id": "flora",
+      "name": "Flora Complex",
+      "subtitle": "Главната ни база",
+      "tagline": "В сърцето на курорта, на 150м от Гондола",
+      "properties_count": 12,
+      "property_types": ["студио", "1-спален", "2-спален"],
+      "hero_image": "apartamenti-v-komplex-flora/апартамент-208-хотел-флора.jpeg"
+    },
+    {
+      "id": "royal-plaza",
+      "name": "Royal Plaza & Iglika",
+      "subtitle": "Премиум локация",
+      "tagline": "Едно студио в престижен комплекс",
+      "properties_count": 1,
+      "property_types": ["студио"],
+      "hero_image": "apartamenti-v-kompleksi-roial-plaza-i-iglika/71b2ea0541ed601e868b7dd8b0c31f2049f58225.jpeg"
+    },
+    {
+      "id": "rila-park",
+      "name": "Rila Park & Semiramida Gardens",
+      "subtitle": "Близо до Ястребец",
+      "tagline": "Студио, 1-спален и 2-спален апартамент",
+      "properties_count": 3,
+      "property_types": ["студио", "1-спален", "2-спален"],
+      "hero_image": "apartamenti-v-kompleksi-rila-park-i-semiramida/апартамент-44-рила-парк.jpeg"
+    },
+    {
+      "id": "borovets-gardens",
+      "name": "Borovets Gardens",
+      "subtitle": "Тиха зона",
+      "tagline": "2 студиа в спокойна обстановка",
+      "properties_count": 2,
+      "property_types": ["студио"],
+      "hero_image": "apartamenten-kompleks-borovets-gardns/студио-б35-боровец-гардънс.jpeg"
+    }
+  ],
+  "services": [
+    {
+      "id": "property-manager",
+      "name": "Professional Property Manager",
+      "icon": "building",
+      "hero_image": "borovets/e50ab250f2c0ad788054238682d9aa93dc8ab9d3.jpeg",
+      "_TODO_images": true
+    },
+    {
+      "id": "transfers",
+      "name": "Трансфери",
+      "icon": "car",
+      "hero_image": "borovets/61df8e8fe446d4b46861df72ea1541860d52735a.jpeg",
+      "_TODO_images": true
+    },
+    {
+      "id": "ski",
+      "name": "Ски услуги",
+      "icon": "snow",
+      "hero_image": "borovets/cf4bc00dabb63b7871384748dad5226816ef58ff.jpeg",
+      "_TODO_images": true
+    },
+    {
+      "id": "team-building",
+      "name": "Тимбилдинг",
+      "icon": "users",
+      "hero_image": "uslugi/tiimbilding/тиймбилдинг.png",
+      "images": [
+        "uslugi/tiimbilding/тиймбилдинг.png"
+      ]
+    },
+    {
+      "id": "safari",
+      "name": "Сафари",
+      "icon": "binoculars",
+      "hero_image": "uslugi/dzhip-safari-borovets/4cae5ef495d919da96ac2c0d1b334a70082e1d86.jpeg",
+      "images": [
+        "uslugi/dzhip-safari-borovets/4cae5ef495d919da96ac2c0d1b334a70082e1d86.jpeg",
+        "uslugi/dzhip-safari-borovets/44f2be4f03be7cc844c32f2e247de8ecf5355b5c.jpeg",
+        "uslugi/dzhip-safari-borovets/0df7b6ccc7140711768dc7e3c8e3cd42d289c20e.jpeg",
+        "uslugi/dzhip-safari-borovets/f70c34afedeb2083aa3ac38ec8a4e12a157907da.jpeg",
+        "uslugi/dzhip-safari-borovets/071ba95bc0bf8c5c733d3c4748bdd9ef56310bb9.jpeg",
+        "uslugi/dzhip-safari-borovets/9c6876fb0eb3d6e552937c2fa84aadb3cc19510d.jpeg",
+        "uslugi/dzhip-safari-borovets/62085a2f8f79e0a29d293b66550bf3e6f1521efa.jpeg",
+        "uslugi/dzhip-safari-borovets/98b6e1ef7af20c4d38c0f9f9c6a3dfe38c674344.jpeg",
+        "uslugi/dzhip-safari-borovets/ogimage.jpeg",
+        "uslugi/dzhip-safari-borovets/джип-сафари-боровец.jpeg",
+        "uslugi/dzhip-safari-borovets/6ee1283aff687aefd349a11802ca96f78d9f055d.jpeg",
+        "uslugi/dzhip-safari-borovets/5183aabec4e897b5bd2ec574854e97fe3b5b4f85.jpeg"
+      ]
+    },
+    {
+      "id": "hiking",
+      "name": "Пешеходни турове",
+      "icon": "mountain",
+      "hero_image": "uslugi/peshekhodni-turove/d3959a15ea7139dec93202665a8924068fff4570.jpeg",
+      "images": [
+        "uslugi/peshekhodni-turove/d3959a15ea7139dec93202665a8924068fff4570.jpeg",
+        "uslugi/peshekhodni-turove/708bc6c5d2f6d56e1d843bbae11bbeb9a2471f04.jpeg",
+        "uslugi/peshekhodni-turove/bf2f2ac28ee40b518972a8edaa0ad37237501b79.jpeg",
+        "uslugi/peshekhodni-turove/пешеходни-турове.jpeg",
+        "uslugi/peshekhodni-turove/d19e19b7e313842451c64c9adbce47b0147b9625.jpeg",
+        "uslugi/peshekhodni-turove/f47829b9dd33ea177543c2203d4881361aa6a915.jpeg",
+        "uslugi/peshekhodni-turove/bc5a2e6d3ab014a38bc42a9b035f796f5ac7502b.jpeg",
+        "uslugi/peshekhodni-turove/44ae67c2c0a331ce0e745103171c452deefdd7fb.jpeg",
+        "uslugi/peshekhodni-turove/4a836163fd9af55ca7889e5bd7ad2b47fbf49479.jpeg",
+        "uslugi/peshekhodni-turove/a7c0edcdeb9eda886f62a0031d2e8b708ddaede4.jpeg",
+        "uslugi/peshekhodni-turove/edecf4fd6623f65de1a2466828ba5ac6fe8811ed.jpeg",
+        "uslugi/peshekhodni-turove/5152ca744763b03b13a69eb95c8d98e455589cf6.jpeg"
+      ]
+    }
+  ],
+  "bnbforms_account_id": "TBD",
+  "bnbforms_enabled": false
+}

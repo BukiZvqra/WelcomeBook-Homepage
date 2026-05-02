@@ -1,0 +1,70 @@
+---
+layout: base.njk
+title: Rila Park & Semiramida Gardens — TES Borovets
+---
+{% set lang = lang or "bg" %}
+{% set t = i18n[lang] %}
+{% set prefix = "" if lang == "bg" else "/en" %}
+{% set complexId = "rila-park" %}
+{% set currentComplex = client.complexes | selectattr("id", "equalto", complexId) | first %}
+{% set complexProperties = properties | selectattr("complex", "equalto", complexId) | sort(false, false, "sort_order") %}
+{% set propCount = complexProperties | length %}
+
+<!-- Breadcrumb -->
+<nav class="breadcrumb" aria-label="breadcrumb">
+  <div class="container">
+    <ol class="breadcrumb-list">
+      <li><a href="{{ prefix }}/">{{ t.breadcrumb_home }}</a></li>
+      <li>
+        <span class="bc-sep" aria-hidden="true">›</span>
+        <a href="{{ prefix }}/apartments/">{{ t.breadcrumb_apartments }}</a>
+      </li>
+      <li>
+        <span class="bc-sep" aria-hidden="true">›</span>
+        <span class="bc-current">{{ currentComplex.name }}</span>
+      </li>
+    </ol>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero hero-sm" style="background: linear-gradient(135deg, #5B7C99 0%, #2C4A66 100%);">
+  <div class="container hero-content">
+    <span class="eyebrow">{{ currentComplex.subtitle }}</span>
+    <h1>{{ currentComplex.name }}</h1>
+    <p class="hero-subtitle">{{ currentComplex.tagline }}</p>
+  </div>
+</section>
+
+<!-- Properties -->
+<section>
+  <div class="container">
+    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--space-4); margin-bottom: var(--space-6);">
+      <div>
+        <h2>{{ t.complex_properties_label }}</h2>
+        <p class="section-subtitle" style="margin-top: var(--space-1);">{{ propCount }} {{ "имот" if propCount == 1 else "имота" }}</p>
+      </div>
+      <a href="{{ prefix }}/apartments/" class="btn btn-outline btn-sm">← {{ t.complex_back_link }}</a>
+    </div>
+
+    {% if propCount > 0 %}
+      <div class="property-grid">
+        {% for property in complexProperties %}
+          {% include "property-card.njk" %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<!-- Contact CTA -->
+<section class="section-alt">
+  <div class="container" style="text-align: center;">
+    <h2>{{ t.complex_contact_cta }}</h2>
+    <div style="display: flex; flex-wrap: wrap; gap: var(--space-3); justify-content: center; margin-top: var(--space-5);">
+      <a href="viber://chat?number=+359888909237" class="btn-viber">📲 Viber</a>
+      <a href="https://wa.me/359888909237" class="btn-whatsapp" target="_blank" rel="noopener">💬 WhatsApp</a>
+      <a href="{{ prefix }}/contact/" class="btn btn-secondary">{{ t.btn_contact_us }}</a>
+    </div>
+  </div>
+</section>

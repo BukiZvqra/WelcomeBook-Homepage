@@ -1,0 +1,113 @@
+---
+layout: base.njk
+title: Сафари — TES Borovets
+---
+{% set lang = lang or "bg" %}
+{% set t = i18n[lang] %}
+{% set prefix = "" if lang == "bg" else "/en" %}
+{% set serviceId = "safari" %}
+{% set currentService = client.services | selectattr("id", "equalto", serviceId) | first %}
+
+<!-- Breadcrumb -->
+<nav class="breadcrumb" aria-label="breadcrumb">
+  <div class="container">
+    <ol class="breadcrumb-list">
+      <li><a href="{{ prefix }}/">{{ t.breadcrumb_home }}</a></li>
+      <li>
+        <span class="bc-sep" aria-hidden="true">›</span>
+        <a href="{{ prefix }}/services/">{{ t.breadcrumb_services }}</a>
+      </li>
+      <li>
+        <span class="bc-sep" aria-hidden="true">›</span>
+        <span class="bc-current">{{ currentService.name }}</span>
+      </li>
+    </ol>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero hero-sm" style="background: linear-gradient(135deg, #5c4033 0%, #3e2723 100%);">
+  <div class="container hero-content">
+    <span class="eyebrow" style="color: var(--color-accent-300);">{{ t.breadcrumb_services }}</span>
+    <div style="font-size: 3rem; margin-bottom: var(--space-3);" aria-hidden="true">🔭</div>
+    <h1>{{ currentService.name }}</h1>
+  </div>
+</section>
+
+<!-- Content -->
+<section>
+  <div class="container">
+    <div style="max-width: var(--container-md);">
+      {% if lang == "bg" %}
+        <p class="lead">Джип сафари по горски пътеки около Боровец — Рила, Маричини езера, изгледи към върховете.</p>
+        <div class="process-steps" style="margin-top: var(--space-7);">
+          <div class="process-step">
+            <div class="process-step-content">
+              <h4>Избор на маршрут</h4>
+              <p>Предлагаме различни маршрути — от лесни семейни обиколки до по-сериозни терени за приключенци.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="process-step-content">
+              <h4>Отпътуване с джип</h4>
+              <p>Тръгваме с 4×4 от имота. Опитен водач познава всеки път в Рила.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="process-step-content">
+              <h4>Маричини езера и върхове</h4>
+              <p>Спирки за снимки, панорамни гледки, природни забележителности — незабравимо преживяване.</p>
+            </div>
+          </div>
+        </div>
+      {% else %}
+        <p class="lead">Jeep safari on forest trails around Borovets — Rila, Marichini Lakes, views to the peaks.</p>
+        <div class="process-steps" style="margin-top: var(--space-7);">
+          <div class="process-step">
+            <div class="process-step-content">
+              <h4>Choose Your Route</h4>
+              <p>We offer various routes — from easy family tours to more challenging terrain for adventurers.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="process-step-content">
+              <h4>Depart by Jeep</h4>
+              <p>We set off in a 4×4 from your property. An experienced guide knows every track in Rila.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="process-step-content">
+              <h4>Marichini Lakes & Peaks</h4>
+              <p>Photo stops, panoramic views, natural landmarks — an unforgettable experience.</p>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
+      <p style="margin-top: var(--space-6); color: var(--color-neutral-500); font-size: var(--text-sm);">{{ t.service_pricing_note }}</p>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="section-alt">
+  <div class="container">
+    <h2>{{ t.contact_methods_title }}</h2>
+    {% include "contact-methods.njk" %}
+  </div>
+</section>
+
+<!-- Related Services -->
+<section>
+  <div class="container">
+    <h2>{{ t.service_related_label }}</h2>
+    <div class="services-grid" style="margin-top: var(--space-6);">
+      {% set showDesc = false %}
+      {% for service in client.services %}
+        {% if service.id != serviceId %}
+          {% include "service-card.njk" %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>

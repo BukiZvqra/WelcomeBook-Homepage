@@ -1,0 +1,113 @@
+---
+layout: base.njk
+title: Пешеходни турове — TES Borovets
+---
+{% set lang = lang or "bg" %}
+{% set t = i18n[lang] %}
+{% set prefix = "" if lang == "bg" else "/en" %}
+{% set serviceId = "hiking" %}
+{% set currentService = client.services | selectattr("id", "equalto", serviceId) | first %}
+
+<!-- Breadcrumb -->
+<nav class="breadcrumb" aria-label="breadcrumb">
+  <div class="container">
+    <ol class="breadcrumb-list">
+      <li><a href="{{ prefix }}/">{{ t.breadcrumb_home }}</a></li>
+      <li>
+        <span class="bc-sep" aria-hidden="true">›</span>
+        <a href="{{ prefix }}/services/">{{ t.breadcrumb_services }}</a>
+      </li>
+      <li>
+        <span class="bc-sep" aria-hidden="true">›</span>
+        <span class="bc-current">{{ currentService.name }}</span>
+      </li>
+    </ol>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero hero-sm" style="background: linear-gradient(135deg, #3a5a40 0%, #1b3a20 100%);">
+  <div class="container hero-content">
+    <span class="eyebrow" style="color: var(--color-accent-300);">{{ t.breadcrumb_services }}</span>
+    <div style="font-size: 3rem; margin-bottom: var(--space-3);" aria-hidden="true">🥾</div>
+    <h1>{{ currentService.name }}</h1>
+  </div>
+</section>
+
+<!-- Content -->
+<section>
+  <div class="container">
+    <div style="max-width: var(--container-md);">
+      {% if lang == "bg" %}
+        <p class="lead">Водени пешеходни маршрути с местни водачи — Мусала (2925м), Мальовица, Черни връх, по-кратки family-friendly trails.</p>
+        <div class="process-steps" style="margin-top: var(--space-7);">
+          <div class="process-step">
+            <div class="process-step-content">
+              <h4>Избор на маршрут</h4>
+              <p>Подбираме маршрут според физическата подготовка и предпочитания — от лесни горски пътеки до Мусала.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="process-step-content">
+              <h4>Тръгване с водач</h4>
+              <p>Местен водач познава маршрутите, историята и природата. Осигуряваме оборудване при нужда.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="process-step-content">
+              <h4>Незабравими гледки</h4>
+              <p>Мусала е най-високия връх на Балканския полуостров. Гледките са неповторими в ясен ден.</p>
+            </div>
+          </div>
+        </div>
+      {% else %}
+        <p class="lead">Guided walking routes with local guides — Musala (2925m), Malyovitsa, Cherni Vrah, shorter family-friendly trails.</p>
+        <div class="process-steps" style="margin-top: var(--space-7);">
+          <div class="process-step">
+            <div class="process-step-content">
+              <h4>Choose Your Route</h4>
+              <p>We match the route to your fitness level and preferences — from easy forest paths to the Musala summit.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="process-step-content">
+              <h4>Set Off with a Guide</h4>
+              <p>A local guide who knows the trails, history, and nature. Equipment provided if needed.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="process-step-content">
+              <h4>Unforgettable Views</h4>
+              <p>Musala is the highest peak on the Balkan Peninsula. The views on a clear day are extraordinary.</p>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
+      <p style="margin-top: var(--space-6); color: var(--color-neutral-500); font-size: var(--text-sm);">{{ t.service_pricing_note }}</p>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="section-alt">
+  <div class="container">
+    <h2>{{ t.contact_methods_title }}</h2>
+    {% include "contact-methods.njk" %}
+  </div>
+</section>
+
+<!-- Related Services -->
+<section>
+  <div class="container">
+    <h2>{{ t.service_related_label }}</h2>
+    <div class="services-grid" style="margin-top: var(--space-6);">
+      {% set showDesc = false %}
+      {% for service in client.services %}
+        {% if service.id != serviceId %}
+          {% include "service-card.njk" %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>

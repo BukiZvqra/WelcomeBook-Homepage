@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="{{ lang or 'bg' }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ pageTitle or title or client.business_name }} — {{ client.tagline }}</title>
+  <meta name="description" content="{{ description or client.tagline_subtitle }}">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{ pageTitle or title or client.business_name }}">
+  <meta property="og:description" content="{{ description or client.tagline_subtitle }}">
+  <meta property="og:locale" content="{{ 'en_GB' if lang == 'en' else 'bg_BG' }}">
+  <meta property="og:site_name" content="{{ client.business_name }}">
+
+  <!-- Fonts: Barlow Condensed (display) + Inter (body). Self-host for GDPR production. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/assets/style.css">
+
+  <!-- Client color overrides (injected inline — overrides :root fallbacks) -->
+  <style>
+    :root {
+      --primary: {{ client.primary_color }};
+      --accent:  {{ client.accent_color }};
+      --surface: {{ client.surface_color }};
+      --text:    {{ client.text_color }};
+      --sky:     {{ client.sky_color }};
+    }
+  </style>
+</head>
+<body>
+  {# Set i18n strings and language prefix for layout components #}
+  {% set lang = lang or "bg" %}
+  {% set t = i18n[lang] %}
+  {% set prefix = "" if lang == "bg" else "/en" %}
+
+  <!-- Skip to main content (accessibility) -->
+  <a href="#main-content" class="skip-link">{{ t.skip_to_content }}</a>
+
+  {% include "promo-banner.njk" %}
+  {% include "header.njk" %}
+
+  <main id="main-content">
+    {{ content | safe }}
+  </main>
+
+  {% include "footer.njk" %}
+
+  <script>
+    (function () {
+      /* Promo banner */
+      var banner = document.querySelector('.promo-banner');
+      if (banner) {
+        var dismissed = localStorage.getItem('promo-dismissed-v1');
+        if (dismissed) {
+          banner.classList.add('hidden');
+        } else {
+          var h = banner.offsetHeight;
+          document.documentElement.style.setProperty('--banner-h', h + 'px');
+          document.body.style.paddingTop = h + 'px';
+          var dismiss = banner.querySelector('.promo-banner-dismiss');
+          if (dismiss) {
+            dismiss.addEventListener('click', function () {
+              banner.classList.add('hidden');
+              document.documentElement.style.setProperty('--banner-h', '0px');
+              document.body.style.paddingTop = '0px';
+              localStorage.setItem('promo-dismissed-v1', '1');
+            });
+          }
+        }
+      }
+
+      /* Mobile nav */
+      var toggle = document.querySelector('.mobile-menu-toggle');
+      var nav = document.querySelector('.main-nav');
+      if (toggle && nav) {
+        toggle.addEventListener('click', function () {
+          var open = nav.classList.toggle('open');
+          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+          document.body.style.overflow = open ? 'hidden' : '';
+        });
+        document.addEventListener('click', function (e) {
+          if (nav.classList.contains('open') && !nav.contains(e.target) && !toggle.contains(e.target)) {
+            nav.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+          }
+        });
+      }
+
+      /* Sticky header shadow */
+      var header = document.querySelector('.site-header');
+      if (header) {
+        window.addEventListener('scroll', function () {
+          header.classList.toggle('scrolled', window.scrollY > 20);
+        }, { passive: true });
+      }
+    })();
+
+    /* Scroll-reveal */
+    (function () {
+      if (!('IntersectionObserver' in window)) return;
+      var els = document.querySelectorAll('.reveal');
+      if (!els.length) return;
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      els.forEach(function (el) { observer.observe(el); });
+    })();
+  </script>
+</body>
+</html>

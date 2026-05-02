@@ -1,0 +1,125 @@
+---
+layout: base.njk
+title: TES Borovets — Боровец през всички сезони
+---
+{% set lang = lang or "bg" %}
+{% set t = i18n[lang] %}
+{% set prefix = "" if lang == "bg" else "/en" %}
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" style="background-image: url('{% img "placeholder-borovets-seasons.jpg" %}');">
+    <div class="hero-overlay"></div>
+  </div>
+  <div class="container hero-content">
+    <h1>{{ client.tagline }}</h1>
+    <p class="hero-subtitle">{{ client.tagline_subtitle }}</p>
+    <div class="hero-cta">
+      <a href="{{ prefix }}/apartments/" class="btn btn-primary">{{ t.hero_cta_primary }}</a>
+      <a href="{{ prefix }}/contact/" class="btn btn-outline">{{ t.hero_cta_secondary }}</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-value">{{ client.founded }}</span>
+        <span class="hero-stat-label">{{ "основана" if lang == "bg" else "founded" }}</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-value">25+</span>
+        <span class="hero-stat-label">{{ "имота" if lang == "bg" else "properties" }}</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-value">4</span>
+        <span class="hero-stat-label">{{ "комплекса" if lang == "bg" else "complexes" }}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- КОМПЛЕКСИ -->
+<section class="complexes" id="complexes">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">{{ t.section_complexes_subtitle }}</span>
+      <h2>{{ t.section_complexes_title }}</h2>
+    </div>
+    <div class="complexes-grid">
+      {% for complex in client.complexes %}
+        <article class="complex-card reveal reveal-delay-{{ loop.index }}">
+          <div class="complex-card-image {{ complex.id }}-gradient" role="img" aria-label="{{ complex.name }}"></div>
+          <div class="complex-card-content">
+            <span class="eyebrow">{{ complex.subtitle }}</span>
+            <h3>{{ complex.name }}</h3>
+            <p class="tagline">{{ complex.tagline }}</p>
+            <span class="meta">{{ complex.properties_count }} {{ "имоти" if complex.properties_count > 1 else "имот" }}</span>
+            <a href="{{ prefix }}/complex/{{ complex.id }}/" class="btn btn-secondary">{{ t.complex_card_cta }}</a>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- УСЛУГИ -->
+<section class="services-preview">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">{{ t.section_services_subtitle }}</span>
+      <h2>{{ t.section_services_title }}</h2>
+    </div>
+    <div class="services-grid">
+      {% set showDesc = false %}
+      {% for service in client.services %}
+        {% include "service-card.njk" %}
+      {% endfor %}
+    </div>
+    <div style="margin-top: var(--space-8); text-align: center;" class="reveal">
+      <a href="{{ prefix }}/services/" class="btn btn-secondary">{{ t.services_cta }}</a>
+    </div>
+  </div>
+</section>
+
+<!-- ЗА НАС -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-content reveal">
+      <span class="eyebrow">{{ "За нас" if lang == "bg" else "About us" }}</span>
+      <h2>{{ t.section_about_title }}</h2>
+      <p class="lead" style="margin-top: var(--space-5);">{{ t.about_lead }}</p>
+      <p style="margin-top: var(--space-4);">{{ t.about_body }}</p>
+    </div>
+    <div class="stats-grid reveal reveal-delay-2">
+      <div class="stat-item">
+        <span class="stat-number">{{ client.founded }}</span>
+        <span class="stat-label">{{ "основана" if lang == "bg" else "founded" }}</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">25+</span>
+        <span class="stat-label">{{ "имота" if lang == "bg" else "properties" }}</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">4</span>
+        <span class="stat-label">{{ "комплекса" if lang == "bg" else "complexes" }}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- БОРОВЕЦ TEASER -->
+<section class="borovets-teaser" style="text-align: center;">
+  <div class="container reveal">
+    <h2>{{ t.section_borovets_title }}</h2>
+    <p>{{ t.section_borovets_body }}</p>
+    <a href="{{ prefix }}/about-borovets/" class="btn btn-outline">{{ t.section_borovets_cta }}</a>
+  </div>
+</section>
+
+<!-- КОНТАКТИ -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">{{ t.section_contact_subtitle }}</span>
+      <h2>{{ t.section_contact_title }}</h2>
+    </div>
+    {% include "contact-methods.njk" %}
+  </div>
+</section>

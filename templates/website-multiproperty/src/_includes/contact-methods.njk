@@ -1,0 +1,47 @@
+{# Contact methods include
+   Shows: phone EN, phone RU, Viber, WhatsApp, email
+   Variables: t (i18n), client (global) #}
+
+<div class="contact-grid">
+
+  <a href="tel:{{ client.contact_phone_en }}" class="contact-card">
+    <span class="contact-card-icon" aria-hidden="true">📞</span>
+    <div class="contact-card-body">
+      <h3>{{ t.contact_phone_en_label }}</h3>
+      <p>{{ client.contact_phone_en }}</p>
+    </div>
+  </a>
+
+  <a href="tel:{{ client.contact_phone_ru }}" class="contact-card">
+    <span class="contact-card-icon" aria-hidden="true">📞</span>
+    <div class="contact-card-body">
+      <h3>{{ t.contact_phone_ru_label }}</h3>
+      <p>{{ client.contact_phone_ru }}</p>
+    </div>
+  </a>
+
+  <a href="mailto:{{ client.contact_email }}" class="contact-card">
+    <span class="contact-card-icon" aria-hidden="true">✉</span>
+    <div class="contact-card-body">
+      <h3>{{ t.contact_email_label }}</h3>
+      <p>{{ client.contact_email }}</p>
+    </div>
+  </a>
+
+  <a href="viber://chat?number=+359888909237" class="contact-card">
+    <span class="contact-card-icon" aria-hidden="true">📲</span>
+    <div class="contact-card-body">
+      <h3>{{ t.contact_viber_label }}</h3>
+      <p>{{ client.contact_phone_en }}</p>
+    </div>
+  </a>
+
+  <a href="https://wa.me/359888909237" class="contact-card" target="_blank" rel="noopener">
+    <span class="contact-card-icon" aria-hidden="true">💬</span>
+    <div class="contact-card-body">
+      <h3>{{ t.contact_whatsapp_label }}</h3>
+      <p>{{ client.contact_phone_en }}</p>
+    </div>
+  </a>
+
+</div>

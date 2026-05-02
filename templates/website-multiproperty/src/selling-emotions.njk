@@ -1,0 +1,16 @@
+---
+layout: base.njk
+title: Продай емоции — TES Borovets
+---
+{% set lang = lang or "bg" %}
+{% set t = i18n[lang] %}
+{% set prefix = "" if lang == "bg" else "/en" %}
+
+<section class="page-placeholder">
+  <div class="placeholder-content">
+    <span style="font-size: 3.5rem; display: block; margin-bottom: var(--space-5);" aria-hidden="true">🏔️</span>
+    <h1>{{ t.selling_emotions_title }}</h1>
+    <p>{{ t.selling_emotions_placeholder }}</p>
+    <a href="{{ prefix }}/contact/" class="btn btn-primary">{{ t.selling_emotions_contact_cta }}</a>
+  </div>
+</section>

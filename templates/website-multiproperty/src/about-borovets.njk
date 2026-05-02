@@ -1,0 +1,173 @@
+---
+layout: base.njk
+title: За Боровец — TES Borovets
+---
+{% set lang = lang or "bg" %}
+{% set t = i18n[lang] %}
+{% set prefix = "" if lang == "bg" else "/en" %}
+
+<!-- Breadcrumb -->
+<nav class="breadcrumb" aria-label="breadcrumb">
+  <div class="container">
+    <ol class="breadcrumb-list">
+      <li><a href="{{ prefix }}/">{{ t.breadcrumb_home }}</a></li>
+      <li>
+        <span class="bc-sep" aria-hidden="true">›</span>
+        <span class="bc-current">{{ t.nav_about }}</span>
+      </li>
+    </ol>
+  </div>
+</nav>
+
+<!-- Page Header -->
+<section class="page-intro">
+  <div class="container">
+    <h1>{{ t.about_borovets_title }}</h1>
+    <p class="lead">{{ t.about_borovets_subtitle }}</p>
+  </div>
+</section>
+
+<!-- Season Cards -->
+<section>
+  <div class="container">
+    <div class="season-cards">
+
+      <!-- Winter -->
+      <div class="season-card">
+        <div class="season-card-header winter">
+          <span style="font-size: 2rem;" aria-hidden="true">⛷️</span>
+          <h3>{{ t.about_winter_title }}</h3>
+        </div>
+        <div class="season-card-body">
+          {% if lang == "bg" %}
+            <p>Боровец е най-старият ски курорт в България — от 1896 година. 25 км писти за всички нива, 9 лифта, ски парк за деца.</p>
+            <div class="season-features">
+              <div class="season-feature">⛷️ 25 км писти</div>
+              <div class="season-feature">🚡 9 лифта</div>
+              <div class="season-feature">🏂 Сноуборд парк</div>
+              <div class="season-feature">👧 Детски ски парк</div>
+              <div class="season-feature">🏔️ Мусала — 2925м</div>
+              <div class="season-feature">🏨 Хижи и ресторанти</div>
+            </div>
+          {% else %}
+            <p>Borovets is Bulgaria's oldest ski resort — founded in 1896. 25 km of slopes for all levels, 9 lifts, ski park for children.</p>
+            <div class="season-features">
+              <div class="season-feature">⛷️ 25 km of slopes</div>
+              <div class="season-feature">🚡 9 ski lifts</div>
+              <div class="season-feature">🏂 Snowboard park</div>
+              <div class="season-feature">👧 Children's ski park</div>
+              <div class="season-feature">🏔️ Musala — 2925m</div>
+              <div class="season-feature">🏨 Mountain huts & restaurants</div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- Summer -->
+      <div class="season-card">
+        <div class="season-card-header summer">
+          <span style="font-size: 2rem;" aria-hidden="true">🥾</span>
+          <h3>{{ t.about_summer_title }}</h3>
+        </div>
+        <div class="season-card-body">
+          {% if lang == "bg" %}
+            <p>Лятото Боровец се превръща в база за планински спорт и природен туризъм. Пресен въздух, гори, езера и незабравими маршрути.</p>
+            <div class="season-features">
+              <div class="season-feature">🥾 Хайкинг маршрути</div>
+              <div class="season-feature">🚵 MTB писти</div>
+              <div class="season-feature">🔭 Джип сафари</div>
+              <div class="season-feature">👥 Тимбилдинг</div>
+              <div class="season-feature">🏞️ Маричини езера</div>
+              <div class="season-feature">🌲 Горски пътеки</div>
+            </div>
+          {% else %}
+            <p>In summer Borovets becomes a hub for mountain sports and nature tourism. Fresh air, forests, lakes and unforgettable trails.</p>
+            <div class="season-features">
+              <div class="season-feature">🥾 Hiking trails</div>
+              <div class="season-feature">🚵 MTB tracks</div>
+              <div class="season-feature">🔭 Jeep safari</div>
+              <div class="season-feature">👥 Team building</div>
+              <div class="season-feature">🏞️ Marichini Lakes</div>
+              <div class="season-feature">🌲 Forest paths</div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Getting There -->
+<section class="section-alt">
+  <div class="container">
+    <h2>{{ t.about_getting_there_title }}</h2>
+    {% if lang == "bg" %}
+      <p style="margin-top: var(--space-4); max-width: 52ch;">Боровец се намира в подножието на Рила — само 73 км от София (около 1 ч 10 мин). Курортът е достъпен целогодишно по асфалтиран път.</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: var(--space-4); margin-top: var(--space-6);">
+        <div style="background: var(--color-neutral-0); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: var(--space-5);">
+          <strong style="display: block; color: var(--color-primary-800);">🏙️ От София</strong>
+          <span style="color: var(--color-neutral-500); font-size: var(--text-sm);">73 км · ~1ч 10мин</span>
+        </div>
+        <div style="background: var(--color-neutral-0); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: var(--space-5);">
+          <strong style="display: block; color: var(--color-primary-800);">🏙️ От Пловдив</strong>
+          <span style="color: var(--color-neutral-500); font-size: var(--text-sm);">130 км · ~2ч 30мин</span>
+        </div>
+        <div style="background: var(--color-neutral-0); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: var(--space-5);">
+          <strong style="display: block; color: var(--color-primary-800);">✈️ Летище София</strong>
+          <span style="color: var(--color-neutral-500); font-size: var(--text-sm);">80 км · ~1ч 20мин</span>
+        </div>
+      </div>
+    {% else %}
+      <p style="margin-top: var(--space-4); max-width: 52ch;">Borovets is located at the foot of Rila — just 73 km from Sofia (about 1 hour 10 minutes). The resort is accessible year-round via a paved road.</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: var(--space-4); margin-top: var(--space-6);">
+        <div style="background: var(--color-neutral-0); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: var(--space-5);">
+          <strong style="display: block; color: var(--color-primary-800);">🏙️ From Sofia</strong>
+          <span style="color: var(--color-neutral-500); font-size: var(--text-sm);">73 km · ~1h 10min</span>
+        </div>
+        <div style="background: var(--color-neutral-0); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: var(--space-5);">
+          <strong style="display: block; color: var(--color-primary-800);">🏙️ From Plovdiv</strong>
+          <span style="color: var(--color-neutral-500); font-size: var(--text-sm);">130 km · ~2h 30min</span>
+        </div>
+        <div style="background: var(--color-neutral-0); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: var(--space-5);">
+          <strong style="display: block; color: var(--color-primary-800);">✈️ Sofia Airport</strong>
+          <span style="color: var(--color-neutral-500); font-size: var(--text-sm);">80 km · ~1h 20min</span>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<!-- Restaurants & Dining -->
+<section>
+  <div class="container">
+    <h2>{{ t.about_restaurants_title }}</h2>
+    {% if lang == "bg" %}
+      <p style="margin-top: var(--space-4); max-width: 52ch;">В Боровец ще намерите разнообразни заведения — от традиционни механи до международна кухня. Повечето ресторанти работят целогодишно.</p>
+      <ul style="margin-top: var(--space-5); display: flex; flex-direction: column; gap: var(--space-3); list-style: none; padding: 0; max-width: 48ch;">
+        <li style="display: flex; gap: var(--space-3); align-items: flex-start;"><span aria-hidden="true">🍖</span><span>Традиционни механи с местна кухня — кебапчета, каварма, мезета</span></li>
+        <li style="display: flex; gap: var(--space-3); align-items: flex-start;"><span aria-hidden="true">🍕</span><span>Пицарии и заведения с международно меню</span></li>
+        <li style="display: flex; gap: var(--space-3); align-items: flex-start;"><span aria-hidden="true">☕</span><span>Кафенета и барове с изглед към пистите</span></li>
+        <li style="display: flex; gap: var(--space-3); align-items: flex-start;"><span aria-hidden="true">🏔️</span><span>Планински хижи на трасетата — топъл чай и закуски</span></li>
+      </ul>
+    {% else %}
+      <p style="margin-top: var(--space-4); max-width: 52ch;">In Borovets you'll find a variety of dining options — from traditional Bulgarian taverns to international cuisine. Most restaurants operate year-round.</p>
+      <ul style="margin-top: var(--space-5); display: flex; flex-direction: column; gap: var(--space-3); list-style: none; padding: 0; max-width: 48ch;">
+        <li style="display: flex; gap: var(--space-3); align-items: flex-start;"><span aria-hidden="true">🍖</span><span>Traditional taverns with local cuisine — kebabs, kavarma, mezze</span></li>
+        <li style="display: flex; gap: var(--space-3); align-items: flex-start;"><span aria-hidden="true">🍕</span><span>Pizza restaurants and venues with international menus</span></li>
+        <li style="display: flex; gap: var(--space-3); align-items: flex-start;"><span aria-hidden="true">☕</span><span>Cafés and bars with slope-side views</span></li>
+        <li style="display: flex; gap: var(--space-3); align-items: flex-start;"><span aria-hidden="true">🏔️</span><span>Mountain huts on the trails — warm tea and snacks</span></li>
+      </ul>
+    {% endif %}
+  </div>
+</section>
+
+<!-- Services CTA -->
+<section class="borovets-teaser">
+  <div class="container" style="text-align: center;">
+    <h2>{{ t.about_services_cta }}</h2>
+    <a href="{{ prefix }}/services/" class="btn btn-outline" style="margin-top: var(--space-5);">
+      {{ t.btn_all_services }}
+    </a>
+  </div>
+</section>

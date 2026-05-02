@@ -1,0 +1,168 @@
+---
+layout: base.njk
+title: Апартаменти под наем — Боровец
+---
+{% set lang = lang or "bg" %}
+{% set t = i18n[lang] %}
+{% set prefix = "" if lang == "bg" else "/en" %}
+
+<!-- Breadcrumb -->
+<nav class="breadcrumb" aria-label="breadcrumb">
+  <div class="container">
+    <ol class="breadcrumb-list">
+      <li><a href="{{ prefix }}/">{{ t.breadcrumb_home }}</a></li>
+      <li>
+        <span class="bc-sep" aria-hidden="true">›</span>
+        <span class="bc-current">{{ t.breadcrumb_apartments }}</span>
+      </li>
+    </ol>
+  </div>
+</nav>
+
+<!-- Page Header -->
+<section class="page-intro">
+  <div class="container">
+    <h1>{{ t.apartments_title }}</h1>
+    <p class="lead">{{ t.apartments_subtitle }}</p>
+  </div>
+</section>
+
+<!-- Properties by Complex -->
+<section>
+  <div class="container">
+
+    <!-- Filter Bar -->
+    <div class="filter-bar" id="filter-bar" role="search" aria-label="{{ t.filter_label }}">
+      <span class="filter-bar-label">{{ t.filter_label }}</span>
+      <div class="filter-selects">
+
+        <div class="filter-select-group">
+          <label for="filter-complex">{{ t.filter_complex_label }}</label>
+          <select id="filter-complex" class="filter-select" name="complex">
+            <option value="">{{ t.filter_all_complexes }}</option>
+            {% for complex in client.complexes %}
+              <option value="{{ complex.id }}">{{ complex.name }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="filter-select-group">
+          <label for="filter-guests">{{ t.filter_guests_label }}</label>
+          <select id="filter-guests" class="filter-select" name="guests">
+            <option value="">{{ t.filter_all_guests }}</option>
+            <option value="2">{{ t.filter_guests_up_to_2 }}</option>
+            <option value="3">{{ t.filter_guests_3_4 }}</option>
+            <option value="5">{{ t.filter_guests_5_plus }}</option>
+          </select>
+        </div>
+
+        <div class="filter-select-group">
+          <label for="filter-type">{{ t.filter_type_label }}</label>
+          <select id="filter-type" class="filter-select" name="type">
+            <option value="">{{ t.filter_all_types }}</option>
+            <option value="studio">{{ t.type_studio }}</option>
+            <option value="1bedroom">{{ t.type_1bedroom }}</option>
+            <option value="2bedroom">{{ t.type_2bedroom }}</option>
+          </select>
+        </div>
+
+      </div>
+      <span class="filter-results-count" id="filter-count" aria-live="polite"></span>
+      <button class="filter-reset" id="filter-reset" type="button">{{ t.filter_reset }}</button>
+    </div>
+
+    <!-- No results message -->
+    <div class="filter-no-results" id="filter-no-results" role="status">
+      {{ t.filter_no_results }}
+    </div>
+
+    <!-- Complex sections -->
+    {% for complex in client.complexes %}
+      {% set complexProperties = properties | selectattr("complex", "equalto", complex.id) | sort(false, false, "sort_order") %}
+      {% set propCount = complexProperties | length %}
+      {% if propCount > 0 %}
+        <div class="complex-filter-section" data-complex-id="{{ complex.id }}">
+          <div class="complex-section-header">
+            <h2>{{ complex.name }}</h2>
+            <span class="count-badge">{{ propCount }} {{ "имот" if propCount == 1 else "имота" }}</span>
+          </div>
+          <div class="property-grid">
+            {% for property in complexProperties %}
+              {% include "property-card.njk" %}
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+
+  </div>
+</section>
+
+<!-- Bottom CTA -->
+<div class="container" style="padding-bottom: var(--space-9);">
+  <div class="cta-band">
+    <p>{{ t.apartments_no_match }}</p>
+    <div style="display: flex; flex-wrap: wrap; gap: var(--space-3); justify-content: center; margin-top: var(--space-5);">
+      <a href="viber://chat?number=+359888909237" class="btn-viber">📲 Viber</a>
+      <a href="https://wa.me/359888909237" class="btn-whatsapp" target="_blank" rel="noopener">💬 WhatsApp</a>
+      <a href="{{ prefix }}/contact/" class="btn btn-secondary">{{ t.btn_contact }}</a>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var cards = document.querySelectorAll('.property-card');
+  var sections = document.querySelectorAll('.complex-filter-section');
+  var noResults = document.getElementById('filter-no-results');
+  var countEl = document.getElementById('filter-count');
+  var complexSel = document.getElementById('filter-complex');
+  var guestsSel = document.getElementById('filter-guests');
+  var typeSel = document.getElementById('filter-type');
+  var resetBtn = document.getElementById('filter-reset');
+
+  function applyFilter() {
+    var complex = complexSel.value;
+    var guests = parseInt(guestsSel.value, 10) || 0;
+    var type = typeSel.value;
+    var visible = 0;
+
+    cards.forEach(function (card) {
+      var matchComplex = !complex || card.dataset.complex === complex;
+      var cap = parseInt(card.dataset.capacity, 10);
+      var matchGuests = true;
+      if (guests === 2) matchGuests = cap <= 2;
+      else if (guests === 3) matchGuests = cap >= 3 && cap <= 4;
+      else if (guests === 5) matchGuests = cap >= 5;
+      var matchType = !type || card.dataset.type === type;
+
+      if (matchComplex && matchGuests && matchType) {
+        card.classList.remove('filter-hidden');
+        visible++;
+      } else {
+        card.classList.add('filter-hidden');
+      }
+    });
+
+    sections.forEach(function (section) {
+      var visibleInSection = section.querySelectorAll('.property-card:not(.filter-hidden)').length;
+      section.classList.toggle('all-hidden', visibleInSection === 0);
+    });
+
+    noResults.classList.toggle('visible', visible === 0);
+    countEl.textContent = visible > 0 ? visible + ' {{ t.filter_results_shown }}' : '';
+  }
+
+  function resetFilter() {
+    complexSel.value = '';
+    guestsSel.value = '';
+    typeSel.value = '';
+    applyFilter();
+  }
+
+  complexSel.addEventListener('change', applyFilter);
+  guestsSel.addEventListener('change', applyFilter);
+  typeSel.addEventListener('change', applyFilter);
+  resetBtn.addEventListener('click', resetFilter);
+})();
+</script>

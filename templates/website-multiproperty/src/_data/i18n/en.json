@@ -1,0 +1,135 @@
+{
+  "lang_code": "en",
+  "lang_label": "EN",
+  "lang_other_code": "bg",
+  "lang_other_label": "BG",
+
+  "skip_to_content": "Skip to content",
+
+  "nav_apartments": "Apartments",
+  "nav_services": "Services",
+  "nav_about": "About Borovets",
+  "nav_contact": "Contact",
+
+  "hero_cta_primary": "View Apartments",
+  "hero_cta_secondary": "Get in Touch",
+
+  "section_complexes_title": "Our Complexes",
+  "section_complexes_subtitle": "4 locations across the Borovets resort",
+  "complex_card_cta": "View Apartments",
+
+  "section_services_title": "Services",
+  "section_services_subtitle": "Not just accommodation. A complete experience.",
+  "services_cta": "View all services",
+
+  "section_about_title": "About TES Borovets",
+  "about_lead": "Operating in Borovets since 2009. Managing over 25 properties across 4 complexes.",
+  "about_body": "We know what guests expect and what personal attention means. Every property is personally inspected and prepared. Every guest gets a direct line to us.",
+
+  "section_borovets_title": "Borovets — More Than a Ski Resort",
+  "section_borovets_body": "Winter — ski slopes, summer — mountain biking, hiking, team building. The mountain thrives all year round.",
+  "section_borovets_cta": "Learn more about Borovets",
+
+  "section_contact_title": "Get in Touch",
+  "section_contact_subtitle": "We're ready to help with your booking",
+
+  "contact_phone_en_label": "Phone (BG/EN)",
+  "contact_phone_ru_label": "Phone (RU)",
+  "contact_email_label": "Email",
+  "contact_viber_label": "Viber",
+  "contact_whatsapp_label": "WhatsApp",
+
+  "footer_complexes_col": "Complexes",
+  "footer_services_col": "Services",
+  "footer_info_col": "Information",
+  "footer_about_link": "About Borovets",
+  "footer_contact_link": "Contact",
+  "footer_eu_projects_link": "European Projects",
+  "footer_copyright_suffix": "All rights reserved",
+
+  "breadcrumb_home": "Home",
+  "breadcrumb_apartments": "Apartments",
+  "breadcrumb_services": "Services",
+
+  "apartments_title": "Rental Apartments",
+  "apartments_subtitle": "21 properties across 4 complexes in Borovets",
+  "apartments_no_match": "Can't find the right apartment? Contact us →",
+  "apartments_filter_all": "All",
+  "apartments_group_by_complex": "by complex",
+
+  "complex_about_label": "About the complex",
+  "complex_properties_label": "Apartments in this complex",
+  "complex_contact_cta": "Book directly",
+  "complex_back_link": "← All apartments",
+
+  "property_type_label": "Type",
+  "property_capacity_label": "Capacity",
+  "property_size_label": "Area",
+  "property_complex_label": "Complex",
+  "property_amenities_label": "Amenities",
+  "property_contact_cta": "Contact us to book",
+  "property_similar_label": "Similar apartments",
+  "property_guests_suffix": "guests",
+
+  "services_title": "Services",
+  "services_subtitle": "Complete comfort from arrival to departure",
+  "services_contact_prompt": "Have a question?",
+  "services_contact_cta": "Contact us",
+
+  "service_pricing_note": "Contact us for a personalised offer",
+  "service_process_label": "How it works",
+  "service_related_label": "Related services",
+  "service_back_link": "← All services",
+
+  "about_borovets_title": "About Borovets",
+  "about_borovets_subtitle": "Why Borovets?",
+  "about_winter_title": "Ski Season",
+  "about_summer_title": "Summer Season",
+  "about_getting_there_title": "Getting There",
+  "about_restaurants_title": "Restaurants & Amenities",
+  "about_services_cta": "TES Borovets arranges everything →",
+
+  "contact_title": "Contact Us",
+  "contact_subtitle": "We respond within 24 hours",
+  "contact_form_name": "Your name",
+  "contact_form_email": "Email address",
+  "contact_form_phone": "Phone (optional)",
+  "contact_form_message": "Message",
+  "contact_form_submit": "Send message",
+  "contact_form_success": "Thank you! We'll get back to you within 24 hours.",
+  "contact_response_time": "We respond within 24 hours",
+  "contact_methods_title": "Or reach us directly",
+
+  "selling_emotions_title": "Selling Emotions",
+  "selling_emotions_placeholder": "This section is being prepared.",
+  "selling_emotions_contact_cta": "Contact us",
+
+  "type_studio": "Studio",
+  "type_1bedroom": "1-bedroom apartment",
+  "type_2bedroom": "2-bedroom apartment",
+
+  "btn_book": "Book now",
+  "btn_contact": "Get in touch",
+  "btn_view_more": "View more →",
+  "btn_back": "Back",
+  "btn_all_services": "All services",
+  "btn_contact_us": "Contact us",
+
+  "promo_banner_text": "🎉 10% discount when booking directly through our website",
+  "promo_banner_cta": "Book now",
+  "promo_banner_dismiss": "Close banner",
+
+  "filter_label": "Filter",
+  "filter_complex_label": "Complex",
+  "filter_all_complexes": "All complexes",
+  "filter_guests_label": "Guests",
+  "filter_all_guests": "Any number",
+  "filter_guests_up_to_2": "Up to 2 guests",
+  "filter_guests_3_4": "3–4 guests",
+  "filter_guests_5_plus": "5+ guests",
+  "filter_type_label": "Property type",
+  "filter_all_types": "All types",
+  "filter_reset": "Clear",
+  "filter_no_results": "No properties match your criteria. Contact us directly.",
+  "filter_results_shown": "properties"
+}

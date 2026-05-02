@@ -1,0 +1,20 @@
+{# Service card include
+   Variables: service (object), prefix (lang prefix), t (i18n), showDesc (bool) #}
+
+{% set icons = {
+  "property-manager": "🏢",
+  "transfers": "🚗",
+  "ski": "⛷",
+  "team-building": "👥",
+  "safari": "🔭",
+  "hiking": "🥾"
+} %}
+
+<a href="{{ prefix }}/services/{{ service.id }}/" class="service-card">
+  <span class="service-icon" aria-hidden="true">{{ icons[service.id] or "✦" }}</span>
+  <h3>{{ service.name }}</h3>
+  {% if showDesc and service.desc_bg %}
+    <p class="service-desc">{{ service.desc_en if lang == "en" else service.desc_bg }}</p>
+  {% endif %}
+  <span class="service-link-arrow" aria-hidden="true">→</span>
+</a>

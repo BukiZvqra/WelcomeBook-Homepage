@@ -1,0 +1,113 @@
+---
+layout: base.njk
+title: Тимбилдинг — TES Borovets
+---
+{% set lang = lang or "bg" %}
+{% set t = i18n[lang] %}
+{% set prefix = "" if lang == "bg" else "/en" %}
+{% set serviceId = "team-building" %}
+{% set currentService = client.services | selectattr("id", "equalto", serviceId) | first %}
+
+<!-- Breadcrumb -->
+<nav class="breadcrumb" aria-label="breadcrumb">
+  <div class="container">
+    <ol class="breadcrumb-list">
+      <li><a href="{{ prefix }}/">{{ t.breadcrumb_home }}</a></li>
+      <li>
+        <span class="bc-sep" aria-hidden="true">›</span>
+        <a href="{{ prefix }}/services/">{{ t.breadcrumb_services }}</a>
+      </li>
+      <li>
+        <span class="bc-sep" aria-hidden="true">›</span>
+        <span class="bc-current">{{ currentService.name }}</span>
+      </li>
+    </ol>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero hero-sm" style="background: linear-gradient(135deg, #2d6a4f 0%, #1b4332 100%);">
+  <div class="container hero-content">
+    <span class="eyebrow" style="color: var(--color-accent-300);">{{ t.breadcrumb_services }}</span>
+    <div style="font-size: 3rem; margin-bottom: var(--space-3);" aria-hidden="true">👥</div>
+    <h1>{{ currentService.name }}</h1>
+  </div>
+</section>
+
+<!-- Content -->
+<section>
+  <div class="container">
+    <div style="max-width: var(--container-md);">
+      {% if lang == "bg" %}
+        <p class="lead">Организация на корпоративни тимбилдинг програми в планинска среда — мащабни групи, всички сезони, цялостно обслужване.</p>
+        <div class="process-steps" style="margin-top: var(--space-7);">
+          <div class="process-step">
+            <div class="process-step-content">
+              <h4>Планиране на програмата</h4>
+              <p>Уточняваме цели, брой участници, дати и бюджет. Предлагаме подходящ формат — ски, хайкинг, сафари или смесена програма.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="process-step-content">
+              <h4>Настаняване и логистика</h4>
+              <p>Осигуряваме настаняване в наши апартаменти или партньорски хотели. Организираме трансфери от цялата страна.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="process-step-content">
+              <h4>Активности и координация</h4>
+              <p>Водачи, инструктори, оборудване — всичко на място. Координираме целия престой от начало до край.</p>
+            </div>
+          </div>
+        </div>
+      {% else %}
+        <p class="lead">Corporate team-building programs in mountain settings — large groups, all seasons, full-service organization.</p>
+        <div class="process-steps" style="margin-top: var(--space-7);">
+          <div class="process-step">
+            <div class="process-step-content">
+              <h4>Program Planning</h4>
+              <p>We clarify goals, group size, dates and budget. We suggest the right format — ski, hiking, safari or a mixed program.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="process-step-content">
+              <h4>Accommodation & Logistics</h4>
+              <p>We arrange stays in our apartments or partner hotels. We organize transfers from across the country.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="process-step-content">
+              <h4>Activities & Coordination</h4>
+              <p>Guides, instructors, equipment — all on-site. We coordinate the entire stay from start to finish.</p>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
+      <p style="margin-top: var(--space-6); color: var(--color-neutral-500); font-size: var(--text-sm);">{{ t.service_pricing_note }}</p>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="section-alt">
+  <div class="container">
+    <h2>{{ t.contact_methods_title }}</h2>
+    {% include "contact-methods.njk" %}
+  </div>
+</section>
+
+<!-- Related Services -->
+<section>
+  <div class="container">
+    <h2>{{ t.service_related_label }}</h2>
+    <div class="services-grid" style="margin-top: var(--space-6);">
+      {% set showDesc = false %}
+      {% for service in client.services %}
+        {% if service.id != serviceId %}
+          {% include "service-card.njk" %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
