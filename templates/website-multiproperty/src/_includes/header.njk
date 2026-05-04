@@ -15,6 +15,7 @@
     <!-- Desktop navigation -->
     <nav class="main-nav" aria-label="{{ 'Main navigation' if lang == 'en' else 'Главна навигация' }}">
       <a href="{{ prefix }}/apartments/"{% if page.url.indexOf('/apartments') > -1 or page.url.indexOf('/complex') > -1 or page.url.indexOf('/property') > -1 %} aria-current="page"{% endif %}>{{ t.nav_apartments }}</a>
+      <a href="{{ prefix }}/property-management/"{% if page.url.indexOf('/property-management') > -1 %} aria-current="page"{% endif %}>{{ t.nav_property_management }}</a>
       <a href="{{ prefix }}/services/"{% if page.url.indexOf('/services') > -1 %} aria-current="page"{% endif %}>{{ t.nav_services }}</a>
       <a href="{{ prefix }}/about-borovets/"{% if page.url.indexOf('/about-borovets') > -1 %} aria-current="page"{% endif %}>{{ t.nav_about }}</a>
       <a href="{{ prefix }}/contact/"{% if page.url.indexOf('/contact') > -1 %} aria-current="page"{% endif %}>{{ t.nav_contact }}</a>

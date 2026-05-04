@@ -26,66 +26,381 @@ title: Пешеходни турове — TES Borovets
 </nav>
 
 <!-- Hero -->
-<section class="hero hero-sm" style="background: linear-gradient(135deg, #3a5a40 0%, #1b3a20 100%);">
-  <div class="container hero-content">
-    <span class="eyebrow" style="color: var(--color-accent-300);">{{ t.breadcrumb_services }}</span>
-    <div style="font-size: 3rem; margin-bottom: var(--space-3);" aria-hidden="true">🥾</div>
+<section class="service-hero">
+  {% if currentService.hero_image %}
+  {% set heroUrl %}{% img currentService.hero_image, "hero" %}{% endset %}
+  <img src="{{ heroUrl }}" alt="" class="service-hero-img" loading="eager" fetchpriority="high" decoding="async">
+  {% endif %}
+  <div class="service-hero-overlay"></div>
+  <div class="container service-hero-content">
+    <span class="kicker" style="color: var(--color-accent-200);">{{ t.breadcrumb_services }}</span>
     <h1>{{ currentService.name }}</h1>
+    {% if lang == "bg" %}
+      <p class="lead" style="color: rgba(255,255,255,0.85);">ТУР Експрес Сервиз Ви предлага пешеходни турове и невероятни преживявания</p>
+    {% else %}
+      <p class="lead" style="color: rgba(255,255,255,0.85);">TUR Express Service offers guided hiking tours and extraordinary experiences</p>
+    {% endif %}
   </div>
 </section>
 
-<!-- Content -->
+<!-- Tours accordion -->
 <section>
   <div class="container">
-    <div style="max-width: var(--container-md);">
+    <div class="accordion" id="hiking-accordion">
+
       {% if lang == "bg" %}
-        <p class="lead">Водени пешеходни маршрути с местни водачи — Мусала (2925м), Мальовица, Черни връх, по-кратки family-friendly trails.</p>
-        <div class="process-steps" style="margin-top: var(--space-7);">
-          <div class="process-step">
-            <div class="process-step-content">
-              <h4>Избор на маршрут</h4>
-              <p>Подбираме маршрут според физическата подготовка и предпочитания — от лесни горски пътеки до Мусала.</p>
-            </div>
-          </div>
-          <div class="process-step">
-            <div class="process-step-content">
-              <h4>Тръгване с водач</h4>
-              <p>Местен водач познава маршрутите, историята и природата. Осигуряваме оборудване при нужда.</p>
-            </div>
-          </div>
-          <div class="process-step">
-            <div class="process-step-content">
-              <h4>Незабравими гледки</h4>
-              <p>Мусала е най-високия връх на Балканския полуостров. Гледките са неповторими в ясен ден.</p>
-            </div>
+
+        <div class="accordion-item open">
+          <button class="accordion-header" aria-expanded="true">
+            <span class="accordion-num">01</span>
+            <span class="accordion-title">Боровец – "Черната Скала"</span>
+            <span class="accordion-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="accordion-body">
+            <ul class="tour-details-list">
+              <li>Планински водач, група минимум 4 души</li>
+              <li>Сух пакет храна за обяд</li>
+              <li>Тръгване от Боровец в 9.00ч, след закуска</li>
+              <li>Продължителност: 5 часа</li>
+              <li>Забележка: Спортна екипировка</li>
+              <li>Цена на човек по договаряне</li>
+              <li>Деца от 0 до 6 год. безплатно</li>
+            </ul>
           </div>
         </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header" aria-expanded="false">
+            <span class="accordion-num">02</span>
+            <span class="accordion-title">Боровец – Връх "Ястребец" (2369м.)</span>
+            <span class="accordion-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="accordion-body">
+            <ul class="tour-details-list">
+              <li>Планински водач, група минимум 4 души</li>
+              <li>Сух пакет храна за обяд</li>
+              <li>Тръгване от Боровец в 8:45 ч. след закуска</li>
+              <li>Продължителност: 5 часа</li>
+              <li>Забележка: Спортна екипировка</li>
+              <li>Цена на човек по договаряне</li>
+              <li>Деца от 0 до 6 год. безплатно</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header" aria-expanded="false">
+            <span class="accordion-num">03</span>
+            <span class="accordion-title">Боровец – Връх "Мусала" (2925м.)</span>
+            <span class="accordion-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="accordion-body">
+            <ul class="tour-details-list">
+              <li>Планински водач, група минимум 4 души</li>
+              <li>Сух пакет храна за обяд</li>
+              <li>Тръгване от Боровец в 8:45 ч. след закуска</li>
+              <li>Продължителност: 6 часа</li>
+              <li>Забележка: Спортна екипировка</li>
+              <li>Цена на човек по договаряне</li>
+              <li>Деца от 0 до 6 год. безплатно</li>
+              <li>Не включва цена за Билет за кабинкова Въжена Линия</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header" aria-expanded="false">
+            <span class="accordion-num">04</span>
+            <span class="accordion-title">Боровец – х. "Чакър Войвода" – л.х. Саръгьол</span>
+            <span class="accordion-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="accordion-body">
+            <ul class="tour-details-list">
+              <li>Планински водач, група минимум 4 души</li>
+              <li>Тръгване от Боровец в 8:45 ч. след закуска</li>
+              <li>Сух пакет храна за обяд</li>
+              <li>Продължителност: 6 часа</li>
+              <li>Забележка: Спортна екипировка</li>
+              <li>Цена на човек по договаряне</li>
+              <li>Деца от 0 до 6 год. безплатно</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header" aria-expanded="false">
+            <span class="accordion-num">05</span>
+            <span class="accordion-title">Фотосафари с дивечово меню</span>
+            <span class="accordion-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="accordion-body">
+            <ul class="tour-details-list">
+              <li>Група минимум 6 души</li>
+              <li>2 часа разходка с джип</li>
+              <li>Дивечова вечеря или обяд, по избор</li>
+              <li>Транспорт: Боровец – Резерват "Искър" – Боровец</li>
+              <li>Тръгване от Боровец в 9:00 часа след закуска при дневно мероприятие, обяд в 12:30ч.</li>
+              <li>В 18:00 часа при вечерно мероприятие, вечеря в 21:00 ч.</li>
+              <li>Продължителност: 5 часа</li>
+              <li>Забележка: Собствен фотоапарат</li>
+              <li>Цена на човек по договаряне</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header" aria-expanded="false">
+            <span class="accordion-num">06</span>
+            <span class="accordion-title">Риболов в резерват "ИСКЪР"</span>
+            <span class="accordion-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="accordion-body">
+            <ul class="tour-details-list">
+              <li>Място на вътрешен микроязовир</li>
+              <li>Сух пакет храна за обяд</li>
+              <li>Транспорт: Боровец – Резерват "Искър" – Боровец</li>
+              <li>Тръгване от Боровец в 9:00 ч.</li>
+              <li>Тръгване от Резерват "ИСКЪР" в 19:00 ч.</li>
+              <li>Продължителност: 10 часа</li>
+              <li>Забележка: Собствена екипировка и въдица</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header" aria-expanded="false">
+            <span class="accordion-num">07</span>
+            <span class="accordion-title">Пикник Бели Искър (Орлови Скали)</span>
+            <span class="accordion-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="accordion-body">
+            <ul class="tour-details-list">
+              <li>Група минимум 6 души</li>
+              <li>Професионален водач</li>
+              <li>Транспорт: Боровец – Бели Искър – Боровец</li>
+              <li>Тръгване от Боровец в 10:00 часа, след закуска</li>
+              <li>Продължителност: 6 часа</li>
+              <li>Цена на човек по договаряне</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header" aria-expanded="false">
+            <span class="accordion-num">08</span>
+            <span class="accordion-title">Конна Езда</span>
+            <span class="accordion-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="accordion-body">
+            <ul class="tour-details-list">
+              <li>Професионален водач, група минимум 4 души</li>
+              <li>Езда на кон в Боровец</li>
+              <li>Разходка на кон из Боровец</li>
+              <li>Тръгване от Боровец в 9:00 ч.</li>
+              <li>Продължителност: 1 час</li>
+              <li>Цена на човек по договаряне (всеки следващ час се заплаща допълнително)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header" aria-expanded="false">
+            <span class="accordion-num">09</span>
+            <span class="accordion-title">Боровец – дворец "Бистрица"</span>
+            <span class="accordion-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="accordion-body">
+            <ul class="tour-details-list">
+              <li>Тръгване от Боровец 9:00 ч. след закуска</li>
+              <li>След около 20 минути се стига до входната врата на зимния дворец на Цар Фердинанд, построен в края на по миналия век</li>
+              <li>Поддържан горски парк, алпийският стил на дворцовата постройка</li>
+              <li>Уникална възможност да разгледате картинна колекция с висока художествена стойност</li>
+              <li>Продължителност: 2 часа</li>
+              <li>Минимум група: 4 души</li>
+              <li>Цена по договаряне</li>
+            </ul>
+          </div>
+        </div>
+
       {% else %}
-        <p class="lead">Guided walking routes with local guides — Musala (2925m), Malyovitsa, Cherni Vrah, shorter family-friendly trails.</p>
-        <div class="process-steps" style="margin-top: var(--space-7);">
-          <div class="process-step">
-            <div class="process-step-content">
-              <h4>Choose Your Route</h4>
-              <p>We match the route to your fitness level and preferences — from easy forest paths to the Musala summit.</p>
-            </div>
-          </div>
-          <div class="process-step">
-            <div class="process-step-content">
-              <h4>Set Off with a Guide</h4>
-              <p>A local guide who knows the trails, history, and nature. Equipment provided if needed.</p>
-            </div>
-          </div>
-          <div class="process-step">
-            <div class="process-step-content">
-              <h4>Unforgettable Views</h4>
-              <p>Musala is the highest peak on the Balkan Peninsula. The views on a clear day are extraordinary.</p>
-            </div>
+
+        <div class="accordion-item open">
+          <button class="accordion-header" aria-expanded="true">
+            <span class="accordion-num">01</span>
+            <span class="accordion-title">Borovets – "The Black Rock"</span>
+            <span class="accordion-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="accordion-body">
+            <ul class="tour-details-list">
+              <li>Mountain guide, minimum group of 4</li>
+              <li>Packed lunch included</li>
+              <li>Departure from Borovets at 9:00 am, after breakfast</li>
+              <li>Duration: 5 hours</li>
+              <li>Note: Sports equipment required</li>
+              <li>Price per person by arrangement</li>
+              <li>Children aged 0–6 free of charge</li>
+            </ul>
           </div>
         </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header" aria-expanded="false">
+            <span class="accordion-num">02</span>
+            <span class="accordion-title">Borovets – Peak "Yastrebet" (2,369m)</span>
+            <span class="accordion-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="accordion-body">
+            <ul class="tour-details-list">
+              <li>Mountain guide, minimum group of 4</li>
+              <li>Packed lunch included</li>
+              <li>Departure from Borovets at 8:45 am, after breakfast</li>
+              <li>Duration: 5 hours</li>
+              <li>Note: Sports equipment required</li>
+              <li>Price per person by arrangement</li>
+              <li>Children aged 0–6 free of charge</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header" aria-expanded="false">
+            <span class="accordion-num">03</span>
+            <span class="accordion-title">Borovets – Peak "Musala" (2,925m)</span>
+            <span class="accordion-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="accordion-body">
+            <ul class="tour-details-list">
+              <li>Mountain guide, minimum group of 4</li>
+              <li>Packed lunch included</li>
+              <li>Departure from Borovets at 8:45 am, after breakfast</li>
+              <li>Duration: 6 hours</li>
+              <li>Note: Sports equipment required</li>
+              <li>Price per person by arrangement</li>
+              <li>Children aged 0–6 free of charge</li>
+              <li>Cable car ticket not included</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header" aria-expanded="false">
+            <span class="accordion-num">04</span>
+            <span class="accordion-title">Borovets – Hut "Chakar Voivoda" – Hut Sarygyol</span>
+            <span class="accordion-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="accordion-body">
+            <ul class="tour-details-list">
+              <li>Mountain guide, minimum group of 4</li>
+              <li>Departure from Borovets at 8:45 am, after breakfast</li>
+              <li>Packed lunch included</li>
+              <li>Duration: 6 hours</li>
+              <li>Note: Sports equipment required</li>
+              <li>Price per person by arrangement</li>
+              <li>Children aged 0–6 free of charge</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header" aria-expanded="false">
+            <span class="accordion-num">05</span>
+            <span class="accordion-title">Photo Safari with Game Dinner</span>
+            <span class="accordion-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="accordion-body">
+            <ul class="tour-details-list">
+              <li>Minimum group of 6</li>
+              <li>2-hour jeep ride</li>
+              <li>Game dinner or lunch, your choice</li>
+              <li>Transport: Borovets – Iskar Reserve – Borovets</li>
+              <li>Departure at 9:00 am for a daytime event, lunch at 12:30 pm</li>
+              <li>Departure at 18:00 for an evening event, dinner at 21:00</li>
+              <li>Duration: 5 hours</li>
+              <li>Note: Own camera required</li>
+              <li>Price per person by arrangement</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header" aria-expanded="false">
+            <span class="accordion-num">06</span>
+            <span class="accordion-title">Fishing at Iskar Reserve</span>
+            <span class="accordion-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="accordion-body">
+            <ul class="tour-details-list">
+              <li>Location: private reservoir</li>
+              <li>Packed lunch included</li>
+              <li>Transport: Borovets – Iskar Reserve – Borovets</li>
+              <li>Departure from Borovets at 9:00 am</li>
+              <li>Return from Iskar Reserve at 19:00</li>
+              <li>Duration: 10 hours</li>
+              <li>Note: Own equipment and fishing rod required</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header" aria-expanded="false">
+            <span class="accordion-num">07</span>
+            <span class="accordion-title">Picnic at Beli Iskar (Eagle Rocks)</span>
+            <span class="accordion-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="accordion-body">
+            <ul class="tour-details-list">
+              <li>Minimum group of 6</li>
+              <li>Professional guide</li>
+              <li>Transport: Borovets – Beli Iskar – Borovets</li>
+              <li>Departure from Borovets at 10:00 am, after breakfast</li>
+              <li>Duration: 6 hours</li>
+              <li>Price per person by arrangement</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header" aria-expanded="false">
+            <span class="accordion-num">08</span>
+            <span class="accordion-title">Horse Riding</span>
+            <span class="accordion-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="accordion-body">
+            <ul class="tour-details-list">
+              <li>Professional guide, minimum group of 4</li>
+              <li>Horse riding in Borovets</li>
+              <li>Guided ride through the resort</li>
+              <li>Departure from Borovets at 9:00 am</li>
+              <li>Duration: 1 hour</li>
+              <li>Price per person by arrangement (each additional hour charged separately)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header" aria-expanded="false">
+            <span class="accordion-num">09</span>
+            <span class="accordion-title">Borovets – Bistritsa Palace</span>
+            <span class="accordion-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="accordion-body">
+            <ul class="tour-details-list">
+              <li>Departure from Borovets at 9:00 am, after breakfast</li>
+              <li>Approximately 20 minutes to the entrance of Tsar Ferdinand's winter palace, built in the late 19th century</li>
+              <li>A maintained forest park and the alpine-style palace building</li>
+              <li>A unique opportunity to view a painting collection of significant artistic value</li>
+              <li>Duration: 2 hours</li>
+              <li>Minimum group: 4 persons</li>
+              <li>Price by arrangement</li>
+            </ul>
+          </div>
+        </div>
+
       {% endif %}
 
-      <p style="margin-top: var(--space-6); color: var(--color-neutral-500); font-size: var(--text-sm);">{{ t.service_pricing_note }}</p>
     </div>
+
+    <p style="margin-top: var(--space-8); color: var(--color-neutral-500); font-size: var(--text-sm);">{{ t.service_pricing_note }}</p>
   </div>
 </section>
 
@@ -111,3 +426,34 @@ title: Пешеходни турове — TES Borovets
     </div>
   </div>
 </section>
+
+<script>
+(function () {
+  var items = document.querySelectorAll('#hiking-accordion .accordion-item');
+  items.forEach(function (item) {
+    var btn = item.querySelector('.accordion-header');
+    var body = item.querySelector('.accordion-body');
+    if (!btn || !body) return;
+    if (item.classList.contains('open')) {
+      body.style.maxHeight = body.scrollHeight + 'px';
+    }
+    btn.addEventListener('click', function () {
+      var isOpen = item.classList.contains('open');
+      items.forEach(function (other) {
+        other.classList.remove('open');
+        other.querySelector('.accordion-header').setAttribute('aria-expanded', 'false');
+        other.querySelector('.accordion-body').style.maxHeight = '0';
+        var icon = other.querySelector('.accordion-icon');
+        if (icon) icon.textContent = '+';
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        body.style.maxHeight = body.scrollHeight + 'px';
+        var icon = btn.querySelector('.accordion-icon');
+        if (icon) icon.textContent = '×';
+      }
+    });
+  });
+})();
+</script>

@@ -1,0 +1,146 @@
+---
+layout: base.njk
+title: Управление на имоти — TES Borovets
+---
+{% set lang = lang or "bg" %}
+{% set t = i18n[lang] %}
+{% set prefix = "" if lang == "bg" else "/en" %}
+
+<!-- Breadcrumb -->
+<nav class="breadcrumb" aria-label="breadcrumb">
+  <div class="container">
+    <ol class="breadcrumb-list">
+      <li><a href="{{ prefix }}/">{{ t.breadcrumb_home }}</a></li>
+      <li>
+        <span class="bc-sep" aria-hidden="true">›</span>
+        <span class="bc-current">{{ t.nav_property_management }}</span>
+      </li>
+    </ol>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="service-hero">
+  {% set pmHeroUrl %}{% imgabs "borovets/e50ab250f2c0ad788054238682d9aa93dc8ab9d3.jpeg", "banner" %}{% endset %}
+  <img src="{{ pmHeroUrl }}" alt="" class="service-hero-img" loading="eager" fetchpriority="high" decoding="async">
+  <div class="service-hero-overlay"></div>
+  <div class="container service-hero-content">
+    <span class="kicker" style="color: var(--color-accent-200);">TES Borovets</span>
+    {% if lang == "bg" %}
+      <h1>Управление на имоти</h1>
+      <p class="lead" style="color: rgba(255,255,255,0.85);">Пълна услуга за управление на вашия ваканционен или инвестиционен имот в Боровец</p>
+    {% else %}
+      <h1>Property Management</h1>
+      <p class="lead" style="color: rgba(255,255,255,0.85);">Full-service management for your holiday or investment property in Borovets</p>
+    {% endif %}
+  </div>
+</section>
+
+<!-- Main content -->
+<section>
+  <div class="container">
+    <div class="pm-content-grid">
+
+      <div class="pm-body">
+        {% if lang == "bg" %}
+          <p class="lead">"ТУР ЕКСПРЕС СЕРВИС" ООД, предоставя на всички свои клиенти пълна услуга за Управление на имоти.</p>
+
+          <p>Тези услуги са създадени за да задоволят напълно нуждите на всички собственици на ваканционни и инвестиционни имоти в България.</p>
+
+          <ul class="pm-services-list">
+            <li>Продажба на имоти</li>
+            <li>Консултантски услуги</li>
+            <li>Разработване на Бизнес планове и стратегии</li>
+            <li>Разработване на Маркетингови проучвания</li>
+            <li>Представлява собственика пред всички лица, държавни и общински служби и власти, като от негово име извършва всички необходими дейности и при необходимост категоризира обекта, съгласно процедурите и разпоредбите на Закона за туризма в Република България</li>
+            <li>Поддържа кореспонденция от името на собственика, свързана с управлението на имота; представлява собственика при сключване на договори за предоставяне ползването на обекта, предоставя ползването на обекта</li>
+            <li>Представлява собственика при сключване на договори с туроператори за отдаване под наем</li>
+            <li>Извършва необходимия маркетинг с цел достигане на максимална възвръщаемост на инвестицията</li>
+            <li>Разработва рекламна стратегия за обекта, включвайки обекта в различни печатни издания, радио, интернет и др. рекламни кампании</li>
+            <li>Разработва летни и зимни програми, както и пакетни цени с цел повишаване приходите от имота</li>
+            <li>"Тур-Експрес-Сервис" ООД работи с модулни конструкции за обзавеждане, разделени на три пакета — Стандарт, Премиум и Делукс. Привилегията за клиентите е че при веднъж избран пакет се дава възможност сами да определят оборудването и уредите в съответствие с интериора.</li>
+          </ul>
+
+          <p>Ние прилагаме нашите умения и опит в разрешаването на проблеми, типично възникващи при отдаването под наем на имоти за да осигурим както на собственика така и на наемателя пълно удовлетворение. Правейки наемателите щастливи е ключът за максимизиране на възвръщаемостта от инвестицията на клиентите ни.</p>
+        {% else %}
+          <p class="lead">"TUR EXPRESS SERVICE" Ltd. provides all its clients with a comprehensive Property Management service.</p>
+
+          <p>These services are designed to fully meet the needs of all owners of holiday and investment properties in Bulgaria.</p>
+
+          <ul class="pm-services-list">
+            <li>Property sales</li>
+            <li>Consultancy services</li>
+            <li>Development of business plans and strategies</li>
+            <li>Development of market research</li>
+            <li>Representing the owner before all persons, state and municipal bodies and authorities, carrying out all necessary activities on their behalf and, where necessary, categorising the property in accordance with the procedures and provisions of the Tourism Act of the Republic of Bulgaria</li>
+            <li>Maintaining correspondence on behalf of the owner in connection with the management of the property; representing the owner in concluding agreements for the use of the property</li>
+            <li>Representing the owner in concluding rental agreements with tour operators</li>
+            <li>Carrying out the necessary marketing to achieve maximum return on investment</li>
+            <li>Developing an advertising strategy for the property, including it in various print publications, radio, internet and other advertising campaigns</li>
+            <li>Developing summer and winter programmes, as well as package prices to increase revenue from the property</li>
+            <li>"Tur-Express-Service" Ltd. works with modular furniture systems divided into three packages — Standard, Premium and Deluxe. The privilege for clients is that once a package is selected, they are able to determine the equipment and appliances themselves in accordance with the interior.</li>
+          </ul>
+
+          <p>We apply our skills and experience in resolving problems typically arising in property rental to ensure complete satisfaction for both the owner and the tenant. Making tenants happy is the key to maximising our clients' return on investment.</p>
+        {% endif %}
+      </div>
+
+      <!-- Key services sidebar -->
+      <aside class="pm-sidebar">
+        {% if lang == "bg" %}
+          <div class="pm-key-service">
+            <span class="material-symbols-outlined pm-key-icon" aria-hidden="true">campaign</span>
+            <h4>Маркетинг</h4>
+            <p>Включване в рекламни кампании, интернет, печатни издания и партньорства с туроператори.</p>
+          </div>
+          <div class="pm-key-service">
+            <span class="material-symbols-outlined pm-key-icon" aria-hidden="true">chair</span>
+            <h4>Обзавеждане</h4>
+            <p>Три пакета модулно обзавеждане — Стандарт, Премиум и Делукс — по избор на клиента.</p>
+          </div>
+          <div class="pm-key-service">
+            <span class="material-symbols-outlined pm-key-icon" aria-hidden="true">gavel</span>
+            <h4>Юридически</h4>
+            <p>Представителство пред власти, категоризация, договори с наематели и туроператори.</p>
+          </div>
+        {% else %}
+          <div class="pm-key-service">
+            <span class="material-symbols-outlined pm-key-icon" aria-hidden="true">campaign</span>
+            <h4>Marketing</h4>
+            <p>Inclusion in advertising campaigns, internet, print publications and tour operator partnerships.</p>
+          </div>
+          <div class="pm-key-service">
+            <span class="material-symbols-outlined pm-key-icon" aria-hidden="true">chair</span>
+            <h4>Furnishing</h4>
+            <p>Three modular furniture packages — Standard, Premium and Deluxe — client's choice.</p>
+          </div>
+          <div class="pm-key-service">
+            <span class="material-symbols-outlined pm-key-icon" aria-hidden="true">gavel</span>
+            <h4>Legal</h4>
+            <p>Representation before authorities, property categorisation, contracts with tenants and tour operators.</p>
+          </div>
+        {% endif %}
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section-alt">
+  <div class="container" style="text-align: center;">
+    {% if lang == "bg" %}
+      <h2>Изпратете запитване</h2>
+      <p class="lead" style="margin-top: var(--space-4); max-width: 52ch; margin-left: auto; margin-right: auto;">Свържете се с нас за безплатна консултация относно управлението на вашия имот в Боровец.</p>
+    {% else %}
+      <h2>Send an enquiry</h2>
+      <p class="lead" style="margin-top: var(--space-4); max-width: 52ch; margin-left: auto; margin-right: auto;">Contact us for a free consultation about managing your property in Borovets.</p>
+    {% endif %}
+    <div style="display: flex; flex-wrap: wrap; gap: var(--space-4); justify-content: center; margin-top: var(--space-8);">
+      <a href="{{ prefix }}/contact/" class="btn btn-primary">
+        {{ "ИЗПРАТИ ЗАПИТВАНЕ" if lang == "bg" else "SEND ENQUIRY" }}
+      </a>
+      <a href="tel:+359888909237" class="btn btn-outline">{{ client.contact_phone_en }}</a>
+    </div>
+  </div>
+</section>

@@ -19,98 +19,171 @@ title: Контакти — TES Borovets
   </div>
 </nav>
 
-<!-- Page Header -->
-<section class="page-intro">
+<!-- Premium 2-column contact layout -->
+<section class="contact-premium-section">
   <div class="container">
-    <h1>{{ t.contact_title }}</h1>
-    <p class="lead">{{ t.contact_subtitle }}</p>
-  </div>
-</section>
+    <div class="contact-premium-grid">
 
-<!-- Contact Methods -->
-<section>
-  <div class="container">
-    <h2>{{ t.contact_methods_title }}</h2>
-    <div style="margin-top: var(--space-5);">
-      {% include "contact-methods.njk" %}
-    </div>
-    <p style="margin-top: var(--space-4); font-size: var(--text-sm); color: var(--color-neutral-500);">{{ t.contact_response_time }}</p>
-  </div>
-</section>
+      <!-- Left: contact details -->
+      <div class="contact-info-col">
+        <span class="kicker">{{ "КОНТАКТИ" if lang == "bg" else "CONTACT" }}</span>
+        <h1 class="contact-info-company">
+          {% if lang == "bg" %}
+            ТУР ЕКСПРЕС СЕРВИЗ ООД
+          {% else %}
+            TUR EXPRESS SERVICE Ltd.
+          {% endif %}
+        </h1>
+        <p class="contact-info-desc">
+          {% if lang == "bg" %}
+            Туристически услуги и управление на имоти
+          {% else %}
+            Tourist services and property management
+          {% endif %}
+        </p>
+        <p class="contact-info-license">
+          {% if lang == "bg" %}
+            Лицензиран Туроператор РК-01-6606
+          {% else %}
+            Licensed Tour Operator RK-01-6606
+          {% endif %}
+        </p>
 
-<!-- Contact Form -->
-<section class="section-alt">
-  <div class="container">
-    <div style="max-width: var(--container-sm);">
-      <h2>{{ t.contact_form_name | replace(t.contact_form_name, (t.contact_title if lang == "en" else "Форма за контакт")) }}</h2>
-
-      <form name="contact"
-            method="POST"
-            data-netlify="true"
-            style="margin-top: var(--space-6);">
-
-        <input type="hidden" name="form-name" value="contact">
-
-        <!-- Honeypot -->
-        <div class="form-honey">
-          <label>Don't fill this in: <input name="bot-field"></label>
+        <div class="contact-info-block">
+          <span class="kicker">{{ "ТЕЛЕФОНИ" if lang == "bg" else "PHONES" }}</span>
+          <a href="tel:+359887887810" class="contact-info-phone">
+            +359 887 887 810
+            <span class="contact-info-lang">RU</span>
+          </a>
+          <a href="tel:+359888909237" class="contact-info-phone">
+            +359 888 909 237
+            <span class="contact-info-lang">BG / EN</span>
+          </a>
+          <span class="contact-info-fax">
+            {% if lang == "bg" %}
+              Тел./Факс: +359 7503 2015
+            {% else %}
+              Tel./Fax: +359 7503 2015
+            {% endif %}
+          </span>
         </div>
 
-        <!-- Name -->
-        <div class="form-group">
-          <label for="contact-name">
-            {{ t.contact_form_name }}
-            <span class="form-required" aria-label="required">*</span>
-          </label>
-          <input type="text"
-                 id="contact-name"
-                 name="name"
-                 autocomplete="name"
-                 required>
+        <div class="contact-info-block">
+          <span class="kicker">{{ "ИМЕЙЛ" if lang == "bg" else "EMAIL" }}</span>
+          <a href="mailto:tour_express_service@abv.bg" class="contact-info-email">tour_express_service@abv.bg</a>
+          <a href="mailto:reservations_tes@abv.bg" class="contact-info-email">reservations_tes@abv.bg</a>
         </div>
 
-        <!-- Email -->
-        <div class="form-group">
-          <label for="contact-email">
-            {{ t.contact_form_email }}
-            <span class="form-required" aria-label="required">*</span>
-          </label>
-          <input type="email"
-                 id="contact-email"
-                 name="email"
-                 autocomplete="email"
-                 required>
+        <div class="contact-info-block">
+          <span class="kicker">{{ "ДИРЕКТЕН КОНТАКТ" if lang == "bg" else "DIRECT CONTACT" }}</span>
+          <a href="viber://chat?number=+359888909237" class="contact-channel-link">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 015.5 13a19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+            </svg>
+            Viber: +359 888 909 237
+          </a>
+          <a href="https://wa.me/359888909237" class="contact-channel-link" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/>
+            </svg>
+            WhatsApp: +359 888 909 237
+          </a>
         </div>
+      </div>
 
-        <!-- Phone (optional) -->
-        <div class="form-group">
-          <label for="contact-phone">{{ t.contact_form_phone }}</label>
-          <input type="tel"
-                 id="contact-phone"
-                 name="phone"
-                 autocomplete="tel">
-        </div>
+      <!-- Right: inquiry form -->
+      <div class="contact-form-col">
+        <span class="kicker">{{ "ИЗПРАТЕТЕ ЗАПИТВАНЕ" if lang == "bg" else "SEND AN ENQUIRY" }}</span>
 
-        <!-- Message -->
-        <div class="form-group">
-          <label for="contact-message">
-            {{ t.contact_form_message }}
-            <span class="form-required" aria-label="required">*</span>
-          </label>
-          <textarea id="contact-message"
-                    name="message"
-                    rows="5"
-                    required></textarea>
-        </div>
+        <form name="contact"
+              method="POST"
+              data-netlify="true"
+              class="contact-premium-form">
 
-        <div class="form-submit">
-          <button type="submit" class="btn btn-primary">{{ t.contact_form_submit }}</button>
-        </div>
+          <input type="hidden" name="form-name" value="contact">
+          <div class="form-honey">
+            <label>Don't fill this in: <input name="bot-field"></label>
+          </div>
 
-      </form>
+          <div class="form-row-2">
+            <!-- Name -->
+            <div class="form-field">
+              <label class="form-label-kicker" for="pf-name">
+                {{ t.contact_form_name }}
+                <span class="form-required" aria-label="required">*</span>
+              </label>
+              <input type="text" id="pf-name" name="name" autocomplete="name" required class="form-input-line">
+            </div>
 
-      <!-- Success message (shown by Netlify redirect or JS) -->
-      <div class="form-success" role="alert">{{ t.contact_form_success }}</div>
+            <!-- Email -->
+            <div class="form-field">
+              <label class="form-label-kicker" for="pf-email">
+                {{ t.contact_form_email }}
+                <span class="form-required" aria-label="required">*</span>
+              </label>
+              <input type="email" id="pf-email" name="email" autocomplete="email" required class="form-input-line">
+            </div>
+          </div>
+
+          <div class="form-row-2">
+            <!-- Phone -->
+            <div class="form-field">
+              <label class="form-label-kicker" for="pf-phone">{{ t.contact_form_phone }}</label>
+              <input type="tel" id="pf-phone" name="phone" autocomplete="tel" class="form-input-line">
+            </div>
+
+            <!-- Inquiry type -->
+            <div class="form-field">
+              <label class="form-label-kicker" for="pf-type">{{ t.contact_form_type }}</label>
+              <select id="pf-type" name="inquiry_type" class="form-input-line form-select-line">
+                <option value="">—</option>
+                <option value="booking">{{ t.contact_form_type_booking }}</option>
+                <option value="management">{{ t.contact_form_type_management }}</option>
+                <option value="teambuilding">{{ t.contact_form_type_teambuilding }}</option>
+                <option value="tours">{{ t.contact_form_type_tours }}</option>
+                <option value="other">{{ t.contact_form_type_other }}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row-2">
+            <!-- Date from -->
+            <div class="form-field">
+              <label class="form-label-kicker" for="pf-date-from">{{ t.contact_form_dates_from }}</label>
+              <input type="date" id="pf-date-from" name="date_from" class="form-input-line">
+            </div>
+
+            <!-- Date to -->
+            <div class="form-field">
+              <label class="form-label-kicker" for="pf-date-to">{{ t.contact_form_dates_to }}</label>
+              <input type="date" id="pf-date-to" name="date_to" class="form-input-line">
+            </div>
+          </div>
+
+          <!-- Guests -->
+          <div class="form-field">
+            <label class="form-label-kicker" for="pf-guests">{{ t.contact_form_guests }}</label>
+            <input type="number" id="pf-guests" name="guests" min="1" max="50" class="form-input-line" style="max-width: 8rem;">
+          </div>
+
+          <!-- Message -->
+          <div class="form-field">
+            <label class="form-label-kicker" for="pf-message">
+              {{ t.contact_form_message }}
+              <span class="form-required" aria-label="required">*</span>
+            </label>
+            <textarea id="pf-message" name="message" rows="5" required class="form-input-line form-textarea-line"></textarea>
+          </div>
+
+          <div class="form-submit">
+            <button type="submit" class="btn btn-primary contact-submit-btn">{{ t.contact_form_submit }}</button>
+          </div>
+
+        </form>
+
+        <div class="form-success" role="alert">{{ t.contact_form_success }}</div>
+      </div>
+
     </div>
   </div>
 </section>

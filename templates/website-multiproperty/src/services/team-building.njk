@@ -1,6 +1,6 @@
 ---
 layout: base.njk
-title: Тимбилдинг — TES Borovets
+title: Тиймбилдинг — TES Borovets
 ---
 {% set lang = lang or "bg" %}
 {% set t = i18n[lang] %}
@@ -26,11 +26,20 @@ title: Тимбилдинг — TES Borovets
 </nav>
 
 <!-- Hero -->
-<section class="hero hero-sm" style="background: linear-gradient(135deg, #2d6a4f 0%, #1b4332 100%);">
-  <div class="container hero-content">
-    <span class="eyebrow" style="color: var(--color-accent-300);">{{ t.breadcrumb_services }}</span>
-    <div style="font-size: 3rem; margin-bottom: var(--space-3);" aria-hidden="true">👥</div>
+<section class="service-hero">
+  {% if currentService.hero_image %}
+  {% set heroUrl %}{% img currentService.hero_image, "hero" %}{% endset %}
+  <img src="{{ heroUrl }}" alt="" class="service-hero-img" loading="eager" fetchpriority="high" decoding="async">
+  {% endif %}
+  <div class="service-hero-overlay"></div>
+  <div class="container service-hero-content">
+    <span class="kicker" style="color: var(--color-accent-200);">{{ t.breadcrumb_services }}</span>
     <h1>{{ currentService.name }}</h1>
+    {% if lang == "bg" %}
+      <p class="lead" style="color: rgba(255,255,255,0.85);">Тур-Експрес-Сервис ООД, може да организира Вашият Тиймбилдинг в района на Боровец</p>
+    {% else %}
+      <p class="lead" style="color: rgba(255,255,255,0.85);">Tour Express Service Ltd. can organise your team building in the Borovets area</p>
+    {% endif %}
   </div>
 </section>
 
@@ -39,49 +48,9 @@ title: Тимбилдинг — TES Borovets
   <div class="container">
     <div style="max-width: var(--container-md);">
       {% if lang == "bg" %}
-        <p class="lead">Организация на корпоративни тимбилдинг програми в планинска среда — мащабни групи, всички сезони, цялостно обслужване.</p>
-        <div class="process-steps" style="margin-top: var(--space-7);">
-          <div class="process-step">
-            <div class="process-step-content">
-              <h4>Планиране на програмата</h4>
-              <p>Уточняваме цели, брой участници, дати и бюджет. Предлагаме подходящ формат — ски, хайкинг, сафари или смесена програма.</p>
-            </div>
-          </div>
-          <div class="process-step">
-            <div class="process-step-content">
-              <h4>Настаняване и логистика</h4>
-              <p>Осигуряваме настаняване в наши апартаменти или партньорски хотели. Организираме трансфери от цялата страна.</p>
-            </div>
-          </div>
-          <div class="process-step">
-            <div class="process-step-content">
-              <h4>Активности и координация</h4>
-              <p>Водачи, инструктори, оборудване — всичко на място. Координираме целия престой от начало до край.</p>
-            </div>
-          </div>
-        </div>
+        <p class="lead">Тур-Експрес-Сервис ООД е Вашият идеален партньор в организирането на фирмен Тиймбилдинг в района на Боровец.</p>
       {% else %}
-        <p class="lead">Corporate team-building programs in mountain settings — large groups, all seasons, full-service organization.</p>
-        <div class="process-steps" style="margin-top: var(--space-7);">
-          <div class="process-step">
-            <div class="process-step-content">
-              <h4>Program Planning</h4>
-              <p>We clarify goals, group size, dates and budget. We suggest the right format — ski, hiking, safari or a mixed program.</p>
-            </div>
-          </div>
-          <div class="process-step">
-            <div class="process-step-content">
-              <h4>Accommodation & Logistics</h4>
-              <p>We arrange stays in our apartments or partner hotels. We organize transfers from across the country.</p>
-            </div>
-          </div>
-          <div class="process-step">
-            <div class="process-step-content">
-              <h4>Activities & Coordination</h4>
-              <p>Guides, instructors, equipment — all on-site. We coordinate the entire stay from start to finish.</p>
-            </div>
-          </div>
-        </div>
+        <p class="lead">Tour Express Service Ltd. is your ideal partner for organising a corporate team building event in the Borovets area.</p>
       {% endif %}
 
       <p style="margin-top: var(--space-6); color: var(--color-neutral-500); font-size: var(--text-sm);">{{ t.service_pricing_note }}</p>

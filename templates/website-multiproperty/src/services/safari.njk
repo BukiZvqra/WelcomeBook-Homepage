@@ -1,6 +1,6 @@
 ---
 layout: base.njk
-title: Сафари — TES Borovets
+title: Джип Сафари — TES Borovets
 ---
 {% set lang = lang or "bg" %}
 {% set t = i18n[lang] %}
@@ -26,66 +26,141 @@ title: Сафари — TES Borovets
 </nav>
 
 <!-- Hero -->
-<section class="hero hero-sm" style="background: linear-gradient(135deg, #5c4033 0%, #3e2723 100%);">
-  <div class="container hero-content">
-    <span class="eyebrow" style="color: var(--color-accent-300);">{{ t.breadcrumb_services }}</span>
-    <div style="font-size: 3rem; margin-bottom: var(--space-3);" aria-hidden="true">🔭</div>
+<section class="service-hero">
+  {% if currentService.hero_image %}
+  {% set heroUrl %}{% img currentService.hero_image, "hero" %}{% endset %}
+  <img src="{{ heroUrl }}" alt="" class="service-hero-img" loading="eager" fetchpriority="high" decoding="async">
+  {% endif %}
+  <div class="service-hero-overlay"></div>
+  <div class="container service-hero-content">
+    <span class="kicker" style="color: var(--color-accent-200);">{{ t.breadcrumb_services }}</span>
     <h1>{{ currentService.name }}</h1>
+    {% if lang == "bg" %}
+      <p class="lead" style="color: rgba(255,255,255,0.85);">Офроуд Сафари &amp; разходка и много изненади</p>
+    {% else %}
+      <p class="lead" style="color: rgba(255,255,255,0.85);">Off-road safari &amp; excursions with plenty of surprises</p>
+    {% endif %}
   </div>
 </section>
 
-<!-- Content -->
+<!-- Tours grid -->
 <section>
   <div class="container">
-    <div style="max-width: var(--container-md);">
-      {% if lang == "bg" %}
-        <p class="lead">Джип сафари по горски пътеки около Боровец — Рила, Маричини езера, изгледи към върховете.</p>
-        <div class="process-steps" style="margin-top: var(--space-7);">
-          <div class="process-step">
-            <div class="process-step-content">
-              <h4>Избор на маршрут</h4>
-              <p>Предлагаме различни маршрути — от лесни семейни обиколки до по-сериозни терени за приключенци.</p>
-            </div>
-          </div>
-          <div class="process-step">
-            <div class="process-step-content">
-              <h4>Отпътуване с джип</h4>
-              <p>Тръгваме с 4×4 от имота. Опитен водач познава всеки път в Рила.</p>
-            </div>
-          </div>
-          <div class="process-step">
-            <div class="process-step-content">
-              <h4>Маричини езера и върхове</h4>
-              <p>Спирки за снимки, панорамни гледки, природни забележителности — незабравимо преживяване.</p>
-            </div>
-          </div>
-        </div>
-      {% else %}
-        <p class="lead">Jeep safari on forest trails around Borovets — Rila, Marichini Lakes, views to the peaks.</p>
-        <div class="process-steps" style="margin-top: var(--space-7);">
-          <div class="process-step">
-            <div class="process-step-content">
-              <h4>Choose Your Route</h4>
-              <p>We offer various routes — from easy family tours to more challenging terrain for adventurers.</p>
-            </div>
-          </div>
-          <div class="process-step">
-            <div class="process-step-content">
-              <h4>Depart by Jeep</h4>
-              <p>We set off in a 4×4 from your property. An experienced guide knows every track in Rila.</p>
-            </div>
-          </div>
-          <div class="process-step">
-            <div class="process-step-content">
-              <h4>Marichini Lakes & Peaks</h4>
-              <p>Photo stops, panoramic views, natural landmarks — an unforgettable experience.</p>
-            </div>
-          </div>
-        </div>
-      {% endif %}
+    {% if lang == "bg" %}
+    <div class="safari-tours-grid">
 
-      <p style="margin-top: var(--space-6); color: var(--color-neutral-500); font-size: var(--text-sm);">{{ t.service_pricing_note }}</p>
+      <div class="safari-tour-card">
+        <span class="kicker">01</span>
+        <h3>Джип Сафари Боровец — Целодневен тур</h3>
+        <ul class="tour-details-list">
+          <li>Тръгване в 09:30 ч. от к.к. Боровец</li>
+          <li>Офроуд преход с джип през живописни местности, няколко високопланински селца, прекосяване на реки и безброй планински забележителности</li>
+          <li>Пристигане на лифт станция "Седемте езера" в 12:00 ч.</li>
+          <li>Пешеходен обход на езерата около 2 часа</li>
+          <li>Тръгване за Боровец около 14:40 ч.</li>
+          <li>В цената НЕ се включва билет за лифта</li>
+          <li>Цена по договаряне</li>
+          <li>Цената е за наем на джип, който поема до 7 пасажери</li>
+        </ul>
+      </div>
+
+      <div class="safari-tour-card">
+        <span class="kicker">02</span>
+        <h3>ВИП Тур</h3>
+        <ul class="tour-details-list">
+          <li>Тръгване от к.к. Боровец през местността "Черната скала", хижа "Заврачица" и преход до връх "Манчо"</li>
+          <li>С включена опция за нощувка и Барбекю в хижа "Заврачица"</li>
+          <li>Цена по договаряне</li>
+          <li>Цената е за наем на джип, който поема до 7 пасажери</li>
+        </ul>
+      </div>
+
+      <div class="safari-tour-card">
+        <span class="kicker">03</span>
+        <h3>Полудневен тур</h3>
+        <ul class="tour-details-list">
+          <li>Тръгване в 09:30 ч. от к.к. Боровец</li>
+          <li>Няколко часова обиколка на ловните хижи на царя — "Ситняково" и "Саръгьол"</li>
+          <li>Обход на местността "Черната скала"</li>
+          <li>Екстремен преход през планината до еко пътеките на Бели Искър в Национален Парк Рила</li>
+          <li>Цена по договаряне</li>
+          <li>Опции: Барбекю / езда / риболов</li>
+          <li>Цената е за наем на джип, който поема до 7 пасажери</li>
+        </ul>
+      </div>
+
+      <div class="safari-tour-card">
+        <span class="kicker">04</span>
+        <h3>Кратък тур</h3>
+        <ul class="tour-details-list">
+          <li>Тръгване по желано от Вас време</li>
+          <li>Двучасова екстремна обиколка в планината около Боровец</li>
+          <li>Цена по договаряне</li>
+          <li>Опции: Барбекю / езда / риболов</li>
+          <li>Цената е за наем на джип, който поема до 7 пасажери</li>
+        </ul>
+      </div>
+
     </div>
+    {% else %}
+    <div class="safari-tours-grid">
+
+      <div class="safari-tour-card">
+        <span class="kicker">01</span>
+        <h3>Borovets Jeep Safari — Full-Day Tour</h3>
+        <ul class="tour-details-list">
+          <li>Departure at 9:30 am from Borovets resort</li>
+          <li>Off-road journey through scenic landscapes, several high-altitude villages, river crossings and countless mountain landmarks</li>
+          <li>Arrival at the Seven Lakes lift station at 12:00</li>
+          <li>Approx. 2-hour walking tour of the lakes</li>
+          <li>Return to Borovets at approx. 14:40</li>
+          <li>Lift ticket not included in price</li>
+          <li>Price by arrangement</li>
+          <li>Price covers jeep hire for up to 7 passengers</li>
+        </ul>
+      </div>
+
+      <div class="safari-tour-card">
+        <span class="kicker">02</span>
+        <h3>VIP Tour</h3>
+        <ul class="tour-details-list">
+          <li>Departure from Borovets through "Black Rock" area, hut "Zavrachitsa" and hike to peak "Mancho"</li>
+          <li>Optional overnight stay and barbecue at hut "Zavrachitsa"</li>
+          <li>Price by arrangement</li>
+          <li>Price covers jeep hire for up to 7 passengers</li>
+        </ul>
+      </div>
+
+      <div class="safari-tour-card">
+        <span class="kicker">03</span>
+        <h3>Half-Day Tour</h3>
+        <ul class="tour-details-list">
+          <li>Departure at 9:30 am from Borovets resort</li>
+          <li>Several-hour tour of the royal hunting lodges — "Sitnyakovo" and "Sarygyol"</li>
+          <li>Circuit of the "Black Rock" area</li>
+          <li>Extreme mountain crossing to the eco-trails of Beli Iskar in Rila National Park</li>
+          <li>Price by arrangement</li>
+          <li>Options: barbecue / horse riding / fishing</li>
+          <li>Price covers jeep hire for up to 7 passengers</li>
+        </ul>
+      </div>
+
+      <div class="safari-tour-card">
+        <span class="kicker">04</span>
+        <h3>Short Tour</h3>
+        <ul class="tour-details-list">
+          <li>Departure at a time of your choosing</li>
+          <li>Two-hour extreme circuit in the mountains around Borovets</li>
+          <li>Price by arrangement</li>
+          <li>Options: barbecue / horse riding / fishing</li>
+          <li>Price covers jeep hire for up to 7 passengers</li>
+        </ul>
+      </div>
+
+    </div>
+    {% endif %}
+
+    <p style="margin-top: var(--space-8); color: var(--color-neutral-500); font-size: var(--text-sm);">{{ t.service_pricing_note }}</p>
   </div>
 </section>
 

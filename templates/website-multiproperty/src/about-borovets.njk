@@ -19,154 +19,216 @@ title: За Боровец — TES Borovets
   </div>
 </nav>
 
-<!-- Page Header -->
+<!-- Page header -->
 <section class="page-intro">
   <div class="container">
-    <h1>{{ t.about_borovets_title }}</h1>
-    <p class="lead">{{ t.about_borovets_subtitle }}</p>
+    {% if lang == "bg" %}
+      <span class="kicker">Информация за Боровец</span>
+      <h1>Боровец</h1>
+      <p class="lead">Най-модерният планински курорт в България, на 1300 м н.в. в Рила</p>
+    {% else %}
+      <span class="kicker">About Borovets</span>
+      <h1>Borovets</h1>
+      <p class="lead">Bulgaria's most modern mountain resort, at 1,300m in the Rila mountains</p>
+    {% endif %}
   </div>
 </section>
 
-<!-- Season Cards -->
+<!-- Paragraph 1 -->
 <section>
   <div class="container">
-    <div class="season-cards">
-
-      <!-- Winter -->
-      <div class="season-card">
-        <div class="season-card-header winter">
-          <span style="font-size: 2rem;" aria-hidden="true">⛷️</span>
-          <h3>{{ t.about_winter_title }}</h3>
-        </div>
-        <div class="season-card-body">
-          {% if lang == "bg" %}
-            <p>Боровец е най-старият ски курорт в България — от 1896 година. 25 км писти за всички нива, 9 лифта, ски парк за деца.</p>
-            <div class="season-features">
-              <div class="season-feature">⛷️ 25 км писти</div>
-              <div class="season-feature">🚡 9 лифта</div>
-              <div class="season-feature">🏂 Сноуборд парк</div>
-              <div class="season-feature">👧 Детски ски парк</div>
-              <div class="season-feature">🏔️ Мусала — 2925м</div>
-              <div class="season-feature">🏨 Хижи и ресторанти</div>
-            </div>
-          {% else %}
-            <p>Borovets is Bulgaria's oldest ski resort — founded in 1896. 25 km of slopes for all levels, 9 lifts, ski park for children.</p>
-            <div class="season-features">
-              <div class="season-feature">⛷️ 25 km of slopes</div>
-              <div class="season-feature">🚡 9 ski lifts</div>
-              <div class="season-feature">🏂 Snowboard park</div>
-              <div class="season-feature">👧 Children's ski park</div>
-              <div class="season-feature">🏔️ Musala — 2925m</div>
-              <div class="season-feature">🏨 Mountain huts & restaurants</div>
-            </div>
-          {% endif %}
-        </div>
-      </div>
-
-      <!-- Summer -->
-      <div class="season-card">
-        <div class="season-card-header summer">
-          <span style="font-size: 2rem;" aria-hidden="true">🥾</span>
-          <h3>{{ t.about_summer_title }}</h3>
-        </div>
-        <div class="season-card-body">
-          {% if lang == "bg" %}
-            <p>Лятото Боровец се превръща в база за планински спорт и природен туризъм. Пресен въздух, гори, езера и незабравими маршрути.</p>
-            <div class="season-features">
-              <div class="season-feature">🥾 Хайкинг маршрути</div>
-              <div class="season-feature">🚵 MTB писти</div>
-              <div class="season-feature">🔭 Джип сафари</div>
-              <div class="season-feature">👥 Тимбилдинг</div>
-              <div class="season-feature">🏞️ Маричини езера</div>
-              <div class="season-feature">🌲 Горски пътеки</div>
-            </div>
-          {% else %}
-            <p>In summer Borovets becomes a hub for mountain sports and nature tourism. Fresh air, forests, lakes and unforgettable trails.</p>
-            <div class="season-features">
-              <div class="season-feature">🥾 Hiking trails</div>
-              <div class="season-feature">🚵 MTB tracks</div>
-              <div class="season-feature">🔭 Jeep safari</div>
-              <div class="season-feature">👥 Team building</div>
-              <div class="season-feature">🏞️ Marichini Lakes</div>
-              <div class="season-feature">🌲 Forest paths</div>
-            </div>
-          {% endif %}
-        </div>
-      </div>
-
+    <div class="about-editorial-body">
+      {% if lang == "bg" %}
+        <p>Разположен на 1300 м надморска височина върху северните склонове на Рила планина, Боровец е най-модерният планински курорт в България. Лесно достъпен от цялата страна и само на 73 км от София и на 126 км от Пловдив, Боровец предлага отлични възможности за почивка през цялата година.</p>
+      {% else %}
+        <p>Situated at 1,300m above sea level on the northern slopes of the Rila mountains, Borovets is Bulgaria's most modern mountain resort. Easily accessible from across the country — just 73 km from Sofia and 126 km from Plovdiv — Borovets offers excellent conditions for rest throughout the year.</p>
+      {% endif %}
     </div>
   </div>
 </section>
 
-<!-- Getting There -->
+<!-- Image mosaic -->
+<section class="borovets-mosaic-section">
+  <div class="borovets-mosaic">
+    {% for image in client.about_borovets_images %}
+      {% set imgUrl %}{% imgabs image, "hero" %}{% endset %}
+      <div class="borovets-mosaic-cell">
+        <img src="{{ imgUrl }}" alt="" loading="lazy" decoding="async">
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- Paragraph 2 (summer) -->
+<section>
+  <div class="container">
+    <div class="about-editorial-body">
+      {% if lang == "bg" %}
+        <p>През топлите месеци Боровец предлага прекрасни условия за отдих сред прохладата и спокойствието на вековните иглолистни гори, поляните осеяни с цветя и билки, многобройните езера и заснежените върхове. За любителите на природата курортът е предпочитано място и отправна точка на много туристически маршрути и излети в Рила планина. Вечер курортът пулсира с безбройните светлини на нощния живот.</p>
+      {% else %}
+        <p>During the warmer months, Borovets offers wonderful conditions for relaxation amid the coolness and tranquillity of ancient conifer forests, meadows scattered with flowers and herbs, numerous lakes and snow-capped peaks. For nature lovers, the resort is a preferred destination and a starting point for many hiking routes and excursions into the Rila mountains. In the evenings, the resort pulsates with the countless lights of its nightlife.</p>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<!-- Ski facts — 4 column -->
 <section class="section-alt">
   <div class="container">
-    <h2>{{ t.about_getting_there_title }}</h2>
     {% if lang == "bg" %}
-      <p style="margin-top: var(--space-4); max-width: 52ch;">Боровец се намира в подножието на Рила — само 73 км от София (около 1 ч 10 мин). Курортът е достъпен целогодишно по асфалтиран път.</p>
-      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: var(--space-4); margin-top: var(--space-6);">
-        <div style="background: var(--color-neutral-0); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: var(--space-5);">
-          <strong style="display: block; color: var(--color-primary-800);">🏙️ От София</strong>
-          <span style="color: var(--color-neutral-500); font-size: var(--text-sm);">73 км · ~1ч 10мин</span>
+      <span class="kicker">Ски информация</span>
+      <div class="ski-facts-grid">
+        <div class="ski-fact">
+          <span class="ski-fact-value">1300 м</span>
+          <span class="ski-fact-label">Надморска височина</span>
         </div>
-        <div style="background: var(--color-neutral-0); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: var(--space-5);">
-          <strong style="display: block; color: var(--color-primary-800);">🏙️ От Пловдив</strong>
-          <span style="color: var(--color-neutral-500); font-size: var(--text-sm);">130 км · ~2ч 30мин</span>
+        <div class="ski-fact">
+          <span class="ski-fact-value">2560 м</span>
+          <span class="ski-fact-label">Най-висока ски точка</span>
         </div>
-        <div style="background: var(--color-neutral-0); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: var(--space-5);">
-          <strong style="display: block; color: var(--color-primary-800);">✈️ Летище София</strong>
-          <span style="color: var(--color-neutral-500); font-size: var(--text-sm);">80 км · ~1ч 20мин</span>
+        <div class="ski-fact">
+          <span class="ski-fact-value">58 км</span>
+          <span class="ski-fact-label">Маркирани писти</span>
+        </div>
+        <div class="ski-fact">
+          <span class="ski-fact-value">12 км</span>
+          <span class="ski-fact-label">Най-дълга писта</span>
+        </div>
+        <div class="ski-fact">
+          <span class="ski-fact-value">С, СЗ, З</span>
+          <span class="ski-fact-label">Посоки на склоновете</span>
+        </div>
+        <div class="ski-fact">
+          <span class="ski-fact-value">35 км</span>
+          <span class="ski-fact-label">Писти за ски бягане</span>
         </div>
       </div>
     {% else %}
-      <p style="margin-top: var(--space-4); max-width: 52ch;">Borovets is located at the foot of Rila — just 73 km from Sofia (about 1 hour 10 minutes). The resort is accessible year-round via a paved road.</p>
-      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: var(--space-4); margin-top: var(--space-6);">
-        <div style="background: var(--color-neutral-0); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: var(--space-5);">
-          <strong style="display: block; color: var(--color-primary-800);">🏙️ From Sofia</strong>
-          <span style="color: var(--color-neutral-500); font-size: var(--text-sm);">73 km · ~1h 10min</span>
+      <span class="kicker">Ski information</span>
+      <div class="ski-facts-grid">
+        <div class="ski-fact">
+          <span class="ski-fact-value">1,300m</span>
+          <span class="ski-fact-label">Resort elevation</span>
         </div>
-        <div style="background: var(--color-neutral-0); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: var(--space-5);">
-          <strong style="display: block; color: var(--color-primary-800);">🏙️ From Plovdiv</strong>
-          <span style="color: var(--color-neutral-500); font-size: var(--text-sm);">130 km · ~2h 30min</span>
+        <div class="ski-fact">
+          <span class="ski-fact-value">2,560m</span>
+          <span class="ski-fact-label">Highest ski point</span>
         </div>
-        <div style="background: var(--color-neutral-0); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: var(--space-5);">
-          <strong style="display: block; color: var(--color-primary-800);">✈️ Sofia Airport</strong>
-          <span style="color: var(--color-neutral-500); font-size: var(--text-sm);">80 km · ~1h 20min</span>
+        <div class="ski-fact">
+          <span class="ski-fact-value">58 km</span>
+          <span class="ski-fact-label">Marked ski runs</span>
+        </div>
+        <div class="ski-fact">
+          <span class="ski-fact-value">12 km</span>
+          <span class="ski-fact-label">Longest run</span>
+        </div>
+        <div class="ski-fact">
+          <span class="ski-fact-value">N, NW, W</span>
+          <span class="ski-fact-label">Slope aspects</span>
+        </div>
+        <div class="ski-fact">
+          <span class="ski-fact-value">35 km</span>
+          <span class="ski-fact-label">Cross-country trails</span>
         </div>
       </div>
     {% endif %}
   </div>
 </section>
 
-<!-- Restaurants & Dining -->
+<!-- Paragraphs 3 & 4 -->
 <section>
   <div class="container">
-    <h2>{{ t.about_restaurants_title }}</h2>
+    <div class="about-editorial-body">
+      {% if lang == "bg" %}
+        <p>Боровец е най-старият зимен курорт в България, чиято история датира от 1896 г. Днес Боровец е най-престижният български ски център. Разположен е по северните склонове на Мусаленския хребет в източната част на Рила планина. Сгушен във вековните борови гори на над 1300м надморска височина, Боровец е идеалното място за зимни спортове и почивки.</p>
+        <p style="margin-top: var(--space-6);">Климатът в курорта е умерен, зимата е мека и с много снеговалежи. Средната температура през януари — най-студения месец, е около 4,8° C. Ски-сезонът обикновено продължава от средата на декември до април.</p>
+      {% else %}
+        <p>Borovets is Bulgaria's oldest winter resort, with a history dating back to 1896. Today it is Bulgaria's most prestigious ski centre, located on the northern slopes of the Musalen ridge in the eastern part of the Rila mountains. Nestled in ancient pine forests at over 1,300m above sea level, Borovets is the ideal destination for winter sports and holidays.</p>
+        <p style="margin-top: var(--space-6);">The resort has a moderate climate with mild winters and heavy snowfall. The average temperature in January — the coldest month — is approximately 4.8°C. The ski season typically runs from mid-December to April.</p>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<!-- Three ski zones -->
+<section class="section-alt">
+  <div class="container">
     {% if lang == "bg" %}
-      <p style="margin-top: var(--space-4); max-width: 52ch;">В Боровец ще намерите разнообразни заведения — от традиционни механи до международна кухня. Повечето ресторанти работят целогодишно.</p>
-      <ul style="margin-top: var(--space-5); display: flex; flex-direction: column; gap: var(--space-3); list-style: none; padding: 0; max-width: 48ch;">
-        <li style="display: flex; gap: var(--space-3); align-items: flex-start;"><span aria-hidden="true">🍖</span><span>Традиционни механи с местна кухня — кебапчета, каварма, мезета</span></li>
-        <li style="display: flex; gap: var(--space-3); align-items: flex-start;"><span aria-hidden="true">🍕</span><span>Пицарии и заведения с международно меню</span></li>
-        <li style="display: flex; gap: var(--space-3); align-items: flex-start;"><span aria-hidden="true">☕</span><span>Кафенета и барове с изглед към пистите</span></li>
-        <li style="display: flex; gap: var(--space-3); align-items: flex-start;"><span aria-hidden="true">🏔️</span><span>Планински хижи на трасетата — топъл чай и закуски</span></li>
-      </ul>
+      <span class="kicker">Три ски зони</span>
+      <div class="ski-zones-grid">
+        <div class="ski-zone-card">
+          <h3>Ситняково</h3>
+          <p>От 1337 м до 1780 м н.в.</p>
+        </div>
+        <div class="ski-zone-card">
+          <h3>Ястребец</h3>
+          <p>От 1340 м до 2369 м н.в.</p>
+        </div>
+        <div class="ski-zone-card">
+          <h3>Маркуджик</h3>
+          <p>От 2144 м до 2550 м н.в.</p>
+        </div>
+      </div>
     {% else %}
-      <p style="margin-top: var(--space-4); max-width: 52ch;">In Borovets you'll find a variety of dining options — from traditional Bulgarian taverns to international cuisine. Most restaurants operate year-round.</p>
-      <ul style="margin-top: var(--space-5); display: flex; flex-direction: column; gap: var(--space-3); list-style: none; padding: 0; max-width: 48ch;">
-        <li style="display: flex; gap: var(--space-3); align-items: flex-start;"><span aria-hidden="true">🍖</span><span>Traditional taverns with local cuisine — kebabs, kavarma, mezze</span></li>
-        <li style="display: flex; gap: var(--space-3); align-items: flex-start;"><span aria-hidden="true">🍕</span><span>Pizza restaurants and venues with international menus</span></li>
-        <li style="display: flex; gap: var(--space-3); align-items: flex-start;"><span aria-hidden="true">☕</span><span>Cafés and bars with slope-side views</span></li>
-        <li style="display: flex; gap: var(--space-3); align-items: flex-start;"><span aria-hidden="true">🏔️</span><span>Mountain huts on the trails — warm tea and snacks</span></li>
-      </ul>
+      <span class="kicker">Three ski zones</span>
+      <div class="ski-zones-grid">
+        <div class="ski-zone-card">
+          <h3>Sitnyakovo</h3>
+          <p>1,337m to 1,780m elevation</p>
+        </div>
+        <div class="ski-zone-card">
+          <h3>Yastrebet</h3>
+          <p>1,340m to 2,369m elevation</p>
+        </div>
+        <div class="ski-zone-card">
+          <h3>Markudjik</h3>
+          <p>2,144m to 2,550m elevation</p>
+        </div>
+      </div>
     {% endif %}
+  </div>
+</section>
+
+<!-- Paragraphs 5 & 6 -->
+<section>
+  <div class="container">
+    <div class="about-editorial-body">
+      {% if lang == "bg" %}
+        <p>Курортът предлага отлични условия за зимни спортове: алпийски ски, биатлон, ски бягане и сноуборд. Маркираните писти за алпийски ски са с обща дължина от 58 км. Трасетата за ски бягане са с максимална дължина 35 км, проектирани съгласно изискванията на Международната ски федерация, с минимална ширина 6 метра.</p>
+        <p style="margin-top: var(--space-6);">Биатлон — през 1993 г. Боровец беше домакин на Световното първенство по биатлон. Ски скок — в ски център Централен Боровец се намира шанцата за ски скокове, висока 70 метра.</p>
+      {% else %}
+        <p>The resort offers excellent conditions for winter sports: alpine skiing, biathlon, cross-country skiing and snowboarding. The marked alpine ski runs have a total length of 58 km. The cross-country skiing trails span up to 35 km in length, designed to International Ski Federation standards with a minimum width of 6 metres.</p>
+        <p style="margin-top: var(--space-6);">Biathlon — in 1993, Borovets hosted the Biathlon World Championship. Ski jumping — in the Central Borovets ski centre there is a 70-metre ski jump.</p>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<!-- Cross-country section -->
+<section class="section-alt">
+  <div class="container">
+    <div class="about-editorial-body">
+      {% if lang == "bg" %}
+        <span class="kicker">Трасета за ски бягане</span>
+        <p style="margin-top: var(--space-5);">Абсолютната тишина на планинския простор, ослепителната белота на неутъпкания сняг, безоблачното небе, уханието на боровете — всичко това ще ви даде един вълшебен ден на ски в Боровец. Курортът предлага на ски бегачите писти за дълго бягане в местностите "Широка поляна" и "Варника" с дължини на трасетата, съответно 3.5 км и 10 км.</p>
+      {% else %}
+        <span class="kicker">Cross-country skiing trails</span>
+        <p style="margin-top: var(--space-5);">The absolute silence of the mountain expanse, the blinding whiteness of untrodden snow, a cloudless sky, the scent of pine — all of this will give you a magical day of skiing in Borovets. The resort offers cross-country skiers long-distance trails in the areas of "Shiroka Polyana" and "Varnika", with trail lengths of 3.5 km and 10 km respectively.</p>
+      {% endif %}
+    </div>
   </div>
 </section>
 
 <!-- Services CTA -->
 <section class="borovets-teaser">
-  <div class="container" style="text-align: center;">
+  <div class="borovets-teaser-bg">
+    {% set teaserImg %}{% imgabs client.about_borovets_images[0], "banner" %}{% endset %}
+    <img src="{{ teaserImg }}" alt="" loading="lazy" decoding="async">
+    <div class="borovets-teaser-overlay"></div>
+  </div>
+  <div class="borovets-teaser-content">
     <h2>{{ t.about_services_cta }}</h2>
-    <a href="{{ prefix }}/services/" class="btn btn-outline" style="margin-top: var(--space-5);">
+    <a href="{{ prefix }}/services/" class="borovets-teaser-link">
       {{ t.btn_all_services }}
     </a>
   </div>
