@@ -22,10 +22,17 @@ module.exports = function(eleventyConfig) {
   // Make config available globally in templates
   eleventyConfig.addGlobalData("client", clientConfig);
 
-  // Cloudinary image shortcode (used as {% img "filename.jpg" %})
-  eleventyConfig.addShortcode("img", function(filename) {
+  // Cloudinary image shortcode (used as {% img "filename.jpg" %} or {% img "filename.jpg", "hero" %})
+  // Variants: "hero" = w_1600 retina fill | "thumb" = w_600 square fill | "full" = w_2000 lightbox
+  eleventyConfig.addShortcode("img", function(filename, variant) {
     const cloudName = process.env.CLOUDINARY_CLOUD_NAME || 'PLACEHOLDER';
-    return `https://res.cloudinary.com/${cloudName}/image/upload/f_auto,q_auto/clients/${clientId}/${filename}`;
+    const transforms = {
+      hero:  'w_1600,c_fill,f_auto,q_auto:good',
+      thumb: 'w_600,h_600,c_fill,f_auto,q_auto:eco',
+      full:  'w_2000,c_limit,f_auto,q_auto:good'
+    };
+    const t = transforms[variant] || 'f_auto,q_auto';
+    return `https://res.cloudinary.com/${cloudName}/image/upload/${t}/clients/${clientId}/${filename}`;
   });
 
   // Copy assets folder

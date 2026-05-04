@@ -43,7 +43,13 @@
       "tagline": "В сърцето на курорта, на 150м от Гондола",
       "properties_count": 12,
       "property_types": ["студио", "1-спален", "2-спален"],
-      "hero_image": "apartamenti-v-komplex-flora/апартамент-208-хотел-флора.jpeg"
+      "hero_image": "apartamenti-v-komplex-flora/апартамент-208-хотел-флора.jpeg",
+      "description_bg": "Flora Complex се състои от 4 свързани сгради — Хотел Флора, Тюлип Резидънс, Кловер Резидънс и Виолет Резидънс. Намира се в сърцето на Боровец, на 150м от ски-гондолата, и предлага едни от най-търсените адреси в курорта. Рецепция 24/7, подземен паркинг и директен пешеходен достъп до всичко, което курортът предлага.",
+      "description_en": "Flora Complex consists of four interconnected buildings — Hotel Flora, Tulip Residence, Clover Residence and Violet Residence. Located in the heart of Borovets, just 150m from the ski gondola, it offers some of the most sought-after addresses in the resort. 24/7 reception, underground parking and direct walking access to everything the resort has to offer.",
+      "amenities_bg": ["Подземен паркинг", "Рецепция 24/7", "Wi-Fi в общи части", "Магазини и ресторанти наблизо", "150м от ски-гондолата"],
+      "amenities_en": ["Underground parking", "24/7 reception", "Wi-Fi in common areas", "Shops and restaurants nearby", "150m from ski gondola"],
+      "location_bg": "Централна зона на Боровец — 150м от ски-гондолата и 200м от търговския център",
+      "location_en": "Central Borovets — 150m from the ski gondola and 200m from the shopping centre"
     },
     {
       "id": "royal-plaza",
@@ -52,7 +58,13 @@
       "tagline": "Едно студио в престижен комплекс",
       "properties_count": 1,
       "property_types": ["студио"],
-      "hero_image": "apartamenti-v-kompleksi-roial-plaza-i-iglika/71b2ea0541ed601e868b7dd8b0c31f2049f58225.jpeg"
+      "hero_image": "apartamenti-v-kompleksi-roial-plaza-i-iglika/71b2ea0541ed601e868b7dd8b0c31f2049f58225.jpeg",
+      "description_bg": "Royal Plaza & Iglika е премиум комплекс с 4-звезден стандарт в централната зона на Боровец. Гостите разполагат с достъп до СПА зона с парна баня и джакузи, закрит басейн, фитнес зала и ресторант на територията. Идеален избор за тези, които търсят хотелски комфорт в съчетание с уюта на собствена кухня и апартаментно пространство.",
+      "description_en": "Royal Plaza & Iglika is a premium 4-star complex in the centre of Borovets. Guests have access to a SPA with steam room and jacuzzi, an indoor pool, fitness centre and an on-site restaurant. The ideal choice for those who want hotel-level comfort combined with the convenience of a private kitchen and apartment space.",
+      "amenities_bg": ["СПА зона и джакузи", "Закрит басейн", "Фитнес зала", "Ресторант в комплекса", "Рецепция 24/7"],
+      "amenities_en": ["SPA & jacuzzi", "Indoor pool", "Fitness centre", "On-site restaurant", "24/7 reception"],
+      "location_bg": "Централна зона на Боровец, в непосредствена близост до ски-лифтовете",
+      "location_en": "Central Borovets, within immediate proximity to the ski lifts"
     },
     {
       "id": "rila-park",
@@ -61,7 +73,13 @@
       "tagline": "Студио, 1-спален и 2-спален апартамент",
       "properties_count": 3,
       "property_types": ["студио", "1-спален", "2-спален"],
-      "hero_image": "apartamenti-v-kompleksi-rila-park-i-semiramida/апартамент-44-рила-парк.jpeg"
+      "hero_image": "apartamenti-v-kompleksi-rila-park-i-semiramida/апартамент-44-рила-парк.jpeg",
+      "description_bg": "Rila Park & Semiramida Gardens е тих жилищен комплекс в горната зона на Боровец. Намира се в непосредствена близост до лифт Ястребец и ски писта 5 — отлична позиция за любителите на ски. Безплатен паркинг, спокойна атмосфера и природна среда го правят предпочитан избор за семейства и двойки, търсещи покой встрани от оживения курортен център.",
+      "description_en": "Rila Park & Semiramida Gardens is a quiet residential complex in the upper zone of Borovets. Located close to the Yastrebet lift and ski run 5 — an excellent position for ski enthusiasts. Free parking, a peaceful atmosphere and natural surroundings make it a preferred choice for families and couples seeking tranquility away from the busy resort centre.",
+      "amenities_bg": ["Безплатен паркинг", "Близо до лифт Ястребец", "Тиха жилищна зона", "Природна среда"],
+      "amenities_en": ["Free parking", "Near Yastrebet lift", "Quiet residential area", "Natural surroundings"],
+      "location_bg": "Горна зона на Боровец — близо до лифт Ястребец и ски писта 5",
+      "location_en": "Upper Borovets — near the Yastrebet lift and ski run 5"
     },
     {
       "id": "borovets-gardens",
@@ -70,7 +88,13 @@
       "tagline": "2 студиа в спокойна обстановка",
       "properties_count": 2,
       "property_types": ["студио"],
-      "hero_image": "apartamenten-kompleks-borovets-gardns/студио-б35-боровец-гардънс.jpeg"
+      "hero_image": "apartamenten-kompleks-borovets-gardns/студио-б35-боровец-гардънс.jpeg",
+      "description_bg": "Borovets Gardens е бутиков жилищен комплекс с озеленена вътрешна градина в тихата зона на курорта. На 5 минути пеша от центъра и ски-лифтовете, комплексът съчетава спокойствие с удобна локация. Особено подходящ за двойки, малки групи и за летния сезон — когато природата около Боровец е в своя разцвет.",
+      "description_en": "Borovets Gardens is a boutique residential complex with a landscaped inner garden in the quiet zone of the resort. Just a 5-minute walk from the centre and ski lifts, it combines tranquility with a convenient location. Particularly well suited for couples, small groups and the summer season — when the nature around Borovets is at its finest.",
+      "amenities_bg": ["Озеленена вътрешна градина", "5 минути пеша до центъра", "Тиха жилищна зона", "Подходящ за летен сезон"],
+      "amenities_en": ["Landscaped inner garden", "5-minute walk to centre", "Quiet residential area", "Ideal for summer season"],
+      "location_bg": "Тиха зона на Боровец — 5 минути пеша от центъра и ски-лифтовете",
+      "location_en": "Quiet zone of Borovets — a 5-minute walk from the centre and ski lifts"
     }
   ],
   "services": [

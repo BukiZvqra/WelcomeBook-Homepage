@@ -131,5 +131,7 @@
   "filter_all_types": "Всички типове",
   "filter_reset": "Изчисти",
   "filter_no_results": "Няма намерени имоти с тези критерии. Свържете се с нас директно.",
-  "filter_results_shown": "имота"
+  "filter_results_shown": "имота",
+
+  "gallery_view_all": "Виж всички снимки"
 }

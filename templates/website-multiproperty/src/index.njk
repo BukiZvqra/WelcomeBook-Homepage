@@ -51,7 +51,7 @@ title: TES Borovets — Боровец през всички сезони
             <h3>{{ complex.name }}</h3>
             <p class="tagline">{{ complex.tagline }}</p>
             <span class="meta">{{ complex.properties_count }} {{ "имоти" if complex.properties_count > 1 else "имот" }}</span>
-            <a href="{{ prefix }}/complex/{{ complex.id }}/" class="btn btn-secondary">{{ t.complex_card_cta }}</a>
+            <a href="{{ prefix }}/apartments/?complex={{ complex.id }}" class="btn btn-secondary">{{ t.complex_card_cta }}</a>
           </div>
         </article>
       {% endfor %}

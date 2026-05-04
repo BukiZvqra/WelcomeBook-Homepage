@@ -164,5 +164,9 @@ title: Апартаменти под наем — Боровец
   guestsSel.addEventListener('change', applyFilter);
   typeSel.addEventListener('change', applyFilter);
   resetBtn.addEventListener('click', resetFilter);
+
+  // Pre-apply filter from URL param (?complex=flora)
+  var urlComplex = new URLSearchParams(window.location.search).get('complex');
+  if (urlComplex) { complexSel.value = urlComplex; applyFilter(); }
 })();
 </script>
