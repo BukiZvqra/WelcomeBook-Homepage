@@ -35,6 +35,12 @@ module.exports = function(eleventyConfig) {
     return `https://res.cloudinary.com/${cloudName}/image/upload/${t}/clients/${clientId}/${filename}`;
   });
 
+  // Filter properties by complex id — replaces broken selectattr("equalto") in Eleventy Nunjucks
+  eleventyConfig.addFilter("filterByComplex", (properties, complexId) => {
+    if (!Array.isArray(properties)) return [];
+    return properties.filter(p => p.complex === complexId);
+  });
+
   // Copy assets folder
   eleventyConfig.addPassthroughCopy({ [`templates/website-${template}/assets`]: "assets" });
 

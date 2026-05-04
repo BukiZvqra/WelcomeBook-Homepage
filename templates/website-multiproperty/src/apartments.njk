@@ -23,7 +23,7 @@ title: Апартаменти под наем — Боровец
 <section class="page-intro">
   <div class="container">
     <h1>{{ t.apartments_title }}</h1>
-    <p class="lead">{{ t.apartments_subtitle }}</p>
+    <p class="lead">{{ properties | length }} {{ t.apartments_subtitle }}</p>
   </div>
 </section>
 
@@ -63,6 +63,7 @@ title: Апартаменти под наем — Боровец
             <option value="studio">{{ t.type_studio }}</option>
             <option value="1bedroom">{{ t.type_1bedroom }}</option>
             <option value="2bedroom">{{ t.type_2bedroom }}</option>
+            <option value="double">{{ t.type_double }}</option>
           </select>
         </div>
 
@@ -78,7 +79,7 @@ title: Апартаменти под наем — Боровец
 
     <!-- Complex sections -->
     {% for complex in client.complexes %}
-      {% set complexProperties = properties | selectattr("complex", "equalto", complex.id) | sort(false, false, "sort_order") %}
+      {% set complexProperties = properties | filterByComplex(complex.id) | sort(false, false, "sort_order") %}
       {% set propCount = complexProperties | length %}
       {% if propCount > 0 %}
         <div class="complex-filter-section" data-complex-id="{{ complex.id }}">

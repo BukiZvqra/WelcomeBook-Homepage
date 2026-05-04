@@ -52,7 +52,7 @@
   "breadcrumb_services": "Услуги",
 
   "apartments_title": "Апартаменти под наем",
-  "apartments_subtitle": "21 имота в 4 комплекса в Боровец",
+  "apartments_subtitle": "имота в 4 комплекса в Боровец",
   "apartments_no_match": "Не намирате подходящ имот? Свържете се с нас →",
   "apartments_filter_all": "Всички",
   "apartments_group_by_complex": "по комплекс",
@@ -107,6 +107,7 @@
   "type_studio": "Студио",
   "type_1bedroom": "1-спален апартамент",
   "type_2bedroom": "2-спален апартамент",
+  "type_double": "Двойна стая",
 
   "btn_book": "Резервирайте",
   "btn_contact": "Свържете се",

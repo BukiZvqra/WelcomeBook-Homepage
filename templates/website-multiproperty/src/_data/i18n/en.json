@@ -52,7 +52,7 @@
   "breadcrumb_services": "Services",
 
   "apartments_title": "Rental Apartments",
-  "apartments_subtitle": "21 properties across 4 complexes in Borovets",
+  "apartments_subtitle": "properties across 4 complexes in Borovets",
   "apartments_no_match": "Can't find the right apartment? Contact us →",
   "apartments_filter_all": "All",
   "apartments_group_by_complex": "by complex",
@@ -107,6 +107,7 @@
   "type_studio": "Studio",
   "type_1bedroom": "1-bedroom apartment",
   "type_2bedroom": "2-bedroom apartment",
+  "type_double": "Double room",
 
   "btn_book": "Book now",
   "btn_contact": "Get in touch",

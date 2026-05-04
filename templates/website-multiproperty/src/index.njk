@@ -50,7 +50,8 @@ title: TES Borovets — Боровец през всички сезони
             <span class="eyebrow">{{ complex.subtitle }}</span>
             <h3>{{ complex.name }}</h3>
             <p class="tagline">{{ complex.tagline }}</p>
-            <span class="meta">{{ complex.properties_count }} {{ "имоти" if complex.properties_count > 1 else "имот" }}</span>
+            {% set cpCount = properties | filterByComplex(complex.id) | length %}
+            <span class="meta">{{ cpCount }} {{ "имоти" if cpCount > 1 else "имот" }}</span>
             <a href="{{ prefix }}/apartments/?complex={{ complex.id }}" class="btn btn-secondary">{{ t.complex_card_cta }}</a>
           </div>
         </article>
