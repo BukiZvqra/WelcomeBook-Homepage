@@ -23,27 +23,26 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addGlobalData("client", clientConfig);
 
   // Cloudinary image shortcode (used as {% img "filename.jpg" %} or {% img "filename.jpg", "hero" %})
-  // Variants: "hero" = w_1600 retina fill | "thumb" = w_600 square fill | "full" = w_2000 lightbox
+  // Variants: hero=w_1600 fill | thumb=w_600 sq | full=w_2000 lightbox | banner=w_1920 full-bleed
+  // Default fallback is "hero" — ensures width constraint even on unspecified calls
+  const TRANSFORMS = {
+    hero:   'w_1600,c_fill,f_auto,q_auto:good',
+    thumb:  'w_600,h_600,c_fill,f_auto,q_auto:eco',
+    full:   'w_2000,c_limit,f_auto,q_auto:good',
+    banner: 'w_1920,c_fill,f_auto,q_auto:good',
+    logo:   'w_300,c_limit,f_auto,q_auto:good'
+  };
+
   eleventyConfig.addShortcode("img", function(filename, variant) {
     const cloudName = process.env.CLOUDINARY_CLOUD_NAME || 'PLACEHOLDER';
-    const transforms = {
-      hero:  'w_1600,c_fill,f_auto,q_auto:good',
-      thumb: 'w_600,h_600,c_fill,f_auto,q_auto:eco',
-      full:  'w_2000,c_limit,f_auto,q_auto:good'
-    };
-    const t = transforms[variant] || 'f_auto,q_auto';
+    const t = TRANSFORMS[variant] || TRANSFORMS.hero;
     return `https://res.cloudinary.com/${cloudName}/image/upload/${t}/clients/${clientId}/${filename}`;
   });
 
   // Cloudinary shortcode for assets at account root (no clients/clientId prefix)
   eleventyConfig.addShortcode("imgabs", function(filename, variant) {
     const cloudName = process.env.CLOUDINARY_CLOUD_NAME || 'PLACEHOLDER';
-    const transforms = {
-      hero:  'w_1600,c_fill,f_auto,q_auto:good',
-      thumb: 'w_600,h_600,c_fill,f_auto,q_auto:eco',
-      full:  'w_2000,c_limit,f_auto,q_auto:good'
-    };
-    const t = transforms[variant] || 'f_auto,q_auto';
+    const t = TRANSFORMS[variant] || TRANSFORMS.hero;
     return `https://res.cloudinary.com/${cloudName}/image/upload/${t}/${filename}`;
   });
 

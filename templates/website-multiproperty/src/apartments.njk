@@ -6,6 +6,13 @@ title: Апартаменти под наем — Боровец
 {% set t = i18n[lang] %}
 {% set prefix = "" if lang == "bg" else "/en" %}
 
+{% set typeLabels = {
+  "studio": t.type_studio,
+  "1bedroom": t.type_1bedroom,
+  "2bedroom": t.type_2bedroom,
+  "double": t.type_double
+} %}
+
 <!-- Breadcrumb -->
 <nav class="breadcrumb" aria-label="breadcrumb">
   <div class="container">
@@ -87,11 +94,39 @@ title: Апартаменти под наем — Боровец
             <h2>{{ complex.name }}</h2>
             <span class="count-badge">{{ propCount }} {{ "имот" if propCount == 1 else "имота" }}</span>
           </div>
-          <div class="property-grid">
+
+          {% if propCount == 1 %}
             {% for property in complexProperties %}
-              {% include "property-card.njk" %}
+            <div class="single-feature-property">
+              <div class="sfp-image">
+                {% if property.hero_image %}
+                  {% set _sfpImg %}{% img property.hero_image, "hero" %}{% endset %}
+                  <img src="{{ _sfpImg }}" alt="{{ property.name_bg if lang == 'bg' else property.name_en }}" loading="lazy" decoding="async">
+                {% endif %}
+              </div>
+              <div class="sfp-content">
+                <span class="kicker">EXCLUSIVE · SINGLE SUITE</span>
+                <h3>{{ property.name_bg if lang == "bg" else property.name_en }}</h3>
+                <p>{{ (property.description_bg if lang == "bg" else property.description_en) | truncate(200) }}</p>
+                <div class="sfp-meta">
+                  {% if property.capacity %}<span>{{ property.capacity }} {{ t.property_guests_suffix }}</span>{% endif %}
+                  {% if property.size_sqm %}<span>{{ property.size_sqm }} м²</span>{% endif %}
+                  {% if property.type %}<span>{{ typeLabels[property.type] or property.type }}</span>{% endif %}
+                </div>
+                <a href="{{ prefix }}/property/{{ property.slug }}/" class="btn btn-primary">
+                  {{ "VIEW APARTMENT" if lang == "en" else "КЪМ АПАРТАМЕНТА" }}
+                </a>
+              </div>
+            </div>
             {% endfor %}
-          </div>
+          {% else %}
+            <div class="property-grid">
+              {% for property in complexProperties %}
+                {% include "property-card.njk" %}
+              {% endfor %}
+            </div>
+          {% endif %}
+
         </div>
       {% endif %}
     {% endfor %}
@@ -104,8 +139,8 @@ title: Апартаменти под наем — Боровец
   <div class="cta-band">
     <p>{{ t.apartments_no_match }}</p>
     <div style="display: flex; flex-wrap: wrap; gap: var(--space-3); justify-content: center; margin-top: var(--space-5);">
-      <a href="viber://chat?number=+359888909237" class="btn-viber">📲 Viber</a>
-      <a href="https://wa.me/359888909237" class="btn-whatsapp" target="_blank" rel="noopener">💬 WhatsApp</a>
+      <a href="viber://chat?number=+359888909237" class="btn-viber">Viber</a>
+      <a href="https://wa.me/359888909237" class="btn-whatsapp" target="_blank" rel="noopener">WhatsApp</a>
       <a href="{{ prefix }}/contact/" class="btn btn-secondary">{{ t.btn_contact }}</a>
     </div>
   </div>

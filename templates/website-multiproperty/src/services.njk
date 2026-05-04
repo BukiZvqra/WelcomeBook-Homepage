@@ -30,7 +30,7 @@ title: Услуги — TES Borovets
 <!-- Services Grid -->
 <section>
   <div class="container">
-    <div class="services-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+    <div class="services-grid services-grid--3col">
       {% set showDesc = false %}
       {% for service in client.services %}
         {% include "service-card.njk" %}
@@ -45,8 +45,8 @@ title: Услуги — TES Borovets
     <h2>{{ t.services_contact_prompt }}</h2>
     <p>{{ t.services_contact_cta }}</p>
     <div style="display: flex; flex-wrap: wrap; gap: var(--space-3); justify-content: center;">
-      <a href="viber://chat?number=+359888909237" class="btn-viber">📲 Viber</a>
-      <a href="https://wa.me/359888909237" class="btn-whatsapp" target="_blank" rel="noopener">💬 WhatsApp</a>
+      <a href="viber://chat?number=+359888909237" class="btn-viber">Viber</a>
+      <a href="https://wa.me/359888909237" class="btn-whatsapp" target="_blank" rel="noopener">WhatsApp</a>
       <a href="{{ prefix }}/contact/" class="btn btn-outline">{{ t.btn_contact_us }}</a>
     </div>
   </div>

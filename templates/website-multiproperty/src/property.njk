@@ -36,12 +36,22 @@ eleventyComputed:
   "safe":             {"bg": "Сейф",              "en": "Safe"}
 } %}
 
-{% set complexGradients = {
-  "flora":              "linear-gradient(135deg, #4A6E8A 0%, #2C5274 100%)",
-  "royal-plaza":        "linear-gradient(135deg, #6B7B8C 0%, #3F4E5C 100%)",
-  "rila-park":          "linear-gradient(135deg, #5B7C99 0%, #2C4A66 100%)",
-  "borovets-gardens":   "linear-gradient(135deg, #738598 0%, #455866 100%)"
+{% set amenitySymbols = {
+  "wifi": "wifi",
+  "tv": "tv",
+  "kitchenette": "countertops",
+  "kitchen": "countertops",
+  "bathroom": "shower",
+  "balcony": "balcony",
+  "heating": "whatshot",
+  "air-conditioning": "ac_unit",
+  "washing-machine": "local_laundry_service",
+  "parking": "local_parking",
+  "safe": "lock"
 } %}
+
+{% set currentComplex = null %}
+{% for c in client.complexes %}{% if c.id == property.complex %}{% set currentComplex = c %}{% endif %}{% endfor %}
 
 <!-- Breadcrumb -->
 <nav class="breadcrumb" aria-label="breadcrumb">
@@ -62,17 +72,17 @@ eleventyComputed:
 
 <!-- Property Hero -->
 {% if property.hero_image %}
-  {% set heroImgUrl %}{% img property.hero_image %}{% endset %}
+  {% set heroImgUrl %}{% img property.hero_image, "hero" %}{% endset %}
   <div class="property-hero-image {{ property.complex }}-gradient"
        role="img"
        aria-label="{{ propertyName }}">
     <img src="{{ heroImgUrl }}"
          alt="{{ propertyName }}"
          loading="eager"
+         fetchpriority="high"
          class="property-hero-img">
   </div>
 {% else %}
-  <!-- _TODO_images -->
   <div class="property-hero-image {{ property.complex }}-gradient"
        role="img"
        aria-label="{{ propertyName }}">
@@ -96,7 +106,7 @@ eleventyComputed:
           {% elif loop.index <= 5 %}
             {% set _u %}{% img imgPath, "thumb" %}{% endset %}
             <div class="gallery-cell gallery-thumb gallery-thumb-{{ loop.index }}" data-index="{{ loop.index0 }}" role="button" tabindex="0" aria-label="{{ propertyName }} — снимка {{ loop.index }}">
-              <img src="{{ _u }}" alt="" aria-hidden="true" loading="lazy" class="gallery-img">
+              <img src="{{ _u }}" alt="" aria-hidden="true" loading="lazy" decoding="async" class="gallery-img">
             </div>
           {% endif %}
         {% endfor %}
@@ -119,7 +129,7 @@ eleventyComputed:
         {% for imgPath in property.images %}
           {% set _u %}{% img imgPath, "thumb" %}{% endset %}
           <div class="gallery-carousel-slide" data-index="{{ loop.index0 }}" role="button" tabindex="0" aria-label="{{ propertyName }} — снимка {{ loop.index }}">
-            <img src="{{ _u }}" alt="{{ propertyName }} — снимка {{ loop.index }}" loading="{{ 'eager' if loop.first else 'lazy' }}" class="gallery-img">
+            <img src="{{ _u }}" alt="{{ propertyName }} — снимка {{ loop.index }}" loading="{{ 'eager' if loop.first else 'lazy' }}" decoding="async" class="gallery-img">
           </div>
         {% endfor %}
       </div>
@@ -139,13 +149,13 @@ eleventyComputed:
 <!-- Lightbox -->
 <div class="gallery-lightbox" id="gallery-lightbox" role="dialog" aria-modal="true" aria-label="Галерия снимки" tabindex="-1" hidden>
   <div class="gallery-lb-overlay"></div>
-  <button class="gallery-lb-close" aria-label="Затвори галерията">✕</button>
+  <button class="gallery-lb-close" aria-label="Затвори галерията">&#x2715;</button>
   <div class="gallery-lb-counter" id="lb-counter" aria-live="polite"></div>
   <div class="gallery-lb-inner">
     <img src="" alt="" id="lb-img" class="gallery-lb-img">
   </div>
-  <button class="gallery-lb-prev" aria-label="Предишна снимка">‹</button>
-  <button class="gallery-lb-next" aria-label="Следваща снимка">›</button>
+  <button class="gallery-lb-prev" aria-label="Предишна снимка">&#x2039;</button>
+  <button class="gallery-lb-next" aria-label="Следваща снимка">&#x203a;</button>
 </div>
 
 <script>
@@ -165,7 +175,6 @@ eleventyComputed:
   var curEl = document.getElementById('gallery-current');
   var dots  = document.querySelectorAll('.gallery-dot');
 
-  /* Carousel scroll → update counter + dots */
   if (track) {
     track.addEventListener('scroll', function () {
       var w = track.offsetWidth || 1;
@@ -202,7 +211,6 @@ eleventyComputed:
     cur = (cur + dir + total) % total; lbShow();
   };
 
-  /* Keyboard */
   document.addEventListener('keydown', function (e) {
     if (lb.hidden) return;
     if (e.key === 'Escape') galleryLightboxClose();
@@ -210,14 +218,12 @@ eleventyComputed:
     else if (e.key === 'ArrowRight') galleryLightboxNav(1);
   });
 
-  /* Lightbox swipe */
   var startX = 0;
   lb.addEventListener('pointerdown', function (e) { startX = e.clientX; }, { passive: true });
   lb.addEventListener('pointerup',   function (e) {
     if (Math.abs(e.clientX - startX) > 50) galleryLightboxNav(e.clientX < startX ? 1 : -1);
   });
 
-  /* Click bindings */
   document.querySelectorAll('.gallery-cell').forEach(function (c) {
     c.addEventListener('click', function () { galleryLightboxOpen(+c.dataset.index); });
     c.addEventListener('keydown', function (e) {
@@ -243,88 +249,116 @@ eleventyComputed:
 {% endif %}
 
 <!-- Property Detail -->
-<section>
+<section class="property-detail-section">
   <div class="container">
     <div class="property-detail-grid">
 
       <!-- Main Info -->
       <div>
         <h1>{{ propertyName }}</h1>
-        <p style="color: var(--color-neutral-500); font-size: var(--text-sm); margin-bottom: var(--space-4);">{{ complexName }}</p>
+        <p class="property-complex-label">{{ complexName }}</p>
 
         <!-- Specs -->
         <div class="property-specs">
-          <span class="property-spec">🏠 {{ typeLabels[property.type] or property.type }}</span>
-          <span class="property-spec">👥 {{ property.capacity }} {{ t.property_guests_suffix }}</span>
+          <span class="property-spec">
+            <span class="material-symbols-outlined" aria-hidden="true">bed</span>
+            {{ typeLabels[property.type] or property.type }}
+          </span>
+          <span class="property-spec">
+            <span class="material-symbols-outlined" aria-hidden="true">group</span>
+            {{ property.capacity }} {{ t.property_guests_suffix }}
+          </span>
           {% if property.size_sqm %}
-            <span class="property-spec">📐 {{ property.size_sqm }} м²</span>
+          <span class="property-spec">
+            <span class="material-symbols-outlined" aria-hidden="true">straighten</span>
+            {{ property.size_sqm }} м²
+          </span>
           {% endif %}
         </div>
 
         <!-- Description -->
-        <p style="margin-top: var(--space-6); line-height: var(--leading-relaxed);">{{ propertyDesc }}</p>
-
-        <!-- Amenities -->
-        {% if property.amenities and property.amenities.length > 0 %}
-          <div style="margin-top: var(--space-6);">
-            <h3 style="margin-bottom: 0;">{{ t.property_amenities_label }}</h3>
-            <div class="amenities-grid">
-              {% for amenity in property.amenities %}
-                {% set amenLabel = amenityLabels[amenity] %}
-                <div class="amenity-item">
-                  <span aria-hidden="true">{% if amenity == "wifi" %}📶{% elif amenity == "tv" %}📺{% elif amenity == "kitchenette" or amenity == "kitchen" %}🍳{% elif amenity == "bathroom" %}🚿{% elif amenity == "balcony" %}🌅{% elif amenity == "heating" %}🔥{% elif amenity == "air-conditioning" %}❄️{% elif amenity == "washing-machine" %}🫧{% elif amenity == "parking" %}🅿{% else %}✓{% endif %}</span>
-                  {{ amenLabel[lang] if amenLabel else amenity | replace("-", " ") | title }}
-                </div>
-              {% endfor %}
-            </div>
-          </div>
-        {% endif %}
+        <p class="property-description">{{ propertyDesc }}</p>
       </div>
 
       <!-- Contact Sidebar -->
       <aside class="property-contact-box">
-        <h3>{{ t.property_contact_cta }}</h3>
-        <div style="display: flex; flex-direction: column; gap: var(--space-3);">
-          <a href="viber://chat?number=+359888909237"
-             class="btn-viber"
-             style="justify-content: center; padding: var(--space-3) var(--space-4); border-radius: var(--radius-md); font-size: var(--text-sm);">
-            📲 Viber: {{ client.contact_phone_en }}
+        <span class="kicker">{{ "CONTACT" if lang == "en" else "КОНТАКТ" }}</span>
+        <div class="contact-phone-row">
+          <a href="tel:{{ client.contact_phone_en }}" class="contact-phone-number">{{ client.contact_phone_en }}</a>
+        </div>
+        <div class="contact-channel-row">
+          <a href="viber://chat?number=+359888909237" class="contact-channel-link" aria-label="Viber">
+            <span class="material-symbols-outlined" aria-hidden="true">phone_iphone</span>
+            Viber
           </a>
-          <a href="https://wa.me/359888909237"
-             class="btn-whatsapp"
-             target="_blank"
-             rel="noopener"
-             style="justify-content: center; padding: var(--space-3) var(--space-4); border-radius: var(--radius-md); font-size: var(--text-sm);">
-            💬 WhatsApp: {{ client.contact_phone_en }}
-          </a>
-          <a href="{{ prefix }}/contact/" class="btn btn-outline" style="text-align: center;">
-            {{ t.btn_contact }}
+          <a href="https://wa.me/359888909237" target="_blank" rel="noopener" class="contact-channel-link" aria-label="WhatsApp">
+            <span class="material-symbols-outlined" aria-hidden="true">chat</span>
+            WhatsApp
           </a>
         </div>
+        <a href="{{ prefix }}/contact/" class="btn btn-primary contact-inquire-btn">
+          {{ "INQUIRE" if lang == "en" else "ЗАПИТВАНЕ" }}
+        </a>
       </aside>
 
     </div>
+  </div>
+</section>
+
+<!-- Complex Hero Banner (full-bleed cinematic) -->
+{% if currentComplex and currentComplex.hero_complex_image %}
+<a href="{{ prefix }}/apartments/?complex={{ currentComplex.id }}" class="complex-hero-banner" aria-label="{{ 'About' if lang == 'en' else 'За' }} {{ currentComplex.name }}">
+  {% set complexHeroUrl %}{% imgabs currentComplex.hero_complex_image, "banner" %}{% endset %}
+  <img src="{{ complexHeroUrl }}" alt="{{ currentComplex.name }}" loading="lazy" decoding="async" class="complex-hero-banner-img">
+  <div class="complex-hero-banner-overlay"></div>
+  <div class="complex-hero-banner-content">
+    <span class="kicker">{{ "ABOUT THE COMPLEX" if lang == "en" else "ЗА КОМПЛЕКСА" }}</span>
+    <h2>{{ currentComplex.name }}</h2>
+    {% if currentComplex.tagline %}
+      <p class="complex-hero-banner-tagline">{{ currentComplex.tagline }}</p>
+    {% endif %}
+  </div>
+</a>
+{% endif %}
+
+<!-- Amenities + Complex Info + Similar -->
+<section class="property-lower-section">
+  <div class="container">
+
+    <!-- Amenities -->
+    {% if property.amenities and property.amenities.length > 0 %}
+    <div class="property-amenities-section">
+      <h3>{{ t.property_amenities_label }}</h3>
+      <div class="amenities-grid">
+        {% for amenity in property.amenities %}
+          {% set amenLabel = amenityLabels[amenity] %}
+          <div class="amenity-item">
+            <span class="material-symbols-outlined" aria-hidden="true">{{ amenitySymbols[amenity] or "check_circle" }}</span>
+            {{ amenLabel[lang] if amenLabel else amenity | replace("-", " ") | title }}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
 
     <!-- Complex Info -->
-    {% set currentComplex = null %}
-    {% for c in client.complexes %}{% if c.id == property.complex %}{% set currentComplex = c %}{% endif %}{% endfor %}
     {% if currentComplex and currentComplex['description_' + lang] %}
     <div class="complex-info-box">
       <h3 class="complex-info-title">
-        {{ "За" if lang == "bg" else "About" }} {{ currentComplex.name }}
+        {{ "About" if lang == "en" else "За" }} {{ currentComplex.name }}
       </h3>
       <p class="complex-info-desc">{{ currentComplex['description_' + lang] }}</p>
       {% set complexAmenities = currentComplex['amenities_' + lang] %}
       {% if complexAmenities and complexAmenities.length > 0 %}
         <div class="property-amenities" style="margin-top: var(--space-5);">
           {% for item in complexAmenities %}
-            <span class="amenity-tag">✓ {{ item }}</span>
+            <span class="amenity-tag">&#x2713; {{ item }}</span>
           {% endfor %}
         </div>
       {% endif %}
       {% if currentComplex['location_' + lang] %}
         <p class="complex-info-location">
-          <span aria-hidden="true">📍</span>
+          <span class="material-symbols-outlined" aria-hidden="true">location_on</span>
           {{ currentComplex['location_' + lang] }}
         </p>
       {% endif %}

@@ -14,7 +14,7 @@
          data-type="{{ property.type }}">
   <div class="property-card-image {{ property.complex }}-gradient" role="img" aria-label="{{ property.name_en if lang == 'en' else property.name_bg }}">
     {% if property.hero_image %}
-      {% set cardImgUrl %}{% img property.hero_image %}{% endset %}
+      {% set cardImgUrl %}{% img property.hero_image, "thumb" %}{% endset %}
       <img src="{{ cardImgUrl }}" alt="" aria-hidden="true" loading="lazy" class="property-card-bg-img">
     {% endif %}
     <span class="property-type-badge">{{ typeLabels[property.type] or property.type }}</span>
@@ -22,9 +22,9 @@
   <div class="property-card-body">
     <h3>{{ property.name_en if lang == "en" else property.name_bg }}</h3>
     <div class="property-card-meta">
-      <span title="{{ t.property_capacity_label }}">👥 {{ property.capacity }} {{ t.property_guests_suffix }}</span>
+      <span title="{{ t.property_capacity_label }}"><span class="material-symbols-outlined card-meta-icon" aria-hidden="true">group</span>{{ property.capacity }} {{ t.property_guests_suffix }}</span>
       {% if property.size_sqm %}
-        <span title="{{ t.property_size_label }}">📐 {{ property.size_sqm }} м²</span>
+        <span title="{{ t.property_size_label }}"><span class="material-symbols-outlined card-meta-icon" aria-hidden="true">straighten</span>{{ property.size_sqm }} м²</span>
       {% endif %}
       <span>{{ property.complex_name_en if lang == "en" else property.complex_name_bg }}</span>
     </div>
