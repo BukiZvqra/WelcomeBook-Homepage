@@ -8,7 +8,7 @@
         <img src="{{ logoUrl }}" alt="{{ client.business_name }}" class="logo-img" loading="eager">
       {% else %}
         <span class="logo-name">{{ client.business_name }}</span>
-        <span class="logo-tagline">Боровец от 2009</span>
+        <span class="logo-tagline">{{ "Borovets · Since" if lang == "en" else "Боровец · от" }} {{ client.founded }}</span>
       {% endif %}
     </a>
 
@@ -19,11 +19,11 @@
       <a href="{{ prefix }}/about-borovets/"{% if page.url.indexOf('/about-borovets') > -1 %} aria-current="page"{% endif %}>{{ t.nav_about }}</a>
       <a href="{{ prefix }}/contact/"{% if page.url.indexOf('/contact') > -1 %} aria-current="page"{% endif %}>{{ t.nav_contact }}</a>
 
-      <!-- Mobile-only: divider + contact + lang (inside nav for focus-within reveal) -->
+      <!-- Mobile-only extras (inside nav for slide-out) -->
       <div class="mobile-nav-divider" aria-hidden="true"></div>
       <div class="mobile-nav-contact" aria-label="{{ 'Direct contact' if lang == 'en' else 'Директен контакт' }}">
-        <a href="viber://chat?number=+359888909237">📲 Viber: {{ client.contact_phone_en }}</a>
-        <a href="https://wa.me/359888909237" target="_blank" rel="noopener">💬 WhatsApp: {{ client.contact_phone_en }}</a>
+        <a href="viber://chat?number=+359888909237">Viber: {{ client.contact_phone_en }}</a>
+        <a href="https://wa.me/359888909237" target="_blank" rel="noopener">WhatsApp: {{ client.contact_phone_en }}</a>
       </div>
       <div class="mobile-nav-lang" aria-label="{{ 'Language' if lang == 'en' else 'Език' }}">
         {% if lang == "en" %}
@@ -36,23 +36,8 @@
       </div>
     </nav>
 
-    <!-- Desktop right: contact + lang -->
+    <!-- Desktop right: lang + BOOK NOW -->
     <div class="header-right">
-      <div class="header-contact" aria-label="{{ 'Quick contact' if lang == 'en' else 'Бърз контакт' }}">
-        <a href="viber://chat?number=+359888909237"
-           class="btn-viber"
-           aria-label="Viber: {{ client.contact_phone_en }}">
-          📲 <span class="sr-only">Viber</span><span>Viber</span>
-        </a>
-        <a href="https://wa.me/359888909237"
-           class="btn-whatsapp"
-           target="_blank"
-           rel="noopener"
-           aria-label="WhatsApp: {{ client.contact_phone_en }}">
-          💬 <span class="sr-only">WhatsApp</span><span>WA</span>
-        </a>
-      </div>
-
       <div class="lang-switcher" aria-label="{{ 'Language switcher' if lang == 'en' else 'Превключване на език' }}">
         {% if lang == "en" %}
           <a href="{{ page.url | replace('/en/', '/') }}" aria-label="Превключи на Български">BG</a>
@@ -64,6 +49,10 @@
           <a href="/en{{ page.url }}" aria-label="Switch to English">EN</a>
         {% endif %}
       </div>
+
+      <a href="{{ prefix }}/contact/" class="btn-header-cta">
+        {{ "BOOK NOW" if lang == "en" else "РЕЗЕРВИРАЙ" }}
+      </a>
 
       <!-- Hamburger (mobile) -->
       <button class="mobile-menu-toggle"

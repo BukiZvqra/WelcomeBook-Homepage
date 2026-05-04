@@ -8,119 +8,166 @@ title: TES Borovets — Боровец през всички сезони
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg" style="background-image: url('{% imgabs client.hero_image, "hero" %}');">
-    <div class="hero-overlay"></div>
+  <div class="hero-bg">
+    <img
+      src="{% imgabs client.hero_image, 'hero' %}"
+      alt="{{ client.business_name }}"
+      loading="eager"
+    >
   </div>
+  <div class="hero-overlay"></div>
   <div class="container hero-content">
-    <h1>{{ client.tagline }}</h1>
+    <div class="hero-eyeline">
+      <div class="hero-eyeline-bar"></div>
+      <span class="hero-eyeline-label">BOROVETS</span>
+    </div>
+    <h1 class="hero-title">
+      {% if lang == "en" %}Through every season{% else %}Боровец през всички сезони{% endif %}
+      <span class="hero-title-secondary">
+        {% if lang == "en" %}Боровец през всички сезони{% else %}Through every season{% endif %}
+      </span>
+    </h1>
     <p class="hero-subtitle">{{ client.tagline_subtitle }}</p>
     <div class="hero-cta">
-      <a href="{{ prefix }}/apartments/" class="btn btn-primary">{{ t.hero_cta_primary }}</a>
+      <a href="{{ prefix }}/apartments/" class="btn btn-gold">{{ t.hero_cta_primary }}</a>
       <a href="{{ prefix }}/contact/" class="btn btn-outline">{{ t.hero_cta_secondary }}</a>
     </div>
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <span class="hero-stat-value">{{ client.founded }}</span>
-        <span class="hero-stat-label">{{ "основана" if lang == "bg" else "founded" }}</span>
+  </div>
+</section>
+
+<!-- EDITORIAL INTRO -->
+<section class="intro-section">
+  <div class="container">
+    <div class="intro-grid reveal">
+      <!-- Left: editorial interior photo -->
+      <div class="intro-image-col">
+        {% set introImg %}{% imgabs client.about_borovets_images[0], "hero" %}{% endset %}
+        <img src="{{ introImg }}" alt="{{ client.business_name }}" loading="lazy">
       </div>
-      <div class="hero-stat">
-        <span class="hero-stat-value">25+</span>
-        <span class="hero-stat-label">{{ "имота" if lang == "bg" else "properties" }}</span>
-      </div>
-      <div class="hero-stat">
-        <span class="hero-stat-value">4</span>
-        <span class="hero-stat-label">{{ "комплекса" if lang == "bg" else "complexes" }}</span>
+      <!-- Right: philosophy text -->
+      <div class="intro-text-col">
+        <span class="kicker">{{ "OUR PHILOSOPHY" if lang == "en" else "НАШАТА ФИЛОСОФИЯ" }}</span>
+        <h2>{{ t.section_about_title }}</h2>
+        <p class="section-subtitle" style="margin-top: var(--space-5);">{{ t.about_lead }}</p>
+        <p style="margin-top: var(--space-4); color: var(--on-surface-variant);">{{ t.about_body }}</p>
+        <p class="founder-quote">— {{ client.owner_name }}, Founder</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- КОМПЛЕКСИ -->
-<section class="complexes" id="complexes">
+<!-- BOUTIQUE COMPLEXES -->
+<section id="complexes" style="padding-top: var(--section-v); padding-bottom: var(--section-v);">
   <div class="container">
     <div class="section-header reveal">
-      <span class="eyebrow">{{ t.section_complexes_subtitle }}</span>
+      <span class="kicker">{{ t.section_complexes_subtitle }}</span>
       <h2>{{ t.section_complexes_title }}</h2>
     </div>
-    <div class="complexes-grid">
+  </div>
+  <div style="max-width: var(--container-lg); margin: 0 auto; padding: 0 var(--margin-edge);">
+    <div class="complexes-overlay-grid">
       {% for complex in client.complexes %}
-        <article class="complex-card reveal reveal-delay-{{ loop.index }}">
-          <div class="complex-card-image {{ complex.id }}-gradient" role="img" aria-label="{{ complex.name }}"></div>
-          <div class="complex-card-content">
-            <span class="eyebrow">{{ complex.subtitle }}</span>
+        <a href="{{ prefix }}/apartments/?complex={{ complex.id }}" class="complex-overlay-card reveal reveal-delay-{{ loop.index }}">
+          {% set complexImgUrl %}{% img complex.hero_image, "hero" %}{% endset %}
+          <img src="{{ complexImgUrl }}" alt="{{ complex.name }}" loading="lazy">
+          <div class="complex-overlay-gradient"></div>
+          <div class="complex-overlay-content">
+            <span class="kicker">
+              {% set cpCount = properties | filterByComplex(complex.id) | length %}
+              {{ complex.subtitle }} · {{ cpCount }} {{ "APT" if cpCount == 1 else "APTS" }}
+            </span>
             <h3>{{ complex.name }}</h3>
-            <p class="tagline">{{ complex.tagline }}</p>
-            {% set cpCount = properties | filterByComplex(complex.id) | length %}
-            <span class="meta">{{ cpCount }} {{ "имоти" if cpCount > 1 else "имот" }}</span>
-            <a href="{{ prefix }}/apartments/?complex={{ complex.id }}" class="btn btn-secondary">{{ t.complex_card_cta }}</a>
           </div>
-        </article>
+        </a>
       {% endfor %}
     </div>
   </div>
 </section>
 
-<!-- УСЛУГИ -->
-<section class="services-preview">
+<!-- CURATED SERVICES -->
+<section class="services-preview" style="padding-top: var(--section-v); padding-bottom: var(--section-v);">
   <div class="container">
-    <div class="section-header reveal">
-      <span class="eyebrow">{{ t.section_services_subtitle }}</span>
+    <div class="section-header reveal text-center">
+      <span class="kicker">{{ "CONCIERGE" if lang == "en" else "КОНСИЕРЖЕРИЯ" }}</span>
       <h2>{{ t.section_services_title }}</h2>
     </div>
-    <div class="services-grid">
-      {% set showDesc = false %}
+
+    {% set symbolMap = {
+      "property-manager": "apartment",
+      "transfers": "airport_shuttle",
+      "ski": "downhill_skiing",
+      "team-building": "group",
+      "safari": "explore",
+      "hiking": "landscape"
+    } %}
+
+    <div class="services-editorial-grid">
       {% for service in client.services %}
-        {% include "service-card.njk" %}
+        <a href="{{ prefix }}/services/{{ service.id }}/" class="service-editorial-cell reveal reveal-delay-{{ loop.index }}">
+          <span class="material-symbols-outlined" aria-hidden="true">{{ symbolMap[service.id] or "star" }}</span>
+          <span class="service-editorial-label">{{ service.name }}</span>
+        </a>
       {% endfor %}
     </div>
+
     <div style="margin-top: var(--space-8); text-align: center;" class="reveal">
       <a href="{{ prefix }}/services/" class="btn btn-secondary">{{ t.services_cta }}</a>
     </div>
   </div>
 </section>
 
-<!-- ЗА НАС -->
-<section class="about" id="about">
-  <div class="container">
-    <div class="about-content reveal">
-      <span class="eyebrow">{{ "За нас" if lang == "bg" else "About us" }}</span>
-      <h2>{{ t.section_about_title }}</h2>
-      <p class="lead" style="margin-top: var(--space-5);">{{ t.about_lead }}</p>
-      <p style="margin-top: var(--space-4);">{{ t.about_body }}</p>
-    </div>
-    <div class="stats-grid reveal reveal-delay-2">
-      <div class="stat-item">
-        <span class="stat-number">{{ client.founded }}</span>
-        <span class="stat-label">{{ "основана" if lang == "bg" else "founded" }}</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number">25+</span>
-        <span class="stat-label">{{ "имота" if lang == "bg" else "properties" }}</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number">4</span>
-        <span class="stat-label">{{ "комплекса" if lang == "bg" else "complexes" }}</span>
-      </div>
-    </div>
+<!-- BOROVETS TEASER -->
+<section class="borovets-teaser">
+  <div class="borovets-teaser-bg">
+    <img
+      src="{% imgabs client.about_borovets_images[4], 'hero' %}"
+      alt="Borovets"
+      loading="lazy"
+    >
   </div>
-</section>
-
-<!-- БОРОВЕЦ TEASER -->
-<section class="borovets-teaser" style="text-align: center;">
-  <div class="container reveal">
+  <div class="borovets-teaser-overlay"></div>
+  <div class="borovets-teaser-content reveal">
+    <span class="kicker" style="color: var(--color-accent-200);">BOROVETS</span>
     <h2>{{ t.section_borovets_title }}</h2>
-    <p>{{ t.section_borovets_body }}</p>
-    <a href="{{ prefix }}/about-borovets/" class="btn btn-outline">{{ t.section_borovets_cta }}</a>
+    <a href="{{ prefix }}/about-borovets/" class="borovets-teaser-link">
+      {{ t.section_borovets_cta }} →
+    </a>
   </div>
 </section>
 
-<!-- КОНТАКТИ -->
-<section class="contact" id="contact">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="eyebrow">{{ t.section_contact_subtitle }}</span>
-      <h2>{{ t.section_contact_title }}</h2>
+<!-- TRUST STATS -->
+<div class="trust-stats-section">
+  <div class="trust-stats-grid" style="max-width: var(--container-lg); margin: 0 auto;">
+    <div class="trust-stat reveal">
+      <div class="trust-stat-number">{{ client.founded }}</div>
+      <div class="trust-stat-label">{{ "Since" if lang == "en" else "Основана" }}</div>
     </div>
-    {% include "contact-methods.njk" %}
+    <div class="trust-stat reveal reveal-delay-1">
+      <div class="trust-stat-number">27</div>
+      <div class="trust-stat-label">{{ "Apartments" if lang == "en" else "Апартамента" }}</div>
+    </div>
+    <div class="trust-stat reveal reveal-delay-2">
+      <div class="trust-stat-number">4</div>
+      <div class="trust-stat-label">{{ "Complexes" if lang == "en" else "Комплекса" }}</div>
+    </div>
+    <div class="trust-stat reveal reveal-delay-3">
+      <div class="trust-stat-number">1000+</div>
+      <div class="trust-stat-label">{{ "Happy Guests" if lang == "en" else "Доволни гости" }}</div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT CTA -->
+<section class="contact-cta-section" style="padding: var(--space-16) var(--space-6);">
+  <div style="max-width: var(--container-sm); margin: 0 auto;" class="reveal">
+    <span class="kicker" style="color: var(--color-accent-200);">{{ "READY TO BOOK?" if lang == "en" else "ГОТОВ ЗА РЕЗЕРВАЦИЯ?" }}</span>
+    <h2>{{ t.section_contact_title }}</h2>
+    <div style="margin-top: var(--space-6);">
+      <p>{{ client.contact_phone_en }}</p>
+      <p>{{ client.contact_email }}</p>
+    </div>
+    <div style="margin-top: var(--space-8);">
+      <a href="{{ prefix }}/contact/" class="btn btn-gold">{{ t.hero_cta_secondary }}</a>
+    </div>
   </div>
 </section>

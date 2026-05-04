@@ -9,7 +9,7 @@
           <span class="logo-tagline">{{ client.tagline }}</span>
         </a>
         <p>{{ client.business_full_name }}</p>
-        <span class="footer-since">{{ t.nav_about if lang == "en" else "от" }} {{ client.founded }}</span>
+        <span class="footer-since">{{ "Since" if lang == "en" else "от" }} {{ client.founded }}</span>
         <div class="footer-social">
           <a href="{{ client.tripadvisor_url }}" target="_blank" rel="noopener" aria-label="TripAdvisor">TripAdvisor ↗</a>
           <a href="{{ client.facebook_url }}" target="_blank" rel="noopener" aria-label="Facebook">Facebook ↗</a>
@@ -47,25 +47,16 @@
               {{ t.footer_eu_projects_link }} ↗
             </a>
           </li>
-          <li><a href="{{ client.tripadvisor_url }}" target="_blank" rel="noopener">TripAdvisor ↗</a></li>
-          <li><a href="{{ client.facebook_url }}" target="_blank" rel="noopener">Facebook ↗</a></li>
         </ul>
-
-        <!-- Contact details -->
         <ul style="margin-top: 1.5rem;">
           <li>
             <a href="tel:{{ client.contact_phone_en }}" class="footer-link">
-              📞 {{ client.contact_phone_en }} (BG/EN)
-            </a>
-          </li>
-          <li>
-            <a href="tel:{{ client.contact_phone_ru }}" class="footer-link">
-              📞 {{ client.contact_phone_ru }} (RU)
+              {{ client.contact_phone_en }}
             </a>
           </li>
           <li>
             <a href="mailto:{{ client.contact_email }}" class="footer-link">
-              ✉ {{ client.contact_email }}
+              {{ client.contact_email }}
             </a>
           </li>
         </ul>
@@ -76,9 +67,9 @@
     <div class="footer-bottom">
       <p>© {{ client.founded }}–2026 {{ client.business_full_name }}. {{ t.footer_copyright_suffix }}.</p>
       <p>
-        <a href="{{ prefix }}/about-borovets/" style="color: inherit;">{{ t.footer_about_link }}</a>
+        <a href="{{ prefix }}/about-borovets/">{{ t.footer_about_link }}</a>
         ·
-        <a href="{{ prefix }}/contact/" style="color: inherit;">{{ t.footer_contact_link }}</a>
+        <a href="{{ prefix }}/contact/">{{ t.footer_contact_link }}</a>
       </p>
     </div>
   </div>
