@@ -2,9 +2,14 @@
   <div class="container header-inner">
 
     <!-- Logo -->
-    <a href="{{ prefix }}/" class="logo" aria-label="{{ client.business_name }} — {{ t.nav_apartments }}, {{ t.nav_services }}">
-      <span class="logo-name">{{ client.business_name }}</span>
-      <span class="logo-tagline">{{ t.nav_about if lang == "en" else "Боровец от 2009" }}</span>
+    <a href="{{ prefix }}/" class="logo" aria-label="{{ client.business_name }}">
+      {% if client.logo %}
+        {% set logoUrl %}{% imgabs client.logo %}{% endset %}
+        <img src="{{ logoUrl }}" alt="{{ client.business_name }}" class="logo-img" loading="eager">
+      {% else %}
+        <span class="logo-name">{{ client.business_name }}</span>
+        <span class="logo-tagline">Боровец от 2009</span>
+      {% endif %}
     </a>
 
     <!-- Desktop navigation -->

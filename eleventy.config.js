@@ -35,6 +35,18 @@ module.exports = function(eleventyConfig) {
     return `https://res.cloudinary.com/${cloudName}/image/upload/${t}/clients/${clientId}/${filename}`;
   });
 
+  // Cloudinary shortcode for assets at account root (no clients/clientId prefix)
+  eleventyConfig.addShortcode("imgabs", function(filename, variant) {
+    const cloudName = process.env.CLOUDINARY_CLOUD_NAME || 'PLACEHOLDER';
+    const transforms = {
+      hero:  'w_1600,c_fill,f_auto,q_auto:good',
+      thumb: 'w_600,h_600,c_fill,f_auto,q_auto:eco',
+      full:  'w_2000,c_limit,f_auto,q_auto:good'
+    };
+    const t = transforms[variant] || 'f_auto,q_auto';
+    return `https://res.cloudinary.com/${cloudName}/image/upload/${t}/${filename}`;
+  });
+
   // Filter properties by complex id — replaces broken selectattr("equalto") in Eleventy Nunjucks
   eleventyConfig.addFilter("filterByComplex", (properties, complexId) => {
     if (!Array.isArray(properties)) return [];

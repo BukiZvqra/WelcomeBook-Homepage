@@ -572,6 +572,13 @@ section.section-alt { background: var(--color-neutral-50); }
   margin-top: 3px;
 }
 
+.logo-img {
+  height: 52px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
 .main-nav {
   display: flex;
   align-items: center;
