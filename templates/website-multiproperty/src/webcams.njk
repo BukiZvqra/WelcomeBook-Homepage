@@ -1,0 +1,100 @@
+---
+layout: base.njk
+title: Уеб камери — TES Borovets
+---
+{% set lang = lang or "bg" %}
+{% set t = i18n[lang] %}
+{% set prefix = "" if lang == "bg" else "/en" %}
+
+<!-- Breadcrumb -->
+<nav class="breadcrumb" aria-label="breadcrumb">
+  <div class="container">
+    <ol class="breadcrumb-list">
+      <li><a href="{{ prefix }}/">{{ t.breadcrumb_home }}</a></li>
+      <li>
+        <span class="bc-sep" aria-hidden="true">›</span>
+        <a href="{{ prefix }}/about-borovets/">{{ t.nav_about }}</a>
+      </li>
+      <li>
+        <span class="bc-sep" aria-hidden="true">›</span>
+        <span class="bc-current">{{ "Webcams" if lang == "en" else "Уеб камери" }}</span>
+      </li>
+    </ol>
+  </div>
+</nav>
+
+<!-- Hero compact -->
+<section class="hero hero-sm" style="background:linear-gradient(135deg,#00243b 0%,#003355 100%);min-height:280px;">
+  <div class="container hero-content">
+    <span class="eyebrow">{{ "WEATHER & CONDITIONS" if lang == "en" else "ВРЕМЕ И УСЛОВИЯ" }}</span>
+    <h1>{{ "Webcams from Borovets" if lang == "en" else "Уеб камери от Боровец" }}</h1>
+    <p class="hero-subtitle">{{ "See current conditions at the resort" if lang == "en" else "Виж текущите условия в курорта на живо" }}</p>
+  </div>
+</section>
+
+<!-- Cameras grid -->
+<section>
+  <div class="container">
+    <div class="webcam-grid">
+
+      <div class="webcam-card">
+        <div class="webcam-thumb">
+          <img src="http://media.borovets-bg.com/cams/channel?channel=41"
+               alt="{{ 'Borovets Centre webcam' if lang == 'en' else 'Камера Боровец Център' }}"
+               loading="lazy" decoding="async">
+        </div>
+        <div class="webcam-card-label">{{ "Borovets — Centre" if lang == "en" else "Боровец — Център" }}</div>
+      </div>
+
+      <div class="webcam-card">
+        <div class="webcam-thumb">
+          <img src="http://media.borovets-bg.com/cams/channel?channel=61"
+               alt="{{ 'Yarebitchno webcam' if lang == 'en' else 'Камера Яребично' }}"
+               loading="lazy" decoding="async">
+        </div>
+        <div class="webcam-card-label">{{ "Borovets — Yarebitchno" if lang == "en" else "Боровец — Яребично" }}</div>
+      </div>
+
+      <div class="webcam-card">
+        <div class="webcam-thumb">
+          <img src="http://media.borovets-bg.com/cams/channel?channel=11"
+               alt="{{ 'Gondola webcam' if lang == 'en' else 'Камера Гондола' }}"
+               loading="lazy" decoding="async">
+        </div>
+        <div class="webcam-card-label">{{ "Borovets — Gondola" if lang == "en" else "Боровец — Гондола" }}</div>
+      </div>
+
+      <div class="webcam-card">
+        <div class="webcam-thumb">
+          <img src="http://media.borovets-bg.com/cams/channel?channel=81"
+               alt="{{ 'Markudjik webcam' if lang == 'en' else 'Камера Маркуджик' }}"
+               loading="lazy" decoding="async">
+        </div>
+        <div class="webcam-card-label">{{ "Borovets — Markudjik" if lang == "en" else "Боровец — Маркуджик" }}</div>
+      </div>
+
+      <div class="webcam-card">
+        <div class="webcam-thumb">
+          <img src="http://media.borovets-bg.com/cams/channel?channel=21"
+               alt="{{ 'Sitnyakovo webcam' if lang == 'en' else 'Камера Ситняково' }}"
+               loading="lazy" decoding="async">
+        </div>
+        <div class="webcam-card-label">{{ "Borovets — Sitnyakovo" if lang == "en" else "Боровец — Ситняково" }}</div>
+      </div>
+
+      <div class="webcam-card">
+        <div class="webcam-thumb">
+          <img src="http://media.borovets-bg.com/cams/channel?channel=51"
+               alt="{{ 'Ski zone webcam' if lang == 'en' else 'Камера Ски Зона' }}"
+               loading="lazy" decoding="async">
+        </div>
+        <div class="webcam-card-label">{{ "Borovets — Ski Zone" if lang == "en" else "Боровец — Ски Зона" }}</div>
+      </div>
+
+    </div>
+
+    <p style="margin-top:var(--space-8);font-family:var(--font-sans);font-size:var(--text-xs);color:var(--on-surface-variant);">
+      {{ "Camera images load once on page open. Refresh the page to update." if lang == "en" else "Изображенията се зареждат при отваряне на страницата. Презаредете страницата за актуална снимка." }}
+    </p>
+  </div>
+</section>

@@ -7,7 +7,7 @@ title: Flora Complex — TES Borovets
 {% set prefix = "" if lang == "bg" else "/en" %}
 {% set complexId = "flora" %}
 {% set currentComplex = client.complexes | selectattr("id", "equalto", complexId) | first %}
-{% set complexProperties = properties | selectattr("complex", "equalto", complexId) | sort(false, false, "sort_order") %}
+{% set complexProperties = properties | filterByComplex(complexId) | sort(false, false, "sort_order") %}
 {% set propCount = complexProperties | length %}
 
 <!-- Breadcrumb -->

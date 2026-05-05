@@ -3173,3 +3173,250 @@ section.section-alt { background: var(--color-neutral-100); }
 /* Button hover polish */
 .btn-primary:hover { background: #001929; }
 .btn-outline:hover { color: var(--primary); border-color: var(--primary); }
+
+
+/* ─── 32. Phase 9 — Polish + Webcams + Layout ─────────────── */
+
+/* Property grid — 3 cols, generous gap */
+.property-grid {
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-8);
+}
+
+.property-grid--2col {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-8);
+}
+
+@media (max-width: 1023px) {
+  .property-grid       { grid-template-columns: repeat(2, 1fr); }
+  .property-grid--2col { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .property-grid       { grid-template-columns: 1fr; }
+  .property-grid--2col { grid-template-columns: 1fr; }
+}
+
+/* Premium Viber / WhatsApp — official brand colors */
+.btn-viber {
+  background: #7360F2;
+  color: #fff;
+  border: none;
+  opacity: 1;
+  transition: background var(--t-base), transform var(--t-base);
+}
+.btn-viber:hover {
+  background: #5A4FE6;
+  opacity: 1;
+  transform: translateY(-2px) scale(1.02);
+}
+
+.btn-whatsapp {
+  background: #25D366;
+  color: #fff;
+  border: none;
+  opacity: 1;
+  transition: background var(--t-base), transform var(--t-base);
+}
+.btn-whatsapp:hover {
+  background: #1DB854;
+  opacity: 1;
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* CTA social buttons wrapper */
+.cta-social-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  justify-content: center;
+  margin-top: var(--space-5);
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-social-buttons .btn-viber,
+.cta-social-buttons .btn-whatsapp {
+  flex: 1;
+  min-width: 160px;
+  justify-content: center;
+  font-size: var(--text-sm);
+  letter-spacing: 0.04em;
+}
+
+/* PM services checklist */
+.pm-checklist-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0 var(--space-10);
+  margin: var(--space-8) 0 var(--space-6);
+}
+
+.pm-checklist-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--accent);
+}
+
+.pm-checklist-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--accent);
+}
+
+.pm-checklist-icon svg {
+  display: block;
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+}
+
+.pm-checklist-text {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: var(--text);
+  line-height: 1.55;
+}
+
+@media (max-width: 767px) {
+  .pm-checklist-grid { grid-template-columns: 1fr; }
+}
+
+/* PM furnishing packages */
+.pm-furnishing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+  margin-top: var(--space-8);
+}
+
+.pm-furnishing-card {
+  border: 1px solid var(--accent);
+  padding: var(--space-8) var(--space-6);
+  text-align: center;
+}
+
+.pm-furnishing-card .kicker { display: block; margin-bottom: var(--space-4); }
+
+.pm-furnishing-name {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 400;
+  color: var(--primary);
+  line-height: 1.1;
+}
+
+.pm-furnishing-note {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: var(--on-surface-variant);
+  line-height: 1.65;
+  margin-top: var(--space-6);
+  max-width: 68ch;
+}
+
+@media (max-width: 767px) {
+  .pm-furnishing-grid { grid-template-columns: 1fr; gap: var(--space-4); }
+}
+
+/* PM CTA — dark navy full-bleed */
+.pm-cta-section {
+  background: var(--primary);
+}
+
+.pm-cta-section h2 {
+  color: #fff;
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+}
+
+.pm-cta-section .pm-cta-lead {
+  color: rgba(255, 255, 255, 0.78);
+  font-family: var(--font-sans);
+  font-size: var(--text-lg);
+  margin-top: var(--space-4);
+  max-width: 52ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* About Borovets — editorial photo rows */
+.about-photo-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  overflow: hidden;
+}
+
+.about-photo-row--2col {
+  grid-template-columns: 2fr 1fr;
+}
+
+.about-photo-row img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  display: block;
+}
+
+.about-photo-single { overflow: hidden; }
+
+.about-photo-single img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 767px) {
+  .about-photo-row            { grid-template-columns: repeat(2, 1fr); }
+  .about-photo-row--2col      { grid-template-columns: 1fr; }
+  .about-photo-row img        { height: 180px; }
+  .about-photo-single img     { height: 260px; }
+}
+
+/* Webcam page */
+.webcam-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-5);
+  margin-top: var(--space-8);
+}
+
+.webcam-card {
+  border: 1px solid var(--accent);
+  overflow: hidden;
+}
+
+.webcam-thumb {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-neutral-100, #f0ece4);
+  aspect-ratio: 16 / 9;
+}
+
+.webcam-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.webcam-card-label {
+  background: #000;
+  color: var(--accent);
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: var(--space-2) var(--space-4);
+}
+
+@media (max-width: 767px) {
+  .webcam-grid { grid-template-columns: 1fr; }
+}

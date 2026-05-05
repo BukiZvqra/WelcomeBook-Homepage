@@ -119,6 +119,12 @@ title: Апартаменти под наем — Боровец
               </div>
             </div>
             {% endfor %}
+          {% elif propCount == 2 %}
+            <div class="property-grid--2col">
+              {% for property in complexProperties %}
+                {% include "property-card.njk" %}
+              {% endfor %}
+            </div>
           {% else %}
             <div class="property-grid">
               {% for property in complexProperties %}

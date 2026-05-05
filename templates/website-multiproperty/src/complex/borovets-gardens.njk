@@ -7,7 +7,7 @@ title: Borovets Gardens — TES Borovets
 {% set prefix = "" if lang == "bg" else "/en" %}
 {% set complexId = "borovets-gardens" %}
 {% set currentComplex = client.complexes | selectattr("id", "equalto", complexId) | first %}
-{% set complexProperties = properties | selectattr("complex", "equalto", complexId) | sort(false, false, "sort_order") %}
+{% set complexProperties = properties | filterByComplex(complexId) | sort(false, false, "sort_order") %}
 {% set propCount = complexProperties | length %}
 
 <!-- Breadcrumb -->
@@ -48,7 +48,7 @@ title: Borovets Gardens — TES Borovets
     </div>
 
     {% if propCount > 0 %}
-      <div class="property-grid">
+      <div class="{% if propCount == 2 %}property-grid--2col{% else %}property-grid{% endif %}">
         {% for property in complexProperties %}
           {% include "property-card.njk" %}
         {% endfor %}

@@ -36,56 +36,21 @@ title: Управление на имоти — TES Borovets
   </div>
 </section>
 
-<!-- Main content -->
-<section>
+<!-- Intro + Sidebar -->
+<section style="padding-bottom: 0;">
   <div class="container">
     <div class="pm-content-grid">
 
       <div class="pm-body">
         {% if lang == "bg" %}
-          <p class="lead">"ТУР ЕКСПРЕС СЕРВИС" ООД, предоставя на всички свои клиенти пълна услуга за Управление на имоти.</p>
-
+          <p class="lead">"ТУР ЕКСПРЕС СЕРВИС" ООД предоставя на всички свои клиенти пълна услуга за управление на имоти.</p>
           <p>Тези услуги са създадени за да задоволят напълно нуждите на всички собственици на ваканционни и инвестиционни имоти в България.</p>
-
-          <ul class="pm-services-list">
-            <li>Продажба на имоти</li>
-            <li>Консултантски услуги</li>
-            <li>Разработване на Бизнес планове и стратегии</li>
-            <li>Разработване на Маркетингови проучвания</li>
-            <li>Представлява собственика пред всички лица, държавни и общински служби и власти, като от негово име извършва всички необходими дейности и при необходимост категоризира обекта, съгласно процедурите и разпоредбите на Закона за туризма в Република България</li>
-            <li>Поддържа кореспонденция от името на собственика, свързана с управлението на имота; представлява собственика при сключване на договори за предоставяне ползването на обекта, предоставя ползването на обекта</li>
-            <li>Представлява собственика при сключване на договори с туроператори за отдаване под наем</li>
-            <li>Извършва необходимия маркетинг с цел достигане на максимална възвръщаемост на инвестицията</li>
-            <li>Разработва рекламна стратегия за обекта, включвайки обекта в различни печатни издания, радио, интернет и др. рекламни кампании</li>
-            <li>Разработва летни и зимни програми, както и пакетни цени с цел повишаване приходите от имота</li>
-            <li>"Тур-Експрес-Сервис" ООД работи с модулни конструкции за обзавеждане, разделени на три пакета — Стандарт, Премиум и Делукс. Привилегията за клиентите е че при веднъж избран пакет се дава възможност сами да определят оборудването и уредите в съответствие с интериора.</li>
-          </ul>
-
-          <p>Ние прилагаме нашите умения и опит в разрешаването на проблеми, типично възникващи при отдаването под наем на имоти за да осигурим както на собственика така и на наемателя пълно удовлетворение. Правейки наемателите щастливи е ключът за максимизиране на възвръщаемостта от инвестицията на клиентите ни.</p>
         {% else %}
           <p class="lead">"TUR EXPRESS SERVICE" Ltd. provides all its clients with a comprehensive Property Management service.</p>
-
           <p>These services are designed to fully meet the needs of all owners of holiday and investment properties in Bulgaria.</p>
-
-          <ul class="pm-services-list">
-            <li>Property sales</li>
-            <li>Consultancy services</li>
-            <li>Development of business plans and strategies</li>
-            <li>Development of market research</li>
-            <li>Representing the owner before all persons, state and municipal bodies and authorities, carrying out all necessary activities on their behalf and, where necessary, categorising the property in accordance with the procedures and provisions of the Tourism Act of the Republic of Bulgaria</li>
-            <li>Maintaining correspondence on behalf of the owner in connection with the management of the property; representing the owner in concluding agreements for the use of the property</li>
-            <li>Representing the owner in concluding rental agreements with tour operators</li>
-            <li>Carrying out the necessary marketing to achieve maximum return on investment</li>
-            <li>Developing an advertising strategy for the property, including it in various print publications, radio, internet and other advertising campaigns</li>
-            <li>Developing summer and winter programmes, as well as package prices to increase revenue from the property</li>
-            <li>"Tur-Express-Service" Ltd. works with modular furniture systems divided into three packages — Standard, Premium and Deluxe. The privilege for clients is that once a package is selected, they are able to determine the equipment and appliances themselves in accordance with the interior.</li>
-          </ul>
-
-          <p>We apply our skills and experience in resolving problems typically arising in property rental to ensure complete satisfaction for both the owner and the tenant. Making tenants happy is the key to maximising our clients' return on investment.</p>
         {% endif %}
       </div>
 
-      <!-- Key services sidebar -->
       <aside class="pm-sidebar">
         {% if lang == "bg" %}
           <div class="pm-key-service">
@@ -126,21 +91,131 @@ title: Управление на имоти — TES Borovets
   </div>
 </section>
 
-<!-- CTA -->
+<!-- Services checklist -->
 <section class="section-alt">
-  <div class="container" style="text-align: center;">
+  <div class="container">
     {% if lang == "bg" %}
-      <h2>Изпратете запитване</h2>
-      <p class="lead" style="margin-top: var(--space-4); max-width: 52ch; margin-left: auto; margin-right: auto;">Свържете се с нас за безплатна консултация относно управлението на вашия имот в Боровец.</p>
+      <span class="kicker">Пълен обхват</span>
+      <h2>Какво включва управлението</h2>
+      <div class="pm-checklist-grid">
+        {% set items_bg = [
+          "Продажба на имоти",
+          "Консултантски услуги",
+          "Бизнес планове и стратегии",
+          "Маркетингови проучвания",
+          "Представителство пред държавни и общински служби",
+          "Категоризация съгласно Закона за туризма",
+          "Управление на договори за наем",
+          "Маркетинг за максимална възвръщаемост",
+          "Рекламна стратегия — печат, радио, интернет",
+          "Летни и зимни програми + пакетни цени",
+          "Модулно обзавеждане по три пакета"
+        ] %}
+        {% for item in items_bg %}
+          <div class="pm-checklist-item">
+            <span class="pm-checklist-icon" aria-hidden="true">
+              <svg viewBox="0 0 16 16" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="2 8 6 12 14 4"/>
+              </svg>
+            </span>
+            <span class="pm-checklist-text">{{ item }}</span>
+          </div>
+        {% endfor %}
+      </div>
+      <p style="max-width:72ch;font-family:var(--font-sans);font-size:var(--text-base);line-height:1.7;color:var(--on-surface-variant);">Ние прилагаме нашите умения и опит в разрешаването на проблеми, типично възникващи при отдаването под наем на имоти за да осигурим както на собственика така и на наемателя пълно удовлетворение. Правейки наемателите щастливи е ключът за максимизиране на възвръщаемостта от инвестицията на клиентите ни.</p>
     {% else %}
-      <h2>Send an enquiry</h2>
-      <p class="lead" style="margin-top: var(--space-4); max-width: 52ch; margin-left: auto; margin-right: auto;">Contact us for a free consultation about managing your property in Borovets.</p>
+      <span class="kicker">Full scope</span>
+      <h2>What management includes</h2>
+      <div class="pm-checklist-grid">
+        {% set items_en = [
+          "Property sales",
+          "Consultancy services",
+          "Business plans and strategies",
+          "Market research",
+          "Representation before state and municipal authorities",
+          "Property categorisation under the Tourism Act",
+          "Rental agreement management",
+          "Marketing for maximum return on investment",
+          "Advertising strategy — print, radio, internet",
+          "Summer and winter programmes + package prices",
+          "Modular furnishing in three packages"
+        ] %}
+        {% for item in items_en %}
+          <div class="pm-checklist-item">
+            <span class="pm-checklist-icon" aria-hidden="true">
+              <svg viewBox="0 0 16 16" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="2 8 6 12 14 4"/>
+              </svg>
+            </span>
+            <span class="pm-checklist-text">{{ item }}</span>
+          </div>
+        {% endfor %}
+      </div>
+      <p style="max-width:72ch;font-family:var(--font-sans);font-size:var(--text-base);line-height:1.7;color:var(--on-surface-variant);">We apply our skills and experience in resolving problems typically arising in property rental to ensure complete satisfaction for both the owner and the tenant. Making tenants happy is the key to maximising our clients' return on investment.</p>
     {% endif %}
-    <div style="display: flex; flex-wrap: wrap; gap: var(--space-4); justify-content: center; margin-top: var(--space-8);">
+  </div>
+</section>
+
+<!-- Furnishing packages -->
+<section>
+  <div class="container">
+    {% if lang == "bg" %}
+      <span class="kicker">Обзавеждане</span>
+      <h2>Три пакета по ваш избор</h2>
+      <div class="pm-furnishing-grid">
+        <div class="pm-furnishing-card">
+          <span class="kicker">Пакет 01</span>
+          <div class="pm-furnishing-name">Стандарт</div>
+        </div>
+        <div class="pm-furnishing-card">
+          <span class="kicker">Пакет 02</span>
+          <div class="pm-furnishing-name">Премиум</div>
+        </div>
+        <div class="pm-furnishing-card">
+          <span class="kicker">Пакет 03</span>
+          <div class="pm-furnishing-name">Делукс</div>
+        </div>
+      </div>
+      <p class="pm-furnishing-note">Привилегията за клиентите е, че при веднъж избран пакет се дава възможност сами да определят оборудването и уредите в съответствие с интериора.</p>
+    {% else %}
+      <span class="kicker">Furnishing</span>
+      <h2>Three packages, your choice</h2>
+      <div class="pm-furnishing-grid">
+        <div class="pm-furnishing-card">
+          <span class="kicker">Package 01</span>
+          <div class="pm-furnishing-name">Standard</div>
+        </div>
+        <div class="pm-furnishing-card">
+          <span class="kicker">Package 02</span>
+          <div class="pm-furnishing-name">Premium</div>
+        </div>
+        <div class="pm-furnishing-card">
+          <span class="kicker">Package 03</span>
+          <div class="pm-furnishing-name">Deluxe</div>
+        </div>
+      </div>
+      <p class="pm-furnishing-note">The privilege for clients is that once a package is selected, they are able to determine the equipment and appliances themselves in accordance with the interior.</p>
+    {% endif %}
+  </div>
+</section>
+
+<!-- CTA — dark navy -->
+<section class="pm-cta-section">
+  <div class="container" style="text-align:center;padding-top:var(--space-16);padding-bottom:var(--space-16);">
+    {% if lang == "bg" %}
+      <h2>Имате имот в Боровец?</h2>
+      <p class="pm-cta-lead">Свържете се за консултация и оценка</p>
+    {% else %}
+      <h2>Have a property in Borovets?</h2>
+      <p class="pm-cta-lead">Get in touch for a consultation and valuation</p>
+    {% endif %}
+    <div style="display:flex;flex-wrap:wrap;gap:var(--space-4);justify-content:center;margin-top:var(--space-8);">
       <a href="{{ prefix }}/contact/" class="btn btn-primary">
         {{ "ИЗПРАТИ ЗАПИТВАНЕ" if lang == "bg" else "SEND ENQUIRY" }}
       </a>
-      <a href="tel:+359888909237" class="btn btn-outline">{{ client.contact_phone_en }}</a>
+      <a href="tel:+359888909237" style="display:inline-flex;align-items:center;gap:var(--space-2);color:rgba(255,255,255,0.7);font-family:var(--font-sans);font-size:var(--text-sm);text-decoration:none;padding:var(--space-3) var(--space-5);border:1px solid rgba(255,255,255,0.25);">
+        {{ client.contact_phone_en }}
+      </a>
     </div>
   </div>
 </section>
