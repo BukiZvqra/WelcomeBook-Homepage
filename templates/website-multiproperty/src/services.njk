@@ -19,35 +19,70 @@ title: Услуги — TES Borovets
   </div>
 </nav>
 
-<!-- Page Header -->
-<section class="page-intro">
+<!-- Compact Hero -->
+<section class="services-compact-hero">
   <div class="container">
+    <span class="kicker">{{ "КОНСИЕРЖЕРИЯ" if lang == "bg" else "CONCIERGE" }}</span>
     <h1>{{ t.services_title }}</h1>
-    <p class="lead">{{ t.services_subtitle }}</p>
+    <p class="services-lead">{{ t.services_subtitle }}</p>
+    <div class="services-hero-divider"></div>
   </div>
 </section>
 
-<!-- Services Grid -->
-<section>
+<!-- Editorial Cards -->
+<section class="services-editorial-section">
   <div class="container">
-    <div class="services-grid services-grid--3col">
-      {% set showDesc = false %}
+    <div class="services-editorial-grid">
+
       {% for service in client.services %}
-        {% include "service-card.njk" %}
+        {% set heroUrl %}{% img service.hero_image, "hero" %}{% endset %}
+
+        {% if service.id == "team-building" %}
+          {% set cardKicker = "КОРПОРАТИВНО СЪБИТИЕ" if lang == "bg" else "GROUP EXPERIENCE" %}
+          {% set cardDesc = "Организираме вашия фирмен тиймбилдинг от настаняването до активностите" if lang == "bg" else "We organise your corporate team building from accommodation to activities" %}
+        {% elif service.id == "safari" %}
+          {% set cardKicker = "ДЖИП ПРИКЛЮЧЕНИЕ" if lang == "bg" else "JEEP ADVENTURE" %}
+          {% set cardDesc = "Офроуд екскурзии из Рила с местни водачи — целодневни и полудневни" if lang == "bg" else "Off-road excursions through Rila with local guides — full and half-day" %}
+        {% else %}
+          {% set cardKicker = "ПЛАНИНСКИ ТУРИЗЪМ" if lang == "bg" else "GUIDED HIKING" %}
+          {% set cardDesc = "9 маршрута с планински водач — от Черната скала до Мусала" if lang == "bg" else "9 guided routes — from Black Rock to Mount Musala" %}
+        {% endif %}
+
+        <a href="{{ prefix }}/services/{{ service.id }}/" class="service-editorial-card">
+          <div class="sec-image" style="background-image: url('{{ heroUrl }}');"></div>
+          <div class="sec-overlay"></div>
+          <div class="sec-content">
+            <div class="sec-rule"></div>
+            <span class="sec-kicker">{{ cardKicker }}</span>
+            <h3>{{ service.name }}</h3>
+            <p class="sec-desc">{{ cardDesc }}</p>
+            <span class="sec-arrow">→</span>
+          </div>
+        </a>
+
       {% endfor %}
+
     </div>
   </div>
 </section>
 
-<!-- Contact CTA -->
-<section class="borovets-teaser">
-  <div class="container" style="text-align: center;">
-    <h2>{{ t.services_contact_prompt }}</h2>
-    <p>{{ t.services_contact_cta }}</p>
-    <div style="display: flex; flex-wrap: wrap; gap: var(--space-3); justify-content: center;">
-      <a href="viber://chat?number=+359888909237" class="btn-viber">Viber</a>
-      <a href="https://wa.me/359888909237" class="btn-whatsapp" target="_blank" rel="noopener">WhatsApp</a>
-      <a href="{{ prefix }}/contact/" class="btn btn-outline">{{ t.btn_contact_us }}</a>
-    </div>
+<!-- Intro paragraph -->
+<section style="padding-top: var(--space-10); padding-bottom: var(--space-10);">
+  <div class="container" style="text-align: center; max-width: 720px; margin-left: auto; margin-right: auto;">
+    {% if lang == "bg" %}
+      <p class="lead">TES Borovets организира всичко необходимо за вашия престой в Боровец — от трансфер от летището до планински приключения с местни водачи. Минималистичен подход, лични грижи.</p>
+    {% else %}
+      <p class="lead">TES Borovets organises everything you need for your stay in Borovets — from airport transfers to mountain adventures with local guides. Minimal friction, personal care.</p>
+    {% endif %}
+  </div>
+</section>
+
+<!-- Dark navy CTA -->
+<section class="pm-cta-section" style="padding: var(--space-16) 0; text-align: center;">
+  <div class="container">
+    <span class="kicker" style="color: var(--accent);">{{ "ИМАТЕ ВЪПРОС?" if lang == "bg" else "GOT A QUESTION?" }}</span>
+    <h2>{{ t.services_contact_cta }}</h2>
+    <p class="pm-cta-lead">{{ "Ще организираме всичко според вашите нужди" if lang == "bg" else "We'll arrange everything according to your needs" }}</p>
+    {% include "cta-social-buttons.njk" %}
   </div>
 </section>

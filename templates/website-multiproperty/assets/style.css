@@ -3440,3 +3440,210 @@ section.section-alt { background: var(--color-neutral-100); }
 @media (max-width: 767px) {
   .webcam-grid { grid-template-columns: 1fr; }
 }
+
+/* Footer brand / credit */
+.footer-copyright,
+.footer-design-credit {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.05em;
+}
+.footer-design-credit a {
+  color: var(--accent);
+  border-bottom: 1px solid transparent;
+  transition: border-color 200ms;
+}
+.footer-design-credit a:hover { border-color: var(--accent); }
+
+
+/* ─── 33. Phase 9.2 — Services Editorial + Mobile Fixes ─── */
+
+/* hero-sm — compact hero used on complex/service pages */
+.hero-sm {
+  min-height: 380px;
+}
+
+/* Prevent horizontal scroll site-wide */
+html, body { overflow-x: hidden; max-width: 100%; }
+
+/* Smaller hero on mobile */
+@media (max-width: 767px) {
+  .hero       { min-height: 60vh; }
+  .hero-sm    { min-height: 240px; }
+  .hero h1,
+  .hero-title { font-size: clamp(2rem, 8vw, 2.75rem); }
+  .hero-subtitle { font-size: var(--text-base); margin-bottom: var(--space-6); }
+}
+
+/* Touch targets on mobile */
+@media (max-width: 767px) {
+  .btn,
+  .btn-viber,
+  .btn-whatsapp,
+  a.btn-viber,
+  a.btn-whatsapp {
+    min-height: 44px;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+}
+
+/* Services compact hero */
+.services-compact-hero {
+  background: var(--primary);
+  padding: var(--space-16) 0 var(--space-12);
+  text-align: center;
+}
+
+.services-compact-hero .kicker {
+  color: var(--accent);
+}
+
+.services-compact-hero h1 {
+  color: #fff;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-top: var(--space-4);
+  margin-bottom: 0;
+}
+
+.services-compact-hero .services-lead {
+  color: rgba(255, 255, 255, 0.72);
+  font-family: var(--font-sans);
+  font-size: var(--text-lg);
+  margin-top: var(--space-5);
+  margin-bottom: 0;
+}
+
+.services-hero-divider {
+  width: 64px;
+  height: 1px;
+  background: var(--accent);
+  margin: var(--space-8) auto 0;
+}
+
+/* Services editorial grid */
+.services-editorial-section {
+  padding: var(--space-12) 0;
+}
+
+.services-editorial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* Editorial card — portrait, image + gradient overlay */
+.service-editorial-card {
+  position: relative;
+  display: block;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  text-decoration: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+.sec-image {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              filter 600ms ease;
+}
+
+.service-editorial-card:hover .sec-image {
+  transform: scale(1.04);
+  filter: brightness(1.06);
+}
+
+.sec-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 30%, rgba(0, 24, 40, 0.86) 100%);
+  transition: background 600ms ease;
+}
+
+.service-editorial-card:hover .sec-overlay {
+  background: linear-gradient(to bottom, transparent 20%, rgba(0, 24, 40, 0.93) 100%);
+}
+
+.sec-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-8) var(--space-6);
+}
+
+.sec-rule {
+  width: 24px;
+  height: 1px;
+  background: var(--accent);
+  margin-bottom: var(--space-4);
+}
+
+.sec-kicker {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: var(--space-3);
+}
+
+.sec-content h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
+  font-weight: 400;
+  color: #fff;
+  margin: 0 0 var(--space-3);
+  line-height: 1.15;
+}
+
+.sec-desc {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.78);
+  margin: 0 0 var(--space-5);
+  line-height: 1.5;
+}
+
+.sec-arrow {
+  display: inline-block;
+  font-size: var(--text-lg);
+  color: var(--accent);
+  transition: transform 300ms ease;
+}
+
+.service-editorial-card:hover .sec-arrow {
+  transform: translateX(6px);
+}
+
+/* Editorial cards — responsive */
+@media (max-width: 1023px) {
+  .services-editorial-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+  .service-editorial-card {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (max-width: 600px) {
+  .service-editorial-card {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+/* Safari tour card — hover lift */
+.safari-tour-card {
+  transition: box-shadow 200ms ease, transform 200ms ease;
+}
+.safari-tour-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 36, 59, 0.12);
+  transform: translateY(-3px);
+}
