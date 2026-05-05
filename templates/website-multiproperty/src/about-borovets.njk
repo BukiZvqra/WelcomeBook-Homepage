@@ -51,9 +51,9 @@ title: За Боровец — TES Borovets
 
 <!-- Photo row — 3 images -->
 <div class="about-photo-row">
-  {% set img0 %}{% imgabs "borovets/e50ab250f2c0ad788054238682d9aa93dc8ab9d3", "hero" %}{% endset %}
-  {% set img1 %}{% imgabs "borovets/61df8e8fe446d4b46861df72ea1541860d52735a", "hero" %}{% endset %}
-  {% set img2 %}{% imgabs "borovets/cf4bc00dabb63b7871384748dad5226816ef58ff", "hero" %}{% endset %}
+  {% set img0 %}{% img client.about_borovets_images[0], "hero" %}{% endset %}
+  {% set img1 %}{% img client.about_borovets_images[1], "hero" %}{% endset %}
+  {% set img2 %}{% img client.about_borovets_images[2], "hero" %}{% endset %}
   <img src="{{ img0 }}" alt="" loading="lazy" decoding="async">
   <img src="{{ img1 }}" alt="" loading="lazy" decoding="async">
   <img src="{{ img2 }}" alt="" loading="lazy" decoding="async">
@@ -124,7 +124,7 @@ title: За Боровец — TES Borovets
 
 <!-- Photo single — large editorial -->
 <div class="about-photo-single">
-  {% set img3 %}{% imgabs "borovets/989b833e02a98002a9f29cfb4bc496fbe27238ef", "banner" %}{% endset %}
+  {% set img3 %}{% img client.about_borovets_images[3], "banner" %}{% endset %}
   <img src="{{ img3 }}" alt="" loading="lazy" decoding="async">
 </div>
 
@@ -184,8 +184,8 @@ title: За Боровец — TES Borovets
 
 <!-- Photo row — 2 images, asymmetric -->
 <div class="about-photo-row about-photo-row--2col">
-  {% set img4 %}{% imgabs "borovets/06c65e39b44df79c4036e95f9c4063431307a7a6", "hero" %}{% endset %}
-  {% set img5 %}{% imgabs "borovets/b7fe9a63f908474e996f72b199974f239d1c65d1", "hero" %}{% endset %}
+  {% set img4 %}{% img client.about_borovets_images[4], "hero" %}{% endset %}
+  {% set img5 %}{% img client.about_borovets_images[5], "hero" %}{% endset %}
   <img src="{{ img4 }}" alt="" loading="lazy" decoding="async">
   <img src="{{ img5 }}" alt="" loading="lazy" decoding="async">
 </div>
@@ -207,7 +207,7 @@ title: За Боровец — TES Borovets
 
 <!-- Photo single -->
 <div class="about-photo-single">
-  {% set img6 %}{% imgabs "borovets/6ffa29f699d950904f4b854eab7ba7e4537b8faf", "banner" %}{% endset %}
+  {% set img6 %}{% img client.about_borovets_images[6], "banner" %}{% endset %}
   <img src="{{ img6 }}" alt="" loading="lazy" decoding="async">
 </div>
 
@@ -229,7 +229,7 @@ title: За Боровец — TES Borovets
 <!-- Services CTA -->
 <section class="borovets-teaser">
   <div class="borovets-teaser-bg">
-    {% set teaserImg %}{% imgabs client.about_borovets_images[0], "banner" %}{% endset %}
+    {% set teaserImg %}{% img client.about_borovets_images[0], "banner" %}{% endset %}
     <img src="{{ teaserImg }}" alt="" loading="lazy" decoding="async">
     <div class="borovets-teaser-overlay"></div>
   </div>

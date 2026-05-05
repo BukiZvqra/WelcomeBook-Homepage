@@ -2092,6 +2092,26 @@ section.section-alt { background: var(--color-neutral-100); }
 .footer-bottom a { color: inherit; text-decoration: none; }
 .footer-bottom a:hover { color: var(--color-neutral-400); }
 
+.footer-copyright,
+.footer-design-credit {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  color: var(--color-neutral-500, rgba(255,255,255,0.45));
+  margin: 3px 0;
+  letter-spacing: 0.05em;
+}
+
+.footer-design-credit a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 200ms;
+}
+
+.footer-design-credit a:hover {
+  border-bottom-color: var(--accent);
+}
+
 @media (max-width: 1023px) {
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .footer-brand { grid-column: span 2; }

@@ -38,7 +38,7 @@ title: TES Borovets — Боровец през всички сезони
     <div class="intro-grid reveal">
       <!-- Left: editorial interior photo -->
       <div class="intro-image-col">
-        {% set introImg %}{% imgabs client.about_borovets_images[0], "hero" %}{% endset %}
+        {% set introImg %}{% img client.about_borovets_images[0], "hero" %}{% endset %}
         <img src="{{ introImg }}" alt="{{ client.business_name }}" loading="lazy">
       </div>
       <!-- Right: philosophy text -->
@@ -65,7 +65,7 @@ title: TES Borovets — Боровец през всички сезони
     <div class="complexes-overlay-grid">
       {% for complex in client.complexes %}
         <a href="{{ prefix }}/apartments/?complex={{ complex.id }}" class="complex-overlay-card reveal reveal-delay-{{ loop.index }}">
-          {% set complexImgUrl %}{% img complex.hero_image, "hero" %}{% endset %}
+          {% set complexImgUrl %}{% imgabs complex.hero_complex_image, "hero" %}{% endset %}
           <img src="{{ complexImgUrl }}" alt="{{ complex.name }}" loading="lazy">
           <div class="complex-overlay-gradient"></div>
           <div class="complex-overlay-content">
@@ -117,7 +117,7 @@ title: TES Borovets — Боровец през всички сезони
 <section class="borovets-teaser">
   <div class="borovets-teaser-bg">
     <img
-      src="{% imgabs client.about_borovets_images[4], 'hero' %}"
+      src="{% img client.about_borovets_images[4], 'hero' %}"
       alt="Borovets"
       loading="lazy"
     >

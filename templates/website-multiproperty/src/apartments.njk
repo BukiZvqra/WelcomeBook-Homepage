@@ -144,11 +144,7 @@ title: Апартаменти под наем — Боровец
 <div class="container" style="padding-bottom: var(--space-9);">
   <div class="cta-band">
     <p>{{ t.apartments_no_match }}</p>
-    <div style="display: flex; flex-wrap: wrap; gap: var(--space-3); justify-content: center; margin-top: var(--space-5);">
-      <a href="viber://chat?number=+359888909237" class="btn-viber">Viber</a>
-      <a href="https://wa.me/359888909237" class="btn-whatsapp" target="_blank" rel="noopener">WhatsApp</a>
-      <a href="{{ prefix }}/contact/" class="btn btn-secondary">{{ t.btn_contact }}</a>
-    </div>
+    {% include "cta-social-buttons.njk" %}
   </div>
 </div>
 
