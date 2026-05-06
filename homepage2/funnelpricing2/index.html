@@ -1,0 +1,2851 @@
+﻿<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WelcomeBook Agency — Дигитален Welcome Book и Управление на Airbnb Имоти</title>
+<meta name="description" content="Помагаме на Airbnb и Booking хостове в България да печелят повече с по-малко стрес. Welcome book, SEO на обяви, автоматизация на съобщения, финансов тракер. Безплатна консултация.">
+<meta name="keywords" content="welcome book airbnb българия, airbnb управление имот, booking хост помощ, оптимизация airbnb обява, финансов тракер airbnb, welcome book bulgaria">
+<meta name="robots" content="index, follow">
+<meta name="author" content="WelcomeBook Agency">
+<link rel="canonical" href="https://welcomebook.agency">
+<link rel="icon" type="image/x-icon" href="../favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon.ico">
+<link rel="apple-touch-icon" href="../Images/Logo webpg.webp">
+
+<!-- Open Graph -->
+<meta property="og:title" content="WelcomeBook Agency — Повече резервации, по-малко стрес">
+<meta property="og:description" content="Дигитален welcome book, SEO оптимизация и автоматизация за Airbnb и Booking хостове в България.">
+<meta property="og:url" content="https://welcomebook.agency">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="bg_BG">
+<meta property="og:site_name" content="WelcomeBook Agency">
+<meta property="og:image" content="https://welcomebook.agency/Logo.png">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="WelcomeBook Agency — Повече резервации, по-малко стрес">
+<meta name="twitter:description" content="Дигитален welcome book, SEO оптимизация и автоматизация за Airbnb и Booking хостове в България.">
+<meta name="twitter:image" content="https://welcomebook.agency/Logo.png">
+
+<!-- Schema.org structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "WelcomeBook Agency",
+  "description": "Дигитална агенция за Airbnb и Booking хостове в България — welcome book, SEO оптимизация, автоматизация на комуникацията, финансов тракер.",
+  "url": "https://welcomebook.agency",
+  "email": "info@welcomebook.agency",
+  "areaServed": "Bulgaria",
+  "serviceType": "Airbnb Property Management Services",
+  "priceRange": "€€"
+}
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+<!-- Facebook Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1679192339343771');
+fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1679192339343771&ev=PageView&noscript=1"></noscript>
+<!-- End Facebook Pixel -->
+<style>
+  :root {
+    --navy: #0A0F1E;
+    --orange: #E8820C;
+    --orange2: #F59E0B;
+    --orange-grad: linear-gradient(135deg, #E8820C, #F59E0B);
+    --white: #ffffff;
+    --light: #f8f9fc;
+    --border: #e8eaf0;
+    --text: #2d3250;
+    --muted: #6b7280;
+    --font: 'Nunito Sans', sans-serif;
+    --navy-80: #1a2236;
+    --navy-60: #2a3550;
+    --orange-dark: #c96d08;
+    --orange-light: #F59E0B;
+    --success: #1D9E75;
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
+  body { font-family: var(--font); color: var(--text); background: #fff; overflow-x: hidden; }
+  a { text-decoration: none; color: inherit; }
+
+  /* ── NAVBAR ── */
+  header {
+    background: rgba(10, 15, 30, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(232,130,12,0.15);
+    padding: 0 40px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  nav {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; height: 68px; gap: 32px;
+  }
+  .logo {
+    display: flex; align-items: center; gap: 9px;
+    font-size: 20px; font-weight: 900; color: #fff;
+    letter-spacing: -.5px; flex-shrink: 0;
+  }
+  .logo-icon {
+    width: 34px; height: 34px; background: var(--orange-grad);
+    border-radius: 8px; display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+  .nav-links { display: flex; list-style: none; gap: 4px; flex: 1; }
+  .nav-links > li > a {
+    color: rgba(255,255,255,.87); font-size: 14.5px; font-weight: 600;
+    padding: 8px 14px; border-radius: 6px;
+    display: flex; align-items: center; gap: 5px;
+    transition: background .2s, color .2s;
+  }
+  .nav-links > li > a:hover { background: rgba(255,255,255,.1); color: #fff; }
+  .nav-right { display: flex; align-items: center; gap: 14px; margin-left: auto; }
+  .btn-nav-outline {
+    color: rgba(255,255,255,.85); font-size: 14px; font-weight: 600;
+    padding: 8px 14px; border-radius: 6px;
+    border: 1.5px solid rgba(255,255,255,.25); transition: all .2s;
+  }
+  .btn-nav-outline:hover { border-color: rgba(255,255,255,.6); color: #fff; }
+  .btn-demo {
+    background: var(--orange-grad); color: #fff; font-weight: 700; font-size: 14px;
+    padding: 10px 22px; border-radius: 8px; border: none; cursor: pointer;
+    transition: opacity .2s, transform .2s; white-space: nowrap;
+    box-shadow: 0 4px 15px rgba(232,130,12,.4);
+  }
+  .btn-demo:hover { opacity: .9; transform: translateY(-1px); }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--navy); padding: 80px 40px 0;
+    overflow: hidden; position: relative;
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 70% 60%, rgba(232,130,12,.12) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 60% at 10% 30%, rgba(232,130,12,.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: flex-end;
+  }
+  .hero-text { padding-bottom: 60px; }
+  .hero h1 {
+    font-size: clamp(38px, 6vw, 68px); font-weight: 900; color: #ffffff;
+    line-height: 1.1; margin-bottom: 22px; letter-spacing: -1.5px;
+  }
+  .hero h1 span { color: var(--orange); }
+  .hero-sub {
+    color: rgba(255,255,255,.68); font-size: 17px; line-height: 1.7;
+    margin-bottom: 36px; max-width: 500px;
+  }
+  .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 40px; }
+  .btn-primary {
+    background: var(--orange-grad); color: #fff; font-weight: 800; font-size: 15.5px;
+    padding: 14px 32px; border-radius: 10px;
+    box-shadow: 0 6px 24px rgba(232,130,12,.45);
+    transition: transform .2s, box-shadow .2s; cursor: pointer; border: none;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(232,130,12,.5); }
+  .btn-secondary {
+    background: rgba(255,255,255,.08); color: #fff; font-weight: 700; font-size: 15.5px;
+    padding: 14px 32px; border-radius: 10px; border: 1.5px solid rgba(255,255,255,.2);
+    transition: all .2s;
+  }
+  .btn-secondary:hover { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.4); }
+  .hero-guarantees { display: flex; gap: 24px; flex-wrap: wrap; }
+  .hero-guarantee {
+    display: flex; align-items: center; gap: 8px;
+    color: rgba(255,255,255,.65); font-size: 13px; font-weight: 600;
+  }
+  .hero-guarantee .check {
+    width: 18px; height: 18px; background: rgba(232,130,12,.2); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; color: var(--orange); font-size: 10px;
+  }
+  .hero-image { display: flex; align-items: flex-end; justify-content: center; }
+  .hero-mockup {
+    width: 100%; max-width: 560px;
+    background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.1);
+    border-radius: 16px 16px 0 0; padding: 16px;
+    box-shadow: 0 -20px 80px rgba(232,130,12,.08), 0 0 0 1px rgba(255,255,255,.05);
+  }
+  .mockup-bar {
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 14px; padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+  .mockup-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .mockup-dot.r { background: #ff5f57; }
+  .mockup-dot.y { background: #febc2e; }
+  .mockup-dot.g { background: #28c840; }
+  .mockup-url { flex: 1; background: rgba(255,255,255,.06); border-radius: 4px; height: 24px; margin-left: 8px; }
+  .mockup-screen { background: #0e1528; border-radius: 10px; overflow: hidden; }
+  .mockup-topbar {
+    background: rgba(232,130,12,.15); display: flex; gap: 2px;
+    padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,.06);
+  }
+  .mockup-tab {
+    padding: 5px 14px; border-radius: 5px;
+    font-size: 11px; font-weight: 700; color: rgba(255,255,255,.5); cursor: pointer;
+  }
+  .mockup-tab.active { background: var(--orange); color: #fff; }
+  .mockup-grid { display: grid; grid-template-columns: 180px 1fr; height: 260px; }
+  .mockup-sidebar {
+    background: rgba(255,255,255,.03); border-right: 1px solid rgba(255,255,255,.06);
+    padding: 14px 10px;
+  }
+  .mockup-nav-item {
+    padding: 8px 10px; border-radius: 6px; font-size: 10.5px; font-weight: 600;
+    color: rgba(255,255,255,.45); margin-bottom: 2px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .mockup-nav-item.active { background: rgba(232,130,12,.15); color: var(--orange); }
+  .mockup-nav-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+  .mockup-content { padding: 16px; }
+  .mockup-row { display: flex; gap: 8px; margin-bottom: 8px; }
+  .mockup-card {
+    flex: 1; background: rgba(255,255,255,.05); border-radius: 8px;
+    padding: 10px 12px; border: 1px solid rgba(255,255,255,.06);
+  }
+  .mockup-card-label { font-size: 9px; color: rgba(255,255,255,.4); font-weight: 600; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 4px; }
+  .mockup-card-val { font-size: 18px; font-weight: 800; color: #fff; }
+  .mockup-card-val span { font-size: 10px; color: #4ade80; }
+  .mockup-chart {
+    height: 80px; background: rgba(255,255,255,.03); border-radius: 8px; margin-top: 8px;
+    display: flex; align-items: flex-end; padding: 10px; gap: 6px;
+    border: 1px solid rgba(255,255,255,.06);
+  }
+  .chart-bar { flex: 1; border-radius: 3px 3px 0 0; background: rgba(232,130,12,.3); }
+  .chart-bar.hi { background: var(--orange); }
+
+  /* ── HERO STATS ── */
+  .hero-stats {
+    background: var(--navy); border-top: 1px solid rgba(255,255,255,.06);
+    padding: 32px 40px;
+  }
+  .hero-stats-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; justify-content: center; gap: 60px; flex-wrap: wrap;
+  }
+  .hero-stat { text-align: center; }
+  .hero-stat-val { font-size: 42px; font-weight: 900; color: var(--orange); letter-spacing: -2px; line-height: 1; }
+  .hero-stat-label { font-size: 13px; color: rgba(255,255,255,.55); font-weight: 600; margin-top: 6px; max-width: 140px; }
+
+  /* ── SECTION COMMON ── */
+  .section-tag {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #E8820C;
+    background: rgba(232,130,12,0.08);
+    border: 1px solid rgba(232,130,12,0.25);
+    padding: 6px 16px;
+    border-radius: 99px;
+    display: inline-block;
+    margin-bottom: 16px;
+  }
+  .section-header { text-align: center; max-width: 720px; margin: 0 auto 50px; }
+  .section-header h2 {
+    font-size: clamp(26px, 3vw, 40px); font-weight: 900; color: var(--text);
+    margin-bottom: 14px; letter-spacing: -.3px;
+  }
+  .section-header p { color: var(--muted); font-size: 16.5px; line-height: 1.7; }
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: transparent; color: var(--orange); font-weight: 800; font-size: 15px;
+    padding: 13px 28px; border-radius: 10px; border: 2px solid var(--orange); transition: all .2s;
+  }
+  .btn-outline:hover { background: var(--orange); color: #fff; }
+  .learn-more {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: var(--orange); font-weight: 700; font-size: 14.5px; transition: gap .2s;
+  }
+  .learn-more:hover { gap: 10px; }
+
+  /* ── FEATURES ── */
+  .features-section { background: var(--light); padding: 80px 40px; }
+  .features-cards {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px;
+  }
+  .feat-card {
+    background: #fff; border-radius: 16px; padding: 28px 24px;
+    border: 1px solid var(--border); transition: transform .2s, box-shadow .2s, border-color .2s;
+    box-shadow: 0 2px 12px rgba(0,0,0,.04);
+  }
+  .feat-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,.1); border-color: rgba(232,130,12,.3); }
+  .feat-card-icon {
+    width: 52px; height: 52px; background: rgba(232,130,12,.1); border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 16px; font-size: 24px;
+  }
+  .feat-card h3 { font-size: 17px; font-weight: 800; color: var(--text); margin-bottom: 8px; }
+  .feat-card p { font-size: 13.5px; color: var(--muted); line-height: 1.7; }
+
+  /* ── PRICE BADGE ── */
+  .feat-price {
+    display: inline-flex; align-items: baseline; gap: 3px;
+    margin-top: 12px;
+    font-size: 18px; font-weight: 900; color: var(--orange);
+    background: rgba(232,130,12,.1); border: 1px solid rgba(232,130,12,.25);
+    border-radius: 8px; padding: 5px 12px;
+  }
+  .feat-price span { font-size: 13px; font-weight: 600; color: var(--muted); }
+  .feat-price-muted {
+    color: var(--muted); background: rgba(107,114,128,.08);
+    border-color: rgba(107,114,128,.2); font-size: 14px; font-weight: 700;
+  }
+
+  .features-bonus {
+    max-width: 1100px; margin: 24px auto 0;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 22px;
+  }
+  .feat-card-bonus {
+    background: var(--navy); border-radius: 16px; padding: 24px 28px;
+    display: flex; align-items: center; gap: 20px;
+    border: 1px solid rgba(232,130,12,.2);
+    transition: transform .2s; box-shadow: 0 4px 20px rgba(0,0,0,.12);
+  }
+  .feat-card-bonus:hover { transform: translateY(-3px); }
+  .feat-card-bonus .fi-bonus {
+    width: 52px; height: 52px; flex-shrink: 0;
+    background: rgba(232,130,12,.15); border-radius: 14px;
+    display: flex; align-items: center; justify-content: center; font-size: 24px;
+  }
+  .feat-card-bonus h3 { font-size: 16px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+  .feat-card-bonus p { font-size: 13px; color: rgba(255,255,255,.55); line-height: 1.6; }
+  .features-cta { text-align: center; margin-top: 40px; }
+
+  /* ── BEFORE/AFTER ── */
+  .before-after { background: #fff; padding: 80px 0; overflow: hidden; }
+  .ba-header {
+    max-width: 1100px; margin: 0 auto 48px; padding: 0 40px;
+    display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+  }
+  .ba-header-text h2 { font-size: clamp(26px, 3vw, 38px); font-weight: 900; color: var(--text); letter-spacing: -.3px; margin-bottom: 8px; }
+  .ba-header-text p { color: var(--muted); font-size: 16px; }
+  .ba-nav { display: flex; gap: 10px; }
+  .ba-nav-btn {
+    width: 44px; height: 44px; border-radius: 50%;
+    border: 2px solid var(--border); background: #fff;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: all .2s; color: var(--text);
+  }
+  .ba-nav-btn:hover { border-color: var(--orange); background: var(--orange); color: #fff; }
+  .ba-track-wrap { overflow: hidden; padding: 10px 40px 24px; }
+  .ba-track { display: flex; gap: 24px; transition: transform .5s cubic-bezier(.4,0,.2,1); }
+  .ba-card {
+    min-width: 340px; background: #fff; border-radius: 20px; overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,.07); border: 1px solid var(--border);
+    flex-shrink: 0; transition: transform .3s, box-shadow .3s; cursor: pointer;
+  }
+  .ba-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0,0,0,.12); }
+  .ba-images { position: relative; height: 220px; overflow: hidden; }
+  .ba-images img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s ease; }
+  .ba-card:hover .ba-images img { transform: scale(1.04); }
+  .ba-badge {
+    position: absolute; top: 10px; left: 10px; z-index: 2;
+    font-size: 10px; font-weight: 800; padding: 3px 10px;
+    border-radius: 20px; letter-spacing: .06em; text-transform: uppercase;
+  }
+  .ba-badge.transform { background: var(--orange-grad); color: #fff; box-shadow: 0 2px 8px rgba(232,130,12,.4); }
+  .ba-card-body { padding: 18px 20px; }
+  .ba-card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+  .ba-card-title { font-size: 15px; font-weight: 800; color: var(--text); margin-bottom: 3px; }
+  .ba-card-loc { font-size: 12px; color: var(--muted); }
+  .ba-growth { font-size: 22px; font-weight: 900; color: var(--orange); }
+  .ba-growth-label { font-size: 9.5px; font-weight: 700; color: var(--muted); text-align: right; }
+  .ba-stats { display: flex; gap: 12px; }
+  .ba-stat { flex: 1; background: var(--light); border-radius: 10px; padding: 9px 11px; border: 1px solid var(--border); }
+  .ba-stat-label { font-size: 9.5px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 3px; }
+  .ba-stat-val { font-size: 17px; font-weight: 900; color: var(--text); }
+  .ba-stat-val.orange { color: var(--orange); }
+
+  /* ── TESTIMONIALS ── */
+  .testi-section { background: var(--light); padding: 80px 40px; }
+  .testi-grid {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px;
+  }
+  .testi-card:nth-child(4) { grid-column: 1 / 2; }
+  .testi-card:nth-child(5) { grid-column: 2 / 3; }
+  .testi-card {
+    background: #fff; border-radius: 18px; padding: 26px 24px;
+    border: 1px solid var(--border); box-shadow: 0 2px 12px rgba(0,0,0,.04);
+    transition: transform .3s, box-shadow .3s;
+  }
+  .testi-card:hover { transform: translateY(-5px); box-shadow: 0 14px 40px rgba(0,0,0,.1); }
+  .testi-stars { color: var(--orange); font-size: 13px; letter-spacing: 2px; margin-bottom: 12px; }
+  .testi-quote { font-size: 14.5px; color: var(--text); line-height: 1.7; margin-bottom: 18px; font-style: italic; }
+  .testi-footer { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+  .testi-author { display: flex; align-items: center; gap: 11px; }
+  .testi-avatar {
+    width: 42px; height: 42px; border-radius: 50%; background: var(--orange-grad);
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-weight: 800; font-size: 15px; flex-shrink: 0;
+    box-shadow: 0 3px 10px rgba(232,130,12,.3);
+  }
+  .testi-name { font-size: 13.5px; font-weight: 800; color: var(--text); }
+  .testi-loc { font-size: 12px; color: var(--muted); font-weight: 600; }
+  .testi-result {
+    font-size: 12.5px; font-weight: 800; color: var(--orange);
+    background: rgba(232,130,12,.1); padding: 4px 11px;
+    border-radius: 20px; white-space: nowrap;
+  }
+  .review-badges { display: flex; align-items: center; justify-content: center; gap: 20px; margin-top: 48px; flex-wrap: wrap; }
+  .review-badge {
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 20px; border: 2px solid var(--border); border-radius: 12px; transition: all .2s;
+  }
+  .review-badge:hover { border-color: var(--orange); transform: translateY(-2px); }
+  .rb-g2 { color: #ff492c; font-weight: 900; font-size: 22px; }
+  .rb-ga { color: #0866ff; font-weight: 900; font-size: 14px; }
+  .rb-vr { color: #1c7ed6; font-weight: 900; font-size: 13px; }
+  .rb-stars { color: var(--orange); font-size: 13px; }
+  .rb-name { font-size: 11px; font-weight: 600; color: var(--muted); }
+
+  /* ── PRICING ── */
+  .pricing { background: #fff; padding: 80px 40px; }
+  .pricing-cards {
+    max-width: 1040px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start;
+  }
+  .pricing-card {
+    background: #fff; border-radius: 22px; padding: 36px 28px;
+    border: 2px solid var(--border); position: relative;
+    transition: transform .3s, box-shadow .3s;
+  }
+  .pricing-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,.08); }
+  .pricing-card.popular {
+    border-color: var(--orange);
+    box-shadow: 0 0 0 4px rgba(232,130,12,.1), 0 16px 48px rgba(232,130,12,.18);
+    transform: translateY(-10px);
+    animation: pulseGlow 3s ease-in-out infinite;
+    z-index: 2;
+  }
+  @keyframes pulseGlow {
+    0%,100% { box-shadow: 0 0 0 4px rgba(232,130,12,.1), 0 16px 48px rgba(232,130,12,.18); }
+    50% { box-shadow: 0 0 0 8px rgba(232,130,12,.18), 0 20px 64px rgba(232,130,12,.28); }
+  }
+  .popular-badge {
+    position: absolute; top: -16px; left: 50%; transform: translateX(-50%);
+    background: var(--orange-grad); color: #fff;
+    font-size: 11px; font-weight: 800; padding: 6px 18px;
+    border-radius: 20px; letter-spacing: .08em; text-transform: uppercase;
+    white-space: nowrap; box-shadow: 0 4px 12px rgba(232,130,12,.4);
+  }
+  .pc-tier { font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+  .pc-name { font-size: 26px; font-weight: 900; color: var(--text); margin-bottom: 4px; font-family: Georgia, serif; font-style: italic; }
+  .pc-tagline { font-size: 13px; color: var(--muted); line-height: 1.5; }
+  .pc-setup { font-size: 40px; font-weight: 900; color: var(--text); letter-spacing: -1px; line-height: 1; margin: 18px 0 6px; }
+  .pc-setup sup { font-size: 20px; vertical-align: super; }
+  .pc-setup sub { font-size: 14px; font-weight: 600; color: var(--muted); vertical-align: baseline; }
+  .pc-monthly { font-size: 14px; color: var(--muted); margin-bottom: 4px; }
+  .pc-monthly strong { color: var(--text); font-weight: 800; }
+  .pc-monthly .yearly { color: var(--orange); font-weight: 800; }
+  .pc-saving { font-size: 12.5px; color: #16a34a; font-weight: 700; margin-bottom: 18px; }
+  .pc-divider { height: 1px; background: var(--border); margin: 18px 0; }
+  .pc-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 26px; }
+  .pc-features li { display: flex; align-items: flex-start; gap: 10px; font-size: 13.5px; color: var(--text); line-height: 1.5; }
+  .pc-chk {
+    width: 18px; height: 18px; border-radius: 50%;
+    background: rgba(232,130,12,.12); display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 1px;
+  }
+  .pc-btn-outline {
+    display: block; width: 100%; text-align: center; padding: 14px; border-radius: 12px;
+    border: 2px solid var(--border); font-size: 15px; font-weight: 800; color: var(--text);
+    transition: all .2s; background: transparent; cursor: pointer; text-decoration: none;
+  }
+  .pc-btn-outline:hover { border-color: var(--orange); color: var(--orange); }
+  .pc-btn-fill {
+    display: block; width: 100%; text-align: center; padding: 14px; border-radius: 12px;
+    border: none; font-size: 15px; font-weight: 800; color: #fff;
+    background: var(--orange-grad); box-shadow: 0 6px 20px rgba(232,130,12,.4);
+    transition: all .2s; cursor: pointer; text-decoration: none;
+  }
+  .pc-btn-fill:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(232,130,12,.5); }
+  .pricing-guarantee {
+    max-width: 600px; margin: 44px auto 0;
+    background: var(--light); border-radius: 16px;
+    padding: 24px 32px; text-align: center;
+    border: 2px solid var(--border);
+    display: flex; align-items: center; gap: 18px; flex-wrap: wrap; justify-content: center;
+  }
+  .pricing-guarantee .pg-icon { font-size: 36px; flex-shrink: 0; }
+  .pricing-guarantee h4 { font-size: 17px; font-weight: 800; color: var(--text); margin-bottom: 6px; }
+  .pricing-guarantee p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+  /* ── GUEST EXPERIENCE ── */
+  .guest-exp { background: var(--light); padding: 80px 40px; }
+  .guest-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  }
+  .guest-phone-wrap { display: flex; justify-content: center; align-items: center; position: relative; }
+  .guest-phone-wrap::before {
+    content: ''; position: absolute; width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(232,130,12,.12) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .g-phone {
+    width: 230px; height: 460px; background: #1a1a1a; border-radius: 44px;
+    border: 8px solid #2d2d2d; overflow: hidden; position: relative;
+    box-shadow: 0 30px 80px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.06);
+  }
+  .g-phone::before {
+    content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 80px; height: 22px; background: #1a1a1a; border-radius: 0 0 14px 14px; z-index: 10;
+  }
+  .g-phone-screen { width: 100%; height: 100%; background: #f5f5f0; display: flex; flex-direction: column; }
+  .g-phone-header { background: var(--orange-grad); padding: 36px 18px 22px; text-align: center; }
+  .g-app-name { font-family: Georgia, serif; font-style: italic; font-size: 18px; color: #fff; font-weight: 400; }
+  .g-phone-body { padding: 14px; flex: 1; display: flex; flex-direction: column; gap: 9px; }
+  .g-code-row {
+    display: flex; align-items: center; justify-content: space-between;
+    background: #fff; border-radius: 10px; padding: 11px 13px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.06);
+  }
+  .g-code-label { font-size: 9.5px; font-weight: 700; color: #aaa; text-transform: uppercase; letter-spacing: .06em; }
+  .g-code-val { font-size: 16px; font-weight: 800; color: var(--text); display: flex; align-items: center; gap: 8px; }
+  .g-code-key {
+    width: 24px; height: 24px; background: var(--orange-grad);
+    border-radius: 6px; display: flex; align-items: center; justify-content: center;
+  }
+  .g-icons-row { display: flex; gap: 7px; }
+  .g-icon-btn {
+    flex: 1; background: #fff; border-radius: 10px; padding: 10px 6px; text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,.06); font-size: 8.5px; font-weight: 700; color: #999;
+    text-transform: uppercase; letter-spacing: .04em;
+    display: flex; flex-direction: column; align-items: center; gap: 5px;
+  }
+  .g-concierge-btn {
+    background: var(--navy); border-radius: 10px; padding: 13px; text-align: center;
+    color: #fff; font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
+    box-shadow: 0 4px 14px rgba(10,15,30,.3);
+  }
+  .guest-text .overline { font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--orange); margin-bottom: 12px; }
+  .guest-text h2 { font-size: clamp(30px, 4vw, 50px); font-weight: 900; color: var(--text); line-height: 1.2; margin-bottom: 16px; }
+  .guest-text h2 em { font-style: italic; font-family: Georgia, serif; color: var(--orange); font-weight: 400; }
+  .guest-text p { font-size: 16px; color: var(--muted); line-height: 1.75; margin-bottom: 32px; max-width: 420px; }
+  .guest-stats { display: flex; gap: 32px; }
+  .guest-stat .gs-val { font-size: 30px; font-weight: 900; color: var(--text); letter-spacing: -1px; }
+  .guest-stat .gs-label { font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-top: 2px; }
+
+  /* ── FAQ ── */
+  .faq { background: #fff; padding: 80px 40px; }
+  .faq-list { max-width: 740px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+  .faq-item { border: 2px solid var(--border); border-radius: 14px; overflow: hidden; transition: border-color .25s; }
+  .faq-item.open { border-color: var(--orange); }
+  .faq-q {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 22px; cursor: pointer; font-size: 15.5px; font-weight: 700;
+    color: var(--text); gap: 14px; user-select: none; background: #fff; transition: background .2s;
+  }
+  .faq-item.open .faq-q { background: rgba(232,130,12,.04); }
+  .faq-icon {
+    width: 28px; height: 28px; border-radius: 50%; background: var(--light);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    transition: background .2s, transform .35s;
+    font-size: 18px; font-weight: 300; color: var(--muted); line-height: 1;
+  }
+  .faq-item.open .faq-icon { background: var(--orange); color: #fff; transform: rotate(45deg); }
+  .faq-a {
+    max-height: 0; overflow: hidden; padding: 0 22px;
+    font-size: 15px; color: var(--muted); line-height: 1.75;
+    transition: max-height .4s ease, padding .3s ease;
+  }
+  .faq-item.open .faq-a { max-height: 260px; padding: 0 22px 18px; }
+
+  /* ── CTA BANNER ── */
+  .cta-banner {
+    background: var(--orange-grad); padding: 72px 40px; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .cta-banner::before {
+    content: ''; position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+  .cta-banner h2 { font-size: clamp(28px, 4vw, 48px); font-weight: 900; color: #fff; margin-bottom: 14px; line-height: 1.2; position: relative; }
+  .cta-banner p { color: rgba(255,255,255,.88); font-size: 18px; margin-bottom: 36px; position: relative; max-width: 600px; margin-left: auto; margin-right: auto; }
+  .btn-cta-white {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #fff; color: var(--orange); font-weight: 800; font-size: 16px;
+    padding: 16px 36px; border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,.2); transition: all .2s; position: relative;
+  }
+  .btn-cta-white:hover { transform: translateY(-3px); box-shadow: 0 14px 36px rgba(0,0,0,.25); }
+
+  /* ── FOOTER ── */
+  footer { background: var(--navy); padding: 64px 40px 0; color: rgba(255,255,255,.7); }
+  .footer-inner { max-width: 1100px; margin: 0 auto; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 2fr; gap: 48px; margin-bottom: 48px; }
+  .footer-brand .logo { margin-bottom: 14px; display: inline-flex; }
+  .footer-brand p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,.5); max-width: 280px; margin-bottom: 20px; }
+  .social-links { display: flex; gap: 12px; }
+  .social-link {
+    width: 36px; height: 36px; background: rgba(255,255,255,.08); border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,.6); font-size: 14px; font-weight: 800; transition: all .2s;
+    border: 1px solid rgba(255,255,255,.1);
+  }
+  .social-link:hover { background: var(--orange); color: #fff; border-color: var(--orange); }
+  .footer-col h4 { font-size: 14px; font-weight: 800; color: #fff; margin-bottom: 20px; letter-spacing: .02em; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 10px; }
+  .footer-col ul li a { font-size: 13.5px; color: rgba(255,255,255,.5); transition: color .2s; }
+  .footer-col ul li a:hover { color: var(--orange); }
+  .newsletter-form { display: flex; flex-direction: column; gap: 10px; }
+  .newsletter-form input {
+    background: rgba(255,255,255,.08); border: 1.5px solid rgba(255,255,255,.12);
+    border-radius: 10px; padding: 12px 16px; color: #fff; font-size: 14px;
+    font-family: var(--font); outline: none; transition: border-color .2s;
+  }
+  .newsletter-form input::placeholder { color: rgba(255,255,255,.35); }
+  .newsletter-form input:focus { border-color: var(--orange); }
+  .newsletter-form button {
+    background: var(--orange-grad); color: #fff; font-weight: 700; font-size: 14px;
+    padding: 12px; border-radius: 10px; border: none; cursor: pointer;
+    font-family: var(--font); transition: opacity .2s;
+  }
+  .newsletter-form button:hover { opacity: .9; }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,.08); padding: 24px 0;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 12px; font-size: 13px; color: rgba(255,255,255,.35);
+  }
+  .footer-bottom a { color: rgba(255,255,255,.45); transition: color .2s; }
+  .footer-bottom a:hover { color: var(--orange); }
+  .footer-bottom-links { display: flex; gap: 24px; }
+
+  /* ── FLOATING BUTTON ── */
+  .float-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 16px;
+    background: linear-gradient(135deg, #E8820C, #F59E0B);
+    color: #fff;
+    font-weight: 800;
+    font-size: 14px;
+    padding: 13px 22px;
+    border-radius: 50px;
+    box-shadow: 0 6px 24px rgba(232,130,12,.5);
+    z-index: 998;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    text-decoration: none;
+    animation: floatIn .6s ease 0.5s both;
+  }
+  .float-btn.visible { display: flex; }
+  .float-btn:hover { transform: translateY(-3px) scale(1.04); box-shadow: 0 12px 32px rgba(232,130,12,.6); }
+  @keyframes floatIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── MODAL ── */
+  .modal-overlay {
+    position: fixed; inset: 0; background: rgba(10,15,30,.7);
+    z-index: 2000; display: flex; align-items: center; justify-content: center;
+    padding: 20px; opacity: 0; pointer-events: none; transition: opacity .3s;
+  }
+  .modal-overlay.open { opacity: 1; pointer-events: all; }
+  .modal {
+    background: #fff; border-radius: 24px; padding: 44px 40px; max-width: 480px; width: 100%;
+    box-shadow: 0 24px 80px rgba(0,0,0,.25);
+    transform: translateY(24px); transition: transform .3s;
+    position: relative;
+  }
+  .modal-overlay.open .modal { transform: translateY(0); }
+  .modal-close {
+    position: absolute; top: 18px; right: 18px;
+    width: 32px; height: 32px; border-radius: 50%; border: none;
+    background: var(--light); cursor: pointer; font-size: 18px; color: var(--muted);
+    display: flex; align-items: center; justify-content: center; transition: background .2s;
+  }
+  .modal-close:hover { background: var(--border); }
+  .modal h3 { font-size: 24px; font-weight: 900; color: var(--text); margin-bottom: 6px; }
+  .modal p { font-size: 15px; color: var(--muted); margin-bottom: 28px; line-height: 1.6; }
+  .modal-form { display: flex; flex-direction: column; gap: 14px; }
+  .modal-input {
+    border: 2px solid var(--border); border-radius: 12px; padding: 13px 16px;
+    font-size: 15px; font-family: var(--font); color: var(--text); outline: none;
+    transition: border-color .2s; background: #fff;
+  }
+  .modal-input:focus { border-color: var(--orange); }
+  .modal-input::placeholder { color: var(--muted); }
+  .modal-submit {
+    background: var(--orange-grad); color: #fff; font-weight: 800; font-size: 16px;
+    padding: 14px; border-radius: 12px; border: none; cursor: pointer;
+    font-family: var(--font); box-shadow: 0 6px 20px rgba(232,130,12,.4);
+    transition: transform .2s, box-shadow .2s; margin-top: 4px;
+  }
+  .modal-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(232,130,12,.5); }
+
+  /* ── SUCCESS MODAL ── */
+  .success-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.6);
+    z-index: 3000; display: flex; align-items: center; justify-content: center;
+    padding: 20px; opacity: 0; pointer-events: none; transition: opacity .25s;
+  }
+  .success-overlay.open { opacity: 1; pointer-events: all; }
+  .success-card {
+    background: #fff; border-radius: 16px; padding: 40px;
+    max-width: 420px; width: 100%; text-align: center;
+    transform: translateY(16px); transition: transform .25s;
+    box-shadow: 0 24px 80px rgba(0,0,0,.25);
+  }
+  .success-overlay.open .success-card { transform: translateY(0); }
+  .success-emoji { font-size: 52px; margin-bottom: 16px; }
+  .success-title { font-size: 22px; font-weight: 900; color: var(--text); margin-bottom: 12px; }
+  .success-text { font-size: 15px; color: var(--muted); line-height: 1.7; margin-bottom: 28px; }
+  .success-btn {
+    background: var(--orange-grad); color: #fff; font-weight: 800; font-size: 15px;
+    padding: 14px 32px; border-radius: 12px; border: none; cursor: pointer;
+    font-family: var(--font); box-shadow: 0 6px 20px rgba(232,130,12,.4);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .success-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(232,130,12,.5); }
+
+  /* ── LEGAL MODALS ── */
+  .legal-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.6);
+    z-index: 2000; display: flex; align-items: center; justify-content: center;
+    padding: 20px; opacity: 0; pointer-events: none; transition: opacity .25s;
+  }
+  .legal-overlay.open { opacity: 1; pointer-events: all; }
+  .legal-card {
+    background: #fff; border-radius: 12px; max-width: 640px; width: 100%;
+    position: relative; transform: translateY(16px); transition: transform .25s;
+    display: flex; flex-direction: column; max-height: 90vh;
+  }
+  .legal-overlay.open .legal-card { transform: translateY(0); }
+  .legal-card-header {
+    padding: 24px 28px 20px; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between; flex-shrink: 0;
+  }
+  .legal-card-header h3 { font-size: 18px; font-weight: 900; color: var(--text); }
+  .legal-close {
+    width: 32px; height: 32px; border-radius: 50%; border: none;
+    background: var(--light); cursor: pointer; font-size: 18px; color: var(--muted);
+    display: flex; align-items: center; justify-content: center; transition: background .2s; flex-shrink: 0;
+  }
+  .legal-close:hover { background: var(--border); }
+  .legal-card-body {
+    padding: 24px 28px; overflow-y: auto; max-height: 70vh;
+    font-size: 14px; color: var(--text); line-height: 1.8;
+  }
+  .legal-card-body h4 { font-size: 13px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--orange); margin: 20px 0 6px; }
+  .legal-card-body h4:first-child { margin-top: 0; }
+  .legal-card-body p { color: var(--muted); margin-bottom: 4px; }
+
+  /* ── FADE-IN ── */
+  .fade-in { opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; }
+  .fade-in.visible { opacity: 1 !important; transform: translateY(0) !important; }
+  .fd2 { transition-delay: .1s; } .fd3 { transition-delay: .2s; } .fd4 { transition-delay: .3s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero-inner, .guest-inner { grid-template-columns: 1fr; }
+    .hero-image, .guest-phone-wrap { display: none; }
+    .features-cards { grid-template-columns: 1fr 1fr; }
+    .features-bonus { grid-template-columns: 1fr; }
+    .pricing-cards { grid-template-columns: 1fr; max-width: 440px; }
+    .pricing-card.popular { transform: none; }
+    .testi-grid { grid-template-columns: 1fr 1fr; }
+    .testi-card:nth-child(4), .testi-card:nth-child(5) { grid-column: auto; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .hero-stats-inner { gap: 32px; }
+  }
+  @media (max-width: 600px) {
+    header { padding: 0 20px; }
+    .hero { padding: 60px 20px 0; }
+    .features-cards { grid-template-columns: 1fr; }
+    .testi-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .ba-card { min-width: 290px; }
+    .hero-stats-inner { flex-direction: row !important; gap: 0 !important; flex-wrap: nowrap !important; }
+  }
+
+  /* ── FEATURE CARD IMAGE ── */
+  .feat-card-img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  /* ── МОБИЛНА БАЗА ── */
+  @media (max-width: 768px) {
+    header { padding: 0 16px; }
+    nav { height: 58px; gap: 0; }
+    .nav-links { display: none !important; }
+    .nav-right .btn-nav-outline { display: none !important; }
+    #phone-cta { display: none !important; }
+    .btn-demo { font-size: 13px; padding: 9px 16px; border-radius: 8px; }
+    .logo img { height: 30px; }
+    .phone-sticky { display: flex !important; }
+
+    .hero { padding: 70px 20px 40px; }
+    .hero-inner { grid-template-columns: 1fr !important; gap: 32px; }
+    .hero-image { display: none !important; }
+    .hero-text { padding-bottom: 0; }
+    .hero h1 { font-size: 30px !important; line-height: 1.2 !important; letter-spacing: -.5px; margin-bottom: 16px; }
+    .hero-sub { font-size: 15px !important; line-height: 1.65; margin-bottom: 28px; }
+    .hero-ctas { flex-direction: column; gap: 10px; }
+    .hero-ctas a, .hero-ctas .btn-primary, .hero-ctas .btn-secondary { width: 100% !important; text-align: center !important; padding: 15px 20px !important; font-size: 15px !important; justify-content: center; }
+    .hero-guarantees { flex-direction: column; gap: 8px; }
+    .hero-guarantee { font-size: 12px; }
+
+    .hero-stats-inner { flex-direction: row !important; gap: 0 !important; justify-content: space-around !important; flex-wrap: nowrap !important; }
+    .hero-stat { padding: 16px 8px; flex: 1; }
+    .hero-stat-val { font-size: 26px !important; }
+    .hero-stat-label { font-size: 11px !important; max-width: 80px !important; }
+    .pain-grid { grid-template-columns: 1fr 1fr !important; gap: 8px; }
+    .pain-card { padding: 12px !important; font-size: 12px !important; }
+
+    section { padding: 56px 20px !important; }
+    .section-header { margin-bottom: 36px; }
+    .section-header h2 { font-size: 26px !important; }
+    .section-header p { font-size: 15px; }
+
+    .features-section { padding: 56px 16px !important; }
+    .features-cards { grid-template-columns: 1fr !important; gap: 16px; }
+    .feat-card { padding: 24px 20px !important; }
+    .feat-card h3 { font-size: 17px; }
+    .feat-card p { font-size: 14px; }
+    .feat-card-img { border-radius: 8px; }
+
+    .before-after { padding: 56px 0 !important; }
+    .ba-header { padding: 0 20px; flex-direction: column; align-items: flex-start; gap: 16px; }
+    .ba-track-wrap { padding: 8px 20px 20px; }
+    .ba-card { min-width: calc(100vw - 56px) !important; }
+    .ba-card-body { padding: 14px 16px; }
+    .ba-card-title { font-size: 14px; }
+    .ba-growth { font-size: 20px; }
+    .ba-images { height: 160px; }
+
+    .testi-section { padding: 56px 16px !important; }
+    .testi-grid { grid-template-columns: 1fr !important; gap: 14px; }
+    .testi-card:nth-child(4), .testi-card:nth-child(5) { grid-column: auto !important; }
+    .testi-card { padding: 20px 18px; }
+    .testi-quote { font-size: 14px; }
+
+    .pricing-cards { grid-template-columns: 1fr !important; gap: 16px; padding: 0 !important; }
+    .pricing-card.popular { transform: none !important; }
+    .pricing-card { padding: 28px 20px; }
+
+    #consult { padding: 56px 20px !important; }
+    #consult h2 { font-size: 26px !important; }
+
+    .faq { padding: 56px 20px !important; }
+    .faq-list { padding: 0; }
+    .faq-q { font-size: 14.5px; padding: 16px 18px; }
+    .faq-a { font-size: 14px; }
+
+    .cta-banner { padding: 56px 20px !important; }
+    .cta-banner h2 { font-size: 26px !important; }
+    .cta-banner p { font-size: 15px; }
+    .btn-cta-white { padding: 14px 28px !important; font-size: 15px !important; }
+
+    .float-btn { bottom: 16px; right: 12px; font-size: 13px; padding: 12px 18px; }
+  }
+
+  /* ── МАЛКИ ТЕЛЕФОНИ ── */
+  @media (max-width: 400px) {
+    .hero h1 { font-size: 26px !important; }
+    .hero-sub { font-size: 14px !important; }
+    nav { height: 54px; }
+    .btn-demo { font-size: 12px; padding: 8px 14px; }
+    .ba-card { min-width: calc(100vw - 40px) !important; }
+  }
+
+  /* ── REVIEWS IMAGE CAROUSEL V3 ── */
+  .reviews-section { background:#f8f9fc; padding:52px 0 0; overflow:hidden; }
+  .reviews-section-head { text-align:center; padding:0 20px 32px; }
+  .reviews-section-head .section-tag { color:#E8820C; }
+  .reviews-section-head h2 { color:#0A0F1E !important; }
+  .tc-outer { position:relative; max-width:1400px; margin:0 auto; padding:0 80px; box-sizing:border-box; }
+  .tc-wrap { position:relative; display:flex; align-items:center; }
+  .tc-viewport { overflow:hidden; flex:1; border-radius:8px; }
+  .tc-track { display:flex; transition:transform .5s cubic-bezier(.4,0,.2,1); will-change:transform; }
+  .tc-slide { flex:0 0 100%; padding:0 6px; box-sizing:border-box; display:flex; justify-content:center; }
+  .tc-slide img {
+    width:100%; max-width:960px; height:auto;
+    border-radius:12px; display:block;
+    box-shadow:0 8px 40px rgba(0,0,0,.08), 0 2px 12px rgba(0,0,0,.04);
+    transition:transform .35s ease, box-shadow .35s ease;
+  }
+  .tc-slide img:hover {
+    transform:scale(1.01);
+    box-shadow:0 12px 52px rgba(0,0,0,.11), 0 4px 16px rgba(0,0,0,.05);
+  }
+  .tc-arrow {
+    position:absolute; top:50%; transform:translateY(-50%);
+    width:48px; height:48px; border-radius:50%;
+    background:#fff; color:#0A0F1E;
+    border:1.5px solid #e0e2e8;
+    font-size:22px; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    transition:all .25s ease; z-index:10;
+    box-shadow:0 2px 12px rgba(0,0,0,.06);
+  }
+  .tc-arrow.tc-prev { left:-24px; }
+  .tc-arrow.tc-next { right:-24px; }
+  .tc-arrow:hover { background:#E8820C; color:#fff; border-color:#E8820C; transform:translateY(-50%) scale(1.08); box-shadow:0 4px 20px rgba(232,130,12,.3); }
+  /* Progress bar */
+  .tc-progress {
+    display:flex; gap:5px;
+    max-width:960px; margin:20px auto 0;
+    padding:0 6px; box-sizing:border-box;
+    padding-bottom:44px;
+  }
+  .tc-seg {
+    flex:1; height:3px; border-radius:2px;
+    background:rgba(10,15,30,.1);
+    overflow:hidden; position:relative; cursor:pointer;
+  }
+  .tc-seg-fill {
+    position:absolute; left:0; top:0; height:100%;
+    background:#E8820C; border-radius:2px;
+    width:0%;
+  }
+  @media (max-width:1024px) {
+    .tc-outer { padding:0 56px; }
+    .tc-arrow.tc-prev { left:-20px; }
+    .tc-arrow.tc-next { right:-20px; }
+  }
+  @media (max-width:768px) {
+    .tc-outer { padding:0 16px; }
+    .tc-arrow { display:none; }
+    .tc-slide img { max-width:100%; border-radius:10px; }
+    .reviews-section { padding:40px 0 0; }
+  }
+
+  /* ── PAIN SECTION EDITORIAL ── */
+  .pain-section { background:#0A0F1E; padding:80px 20px 68px; position:relative; }
+  .pain-section::before {
+    content:''; position:absolute; inset:0;
+    background:
+      radial-gradient(ellipse 50% 40% at 20% 80%, rgba(232,130,12,.035) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 50% at 85% 20%, rgba(232,130,12,.025) 0%, transparent 70%);
+    pointer-events:none;
+  }
+  .pain-inner { max-width:800px; margin:0 auto; text-align:center; position:relative; z-index:1; }
+  .pain-title { color:#fff; font-size:clamp(22px,4vw,32px); font-weight:900; margin-bottom:12px; letter-spacing:-.5px; }
+  .pain-subtitle { color:rgba(255,255,255,.38); font-size:14px; font-weight:600; margin-bottom:0; letter-spacing:.3px; }
+  .pain-list { list-style:none; margin:0; padding:0; text-align:left; }
+  .pain-item {
+    display:grid; grid-template-columns:56px 1fr; gap:0 20px;
+    align-items:start;
+    padding:26px 0;
+    border-bottom:1px solid rgba(255,255,255,.065);
+    opacity:0; transform:translateY(14px);
+    animation:painFadeUp .5s ease forwards;
+  }
+  .pain-item:first-child { border-top:1px solid rgba(255,255,255,.065); }
+  @keyframes painFadeUp { to { opacity:1; transform:translateY(0); } }
+  .pain-item-num {
+    font-size:19px; font-weight:900; color:#E8820C;
+    font-family:'Nunito Sans',sans-serif;
+    line-height:1.3; padding-top:1px;
+  }
+  .pain-item-body { }
+  .pain-item-label {
+    display:block; font-size:10px; font-weight:800;
+    letter-spacing:1.6px; text-transform:uppercase;
+    color:rgba(232,130,12,.65); margin-bottom:5px;
+  }
+  .pain-item-text { color:rgba(255,255,255,.75); font-size:14.5px; line-height:1.65; margin:0; }
+  .pain-footer { margin-top:52px; }
+  .pain-footer-line { width:60px; height:2px; background:#E8820C; margin:0 auto 18px; border-radius:2px; }
+  .pain-footer-text { color:#F59E0B; font-size:clamp(15px,2.5vw,18px); font-weight:800; letter-spacing:-.2px; }
+  @media (max-width:640px) {
+    .pain-item { grid-template-columns:44px 1fr; gap:0 14px; padding:22px 0; }
+    .pain-item-num { font-size:16px; }
+    .pain-item-text { font-size:13.5px; }
+  }
+
+  /* ── PRICING TABLE ── */
+  .pricing-table-section { background:#f8f9fc; padding:80px 20px; }
+  .pricing-table-section .section-header { margin-bottom:40px; }
+  .pt-table { width:100%; border-collapse:collapse; max-width:860px; margin:0 auto; border-radius:14px; overflow:hidden; box-shadow:0 4px 24px rgba(0,0,0,.07); }
+  .pt-table thead tr { background:var(--orange-grad); }
+  .pt-table thead th { color:#fff; font-weight:800; font-size:14px; padding:16px 20px; text-align:left; letter-spacing:.04em; text-transform:uppercase; }
+  .pt-table tbody tr { background:#fff; }
+  .pt-table tbody tr:nth-child(even) { background:#f4f5fb; }
+  .pt-table tbody td { padding:14px 20px; font-size:14px; color:#2d3250; border-bottom:1px solid #eaebf0; }
+  .pt-table tbody td:last-child { font-weight:700; color:#E8820C; white-space:nowrap; }
+  .pt-note { max-width:860px; margin:12px auto 0; font-size:12px; color:#9ca3af; }
+  .pt-footer { max-width:860px; margin:28px auto 0; text-align:center; }
+  @media (max-width:700px) {
+    .pt-table thead { display:none; }
+    .pt-table tbody tr { display:block; background:#fff !important; border-radius:12px; margin-bottom:10px; box-shadow:0 2px 10px rgba(0,0,0,.06); }
+    .pt-table tbody td { display:block; padding:10px 16px; font-size:13px; border-bottom:none; }
+    .pt-table tbody td:first-child { font-weight:700; color:#0A0F1E; padding-bottom:4px; }
+    .pt-table tbody td:last-child { color:#E8820C; padding-top:2px; }
+  }
+
+  /* ── QUIZ MODAL ── */
+  .quiz-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(10,15,30,0.92);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 99999;
+    align-items: center; justify-content: center;
+    padding: 16px;
+    overflow-y: auto;
+  }
+  .quiz-modal-overlay.open { display: flex; }
+  .quiz-modal-card {
+    background: var(--navy);
+    border-radius: 20px;
+    width: 100%; max-width: 660px;
+    max-height: 92vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 32px 100px rgba(0,0,0,.7), 0 0 0 1px rgba(255,255,255,.06);
+    scrollbar-width: thin;
+    scrollbar-color: rgba(232,130,12,.4) transparent;
+    animation: modalCardIn .35s cubic-bezier(0.34,1.56,0.64,1) both;
+  }
+  @keyframes modalCardIn {
+    from { transform: translateY(30px) scale(0.97); opacity: 0; }
+    to   { transform: translateY(0) scale(1); opacity: 1; }
+  }
+  .quiz-modal-card::-webkit-scrollbar { width: 4px; }
+  .quiz-modal-card::-webkit-scrollbar-thumb { background: rgba(232,130,12,.4); border-radius: 4px; }
+  .quiz-modal-close {
+    position: absolute; top: 14px; right: 14px; z-index: 10;
+    width: 34px; height: 34px; border-radius: 50%;
+    border: none; background: rgba(255,255,255,.1);
+    color: rgba(255,255,255,.7); cursor: pointer; font-size: 15px;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .2s, color .2s;
+  }
+  .quiz-modal-close:hover { background: rgba(255,255,255,.2); color: #fff; }
+  @media (max-width: 600px) {
+    .quiz-modal-card { border-radius: 16px 16px 0 0; max-height: 96vh; }
+    .quiz-modal-overlay { align-items: flex-end; padding: 0; }
+  }
+
+  /* ── QUIZ EMBED ── */
+  .quiz-section {
+    background: var(--navy);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 0 80px;
+  }
+  .quiz-intro {
+    text-align: center;
+    max-width: 640px;
+    padding: 0 24px 40px;
+    margin: 0 auto;
+  }
+  .quiz-intro h2 {
+    font-size: clamp(24px,4vw,40px); font-weight:900; color:#fff;
+    margin-bottom:16px; letter-spacing:-.3px; line-height:1.2;
+  }
+  .quiz-intro p {
+    color:rgba(255,255,255,0.6); font-size:16px; line-height:1.7;
+  }
+  .progress-wrap {
+    width: 100%; max-width: 640px; padding: 0 24px 0;
+  }
+  .progress-meta {
+    display: flex; justify-content: space-between;
+    font-size: 12px; color: rgba(255,255,255,0.4);
+    margin-bottom: 10px;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .progress-bar {
+    height: 2px; background: rgba(255,255,255,0.1);
+    border-radius: 2px; overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%; background: var(--orange); border-radius: 2px;
+    transition: width 0.5s cubic-bezier(0.4,0,0.2,1);
+  }
+  .quiz-wrap {
+    width: 100%; max-width: 640px; padding: 48px 24px 0;
+    position: relative;
+  }
+  .step { display: none; animation: fadeUp 0.4s ease forwards; }
+  .step.active { display: block; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .step-label {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--orange); margin-bottom: 16px;
+  }
+  .step-question {
+    font-size: clamp(22px,4vw,30px); font-weight: normal;
+    line-height: 1.3; margin-bottom: 8px; color: #fff;
+    font-family: 'Georgia', serif;
+  }
+  .step-sub {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 14px; color: rgba(255,255,255,0.45);
+    margin-bottom: 36px; line-height: 1.6;
+  }
+  .options { display: grid; gap: 10px; }
+  .options.two-col { grid-template-columns: 1fr 1fr; }
+  .option {
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius); padding: 16px 20px; cursor: pointer;
+    transition: all 0.2s ease; display: flex; align-items: center; gap: 14px;
+    font-family: 'Helvetica Neue', sans-serif; font-size: 15px;
+    color: rgba(255,255,255,0.85); text-align: left;
+    user-select: none; -webkit-user-select: none;
+  }
+  .option:hover { background: rgba(232,130,12,0.1); border-color: rgba(232,130,12,0.4); color: #fff; }
+  .option.selected { background: rgba(232,130,12,0.15); border-color: var(--orange); color: #fff; }
+  .option-dot {
+    width: 18px; height: 18px; border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.25); flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center; transition: all 0.2s;
+  }
+  .option.selected .option-dot { background: var(--orange); border-color: var(--orange); }
+  .option.selected .option-dot::after {
+    content: ''; width: 6px; height: 6px; background: white; border-radius: 50%; display: block;
+  }
+  .option-check {
+    width: 18px; height: 18px; border-radius: 4px;
+    border: 1.5px solid rgba(255,255,255,0.25); flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center; transition: all 0.2s;
+  }
+  .option.selected .option-check { background: var(--orange); border-color: var(--orange); }
+  .option.selected .option-check::after { content: '✓'; font-size: 11px; color: white; font-family: sans-serif; line-height: 1; }
+  .input-wrap { margin-bottom: 16px; }
+  .input-label {
+    display: block; font-family: 'Helvetica Neue', sans-serif;
+    font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase;
+    color: rgba(255,255,255,0.45); margin-bottom: 8px;
+  }
+  .input-label .req { color: var(--orange); }
+  .quiz-embed input[type="text"],
+  .quiz-embed input[type="tel"],
+  .quiz-embed input[type="email"],
+  .quiz-embed textarea,
+  .quiz-embed select {
+    width: 100%; background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius-sm);
+    color: #fff; font-family: 'Helvetica Neue', sans-serif;
+    font-size: 15px; padding: 14px 16px; transition: border-color 0.2s;
+    outline: none; appearance: none; -webkit-appearance: none;
+  }
+  .quiz-embed input[type="text"]:focus,
+  .quiz-embed input[type="tel"]:focus,
+  .quiz-embed input[type="email"]:focus,
+  .quiz-embed textarea:focus,
+  .quiz-embed select:focus { border-color: var(--orange); background: rgba(232,130,12,0.07); }
+  .quiz-embed input[type="text"]::placeholder,
+  .quiz-embed input[type="tel"]::placeholder,
+  .quiz-embed input[type="email"]::placeholder,
+  .quiz-embed textarea::placeholder { color: rgba(255,255,255,0.25); }
+  .quiz-embed textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
+  .quiz-embed select option { background: var(--navy-80); color: #fff; }
+  .input-error {
+    font-family: 'Helvetica Neue', sans-serif; font-size: 12px;
+    color: #f09595; margin-top: 6px; display: none;
+  }
+  .input-wrap.has-error .quiz-embed input,
+  .input-wrap.has-error .quiz-embed textarea,
+  .input-wrap.has-error .quiz-embed select { border-color: #f09595; }
+  .input-wrap.has-error .input-error { display: block; }
+  .input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 500px) {
+    .input-row { grid-template-columns: 1fr; }
+    .options.two-col { grid-template-columns: 1fr; }
+  }
+  .contact-opts { display: flex; gap: 10px; flex-wrap: wrap; }
+  .contact-opt {
+    flex: 1; min-width: 120px; background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-sm);
+    padding: 12px 16px; cursor: pointer; transition: all 0.2s;
+    font-family: 'Helvetica Neue', sans-serif; font-size: 14px;
+    color: rgba(255,255,255,0.75); text-align: center; user-select: none;
+  }
+  .contact-opt:hover { border-color: rgba(232,130,12,0.4); color: #fff; }
+  .contact-opt.selected { background: rgba(232,130,12,0.15); border-color: var(--orange); color: #fff; }
+  .contact-opt .icon { font-size: 20px; display: block; margin-bottom: 4px; }
+  .quiz-nav {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 36px; gap: 12px;
+  }
+  .btn-back {
+    background: none; border: none; color: rgba(255,255,255,0.4);
+    font-family: 'Helvetica Neue', sans-serif; font-size: 14px;
+    cursor: pointer; padding: 12px 0; transition: color 0.2s;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .btn-back:hover { color: rgba(255,255,255,0.8); }
+  .btn-back.hidden { visibility: hidden; }
+  .btn-next {
+    background: var(--orange); border: none; color: #fff;
+    font-family: 'Helvetica Neue', sans-serif; font-size: 15px;
+    font-weight: 500; padding: 14px 32px; border-radius: var(--radius-sm);
+    cursor: pointer; transition: all 0.2s; display: flex;
+    align-items: center; gap: 8px; letter-spacing: 0.01em;
+  }
+  .btn-next:hover { background: var(--orange-dark); transform: translateY(-1px); }
+  .btn-next:active { transform: translateY(0); }
+  .btn-next:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+  #thankyou {
+    display: none; text-align: center; padding: 60px 24px;
+    max-width: 560px; margin: 0 auto; animation: fadeUp 0.5s ease forwards;
+  }
+  .ty-icon {
+    width: 72px; height: 72px; background: rgba(29,158,117,0.15);
+    border: 1px solid rgba(29,158,117,0.3); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 28px; font-size: 28px;
+  }
+  .ty-tag {
+    font-family: 'Helvetica Neue', sans-serif; font-size: 11px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--success); margin-bottom: 16px;
+  }
+  .ty-title {
+    font-size: clamp(24px,4vw,34px); font-weight: normal;
+    margin-bottom: 16px; line-height: 1.3; color: #fff;
+    font-family: 'Georgia', serif;
+  }
+  .ty-body {
+    font-family: 'Helvetica Neue', sans-serif; font-size: 15px;
+    color: rgba(255,255,255,0.55); line-height: 1.7; margin-bottom: 36px;
+  }
+  .ty-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(232,130,12,0.1); border: 1px solid rgba(232,130,12,0.25);
+    border-radius: 100px; padding: 10px 20px;
+    font-family: 'Helvetica Neue', sans-serif; font-size: 13px;
+    color: var(--orange-light);
+  }
+  .field-divider { height: 1px; background: rgba(255,255,255,0.07); margin: 28px 0; }
+  .section-title-quiz {
+    font-family: 'Helvetica Neue', sans-serif; font-size: 11px;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(255,255,255,0.35); margin-bottom: 16px;
+  }
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<header id="navbar">
+  <nav>
+    <a href="#hero" class="logo">
+      <img src="../Images/Whitelogo.webp" alt="WelcomeBook" style="height:56px;width:auto;">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#features">Услуги</a></li>
+      <li><a href="#pricing">Ценоразпис</a></li>
+      <li><a href="#consult">Консултация</a></li>
+      <li><a href="#before-after">Резултати</a></li>
+      <li><a href="#faq">Въпроси</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="btn-demo" onclick="openQuizModal()">Безплатна консултация</button>
+    </div>
+  </nav>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+<h1 style="font-size:clamp(32px,5.5vw,68px);font-weight:900;line-height:1.1;letter-spacing:-2px;color:#fff;margin-bottom:24px;">
+  Гостите не помнят апартамента. Помнят усещането.
+</h1>
+      <p class="hero-sub">
+  Изграждаме бранд около твоя имот — персонален сайт, AI чатбот, комуникация и визия. Не за да напуснеш Airbnb и Booking.com. А за да не зависиш изцяло от тях.
+</p>
+
+      <div class="hero-guarantees">
+        <div class="hero-guarantee"><div class="check">✓</div>Без процент от приходите</div>
+        <div class="hero-guarantee"><div class="check">✓</div>30 дни гаранция</div>
+        <div class="hero-guarantee"><div class="check">✓</div>Airbnb + Booking.com + директни</div>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="hero-mockup">
+        <div class="mockup-bar">
+          <div class="mockup-dot r"></div>
+          <div class="mockup-dot y"></div>
+          <div class="mockup-dot g"></div>
+          <div class="mockup-url"></div>
+        </div>
+        <div class="mockup-screen">
+          <div class="mockup-topbar">
+            <div class="mockup-tab active">Портал</div>
+            <div class="mockup-tab">Финанси</div>
+            <div class="mockup-tab">Съобщения</div>
+          </div>
+          <div class="mockup-grid">
+            <div class="mockup-sidebar">
+              <div class="mockup-nav-item active"><div class="mockup-nav-dot"></div>Обзор</div>
+              <div class="mockup-nav-item"><div class="mockup-nav-dot"></div>Welcome Book</div>
+              <div class="mockup-nav-item"><div class="mockup-nav-dot"></div>Резервации</div>
+              <div class="mockup-nav-item"><div class="mockup-nav-dot"></div>Съобщения</div>
+              <div class="mockup-nav-item"><div class="mockup-nav-dot"></div>Финанси</div>
+              <div class="mockup-nav-item"><div class="mockup-nav-dot"></div>Социални</div>
+            </div>
+            <div class="mockup-content">
+              <div class="mockup-row">
+                <div class="mockup-card">
+                  <div class="mockup-card-label">Приход</div>
+                  <div class="mockup-card-val">€3,840 <span>↑ 87%</span></div>
+                </div>
+                <div class="mockup-card">
+                  <div class="mockup-card-label">Заетост</div>
+                  <div class="mockup-card-val">94% <span>↑ 42%</span></div>
+                </div>
+              </div>
+              <div class="mockup-chart">
+                <div class="chart-bar" style="height:40%"></div>
+                <div class="chart-bar" style="height:55%"></div>
+                <div class="chart-bar hi" style="height:75%"></div>
+                <div class="chart-bar" style="height:60%"></div>
+                <div class="chart-bar hi" style="height:90%"></div>
+                <div class="chart-bar" style="height:70%"></div>
+                <div class="chart-bar hi" style="height:100%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Hero Stats -->
+<div class="hero-stats">
+  <div class="hero-stats-inner">
+    <div class="hero-stat stat-block">
+      <div class="hero-stat-val">+52%</div>
+      <div class="hero-stat-label">Средно увеличение на заетостта</div>
+    </div>
+    <div class="hero-stat stat-block">
+      <div class="hero-stat-val">+40%</div>
+      <div class="hero-stat-label">Средно увеличение на приходите</div>
+    </div>
+    <div class="hero-stat stat-block">
+      <div class="hero-stat-val" style="color:#fff;">0%</div>
+      <div class="hero-stat-label">Процент от наема ти</div>
+    </div>
+  </div>
+</div>
+
+<!-- Pain Points -->
+<section class="pain-section">
+  <div class="pain-inner">
+    <h2 class="pain-title">Звучи ли ти познато?</h2>
+    <p class="pain-subtitle">8 проблема, които всеки домакин познава</p>
+    <ul class="pain-list">
+      <li class="pain-item" style="animation-delay:0ms;">
+        <span class="pain-item-num">01</span>
+        <div class="pain-item-body">
+          <span class="pain-item-label">КОМУНИКАЦИЯ</span>
+          <p class="pain-item-text">Гост те търси в 23:00 с въпрос, на който отговорът е очевиден. Отговаряш — защото нямаш система, която да го направи вместо теб.</p>
+        </div>
+      </li>
+      <li class="pain-item" style="animation-delay:70ms;">
+        <span class="pain-item-num">02</span>
+        <div class="pain-item-body">
+          <span class="pain-item-label">ТАКСИ</span>
+          <p class="pain-item-text">Booking взима до 18% от всяка резервация. Airbnb — до 15%. Не за реклама, не за нещо специално. Просто защото са посредникът — и нямаш избор.</p>
+        </div>
+      </li>
+      <li class="pain-item" style="animation-delay:140ms;">
+        <span class="pain-item-num">03</span>
+        <div class="pain-item-body">
+          <span class="pain-item-label">КОНТРОЛ</span>
+          <p class="pain-item-text">Дал си имота на фирма за управление. Не знаеш какво точно правят. Не знаеш колко реално печелиш. Просто чакаш превода.</p>
+        </div>
+      </li>
+      <li class="pain-item" style="animation-delay:210ms;">
+        <span class="pain-item-num">04</span>
+        <div class="pain-item-body">
+          <span class="pain-item-label">РЕЙТИНГ</span>
+          <p class="pain-item-text">Рейтингът под 4.6 в Airbnb и под 8.4 в Booking те закопава в резултатите — без значение колко хубав е имотът.</p>
+        </div>
+      </li>
+      <li class="pain-item" style="animation-delay:280ms;">
+        <span class="pain-item-num">05</span>
+        <div class="pain-item-body">
+          <span class="pain-item-label">ВИДИМОСТ</span>
+          <p class="pain-item-text">Имотът ти го има в социалните мрежи — но публикацията от преди 3 месеца не продава нищо. Хората виждат конкурентите ти всеки ден. Теб — рядко.</p>
+        </div>
+      </li>
+      <li class="pain-item" style="animation-delay:350ms;">
+        <span class="pain-item-num">06</span>
+        <div class="pain-item-body">
+          <span class="pain-item-label">ФИНАНСИ</span>
+          <p class="pain-item-text">Колко реално остава след Booking, след почистването, след тока, след всичко? Повечето домакини не знаят. И не могат да планират.</p>
+        </div>
+      </li>
+      <li class="pain-item" style="animation-delay:420ms;">
+        <span class="pain-item-num">07</span>
+        <div class="pain-item-body">
+          <span class="pain-item-label">ОБЯВА</span>
+          <p class="pain-item-text">Обявата ти прилича на стотици други. Гостът вижда снимки, цена, и избира на случаен принцип. Твоят имот заслужава да се помни — не просто да се намери.</p>
+        </div>
+      </li>
+      <li class="pain-item" style="animation-delay:490ms;">
+        <span class="pain-item-num">08</span>
+        <div class="pain-item-body">
+          <span class="pain-item-label">ПОСОКА</span>
+          <p class="pain-item-text">Не знаеш дали имотът ти се представя добре или зле — просто нямаш с какво да го сравниш. Съседът в Booking може да взима двойно повече за същото. Ти никога няма да разбереш.</p>
+        </div>
+      </li>
+    </ul>
+    <div class="pain-footer">
+      <div class="pain-footer-line"></div>
+      <p class="pain-footer-text">Не е въпрос на усилие. Въпрос е на система и бранд.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="features-section" id="features">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="section-header">
+      <div class="section-tag">Услуги</div>
+      <h2>Спри да си наемодател. Стани бранд.</h2>
+      <p>Изграждаме цялостна система около твоя имот — така че да се откроява, да се помни и да работи дори когато ти не работиш.</p>
+    </div>
+    <div class="features-cards">
+
+      <!-- Card 1 -->
+      <div class="feat-card fade-in">
+        <img src="../Images/Уебсайт.webp" alt="Персонален Сайт на Имота с Директни Резервации" class="feat-card-img">
+        <div class="feat-card-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E8820C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/><path d="M12 2v5M8 7h8" opacity=".5"/><path d="M15 7c1.5-1 3-1 4 0" opacity=".5"/></svg>
+        </div>
+        <h3>Персонален Сайт на Имота с Директни Резервации</h3>
+        <p>Имотът ти получава собствен адрес в интернет — персонален сайт с галерия, информация и синхронизация на календарите с Airbnb и Booking.com. Изглежда като бранд, не като случайна обява. И когато гост иска да се върне — знае къде да го намери. Спестяваш големите комисонни от сайтовете за резервации.</p>
+        <div class="feat-price">€399 - €599  <span>setup</span></div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="feat-card fade-in fd2">
+        <img src="../Images/Оптимизация на Обявата.webp" alt="Оптимизация на Обявата" class="feat-card-img">
+        <div class="feat-card-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E8820C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <h3>Оптимизация на Обявата</h3>
+        <p>Airbnb и Booking.com не сортират по качество — сортират по алгоритъм. Оптимизираме заглавието, описанието и категориите на обявата ти в двете платформи — така че да излизаш пред конкурентите, не след тях.</p>
+        <div class="feat-price feat-price-muted">По договаряне</div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="feat-card fade-in fd3">
+        <img src="../Images/Финансов Тракер.webp" alt="Финансов Тракер" class="feat-card-img">
+        <div class="feat-card-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E8820C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <h3>Финансов Тракер</h3>
+        <p>Приходи минус такси, минус почистване, минус разходи — колко реално остава? Качваш един файл и системата засича всяка резервация, всеки приход, всяка такса. Пълната финансова картина за секунди — от телефона, по всяко време.</p>
+        <div class="feat-price">€10<span>/мес</span></div>
+      </div>
+
+      <!-- Card 4 — Direct Bookings -->
+      <div class="feat-card fade-in fd3">
+        <img src="../Images/Rezervacii.webp" alt="Директни резервации без комисионна" class="feat-card-img">
+        <div class="feat-card-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E8820C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        </div>
+        <h3>Welcome Book Портал + AI Чатбот</h3>
+        <p>След резервация — в Airbnb, Booking.com или директно — гостът получава личен линк към WelcomeBook на имота ти. Вътре: всичко за престоя, правилата, препоръките и AI чатбот, обучен специално за твоя имот. Гостът пита — системата отговаря. По всяко време. На езика на госта.</p>
+        <div class="feat-price">€120 <span>setup + €5/мес</span></div>
+      </div>
+
+      <!-- Card 5 — Signs -->
+      <div class="feat-card fade-in">
+        <img src="../Images/Знаци.webp" alt="Табели за Имота" class="feat-card-img">
+        <div class="feat-card-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E8820C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+        </div>
+        <h3>Табели за Имота</h3>
+        <p>WiFi парола, правила, молба за отзив — отпечатани в твоите цветове и стил, поставени на правилното място. Имотът спира да изглежда като случайно наета стая — и започва да изглежда като нещо, което се помни.</p>
+        <div class="feat-price">от €7<span>/бр</span></div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="feat-card fade-in fd2">
+        <img src="../Images/Social Media.webp" alt="Социални Мрежи" class="feat-card-img">
+        <div class="feat-card-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E8820C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        </div>
+        <h3>Управление на Социалните Мрежи</h3>
+        <p>Хората не резервират само от Airbnb и Booking. Планират почивки в Instagram и Facebook — и резервират имота, който са виждали многократно. Поемаме присъствието в социалните мрежи изцяло — публикации, видеа, истории. Ти само одобряваш.</p>
+        <div class="feat-price feat-price-muted">По договаряне</div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="feat-card fade-in fd3">
+        <video autoplay muted loop playsinline style="width:100%;border-radius:12px;"><source src="../Images/ssstik.io_@pixxxxxiie_1775310984078.mp4" type="video/mp4"></video>
+        <div class="feat-card-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E8820C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="17" x2="22" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/></svg>
+        </div>
+        <h3>AI Видеа за Имота</h3>
+        <p>Преди: видео от имот струваше стотици евро и цял ден заснемане. Сега: изкуственият интелект създава кинематографско видео от твоите снимки за часове. Съдържанието, което спира хората да скролват — без хотелски бюджет.</p>
+        <div class="feat-price feat-price-muted">По договаряне</div>
+      </div>
+
+      <!-- Card 7 -->
+      <div class="feat-card fade-in">
+        <img src="../Images/Подобрение на снимките.webp" alt="Подобрение на Снимките" class="feat-card-img">
+        <div class="feat-card-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E8820C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        </div>
+        <h3>Подобрение на Снимките</h3>
+        <p>Имаш 3 секунди. Толкова решава гостът дали да кликне или да продължи нататък. Лошите снимки убиват добрите имоти — преди някой въобще да е прочел описанието. Подобряваме светлината, цветовете и композицията на всяка снимка. Резултатът се вижда веднага.</p>
+        <div class="feat-price feat-price-muted">По договаряне</div>
+      </div>
+
+      <!-- Card 9 -->
+      <div class="feat-card fade-in fd3">
+        <img src="../Images/Физическа Книжка за Гости.webp" alt="Физическа Книжка за Гости" class="feat-card-img">
+        <div class="feat-card-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E8820C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        </div>
+        <h3>Физическа Книжка за Гости</h3>
+        <p>Някои гости не отварят линкове. Отварят чекмеджета. Красиво отпечатана книжка, оставена на масата — с правилата, препоръките и всичко необходимо за престоя. Докосваш я и усещаш, че някой се е погрижил. Не случаен наемодател — домакин с бранд. С вграден QR код, който води директно към персоналния сайт с AI чатбот. Първото нещо, което гостът вижда — последното, което забравя.</p>
+        <div class="feat-price">€199 <span>еднократно</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Reviews Image Carousel -->
+<section class="reviews-section" id="reviews">
+  <div class="reviews-section-head">
+    <div class="section-tag">Отзиви от клиенти</div>
+    <h2 style="color:#fff;">Какво казват домакините</h2>
+  </div>
+  <div class="tc-outer">
+    <div class="tc-wrap">
+      <button class="tc-arrow tc-prev" aria-label="Предишен">&#8249;</button>
+      <div class="tc-viewport">
+        <div class="tc-track" id="tcTrack">
+          <div class="tc-slide"><img src="../Images/Testimonials2/12.webp" alt="Пламен – Lifehouse Semkovo" loading="lazy"></div>
+          <div class="tc-slide"><img src="../Images/Testimonials2/11.webp" alt="Краси – Balkanska Panorama" loading="lazy"></div>
+          <div class="tc-slide"><img src="../Images/Testimonials2/2.webp" alt="Таня – Karastoyanovi&#39;s Apartment" loading="lazy"></div>
+          <div class="tc-slide"><img src="../Images/Testimonials2/8.webp" alt="Мери – The Castle Pamporovo" loading="lazy"></div>
+          <div class="tc-slide"><img src="../Images/Testimonials2/4.webp" alt="Диляна – Borovets Hills" loading="lazy"></div>
+          <div class="tc-slide"><img src="../Images/Testimonials2/1.webp" alt="Иванка – Immortal Apartment" loading="lazy"></div>
+        </div>
+      </div>
+      <button class="tc-arrow tc-next" aria-label="Следващ">&#8250;</button>
+    </div>
+  </div>
+  <div class="tc-progress" id="tcProgress"></div>
+</section>
+
+<!-- Before / After Carousel -->
+<section class="before-after" id="before-after">
+  <div class="ba-header">
+    <div class="ba-header-text">
+      <div class="section-tag">Трансформация</div>
+      <h2>Същият имот. Различна система. Различни резултати.</h2>
+      <p>Домакини в България, които вече работят с WelcomeBook.</p>
+    </div>
+    <div class="ba-nav">
+      <button class="ba-nav-btn prev" onclick="baScroll(-1)" aria-label="Предишен">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button class="ba-nav-btn next" onclick="baScroll(1)" aria-label="Следващ">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="ba-track-wrap">
+    <div class="ba-track" id="baTrack">
+      <div class="ba-card">
+        <div class="ba-images">
+          <span class="ba-badge transform">ПРЕДИ → СЛЕД</span>
+          <img src="../Images/BeforeAfter/2fe837f7-ec72-4f59-ae33-a1cde7416fd9.webp" alt="Трансформация">
+        </div>
+        <div class="ba-card-body">
+          <div class="ba-card-top">
+            <div><div class="ba-card-title">Студио "Морски Бриз"</div></div>
+            <div><div class="ba-growth">+52%</div><div class="ba-growth-label">заетост</div></div>
+          </div>
+          <div class="ba-stats">
+            <div class="ba-stat"><div class="ba-stat-label">Преди</div><div class="ba-stat-val">51% заетост</div></div>
+            <div class="ba-stat"><div class="ba-stat-label">След</div><div class="ba-stat-val orange">89% заетост</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="ba-card">
+        <div class="ba-images">
+          <span class="ba-badge transform">ПРЕДИ → СЛЕД</span>
+          <img src="../Images/BeforeAfter/d3bb92ad-a2b0-4684-86bf-ff4b15cf4d65.webp" alt="Трансформация">
+        </div>
+        <div class="ba-card-body">
+          <div class="ba-card-top">
+            <div><div class="ba-card-title">Апартамент "Центъра"</div></div>
+            <div><div class="ba-growth">+61%</div><div class="ba-growth-label">приход</div></div>
+          </div>
+          <div class="ba-stats">
+            <div class="ba-stat"><div class="ba-stat-label">Преди</div><div class="ba-stat-val">38% заетост</div></div>
+            <div class="ba-stat"><div class="ba-stat-label">След</div><div class="ba-stat-val orange">91% заетост</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="ba-card">
+        <div class="ba-images">
+          <span class="ba-badge transform">ПРЕДИ → СЛЕД</span>
+          <img src="../Images/BeforeAfter/c1533e1d-45ae-4f7f-a2a4-cb750f6e25c1.webp" alt="Трансформация">
+        </div>
+        <div class="ba-card-body">
+          <div class="ba-card-top">
+            <div><div class="ba-card-title">Вила "Планински Рай"</div></div>
+            <div><div class="ba-growth">+38%</div><div class="ba-growth-label">цена на нощувка</div></div>
+          </div>
+          <div class="ba-stats">
+            <div class="ba-stat"><div class="ba-stat-label">Преди</div><div class="ba-stat-val">45% заетост</div></div>
+            <div class="ba-stat"><div class="ba-stat-label">След</div><div class="ba-stat-val orange">88% заетост</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="ba-card">
+        <div class="ba-images">
+          <span class="ba-badge transform">ПРЕДИ → СЛЕД</span>
+          <img src="../Images/BeforeAfter/aa4b01d9-7ba8-442c-bf57-428222cc384f.webp" alt="Трансформация">
+        </div>
+        <div class="ba-card-body">
+          <div class="ba-card-top">
+            <div><div class="ba-card-title">Апартамент "Слънчев Бряг"</div></div>
+            <div><div class="ba-growth">+44%</div><div class="ba-growth-label">приход</div></div>
+          </div>
+          <div class="ba-stats">
+            <div class="ba-stat"><div class="ba-stat-label">Преди</div><div class="ba-stat-val">47% заетост</div></div>
+            <div class="ba-stat"><div class="ba-stat-label">След</div><div class="ba-stat-val orange">91% заетост</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="ba-card">
+        <div class="ba-images">
+          <span class="ba-badge transform">ПРЕДИ → СЛЕД</span>
+          <img src="../Images/BeforeAfter/7f39108d-d899-4da0-95d3-45017f34b6cd.webp" alt="Трансформация">
+        </div>
+        <div class="ba-card-body">
+          <div class="ba-card-top">
+            <div><div class="ba-card-title">Апартамент "Стария Град"</div></div>
+            <div><div class="ba-growth">+45%</div><div class="ba-growth-label">цена на нощувка</div></div>
+          </div>
+          <div class="ba-stats">
+            <div class="ba-stat"><div class="ba-stat-label">Преди</div><div class="ba-stat-val">42% заетост</div></div>
+            <div class="ba-stat"><div class="ba-stat-label">След</div><div class="ba-stat-val orange">94% заетост</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testi-section" id="testimonials">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="section-header">
+      <div class="section-tag">Отзиви</div>
+      <h2>Какво казват домакините</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card fade-in">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">„Първите две седмици след оптимизацията резервациите се удвоиха. Буквално. Не знам точно кое е помогнало повече — новото описание или снимките — но резултатът е очевиден. Апартаментът ми е зает почти всяка седмица.“</div>
+        <div class="testi-footer">
+          <div class="testi-author"><img src="../Images/ClientReviews/a49d04e9-9f8c-45d6-9e65-c5b205ca7387.webp" style="width:42px;height:42px;border-radius:50%;object-fit:cover;flex-shrink:0;box-shadow:0 3px 10px rgba(232,130,12,.3);"><div><div class="testi-name">Георги Димитров</div><div class="testi-loc">София</div></div></div>
+          <div class="testi-result">+52% заетост</div>
+        </div>
+      </div>
+      <div class="testi-card fade-in fd2">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">„Имах 3.8 рейтинг и не разбирах защо. След като прегледаха имота ми разбрах — гостите не намираха информацията, от която имаха нужда. Welcome book-ът реши проблема. Рейтингът ми е 4.91 вече.“</div>
+        <div class="testi-footer">
+          <div class="testi-author"><img src="../Images/ClientReviews/547530060_25420552947546474_8806957479252421492_n.webp" style="width:42px;height:42px;border-radius:50%;object-fit:cover;flex-shrink:0;box-shadow:0 3px 10px rgba(232,130,12,.3);"><div><div class="testi-name">Мария Стефанова</div><div class="testi-loc">Варна</div></div></div>
+          <div class="testi-result">Superhost за 4 мес.</div>
+        </div>
+      </div>
+      <div class="testi-card fade-in fd3">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">„Видеото от изкуствения интелект го качих в Instagram и за три дни имах директно запитване за резервация. Хората питат как съм го направила. Е, сега им казвам.“</div>
+        <div class="testi-footer">
+          <div class="testi-author"><img src="../Images/ClientReviews/550084094_2631482047205200_4751680316077033967_n (1).webp" style="width:42px;height:42px;border-radius:50%;object-fit:cover;flex-shrink:0;box-shadow:0 3px 10px rgba(232,130,12,.3);"><div><div class="testi-name">Елена Петрова</div><div class="testi-loc">Пловдив</div></div></div>
+          <div class="testi-result">9.8/10 в Booking</div>
+        </div>
+      </div>
+      <div class="testi-card fade-in fd2">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">„Работя с тях от осем месеца. Не е просто ‘направиха ми красив сайт’ — реално следят как вървят нещата и предлагат промени. Миналото лято беше най-доброто ми от четири години насам.“</div>
+        <div class="testi-footer">
+          <div class="testi-author"><img src="../Images/ClientReviews/485627765_2160703067734299_8104521121594840125_n.webp" style="width:42px;height:42px;border-radius:50%;object-fit:cover;flex-shrink:0;box-shadow:0 3px 10px rgba(232,130,12,.3);"><div><div class="testi-name">Христо Маринов</div><div class="testi-loc">Несебър</div></div></div>
+          <div class="testi-result">+61% приход</div>
+        </div>
+      </div>
+      <div class="testi-card fade-in fd3">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">„Гостите много се радват на моята къща. Знаех си, че тя има огромен потенциал, но не си мислих, че е възможно с едно тикток видео да достигна до 100 000 души, от тях получих над 100 съобщения и всичко беше заето за месеци напред.“</div>
+        <div class="testi-footer">
+          <div class="testi-author"><div class="testi-avatar">А</div><div><div class="testi-name">Анна Колева</div><div class="testi-loc">Банско</div></div></div>
+          <div class="testi-result">4.98 рейтинг</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:48px;">
+      <button onclick="openQuizModal()" class="btn-primary" style="display:inline-flex; align-items:center; gap:8px; font-size:16px; padding:16px 36px; border:none; cursor:pointer;">
+        Искам същите резултати →
+      </button>
+      <p style="margin-top:14px; font-size:13px; color:var(--muted);">
+        Безплатна консултация · Без ангажименти
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING SECTION — временно скрита, запазена за бъдеща употреба
+<section class="pricing" id="pricing">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="section-header">
+      <div class="section-tag">Ценообразуване</div>
+      <h2>Избери Своя План</h2>
+      <p>Еднократна такса за setup + опционален абонамент за поддръжка. Без процент от наема. Без скрити такси. Спираш кога искаш.</p>
+    </div>
+    <div class="pricing-cards">
+      <div class="pricing-card fade-in">
+        <div class="pc-tier">Идеален старт</div>
+        <div class="pc-name">Starter</div>
+        <div class="pc-tagline">За хостове, които искат да започнат правилно</div>
+        <div class="pc-setup"><sup>€</sup>149<sub> setup</sub></div>
+        <div class="pc-monthly"><strong>€29</strong>/мес или <span class="yearly">€299/год</span></div>
+        <div class="pc-saving">Спестяваш €49 с годишен план</div>
+        <div class="pc-divider"></div>
+        <ul class="pc-features">
+          <li><div class="pc-chk">✓</div>Digital Welcome Book (уеб + QR)</li>
+          <li><div class="pc-chk">✓</div>AI Chatbot за имота</li>
+          <li><div class="pc-chk">✓</div>10 шаблона за комуникация</li>
+          <li><div class="pc-chk">✓</div>Чеклисти + Табели (брандирани)</li>
+          <li><div class="pc-chk">✓</div>Финансов Тракер (уеб достъп)</li>
+          <li><div class="pc-chk">✓</div>WelcomeBook Портал</li>
+        </ul>
+        <a href="#stripe-starter" class="pc-btn-outline">Избери Starter</a>
+      </div>
+      <div class="pricing-card popular fade-in fd2">
+        <div class="popular-badge">⭐ НАЙ-ПОПУЛЯРЕН</div>
+        <div class="pc-tier">Пълна система</div>
+        <div class="pc-name">Professional</div>
+        <div class="pc-tagline">Пълната система — за хостове, които искат резултати</div>
+        <div class="pc-setup"><sup>€</sup>249<sub> setup</sub></div>
+        <div class="pc-monthly"><strong>€49</strong>/мес или <span class="yearly">€449/год</span></div>
+        <div class="pc-saving">Спестяваш €139 с годишен план</div>
+        <div class="pc-divider"></div>
+        <ul class="pc-features">
+          <li><div class="pc-chk">✓</div>Всичко от Starter</li>
+          <li><div class="pc-chk">✓</div>SEO + Listing оптимизация</li>
+          <li><div class="pc-chk">✓</div>Пълна Review система</li>
+          <li><div class="pc-chk">✓</div>AI Подобрение на снимки</li>
+          <li><div class="pc-chk">✓</div>AI Видео за имота</li>
+          <li><div class="pc-chk">✓</div>Имотен Бранд пакет</li>
+          <li><div class="pc-chk">✓</div>Remote Management Guide eBook</li>
+          <li><div class="pc-chk">✓</div>Как да Станеш Суперхост? eBook</li>
+        </ul>
+        <a href="#stripe-pro" class="pc-btn-fill">Започни сега →</a>
+      </div>
+      <div class="pricing-card fade-in fd3">
+        <div class="pc-tier">Всичко включено</div>
+        <div class="pc-name">Premium</div>
+        <div class="pc-tagline">Всичко включено — за хостове, които искат да растат</div>
+        <div class="pc-setup"><sup>€</sup>399<sub> setup</sub></div>
+        <div class="pc-monthly"><strong>€89</strong>/мес или <span class="yearly">€849/год</span></div>
+        <div class="pc-saving">Спестяваш €219 с годишен план</div>
+        <div class="pc-divider"></div>
+        <ul class="pc-features">
+          <li><div class="pc-chk">✓</div>Всичко от Professional</li>
+          <li><div class="pc-chk">✓</div>Управление на Социалните Мрежи</li>
+          <li><div class="pc-chk">✓</div>Marketing Website за имота</li>
+          <li><div class="pc-chk">✓</div>Google Ads поддръжка</li>
+          <li><div class="pc-chk">✓</div>Физическа Welcome Book (печатна)</li>
+          <li><div class="pc-chk">✓</div>Приоритетна поддръжка</li>
+        </ul>
+        <a href="#stripe-premium" class="pc-btn-outline">Избери Premium</a>
+      </div>
+    </div>
+    <div class="pricing-guarantee fade-in">
+      <div class="pg-icon" style="background:rgba(232,130,12,0.10);border-radius:50%;padding:16px;display:flex;align-items:center;justify-content:center;">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#E8820C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <polyline points="9 12 11 14 15 10"/>
+        </svg>
+      </div>
+      <div>
+        <h4>30 дни гаранция за връщане на пари</h4>
+        <p>Ако в рамките на 30 дни не си доволен — връщаме всичко. Без въпроси. Без бюрокрация. Рискът е изцяло наш.</p>
+      </div>
+    </div>
+  </div>
+</section>
+-->
+
+<!-- CTA Section -->
+<section id="consult" style="background:#fff; padding:80px 40px;">
+  <div style="max-width:640px; margin:0 auto; text-align:center;">
+    <div class="section-tag">Безплатна консултация</div>
+    <h2 style="font-size:clamp(24px,4vw,40px); font-weight:900; color:var(--text); margin-bottom:16px; letter-spacing:-.3px; line-height:1.2;">
+      Разкажи ни за имота си. Ние ще ти кажем какво може да се подобри.
+    </h2>
+    <p style="color:var(--muted); font-size:16px; line-height:1.7; margin-bottom:40px; max-width:480px; margin-left:auto; margin-right:auto;">
+      Отговори на 6 въпроса — 3 минути. Ще се свържем с персонален план, без задължения.
+    </p>
+    <button onclick="openQuizModal()" class="btn-primary" style="display:inline-flex; align-items:center; gap:10px; font-size:16px; padding:16px 36px;">
+      Заявете безплатна консултация →
+    </button>
+    <p style="font-size:12px; color:#9ca3af; margin-top:16px;">
+      🔒 3 минути · Без задължения · Отговор в 24 часа
+    </p>
+  </div>
+</section>
+
+<!-- QUIZ MODAL -->
+<div class="quiz-modal-overlay" id="quizModalOverlay" onclick="closeQuizModalOutside(event)">
+  <div class="quiz-modal-card quiz-embed" id="quizModalCard">
+    <button class="quiz-modal-close" onclick="closeQuizModal()">✕</button>
+
+    <div style="padding: 32px 24px 0;">
+      <div style="font-family:'Helvetica Neue',sans-serif; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--orange); margin-bottom:10px;">Безплатна консултация</div>
+      <p style="font-family:'Georgia',serif; font-size:clamp(18px,3vw,24px); color:#fff; line-height:1.3; margin-bottom:0;">Разкажете ни за имота си — ние ще предложим правилния план.</p>
+    </div>
+
+  <div class="progress-wrap" id="progressWrap" style="padding-top:28px;">
+    <div class="progress-meta">
+      <span id="stepLabel">Стъпка 1 от 6</span>
+      <span id="stepPct">17%</span>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill" style="width: 17%"></div>
+    </div>
+  </div>
+
+  <div class="quiz-wrap" id="quizWrap">
+
+    <!-- STEP 1: Брой имоти -->
+    <div class="step active" id="step-1">
+      <div class="step-label">Стъпка 1 от 6</div>
+      <h2 class="step-question">Колко имота управлявате в момента?</h2>
+      <p class="step-sub">Включете всички активни имота в Airbnb, Booking.com или друга платформа.</p>
+      <div class="options" id="q1">
+        <div class="option" data-val="1" onclick="selectOption('q1',this)">
+          <span class="option-dot"></span>1 имот
+        </div>
+        <div class="option" data-val="2-4" onclick="selectOption('q1',this)">
+          <span class="option-dot"></span>2–4 имота
+        </div>
+        <div class="option" data-val="5-10" onclick="selectOption('q1',this)">
+          <span class="option-dot"></span>5–10 имота
+        </div>
+        <div class="option" data-val="10-20" onclick="selectOption('q1',this)">
+          <span class="option-dot"></span>10–20 имота
+        </div>
+        <div class="option" data-val="20+" onclick="selectOption('q1',this)">
+          <span class="option-dot"></span>20+ имота
+        </div>
+        <div class="option" data-val="hotel" onclick="selectOption('q1',this)">
+          <span class="option-dot"></span>Хотел
+        </div>
+      </div>
+      <div class="quiz-nav">
+        <button class="btn-back hidden"></button>
+        <button class="btn-next" onclick="nextStep(1)" id="btn-1" disabled>Напред →</button>
+      </div>
+    </div>
+
+    <!-- STEP 2: Среден приход (незадължително) -->
+    <div class="step" id="step-2">
+      <div class="step-label">Стъпка 2 от 6</div>
+      <h2 class="step-question">Какъв е средният Ви приход на нощ? <span style="color: rgba(255,255,255,0.3); font-size: 14px; font-weight: normal;">(незадължително)</span></h2>
+      <p class="step-sub">Приблизителна цена на нощувка. Помага ни да разберем мащаба — но ако предпочитате да не споделяте, преминете към следващата стъпка.</p>
+      <div class="options" id="q2">
+        <div class="option" data-val="under70" onclick="selectOption('q2',this)">
+          <span class="option-dot"></span>Под €70 / нощ
+        </div>
+        <div class="option" data-val="70-150" onclick="selectOption('q2',this)">
+          <span class="option-dot"></span>€70 – €150 / нощ
+        </div>
+        <div class="option" data-val="150-300" onclick="selectOption('q2',this)">
+          <span class="option-dot"></span>€150 – €300 / нощ
+        </div>
+        <div class="option" data-val="300+" onclick="selectOption('q2',this)">
+          <span class="option-dot"></span>€300+ / нощ
+        </div>
+        <div class="option" data-val="skip" onclick="selectOption('q2',this)">
+          <span class="option-dot"></span>Предпочитам да не споделям
+        </div>
+      </div>
+      <div class="quiz-nav">
+        <button class="btn-back" onclick="prevStep(2)">← Назад</button>
+        <button class="btn-next" onclick="nextStep(2)" id="btn-2">Напред →</button>
+      </div>
+    </div>
+
+    <!-- STEP 3: Платформи -->
+    <div class="step" id="step-3">
+      <div class="step-label">Стъпка 3 от 6</div>
+      <h2 class="step-question">На кои платформи работите?</h2>
+      <p class="step-sub">Изберете всички, на които имате активни обяви.</p>
+      <div class="options" id="q3">
+        <div class="option" data-val="airbnb" onclick="toggleOption('q3',this)">
+          <span class="option-check"></span>Airbnb
+        </div>
+        <div class="option" data-val="booking" onclick="toggleOption('q3',this)">
+          <span class="option-check"></span>Booking.com
+        </div>
+        <div class="option" data-val="website" onclick="toggleOption('q3',this)">
+          <span class="option-check"></span>Собствен сайт
+        </div>
+        <div class="option" data-val="other" onclick="toggleOption('q3',this)">
+          <span class="option-check"></span>Друго (например Pochivkabg)
+        </div>
+      </div>
+      <div class="quiz-nav">
+        <button class="btn-back" onclick="prevStep(3)">← Назад</button>
+        <button class="btn-next" onclick="nextStep(3)" id="btn-3" disabled>Напред →</button>
+      </div>
+    </div>
+
+    <!-- STEP 4: Услуга -->
+    <div class="step" id="step-4">
+      <div class="step-label">Стъпка 4 от 6</div>
+      <h2 class="step-question">Кое Ви интересува най-много?</h2>
+      <p class="step-sub">Можете да изберете повече от едно. Изберете всички, които са приоритет за Вас.</p>
+      <div class="options" id="q4">
+        <div class="option" data-val="ai-welcomebook" onclick="toggleOption('q4',this)">
+          <span class="option-check"></span>AI асистент 24/7 и WelcomeBook Portal за гости
+        </div>
+        <div class="option" data-val="seo-listing" onclick="toggleOption('q4',this)">
+          <span class="option-check"></span>SEO оптимизация на обявите (повече резервации)
+        </div>
+        <div class="option" data-val="website" onclick="toggleOption('q4',this)">
+          <span class="option-check"></span>Уебсайт с директни резервации и синхронизиране на Airbnb / Booking календари
+        </div>
+        <div class="option" data-val="finances" onclick="toggleOption('q4',this)">
+          <span class="option-check"></span>Финансов тракер и контрол на приходите
+        </div>
+        <div class="option" data-val="social" onclick="toggleOption('q4',this)">
+          <span class="option-check"></span>Социални мрежи (управление и съдържание)
+        </div>
+        <div class="option" data-val="signs" onclick="toggleOption('q4',this)">
+          <span class="option-check"></span>Табелки за имота (WiFi, правила, check-out и др.)
+        </div>
+        <div class="option" data-val="unsure" onclick="toggleOption('q4',this)">
+          <span class="option-check"></span>Не съм сигурен — искам цялостна консултация
+        </div>
+      </div>
+      <div class="input-wrap" style="margin-top: 20px;" id="wrap-q4-other">
+        <label class="input-label" for="q4-other">Има ли нещо друго, което Ви интересува? <span style="color: rgba(255,255,255,0.3); font-size: 11px;">(незадължително)</span></label>
+        <input type="text" id="q4-other" placeholder="Напишете свободно..." />
+      </div>
+      <div class="quiz-nav">
+        <button class="btn-back" onclick="prevStep(4)">← Назад</button>
+        <button class="btn-next" onclick="nextStep(4)" id="btn-4" disabled>Напред →</button>
+      </div>
+    </div>
+
+    <!-- STEP 5: Контакти -->
+    <div class="step" id="step-5">
+      <div class="step-label">Стъпка 5 от 6</div>
+      <h2 class="step-question">Как да се свържем с Вас?</h2>
+      <p class="step-sub">Всички данни се използват само за контакт. Не споделяме с трети лица.</p>
+
+      <div class="input-row" style="margin-bottom: 16px;">
+        <div class="input-wrap" id="wrap-name">
+          <label class="input-label" for="name">Имена <span class="req">*</span></label>
+          <input type="text" id="name" placeholder="Иван Петров" />
+          <div class="input-error">Моля, въведете Вашите имена.</div>
+        </div>
+        <div class="input-wrap" id="wrap-phone">
+          <label class="input-label" for="phone">Телефон <span class="req">*</span></label>
+          <input type="tel" id="phone" placeholder="+359 88 888 8888" />
+          <div class="input-error">Моля, въведете валиден телефонен номер.</div>
+        </div>
+      </div>
+
+      <div class="input-wrap" id="wrap-email">
+        <label class="input-label" for="email">Имейл <span class="req">*</span></label>
+        <input type="email" id="email" placeholder="ivan@example.com" />
+        <div class="input-error">Моля, въведете валиден имейл адрес.</div>
+      </div>
+
+      <div class="field-divider"></div>
+      <div class="section-title-quiz">Предпочитан начин за контакт</div>
+
+      <div class="contact-opts" id="contact-pref">
+        <div class="contact-opt" data-val="viber" onclick="toggleContactPref(this)">
+          <span class="icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.4C6.698 2.4 2.4 6.698 2.4 12c0 2.61 1.05 4.977 2.75 6.7v2.9l2.85-1.57c1.26.35 2.6.57 3.99.57 5.303 0 9.6-4.298 9.6-9.6S17.303 2.4 12 2.4z" fill="#7360F2"/></svg>
+          </span>Viber
+        </div>
+        <div class="contact-opt" data-val="whatsapp" onclick="toggleContactPref(this)">
+          <span class="icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884" fill="#25D366"/></svg>
+          </span>WhatsApp
+        </div>
+        <div class="contact-opt" data-val="email" onclick="toggleContactPref(this)">
+          <span class="icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4.7l-8 5.334L4 8.7V6.297l8 5.333 8-5.333V8.7z" fill="rgba(255,255,255,0.8)"/></svg>
+          </span>Имейл
+        </div>
+        <div class="contact-opt" data-val="phone" onclick="toggleContactPref(this)">
+          <span class="icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C9.61 21 3 14.39 3 6a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z" fill="rgba(255,255,255,0.7)"/></svg>
+          </span>Телефон
+        </div>
+      </div>
+      <div id="contact-pref-error" style="font-family: 'Helvetica Neue', sans-serif; font-size: 12px; color: #f09595; margin-top: 8px; display: none;">Моля, изберете поне един начин за контакт.</div>
+
+      <div class="quiz-nav">
+        <button class="btn-back" onclick="prevStep(5)">← Назад</button>
+        <button class="btn-next" onclick="goToStep6()" id="btn-5">Напред →</button>
+      </div>
+    </div>
+
+    <!-- STEP 6: Кога е удобно -->
+    <div class="step" id="step-6">
+      <div class="step-label">Стъпка 6 от 6 — последна</div>
+      <h2 class="step-question">Кога е удобно да се чуем?</h2>
+      <p class="step-sub">Напишете свободно — ден, час, или нещо друго което искате да знаем предварително. Ако пропуснете, ще се свържем с Вас в рамките на 24 часа.</p>
+      <div class="input-wrap">
+        <label class="input-label" for="timing-note">Свободно съобщение <span style="color: rgba(255,255,255,0.3); font-size: 11px;">(незадължително)</span></label>
+        <textarea id="timing-note" rows="5" placeholder="Например: най-удобно ми е след 18:00 в делнични дни. Имам имот в [локация] и искам да обсъдим..."></textarea>
+      </div>
+      <div class="quiz-nav">
+        <button class="btn-back" onclick="prevStep(6)">← Назад</button>
+        <button class="btn-next" onclick="finishQuiz()" id="btn-6">Готово →</button>
+      </div>
+    </div>
+
+  </div><!-- /quiz-wrap -->
+
+  <!-- THANK YOU -->
+  <div id="thankyou" style="width:100%; max-width:620px; padding: 60px 24px 40px;">
+    <div style="text-align:center;">
+      <div class="ty-icon">✅</div>
+      <div class="ty-tag" id="ty-tag">Заявката е получена</div>
+      <h2 class="ty-title" id="ty-title">Благодарим Ви за доверието!</h2>
+      <p class="ty-body" id="ty-body">Получихме Вашата заявка. Ще се свържем с Вас съвсем скоро.</p>
+    </div>
+    <div id="ty-channels" style="display:flex;flex-direction:column;gap:12px;max-width:460px;margin:0 auto;"></div>
+    <div style="text-align:center;margin-top:32px;">
+      <div class="ty-badge">⏱ Отговор в рамките на 24 часа</div>
+    </div>
+  </div><!-- /thankyou -->
+  </div><!-- /quiz-modal-card -->
+</div><!-- /quiz-modal-overlay -->
+
+<!-- HIDDEN NETLIFY FORM for quiz discovery -->
+<form name="welcomebook-quiz" netlify netlify-honeypot="bot-field" hidden>
+  <input name="bot-field" />
+  <input name="name" /><input name="phone" /><input name="email" />
+  <input name="contact_pref" /><input name="properties" /><input name="price_per_night" />
+  <input name="platforms" /><input name="services" /><input name="services_other" />
+  <input name="challenge" /><input name="timing" /><input name="timing_note" /><input name="profile" />
+  <input name="source" />
+</form>
+
+<!-- Pricing Table -->
+<section class="pricing-table-section" id="pricing">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="section-header" style="text-align:center;">
+      <div class="section-tag">Услуги и цени</div>
+      <h2>Ценоразпис</h2>
+      <p style="color:var(--muted);font-size:16px;margin-top:8px;">Прозрачни цени без изненади. Плащаш само за това, което използваш.</p>
+    </div>
+    <table class="pt-table">
+      <thead>
+        <tr>
+          <th>Услуга</th>
+          <th>Цена</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Дигитален Welcome Book + AI Chatbot (1 имот)</td><td>€120 setup + €5/мес</td></tr>
+        <tr><td>Дигитален Welcome Book + AI Chatbot (3 имота)</td><td>€99/имот setup + €5/мес/имот</td></tr>
+        <tr><td>Дигитален Welcome Book + AI Chatbot (10+ имота)</td><td>€90/имот setup + €5/мес/имот</td></tr>
+        <tr><td>Уебсайт за имота (вкл. синхронизация Airbnb/Booking)</td><td>€399–€599</td></tr>
+        <tr><td>Физическа Welcome Book (16 стр., персонален дизайн)</td><td>€199</td></tr>
+        <tr><td>Табелки за имота (дизайн, без печат)</td><td>€7/бр</td></tr>
+        <tr><td>Финансов Тракър — до 3 имота</td><td>€10/мес</td></tr>
+        <tr><td>Финансов Тракър — до 10 имота</td><td>€15/мес</td></tr>
+        <tr><td>Финансов Тракър — до 25 имота</td><td>€30/мес</td></tr>
+        <tr><td>Поддръжка на социални мрежи</td><td>По договаряне</td></tr>
+        <tr><td>AI снимки — оптимизация и обработка</td><td>По договаряне</td></tr>
+        <tr><td>Airbnb/Booking оптимизация на обяви</td><td>По договаряне</td></tr>
+        <tr><td>AI видео</td><td>По договаряне</td></tr>
+      </tbody>
+    </table>
+    <p class="pt-note">* Всички цени са без ДДС</p>
+    <div class="pt-footer">
+      <a href="#features" class="btn-primary" style="display:inline-flex;align-items:center;gap:8px;font-size:16px;padding:15px 36px;">Виж пакетите →</a>
+      <p style="margin-top:14px;font-size:13px;color:var(--muted);">Взимаш повече от едно нещо? Пакетите са значително по-изгодни.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="section-header">
+      <div class="section-tag">Въпроси</div>
+      <h2>Имаш въпроси. Имаме отговори.</h2>
+    </div>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item open">
+      <div class="faq-q" onclick="toggleFaq(this)">Как да платя?<div class="faq-icon">+</div></div>
+      <div class="faq-a">Всичко започва с безплатна консултация — попълваш формата, свързваме се с теб, обсъждаме имота ти и изготвяме персонална оферта. Плащането се уточнява след разговора — работим с банков превод и онлайн плащане с карта.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Защо ми трябва личен сайт, ако вече съм в Airbnb или Booking?<div class="faq-icon">+</div></div>
+      <div class="faq-a">Не те молим да напуснеш платформите. Личният сайт е твоят бранд в интернет — гост, който вече е бил при теб, може да се върне директно, без да плаща комисионна на платформата. При 10 резервации на месец от €80 средна нощувка, Booking взима до €144. Тези пари могат да останат при теб.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Колко бързо ще видя резултати?<div class="faq-icon">+</div></div>
+      <div class="faq-a">Оптимизацията на обявите в Airbnb и Booking дава видими резултати след 2-3 седмици. WelcomeBook порталът и AI чатботът работят от първия ден след активация. Финансовият тракер — веднага след като качиш първия файл.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Какво включва WelcomeBook услугата?<div class="faq-icon">+</div></div>
+      <div class="faq-a">WelcomeBook е система от няколко слоя — персонален сайт на имота, дигитален портал за гости с AI чатбот, оптимизация на обявите в Airbnb и Booking.com, финансов тракер, табели, социални мрежи и още. Ти избираш какво имаш нужда — изграждаме персонална оферта.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Трябват ли ми технически познания?<div class="faq-icon">+</div></div>
+      <div class="faq-a">Нула. Ние правим всичко. Ти само одобряваш и комуникираш с гостите. Останалото е наша работа.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Взимате ли процент от наема?<div class="faq-icon">+</div></div>
+      <div class="faq-a">Не. Никога. Плащаш фиксирана такса — и толкова. Колкото повече печелиш, толкова повече остава за теб.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Работите ли само с Airbnb?<div class="faq-icon">+</div></div>
+      <div class="faq-a">Не — работим с Airbnb, Booking.com и всички основни платформи. Оптимизираме обявите навсякъде, управляваме комуникацията централизирано и изграждаме система, която работи независимо от коя платформа идва резервацията.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Banner -->
+<section class="cta-banner" id="cta">
+  <h2>Имотът ти работи. Въпросът е — за кого?</h2>
+  <p>Присъедини се към домакините, които вече управляват по-умно. Без процент. Без хаос. Без събуждания в 23:00.</p>
+  <button class="btn-cta-white" onclick="openQuizModal()">Искам безплатна консултация →</button>
+</section>
+
+<!-- Footer -->
+<footer id="footer">
+  <div class="footer-inner">
+    <div style="text-align:center; padding-bottom:40px;">
+      <img src="../Images/Whitelogo.webp" alt="WelcomeBook" style="height:44px; margin-bottom:16px; display:inline-block;">
+      <p style="font-size:14px; line-height:1.7; color:rgba(255,255,255,0.45); max-width:360px; margin:0 auto;">
+        Системата за Airbnb хостове в България.<br>
+        Повече резервации. По-малко стрес. Пълен контрол.
+      </p>
+    </div>
+
+    <!-- Footer bottom -->
+    <div style="border-top:1px solid rgba(255,255,255,0.08);padding:24px 0;text-align:center;font-size:13px;color:rgba(255,255,255,0.35);">
+      <div style="margin-bottom:12px;">© 2026 WelcomeBook Agency. Всички права запазени.</div>
+      <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:center;">
+        <a href="#" onclick="openLegal('privacy');return false;" style="color:rgba(255,255,255,0.45);transition:color .2s;" onmouseover="this.style.color='#E8820C'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">Политика за поверителност</a>
+        <a href="#" onclick="openLegal('terms');return false;" style="color:rgba(255,255,255,0.45);transition:color .2s;" onmouseover="this.style.color='#E8820C'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">Общи условия</a>
+        <a href="#" onclick="openLegal('cookies');return false;" style="color:rgba(255,255,255,0.45);transition:color .2s;" onmouseover="this.style.color='#E8820C'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">Бисквитки</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating CTA -->
+<a href="#" onclick="openQuizModal(); return false;" class="float-btn" id="floatBtn">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  Свържи се →
+</a>
+
+<!-- Lead Capture Modal -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h3>Безплатна консултация</h3>
+    <p>Разкажи ни за твоя имот и ще се свържем с теб в рамките на 24 часа.</p>
+    <form action='/' class='modal-form' id='modalForm' method='POST' name='consultation' data-netlify="true" onsubmit='handleModalSubmit(event)'>
+      <input type="hidden" name="form-name" value="consultation">
+      <input class="modal-input" type="text" name="name" placeholder="Твоето име" required>
+      <input class="modal-input" type="tel" name="phone" placeholder="Телефон за връзка" required>
+      <input class="modal-input" type="text" name="property_name" placeholder="напр. Апартамент Центъра, Пловдив">
+      <textarea class="modal-input" name="message" rows="4" placeholder="" style="resize:vertical;"></textarea>
+      <button type="submit" class="modal-submit">Изпрати заявка →</button>
+    </form>
+    <div id="modalSuccess" style="display:none; text-align:center; padding:24px 0;">
+      <div style="font-size:40px; margin-bottom:12px;">✅</div>
+      <p style="font-size:16px; font-weight:700; color:#2d3250; margin-bottom:6px;">Получихме вашето запитване!</p>
+      <p style="font-size:14px; color:#6b7280;">Ще се свържем с вас до 24 часа.</p>
+    </div>
+    <div id="modalError" style="display:none; text-align:center; padding:16px; background:#fff5f5; border-radius:10px; margin-top:8px;">
+      <p style="font-size:14px; color:#dc2626;">❌ Нещо се обърка. Моля опитайте отново или ни пишете на info@welcomebook.agency</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ── Modal
+  function openModal() {
+    document.getElementById('modalOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function closeModalOutside(e) {
+    if (e.target === document.getElementById('modalOverlay')) closeModal();
+  }
+  // Escape handling consolidated in quiz modal script above
+
+  // ── Floating button (0.5s delay)
+  setTimeout(() => {
+    document.getElementById('floatBtn').classList.add('visible');
+  }, 500);
+
+  // ── Tab switcher (calendar demo)
+  function switchTab(el) {
+    document.querySelectorAll('.simple-tab').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  // ── Before/After carousel
+  (function() {
+    const track = document.getElementById('baTrack');
+    if (!track) return;
+    let currentIndex = 0;
+    function getVisibleCards() {
+      return window.innerWidth < 768 ? 1 : window.innerWidth < 1100 ? 2 : 3;
+    }
+    function getCardWidth() {
+      const cards = track.querySelectorAll('.ba-card');
+      if (!cards.length) return 0;
+      return cards[0].offsetWidth + 24;
+    }
+    function getTotalCards() {
+      return track.querySelectorAll('.ba-card').length;
+    }
+    function goTo(index) {
+      const visible = getVisibleCards();
+      const max = Math.max(0, getTotalCards() - visible);
+      currentIndex = Math.max(0, Math.min(index, max));
+      track.style.transform = `translateX(-${currentIndex * getCardWidth()}px)`;
+      const prevBtn = document.querySelector('.ba-nav-btn.prev');
+      const nextBtn = document.querySelector('.ba-nav-btn.next');
+      if (prevBtn) prevBtn.style.opacity = currentIndex === 0 ? '0.4' : '1';
+      if (nextBtn) nextBtn.style.opacity = currentIndex >= max ? '0.4' : '1';
+    }
+    window.baScroll = function(dir) { goTo(currentIndex + dir); };
+    window.addEventListener('resize', () => goTo(currentIndex));
+    let startX = 0;
+    track.addEventListener('touchstart', e => startX = e.touches[0].clientX, {passive: true});
+    track.addEventListener('touchend', e => {
+      const diff = startX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) baScroll(diff > 0 ? 1 : -1);
+    }, {passive: true});
+    goTo(0);
+  })();
+
+  // ── FAQ accordion
+  function toggleFaq(el) {
+    const item = el.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // ── Scroll fade-in
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.feat-card, .diff-card, .support-card, .testi-card, .ba-card, .feat-card-bonus').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity .5s ease, transform .5s ease';
+    io.observe(el);
+  });
+  document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+  document.querySelectorAll('.testi-card').forEach((el, i) => {
+    el.style.transitionDelay = `${i * 0.08}s`;
+    io.observe(el);
+  });
+
+  // ── Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+
+  // ── Counter animation for hero stats
+  function animateCounter(el) {
+    const target = parseInt(el.dataset.target, 10);
+    if (isNaN(target) || target === 0) return;
+    const duration = 1500;
+    const start = performance.now();
+    function step(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = '+' + Math.round(eased * target) + '%';
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const numEl = entry.target.querySelector('[data-target]');
+        if (numEl) animateCounter(numEl);
+        statsObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.stat-block').forEach(el => statsObserver.observe(el));
+
+  // ── Form helpers
+  function netlifyFetch(form) {
+    return fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(form)).toString()
+    }).then(function(res) {
+      if (!res.ok) throw new Error('Netlify form error: ' + res.status);
+      return res;
+    });
+  }
+
+  // ── Modal form
+  function handleModalSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('button[type=submit]');
+    btn.textContent = 'Изпращане...';
+    btn.disabled = true;
+    netlifyFetch(form)
+    .then(() => {
+      btn.textContent = 'Изпрати заявка →';
+      btn.disabled = false;
+      closeModal();
+      showSuccess();
+      console.log('Lead event firing');
+      console.log('fbq type:', typeof fbq);
+      if (typeof fbq === 'function') fbq('track', 'Lead');
+    })
+    .catch(() => {
+      btn.textContent = 'Изпрати заявка →';
+      btn.disabled = false;
+      document.getElementById('modalError').style.display = 'block';
+    });
+  }
+
+  // ── Success modal
+  function showSuccess() {
+    document.getElementById('successOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeSuccess() {
+    document.getElementById('successOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+
+
+  // ── Legal modals
+  function openLegal(id) {
+    document.getElementById('legal-' + id).classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLegal(id) {
+    document.getElementById('legal-' + id).classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  // Escape handling consolidated in quiz modal script above
+</script>
+
+<!-- Success Modal -->
+<div class="success-overlay" id="successOverlay" onclick="if(event.target===this)closeSuccess()">
+  <div class="success-card">
+    <div class="success-emoji">✅</div>
+    <div class="success-title">Получихме заявката ти!</div>
+    <p class="success-text">Ще се свържем с теб в рамките на 24 часа.<br>Очаквай обаждане или съобщение.</p>
+    <button class="success-btn" onclick="closeSuccess()">Затвори</button>
+  </div>
+</div>
+
+<!-- Legal Modals -->
+<div class="legal-overlay" id="legal-privacy" onclick="if(event.target===this)closeLegal('privacy')">
+  <div class="legal-card">
+    <div class="legal-card-header">
+      <h3>Политика за поверителност</h3>
+      <button class="legal-close" onclick="closeLegal('privacy')">✕</button>
+    </div>
+    <div class="legal-card-body">
+      <p style="color:var(--muted);font-size:13px;margin-bottom:16px;">WelcomeBook Agency · Последна актуализация: Април 2026</p>
+      <h4>1. Кой обработва данните ви</h4>
+      <p>WelcomeBook Agency, Пловдив, България · info@welcomebook.agency</p>
+      <h4>2. Какви данни събираме</h4>
+      <p>Имена и телефонен номер (задължителни); имейл, линк към обява, съобщение (незадължителни); технически данни (IP, браузър).</p>
+      <h4>3. Защо събираме</h4>
+      <p>За отговор на запитвания; за информация за услуги; за подобряване на сайта.</p>
+      <h4>4. Правно основание</h4>
+      <p>Съгласие (чл. 6, пар. 1, буква а GDPR) за маркетинг; законен интерес (чл. 6, пар. 1, буква е GDPR) за запитвания.</p>
+      <h4>5. Споделяне</h4>
+      <p>Не продаваме данни. Споделяме само с технически доставчици при необходимост или при законово задължение.</p>
+      <h4>6. Срок на съхранение</h4>
+      <p>Запитвания: 12 месеца. Клиентски данни: срок на договора + 5 години.</p>
+      <h4>7. Вашите права</h4>
+      <p>Достъп, корекция, изтриване, оттегляне на съгласие. Жалби: www.cpdp.bg. Контакт: info@welcomebook.agency</p>
+      <h4>8. Бисквитки</h4>
+      <p>Задължителни (за работата на сайта) + аналитични/маркетингови (Google Analytics, Facebook Pixel) само със съгласие.</p>
+      <h4>9. Промени</h4>
+      <p>Актуализираната версия се публикува на тази страница.</p>
+    </div>
+  </div>
+</div>
+
+<div class="legal-overlay" id="legal-terms" onclick="if(event.target===this)closeLegal('terms')">
+  <div class="legal-card">
+    <div class="legal-card-header">
+      <h3>Общи условия</h3>
+      <button class="legal-close" onclick="closeLegal('terms')">✕</button>
+    </div>
+    <div class="legal-card-body">
+      <p style="color:var(--muted);font-size:13px;margin-bottom:16px;">WelcomeBook Agency · Последна актуализация: Април 2026</p>
+      <h4>1. Приемане</h4>
+      <p>Използвайки сайта или услугите ни, приемате тези условия.</p>
+      <h4>2. Услуги</h4>
+      <p>WelcomeBook Agency предоставя дигитални услуги за Airbnb и Booking домакини: digital welcome system, оптимизация на обяви, шаблони за комуникация, финансово проследяване и маркетинг материали.</p>
+      <h4>3. Плащане</h4>
+      <p>Услугите се активират след потвърдена поръчка и плащане. Еднократната такса за настройка не се възстановява след започване на работата. Абонаментът се прекратява с 30-дневно предизвестие.</p>
+      <h4>4. Авторски права</h4>
+      <p>Всички материали са собственост на WelcomeBook Agency. Клиентът получава личен непрехвърляем лиценз. Забранено е препродаването.</p>
+      <h4>5. Отговорност</h4>
+      <p>Не носим отговорност за промени в алгоритмите на Airbnb/Booking или за конкретен брой резервации.</p>
+      <h4>6. Приложимо право</h4>
+      <p>Българско законодателство. Компетентен съд: Пловдив.</p>
+      <h4>7. Контакт</h4>
+      <p>info@welcomebook.agency</p>
+    </div>
+  </div>
+</div>
+
+<div class="legal-overlay" id="legal-cookies" onclick="if(event.target===this)closeLegal('cookies')">
+  <div class="legal-card">
+    <div class="legal-card-header">
+      <h3>Политика за бисквитки</h3>
+      <button class="legal-close" onclick="closeLegal('cookies')">✕</button>
+    </div>
+    <div class="legal-card-body">
+      <p style="color:var(--muted);font-size:13px;margin-bottom:16px;">WelcomeBook Agency</p>
+      <p>Използваме три вида бисквитки:</p>
+      <h4>Задължителни (без съгласие)</h4>
+      <p>Необходими за работата на сайта.</p>
+      <h4>Аналитични (изискват съгласие)</h4>
+      <p>Google Analytics за анонимна статистика.</p>
+      <h4>Маркетингови (изискват съгласие)</h4>
+      <p>Facebook Pixel за рекламни цели.</p>
+      <h4>Управление</h4>
+      <p>Можете да управлявате бисквитките от настройките на браузъра или да се свържете с нас на info@welcomebook.agency.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── QUIZ MODAL ──
+function openQuizModal() {
+  var overlay = document.getElementById('quizModalOverlay');
+  var card = document.getElementById('quizModalCard');
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document.documentElement.style.overflow = 'hidden';
+  // restart card animation each open
+  card.style.animation = 'none';
+  card.offsetHeight; // reflow
+  card.style.animation = '';
+}
+function closeQuizModal() {
+  document.getElementById('quizModalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+  document.documentElement.style.overflow = '';
+}
+function closeQuizModalOutside(e) {
+  if (e.target === document.getElementById('quizModalOverlay')) closeQuizModal();
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeQuizModal();
+    closeModal();
+    closeSuccess();
+    ['privacy','terms','cookies'].forEach(function(id) {
+      var el = document.getElementById('legal-' + id);
+      if (el) el.classList.remove('open');
+    });
+    document.body.style.overflow = '';
+  }
+});
+
+// ── QUIZ LOGIC ──
+const answers = {
+  q1: null, q2: null, q3: [], q4: [], q4other: '',
+  challenge: '', name: '', phone: '', email: '',
+  contactPrefs: [], q6: null, timingNote: '', profile: null,
+  firstSubmitFired: false
+};
+const TOTAL = 6;
+
+function updateProgress(step) {
+  const pct = Math.round((step / TOTAL) * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('stepLabel').textContent = 'Стъпка ' + step + ' от ' + TOTAL;
+  document.getElementById('stepPct').textContent = pct + '%';
+}
+
+function selectOption(groupId, el) {
+  document.querySelectorAll('#' + groupId + ' .option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  const stepNum = parseInt(el.closest('.step').id.split('-')[1]);
+  answers['q' + stepNum] = el.dataset.val;
+  const btn = document.getElementById('btn-' + stepNum);
+  if (btn) btn.disabled = false;
+}
+
+function toggleOption(groupId, el) {
+  el.classList.toggle('selected');
+  const vals = [];
+  document.querySelectorAll('#' + groupId + ' .option.selected').forEach(o => vals.push(o.dataset.val));
+  if (groupId === 'q3') { answers.q3 = vals; document.getElementById('btn-3').disabled = vals.length === 0; }
+  else if (groupId === 'q4') { answers.q4 = vals; document.getElementById('btn-4').disabled = vals.length === 0; }
+}
+
+function toggleContactPref(el) {
+  el.classList.toggle('selected');
+  const vals = [];
+  document.querySelectorAll('#contact-pref .contact-opt.selected').forEach(o => vals.push(o.dataset.val));
+  answers.contactPrefs = vals;
+  if (vals.length > 0) document.getElementById('contact-pref-error').style.display = 'none';
+}
+
+function nextStep(current) {
+  if (current === 4) answers.q4other = document.getElementById('q4-other').value.trim();
+  document.getElementById('step-' + current).classList.remove('active');
+  document.getElementById('step-' + (current + 1)).classList.add('active');
+  updateProgress(current + 1);
+  var card = document.getElementById('quizModalCard'); if (card) card.scrollTop = 0;
+}
+
+function prevStep(current) {
+  document.getElementById('step-' + current).classList.remove('active');
+  document.getElementById('step-' + (current - 1)).classList.add('active');
+  updateProgress(current - 1);
+  var card = document.getElementById('quizModalCard'); if (card) card.scrollTop = 0;
+}
+
+function goToStep6() {
+  let valid = true;
+  const name = document.getElementById('name').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const email = document.getElementById('email').value.trim();
+
+  if (!name) { document.getElementById('wrap-name').classList.add('has-error'); valid = false; }
+  else document.getElementById('wrap-name').classList.remove('has-error');
+
+  if (!phone || phone.replace(/\D/g,'').length < 8) { document.getElementById('wrap-phone').classList.add('has-error'); valid = false; }
+  else document.getElementById('wrap-phone').classList.remove('has-error');
+
+  if (!email || !email.includes('@') || !email.includes('.')) { document.getElementById('wrap-email').classList.add('has-error'); valid = false; }
+  else document.getElementById('wrap-email').classList.remove('has-error');
+
+  if (answers.contactPrefs.length === 0) { document.getElementById('contact-pref-error').style.display = 'block'; valid = false; }
+
+  if (!valid) return;
+
+  answers.name = name;
+  answers.phone = phone;
+  answers.email = email;
+  answers.profile = getProfile();
+
+  try { submitToNetlify(); } catch(e) {}
+  answers.firstSubmitFired = true;
+
+  document.getElementById('step-5').classList.remove('active');
+  document.getElementById('step-6').classList.add('active');
+  updateProgress(6);
+  var card = document.getElementById('quizModalCard'); if (card) card.scrollTop = 0;
+}
+
+function finishQuiz() {
+  answers.timingNote = document.getElementById('timing-note') ? document.getElementById('timing-note').value.trim() : '';
+  answers.q6 = answers.timingNote ? 'free-text' : 'no-preference';
+
+  try { submitToNetlify(); } catch(e) {}
+
+  // Make.com webhook
+  fetch('https://hook.eu1.make.com/q8eclr5esjpon6292q6jrt3gvv4tdkg5', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      source: 'funnelpricing2-quiz',
+      name: answers.name,
+      phone: answers.phone,
+      email: answers.email,
+      contact_pref: answers.contactPrefs.join(', '),
+      properties: answers.q1,
+      price_per_night: answers.q2,
+      platforms: answers.q3.join(', '),
+      services: answers.q4.join(', '),
+      services_other: answers.q4other,
+      profile: answers.profile,
+      timing: answers.q6,
+      timing_note: answers.timingNote,
+      submitted_at: new Date().toISOString()
+    })
+  }).catch(() => {});
+
+  submitQuiz();
+}
+
+function submitToNetlify() {
+  const data = new FormData();
+  data.append('form-name', 'welcomebook-quiz');
+  data.append('source', 'funnelpricing2');
+  data.append('name', answers.name);
+  data.append('phone', answers.phone);
+  data.append('email', answers.email);
+  data.append('contact_pref', answers.contactPrefs.join(', '));
+  data.append('properties', answers.q1 || '');
+  data.append('price_per_night', answers.q2 || '');
+  data.append('platforms', answers.q3.join(', '));
+  data.append('services', answers.q4.join(', '));
+  data.append('services_other', answers.q4other || '');
+  data.append('timing', answers.q6 || '');
+  data.append('timing_note', answers.timingNote || '');
+  data.append('profile', answers.profile || '');
+  fetch('/', { method: 'POST', body: data }).catch(() => {});
+}
+
+function getProfile() {
+  const props = answers.q1, price = answers.q2;
+  const isHighValue = ['10-20','20+','hotel','5-10'].includes(props) || ['150-300','300+'].includes(price);
+  const isLowValue = price === 'under70' && props === '1';
+  if (isLowValue) return 'cold';
+  if (isHighValue) return 'hot';
+  return 'warm';
+}
+
+function submitQuiz() {
+  answers.profile = answers.profile || getProfile();
+
+  document.getElementById('quizWrap').style.display = 'none';
+  document.getElementById('progressWrap').style.display = 'none';
+  document.getElementById('thankyou').style.display = 'block';
+  var card = document.getElementById('quizModalCard'); if (card) card.scrollTop = 0;
+
+  if (typeof fbq === 'function') fbq('track', 'Lead');
+
+  const prefs = answers.contactPrefs || [];
+  const channelsContainer = document.getElementById('ty-channels');
+  channelsContainer.innerHTML = '';
+
+  if (prefs.includes('email')) {
+    channelsContainer.innerHTML += buildChannelPill(
+      '<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4.7l-8 5.334L4 8.7V6.297l8 5.333 8-5.333V8.7z" fill="rgba(255,255,255,0.7)"/></svg>',
+      'Ще Ви пишем на имейл',
+      'Очаквайте съобщение на <strong>' + escapeHtml(answers.email) + '</strong>. Проверете и спам папката.'
+    );
+  }
+  if (prefs.includes('viber')) {
+    channelsContainer.innerHTML += buildChannelPill(
+      '<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.4C6.698 2.4 2.4 6.698 2.4 12c0 2.61 1.05 4.977 2.75 6.7v2.9l2.85-1.57c1.26.35 2.6.57 3.99.57 5.303 0 9.6-4.298 9.6-9.6S17.303 2.4 12 2.4z" fill="#7360F2"/></svg>',
+      'Ще Ви пишем по Viber',
+      'Очаквайте съобщение на <strong>' + escapeHtml(answers.phone) + '</strong>.'
+    );
+  }
+  if (prefs.includes('whatsapp')) {
+    channelsContainer.innerHTML += buildChannelPill(
+      '<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884" fill="#25D366"/></svg>',
+      'Ще Ви пишем по WhatsApp',
+      'Очаквайте съобщение на <strong>' + escapeHtml(answers.phone) + '</strong>.'
+    );
+  }
+  if (prefs.includes('phone')) {
+    channelsContainer.innerHTML += buildChannelPill(
+      '<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C9.61 21 3 14.39 3 6a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z" fill="rgba(255,255,255,0.7)"/></svg>',
+      'Ще Ви се обадим',
+      'Ще се свържем с Вас на <strong>' + escapeHtml(answers.phone) + '</strong>.'
+    );
+  }
+}
+
+function buildChannelPill(iconSvg, title, body) {
+  return '<div style="display: flex; align-items: flex-start; gap: 14px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 16px 18px; margin-bottom: 10px;">' +
+    '<div style="flex-shrink: 0; margin-top: 2px;">' + iconSvg + '</div>' +
+    '<div style="flex: 1; text-align: left;">' +
+      '<div style="font-family: \'Helvetica Neue\', sans-serif; font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.9); margin-bottom: 4px;">' + title + '</div>' +
+      '<div style="font-family: \'Helvetica Neue\', sans-serif; font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.5;">' + body + '</div>' +
+    '</div>' +
+  '</div>';
+}
+
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str).replace(/[&<>"']/g, function(c) {
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+  });
+}
+</script>
+
+<script>
+// ── TESTIMONIALS IMAGE CAROUSEL V3 ──
+(function(){
+  var track=document.getElementById('tcTrack');
+  var progressEl=document.getElementById('tcProgress');
+  if(!track) return;
+  var slides=track.querySelectorAll('.tc-slide');
+  var N=slides.length, cur=0, timer=null, paused=false;
+  // Build progress segments
+  var segs=[];
+  if(progressEl){
+    for(var i=0;i<N;i++){
+      (function(idx){
+        var seg=document.createElement('div');
+        seg.className='tc-seg';
+        var fill=document.createElement('div');
+        fill.className='tc-seg-fill';
+        seg.appendChild(fill);
+        seg.addEventListener('click',function(){stop();goTo(idx);start();});
+        progressEl.appendChild(seg);
+        segs.push(seg);
+      })(i);
+    }
+  }
+  function updateProgress(animate){
+    segs.forEach(function(seg,j){
+      var fill=seg.querySelector('.tc-seg-fill');
+      // Reset without transition
+      fill.style.transition='none';
+      if(j<cur){
+        fill.style.width='100%';
+      } else if(j===cur){
+        fill.style.width='0%';
+        if(animate){
+          // Force reflow then animate
+          seg.offsetWidth;
+          fill.style.transition='width 5s linear';
+          fill.style.width='100%';
+        }
+      } else {
+        fill.style.width='0%';
+      }
+    });
+  }
+  function pauseProgress(){
+    segs.forEach(function(seg){
+      var fill=seg.querySelector('.tc-seg-fill');
+      var w=fill.getBoundingClientRect().width;
+      var total=seg.getBoundingClientRect().width||1;
+      fill.style.transition='none';
+      fill.style.width=(w/total*100)+'%';
+    });
+  }
+  function resumeProgress(){
+    var fill=segs[cur]&&segs[cur].querySelector('.tc-seg-fill');
+    if(!fill) return;
+    var w=parseFloat(fill.style.width)||0;
+    var remaining=(1-w/100)*5;
+    fill.style.transition='width '+remaining+'s linear';
+    fill.style.width='100%';
+  }
+  function goTo(i){
+    cur=((i%N)+N)%N;
+    track.style.transform='translateX(-'+(cur*100)+'%)';
+    updateProgress(true);
+  }
+  function next(){ goTo(cur+1); }
+  function start(){ timer=setInterval(next,5000); }
+  function stop(){ clearInterval(timer); }
+  document.querySelector('.tc-prev').addEventListener('click',function(){stop();goTo(cur-1);start();});
+  document.querySelector('.tc-next').addEventListener('click',function(){stop();goTo(cur+1);start();});
+  var tx=0;
+  track.addEventListener('touchstart',function(e){tx=e.touches[0].clientX;stop();pauseProgress();},{passive:true});
+  track.addEventListener('touchend',function(e){
+    var dx=e.changedTouches[0].clientX-tx;
+    if(Math.abs(dx)>40){dx<0?next():goTo(cur-1);}
+    start();
+  },{passive:true});
+  var wrap=track.closest('.tc-wrap');
+  if(wrap){
+    wrap.addEventListener('mouseenter',function(){stop();pauseProgress();});
+    wrap.addEventListener('mouseleave',function(){start();resumeProgress();});
+  }
+  window.addEventListener('resize',function(){goTo(cur);});
+  updateProgress(false);
+  // Start only when the section scrolls into view
+  var section=document.getElementById('reviews');
+  if(section&&'IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          updateProgress(true);
+          start();
+          io.disconnect();
+        }
+      });
+    },{threshold:0.3});
+    io.observe(section);
+  } else {
+    updateProgress(true);
+    start();
+  }
+})();
+</script>
+
+</body>
+</html>
