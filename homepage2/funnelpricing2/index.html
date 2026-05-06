@@ -1009,7 +1009,9 @@ fbq('track','PageView');
     display: none;
     position: fixed;
     top: 0; left: 0;
-    width: 100vw; height: 100vh;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
     background: rgba(10,15,30,0.92);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
@@ -1047,8 +1049,15 @@ fbq('track','PageView');
   }
   .quiz-modal-close:hover { background: rgba(255,255,255,.2); color: #fff; }
   @media (max-width: 600px) {
-    .quiz-modal-card { border-radius: 16px 16px 0 0; max-height: 96vh; }
+    .quiz-modal-card {
+      border-radius: 16px 16px 0 0;
+      max-height: 96vh;
+      max-height: 96dvh;
+    }
     .quiz-modal-overlay { align-items: flex-end; padding: 0; }
+    .quiz-nav {
+      padding-bottom: max(28px, env(safe-area-inset-bottom, 28px));
+    }
   }
 
   /* ── QUIZ EMBED ── */
